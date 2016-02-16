@@ -17,15 +17,19 @@ public class RocketWarfare extends Application {
 	}
 
 	@Override
-	public void start(Stage stage) throws Exception {
-		AnchorPane parent = FXMLLoader.load(getClass().getResource("fxml/Game.fxml"));
-		Scene scene = new Scene(parent);
+	public void start(Stage stage) {
+		try {
+			AnchorPane parent = (AnchorPane) FXMLLoader.load(getClass().getResource("fxml/Game.fxml"));
+			Scene scene = new Scene(parent);
 
-		stage.setScene(scene);
-		stage.setResizable(false);
-		stage.sizeToScene();
-		stage.setTitle(NAME + " | " + VERSION);
-		stage.show();
+			stage.setScene(scene);
+			stage.setResizable(false);
+			stage.sizeToScene();
+			stage.setTitle(NAME + " | " + VERSION);
+			stage.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
