@@ -3,6 +3,7 @@ package dev.thetechnokid.rw.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import dev.thetechnokid.rw.stages.*;
 import javafx.animation.*;
 import javafx.fxml.*;
 import javafx.scene.canvas.*;
@@ -25,12 +26,16 @@ public class MainGameController implements Initializable {
 		gameLoop.setCycleCount(Timeline.INDEFINITE);
 		// final long timeStart = System.currentTimeMillis();
 
+		State.setCurrentState(new MenuState(g));
+		
 		KeyFrame kf = new KeyFrame(Duration.seconds(0.017), // 60 FPS
 				(event) -> {
 					g.clearRect(0, 0, theCanvas.getWidth(), theCanvas.getHeight());
 
 					g.setFill(Color.AQUA);
 					g.fillRect(0, 0, theCanvas.getWidth(), theCanvas.getHeight());
+					
+					State.getCurrentStage().render();
 				});
 
 		gameLoop.getKeyFrames().add(kf);

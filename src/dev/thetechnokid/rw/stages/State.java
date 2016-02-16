@@ -9,7 +9,7 @@ public abstract class State {
 		return currentState;
 	}
 
-	public static void setCurrentStage(State state) {
+	public static void setCurrentState(State state) {
 		if (state != null)
 			currentState = state;
 	}
