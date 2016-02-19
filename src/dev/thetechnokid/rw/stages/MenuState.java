@@ -1,6 +1,7 @@
 package dev.thetechnokid.rw.stages;
 
 import dev.thetechnokid.rw.controllers.MainGameController;
+import dev.thetechnokid.rw.utils.Grid;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
@@ -19,9 +20,8 @@ public class MenuState extends State {
 	
 	@Override
 	public void render() {
-		g.setFill(Color.RED);
-		g.setFont(Font.font("Consolas", 20));
-		g.fillText("Hey", (g.getCanvas().getWidth()/2)-20, 50);
+		g.setStroke(Color.RED);
+		Grid.render(g);
 	}
 
 	@Override
