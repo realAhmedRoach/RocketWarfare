@@ -18,8 +18,10 @@ public abstract class State {
 	
 	public State(GraphicsContext g) {
 		this.g = g;
+		init();
 	}
 	
+	protected abstract void init();
 	public abstract void render();
 	public abstract void tick();
 }

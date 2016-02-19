@@ -3,17 +3,27 @@ package dev.thetechnokid.rw.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import dev.thetechnokid.rw.stages.*;
-import javafx.animation.*;
-import javafx.fxml.*;
-import javafx.scene.canvas.*;
+import dev.thetechnokid.rw.stages.MenuState;
+import dev.thetechnokid.rw.stages.State;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 public class MainGameController implements Initializable {
 
+	private static MainGameController currentController;
+	
 	@FXML
 	private Canvas theCanvas;
+	
+	@FXML
+	public VBox buttons;
 
 	private GraphicsContext g;
 
@@ -21,6 +31,7 @@ public class MainGameController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
+		currentController = this;
 		g = theCanvas.getGraphicsContext2D();
 
 		gameLoop.setCycleCount(Timeline.INDEFINITE);
@@ -42,4 +53,7 @@ public class MainGameController implements Initializable {
 		gameLoop.play();
 	}
 
+	public static MainGameController get() {
+		return currentController;
+	}
 }
