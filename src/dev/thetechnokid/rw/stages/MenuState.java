@@ -5,7 +5,6 @@ import dev.thetechnokid.rw.utils.Grid;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 
 public class MenuState extends State {
 
