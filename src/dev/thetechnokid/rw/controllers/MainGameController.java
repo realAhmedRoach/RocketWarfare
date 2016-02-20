@@ -3,14 +3,12 @@ package dev.thetechnokid.rw.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import dev.thetechnokid.rw.stages.MenuState;
-import dev.thetechnokid.rw.stages.State;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
+import dev.thetechnokid.rw.stages.*;
+import javafx.animation.*;
+import javafx.collections.ObservableList;
+import javafx.fxml.*;
+import javafx.scene.Node;
+import javafx.scene.canvas.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
@@ -55,5 +53,9 @@ public class MainGameController implements Initializable {
 
 	public static MainGameController get() {
 		return currentController;
+	}
+	
+	public ObservableList<Node> buttons() {
+		return buttons.getChildren();
 	}
 }

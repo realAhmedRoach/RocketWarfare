@@ -19,7 +19,7 @@ public class MenuState extends State {
 	protected void init() {
 		Button b = new Button("hey");
 		b.setOnAction((event) -> textOn =! textOn);
-		MainGameController.get().buttons.getChildren().add(b);
+		MainGameController.get().buttons().add(b);
 		
 		g.setFont(new Font("Consolas", 20));
 	}
