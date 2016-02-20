@@ -3,12 +3,14 @@ package dev.thetechnokid.rw.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import dev.thetechnokid.rw.input.Keyboard;
 import dev.thetechnokid.rw.stages.*;
 import javafx.animation.*;
 import javafx.collections.ObservableList;
 import javafx.fxml.*;
 import javafx.scene.Node;
 import javafx.scene.canvas.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
@@ -24,7 +26,9 @@ public class MainGameController implements Initializable {
 	public VBox buttons;
 
 	private GraphicsContext g;
-
+	private Keyboard k;
+	
+	
 	Timeline gameLoop = new Timeline();
 
 	@Override
@@ -34,6 +38,8 @@ public class MainGameController implements Initializable {
 
 		gameLoop.setCycleCount(Timeline.INDEFINITE);
 		// final long timeStart = System.currentTimeMillis();
+		
+		theCanvas.addEventHandler(KeyEvent.ANY, k);
 
 		State.setCurrentState(new MenuState(g));
 		
@@ -57,5 +63,9 @@ public class MainGameController implements Initializable {
 	
 	public ObservableList<Node> buttons() {
 		return buttons.getChildren();
+	}
+	
+	public Keyboard getKeyboard() {
+		return k;
 	}
 }
