@@ -3,14 +3,14 @@ package dev.thetechnokid.rw.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import dev.thetechnokid.rw.input.Keyboard;
+import dev.thetechnokid.rw.input.*;
 import dev.thetechnokid.rw.stages.*;
 import javafx.animation.*;
 import javafx.collections.ObservableList;
 import javafx.fxml.*;
 import javafx.scene.Node;
 import javafx.scene.canvas.*;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.input.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
@@ -26,7 +26,8 @@ public class MainGameController implements Initializable {
 	public VBox buttons;
 
 	private GraphicsContext g;
-	private Keyboard k;
+	private Keyboard k = new Keyboard();
+	private Mouse mouse = new Mouse();
 	
 	
 	Timeline gameLoop = new Timeline();
@@ -40,6 +41,7 @@ public class MainGameController implements Initializable {
 		// final long timeStart = System.currentTimeMillis();
 		
 		theCanvas.addEventHandler(KeyEvent.ANY, k);
+		theCanvas.addEventHandler(MouseEvent.ANY, mouse);
 
 		State.setCurrentState(new MenuState(g));
 		
@@ -67,5 +69,9 @@ public class MainGameController implements Initializable {
 	
 	public Keyboard getKeyboard() {
 		return k;
+	}
+	
+	public Mouse getMouse() {
+		return mouse;
 	}
 }
