@@ -1,5 +1,6 @@
 package dev.thetechnokid.rw.utils;
 
+import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 
 public class Grid {
@@ -14,5 +15,16 @@ public class Grid {
 		for (int y = SIZE; y < height; y += SIZE) {
 			g.strokeLine(0, y, width, y);
 		}
+	}
+	
+	public static Point2D getGridLocation(int x, int y) {
+		Point2D point = null;
+		
+		int gx = x / SIZE;
+		int gy = y / SIZE;
+		
+		point = new Point2D(gx, gy);
+		
+		return point;
 	}
 }
