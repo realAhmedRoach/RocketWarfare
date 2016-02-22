@@ -53,6 +53,7 @@ public class MainGameController implements Initializable {
 					g.fillRect(0, 0, theCanvas.getWidth(), theCanvas.getHeight());
 					
 					State.getCurrentState().render();
+					State.getCurrentState().tick();
 				});
 
 		gameLoop.getKeyFrames().add(kf);
