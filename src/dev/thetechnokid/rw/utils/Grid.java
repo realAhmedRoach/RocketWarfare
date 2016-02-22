@@ -16,15 +16,15 @@ public class Grid {
 			g.strokeLine(0, y, width, y);
 		}
 	}
-	
+
 	public static Point2D getGridLocation(int x, int y) {
 		Point2D point = null;
-		
+
 		int gx = x / SIZE;
 		int gy = y / SIZE;
-		
-		point = new Point2D(gx, gy);
-		
+
+		point = new Point2D(gx * 32, gy * 32);
+
 		return point;
 	}
 }
