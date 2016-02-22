@@ -1,11 +1,11 @@
-package dev.thetechnokid.rw.stages;
+package dev.thetechnokid.rw.states;
 
 import javafx.scene.canvas.GraphicsContext;
 
 public abstract class State {
 	private static State currentState;
 
-	public static State getCurrentStage() {
+	public static State getCurrentState() {
 		return currentState;
 	}
 

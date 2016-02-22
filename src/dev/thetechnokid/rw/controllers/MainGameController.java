@@ -4,7 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import dev.thetechnokid.rw.input.*;
-import dev.thetechnokid.rw.stages.*;
+import dev.thetechnokid.rw.states.*;
 import javafx.animation.*;
 import javafx.collections.ObservableList;
 import javafx.fxml.*;
@@ -52,7 +52,7 @@ public class MainGameController implements Initializable {
 					g.setFill(Color.AQUA);
 					g.fillRect(0, 0, theCanvas.getWidth(), theCanvas.getHeight());
 					
-					State.getCurrentStage().render();
+					State.getCurrentState().render();
 				});
 
 		gameLoop.getKeyFrames().add(kf);

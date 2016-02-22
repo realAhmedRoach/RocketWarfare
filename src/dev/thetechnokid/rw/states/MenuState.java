@@ -1,4 +1,4 @@
-package dev.thetechnokid.rw.stages;
+package dev.thetechnokid.rw.states;
 
 import dev.thetechnokid.rw.controllers.MainGameController;
 import dev.thetechnokid.rw.utils.Grid;
