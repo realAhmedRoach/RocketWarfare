@@ -14,6 +14,8 @@ public class Mouse implements EventHandler<MouseEvent> {
 			mousePressed = true;
 			x = (int) event.getX();
 			y = (int) event.getY();
+		} else {
+			mousePressed = false;
 		}
 	}
 
