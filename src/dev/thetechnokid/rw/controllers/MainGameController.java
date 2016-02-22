@@ -64,15 +64,15 @@ public class MainGameController implements Initializable {
 		return currentController;
 	}
 	
-	public ObservableList<Node> buttons() {
-		return buttons.getChildren();
+	public static ObservableList<Node> buttons() {
+		return currentController.buttons.getChildren();
 	}
 	
-	public Keyboard getKeyboard() {
-		return k;
+	public static Keyboard getKeyboard() {
+		return currentController.k;
 	}
 	
-	public Mouse getMouse() {
-		return mouse;
+	public static Mouse getMouse() {
+		return currentController.mouse;
 	}
 }
