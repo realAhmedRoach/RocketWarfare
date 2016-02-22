@@ -23,7 +23,7 @@ public class Grid {
 		int gx = x / SIZE;
 		int gy = y / SIZE;
 
-		point = new Point2D(gx * 32, gy * 32);
+		point = new Point2D(gx * SIZE, gy * SIZE);
 
 		return point;
 	}
