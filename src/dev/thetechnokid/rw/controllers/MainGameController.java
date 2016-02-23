@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import dev.thetechnokid.rw.RocketWarfare;
 import dev.thetechnokid.rw.input.*;
 import dev.thetechnokid.rw.states.*;
+import dev.thetechnokid.rw.utils.Grid;
 import javafx.animation.*;
 import javafx.collections.ObservableList;
 import javafx.fxml.*;
@@ -53,6 +54,7 @@ public class MainGameController implements Initializable {
 					g.setFill(Color.AQUA);
 					g.fillRect(0, 0, theCanvas.getWidth(), theCanvas.getHeight());
 
+					Grid.render(g);
 					State.getCurrentState().render();
 					State.getCurrentState().tick();
 				});

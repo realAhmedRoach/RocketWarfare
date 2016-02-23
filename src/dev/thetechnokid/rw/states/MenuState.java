@@ -2,7 +2,6 @@ package dev.thetechnokid.rw.states;
 
 import dev.thetechnokid.rw.controllers.MainGameController;
 import dev.thetechnokid.rw.utils.*;
-import javafx.beans.property.StringProperty;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
@@ -29,7 +28,7 @@ public class MenuState extends State {
 			textOn = true;
 			start.disableProperty().set(true);
 		});
-		
+
 		MainGameController.buttons().addAll(nameLabel, nameField, start);
 	}
 
@@ -39,7 +38,7 @@ public class MenuState extends State {
 		g.setFill(Color.BLUEVIOLET);
 		if (textOn)
 			Utils.centerText(g, "Welcome, " + name, 20);
-		Grid.render(g);
+		// Grid.render(g);
 	}
 
 	@Override
