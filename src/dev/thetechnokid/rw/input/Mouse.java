@@ -1,5 +1,6 @@
 package dev.thetechnokid.rw.input;
 
+import dev.thetechnokid.rw.controllers.MainGameController;
 import javafx.event.EventHandler;
 import javafx.scene.input.*;
 
@@ -11,9 +12,16 @@ public class Mouse implements EventHandler<MouseEvent> {
 	@Override
 	public void handle(MouseEvent event) {
 		if (event.isPrimaryButtonDown()) {
-			mousePressed = true;
 			x = (int) event.getX();
 			y = (int) event.getY();
+			mousePressed = true;
+			if (x > MainGameController.getWidth() || x < 0) {
+				event.consume();
+				mousePressed = false;
+			} if (y > MainGameController.getHeight() || y < 0) {
+				event.consume();
+				mousePressed = false;
+			}
 		} else {
 			mousePressed = false;
 		}
