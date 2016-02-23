@@ -38,7 +38,7 @@ public class MenuState extends State {
 		g.setStroke(Color.RED);
 		g.setFill(Color.BLUEVIOLET);
 		if (textOn)
-			Utils.centerText(g, "Welcome, " + name, 15);
+			Utils.centerText(g, "Welcome, " + name, 20);
 		Grid.render(g);
 	}
 

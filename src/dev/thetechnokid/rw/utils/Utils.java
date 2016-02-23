@@ -8,10 +8,10 @@ public class Utils {
 		int width = (int) g.getCanvas().getWidth();
 		int height = (int) g.getCanvas().getHeight();
 		int totalSize = text.length() * size;
-		
-		int x = (width / 2) - (totalSize/2);
-		int y = (height / 2) - (totalSize/2);
-		
+
+		int x = (width / 2) - (totalSize / 4);
+		int y = (height / 2);
+
 		g.setFont(new Font("Consolas", size));
 		g.fillText(text, x, y);
 	}
