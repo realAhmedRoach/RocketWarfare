@@ -1,7 +1,7 @@
 package dev.thetechnokid.rw.states;
 
 import dev.thetechnokid.rw.controllers.MainGameController;
-import dev.thetechnokid.rw.utils.Grid;
+import dev.thetechnokid.rw.utils.*;
 import javafx.beans.property.StringProperty;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
@@ -11,7 +11,7 @@ import javafx.scene.paint.Color;
 public class MenuState extends State {
 
 	private boolean textOn;
-	private StringProperty nameProp;
+	private String name;
 
 	public MenuState(GraphicsContext g) {
 		super(g);
@@ -19,15 +19,18 @@ public class MenuState extends State {
 
 	@Override
 	protected void init() {
-		Label name = new Label("Name:");
+		Label nameLabel = new Label("Name:");
 		TextField nameField = new TextField();
 		nameField.setPromptText("JSmith");
 		nameField.setMaxWidth(100);
-		nameProp = nameField.textProperty();
 		Button start = new Button("Start Building!");
-		start.setOnAction((event) -> textOn = true);
+		start.setOnAction((event) -> {
+			name = nameField.getText();
+			textOn = true;
+			start.disableProperty().set(true);
+		});
 		
-		MainGameController.buttons().addAll(name, nameField, start);
+		MainGameController.buttons().addAll(nameLabel, nameField, start);
 	}
 
 	@Override
@@ -35,7 +38,7 @@ public class MenuState extends State {
 		g.setStroke(Color.RED);
 		g.setFill(Color.BLUEVIOLET);
 		if (textOn)
-			g.fillText("Welcome, " + nameProp.get(), 50, 30);
+			Utils.centerText(g, "Welcome, " + name, 15);
 		Grid.render(g);
 	}
 
