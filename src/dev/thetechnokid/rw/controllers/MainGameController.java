@@ -3,6 +3,7 @@ package dev.thetechnokid.rw.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import dev.thetechnokid.rw.RocketWarfare;
 import dev.thetechnokid.rw.input.*;
 import dev.thetechnokid.rw.states.*;
 import javafx.animation.*;
@@ -44,7 +45,8 @@ public class MainGameController implements Initializable {
 
 		State.setCurrentState(new MenuState(g));
 
-		KeyFrame kf = new KeyFrame(Duration.seconds(0.017), // 60 FPS
+		KeyFrame kf = new KeyFrame(Duration.millis(1000 / RocketWarfare.FPS), // 60
+																				// FPS
 				(event) -> {
 					g.clearRect(0, 0, theCanvas.getWidth(), theCanvas.getHeight());
 
