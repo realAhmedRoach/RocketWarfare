@@ -18,18 +18,17 @@ import javafx.util.Duration;
 public class MainGameController implements Initializable {
 
 	private static MainGameController currentController;
-	
+
 	@FXML
 	private Canvas theCanvas;
-	
+
 	@FXML
 	public VBox buttons;
 
 	private GraphicsContext g;
 	private Keyboard k = new Keyboard();
 	private Mouse mouse = new Mouse();
-	
-	
+
 	Timeline gameLoop = new Timeline();
 
 	@Override
@@ -39,19 +38,19 @@ public class MainGameController implements Initializable {
 
 		gameLoop.setCycleCount(Timeline.INDEFINITE);
 		// final long timeStart = System.currentTimeMillis();
-		
+
 		theCanvas.addEventHandler(KeyEvent.ANY, k);
 		theCanvas.addEventHandler(MouseEvent.ANY, mouse);
 
 		State.setCurrentState(new MenuState(g));
-		
+
 		KeyFrame kf = new KeyFrame(Duration.seconds(0.017), // 60 FPS
 				(event) -> {
 					g.clearRect(0, 0, theCanvas.getWidth(), theCanvas.getHeight());
 
 					g.setFill(Color.AQUA);
 					g.fillRect(0, 0, theCanvas.getWidth(), theCanvas.getHeight());
-					
+
 					State.getCurrentState().render();
 					State.getCurrentState().tick();
 				});
@@ -63,16 +62,24 @@ public class MainGameController implements Initializable {
 	public static MainGameController get() {
 		return currentController;
 	}
-	
+
 	public static ObservableList<Node> buttons() {
 		return currentController.buttons.getChildren();
 	}
-	
+
 	public static Keyboard getKeyboard() {
 		return currentController.k;
 	}
-	
+
 	public static Mouse getMouse() {
 		return currentController.mouse;
+	}
+
+	public static int getWidth() {
+		return (int) currentController.theCanvas.getWidth();
+	}
+
+	public static int getHeight() {
+		return (int) currentController.theCanvas.getHeight();
 	}
 }
