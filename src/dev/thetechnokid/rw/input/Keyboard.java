@@ -17,7 +17,13 @@ public class Keyboard implements EventHandler<KeyEvent>{
 			keys.put(event.getCode(), false);
 	}
 	
-	public HashMap<KeyCode, Boolean> getKeys() {
-		return keys;
+	public boolean get(KeyCode k) {
+		boolean p = false;
+		try {
+			p = keys.get(k);
+		} catch (Exception e) {
+			return false;
+		}
+		return p;
 	}
 }
