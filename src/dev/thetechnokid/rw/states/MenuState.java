@@ -33,6 +33,7 @@ public class MenuState extends State {
 			textOn = true;
 			grid = true;
 			start.disableProperty().set(true);
+			g.getCanvas().requestFocus();
 		});
 
 		MainGameController.buttons().addAll(nameLabel, nameField, start);

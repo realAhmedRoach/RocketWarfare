@@ -41,7 +41,8 @@ public class MainGameController implements Initializable {
 		gameLoop.setCycleCount(Timeline.INDEFINITE);
 		// final long timeStart = System.currentTimeMillis();
 
-		theCanvas.addEventHandler(KeyEvent.ANY, k);
+		theCanvas.setFocusTraversable(true);
+		theCanvas.getParent().addEventHandler(KeyEvent.ANY, k);
 		theCanvas.addEventHandler(MouseEvent.ANY, mouse);
 
 		State.setCurrentState(new MenuState(g));
