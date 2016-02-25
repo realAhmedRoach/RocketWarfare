@@ -2,10 +2,11 @@ package dev.thetechnokid.rw.states;
 
 import dev.thetechnokid.rw.controllers.MainGameController;
 import dev.thetechnokid.rw.utils.*;
-import javafx.geometry.Point2D;
+import javafx.geometry.*;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.TextAlignment;
 
 public class MenuState extends State {
 
@@ -19,6 +20,9 @@ public class MenuState extends State {
 
 	@Override
 	protected void init() {
+        g.setTextAlign(TextAlignment.CENTER);
+        g.setTextBaseline(VPos.CENTER);
+		
 		Label nameLabel = new Label("Name:");
 		TextField nameField = new TextField();
 		nameField.setPromptText("JSmith");
