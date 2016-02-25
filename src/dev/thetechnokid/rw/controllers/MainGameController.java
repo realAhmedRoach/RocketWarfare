@@ -54,7 +54,8 @@ public class MainGameController implements Initializable {
 					g.setFill(Color.AQUA);
 					g.fillRect(0, 0, theCanvas.getWidth(), theCanvas.getHeight());
 
-					Grid.render(g);
+					if (State.getCurrentState().gridEnabled())
+						Grid.render(g);
 					State.getCurrentState().render();
 					State.getCurrentState().tick();
 				});

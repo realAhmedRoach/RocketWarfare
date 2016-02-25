@@ -11,7 +11,8 @@ public class MenuState extends State {
 
 	private boolean textOn;
 	private String name;
-
+	private boolean grid;
+	
 	public MenuState(GraphicsContext g) {
 		super(g);
 	}
@@ -26,6 +27,7 @@ public class MenuState extends State {
 		start.setOnAction((event) -> {
 			name = nameField.getText();
 			textOn = true;
+			grid = true;
 			start.disableProperty().set(true);
 		});
 
@@ -52,4 +54,8 @@ public class MenuState extends State {
 		}
 	}
 
+	@Override
+	public boolean gridEnabled() {
+		return grid;
+	}
 }

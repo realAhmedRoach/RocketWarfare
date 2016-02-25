@@ -21,6 +21,10 @@ public abstract class State {
 		init();
 	}
 	
+	public boolean gridEnabled() {
+		return true;
+	}
+	
 	protected abstract void init();
 	public abstract void render();
 	public abstract void tick();
