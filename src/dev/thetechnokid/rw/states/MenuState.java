@@ -5,6 +5,7 @@ import dev.thetechnokid.rw.utils.*;
 import javafx.geometry.*;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 
@@ -13,6 +14,8 @@ public class MenuState extends State {
 	private boolean textOn;
 	private String name;
 	private boolean grid;
+	
+	private int rectx, recty;
 	
 	public MenuState(GraphicsContext g) {
 		super(g);
@@ -25,6 +28,7 @@ public class MenuState extends State {
 		
 		Label nameLabel = new Label("Name:");
 		TextField nameField = new TextField();
+		nameField.setFocusTraversable(false);
 		nameField.setPromptText("JSmith");
 		nameField.setMaxWidth(100);
 		Button start = new Button("Start Building!");
@@ -44,7 +48,10 @@ public class MenuState extends State {
 		g.setStroke(Color.RED);
 		g.setFill(Color.BLUEVIOLET);
 		if (textOn)
+			 {
 			Utils.centerText(g, "Welcome, " + name, 20);
+			g.fillRect(rectx, recty, Grid.SIZE, Grid.SIZE);
+			 }
 		// Grid.render(g);
 	}
 
@@ -56,6 +63,14 @@ public class MenuState extends State {
 			System.out.println(x + "," + y);
 			Point2D p = Grid.getGridLocation(x, y);
 			g.fillRect(p.getX(), p.getY(), Grid.SIZE, Grid.SIZE);
+		} if (MainGameController.getKeyboard().get(KeyCode.UP)) {
+			recty--;
+		} if (MainGameController.getKeyboard().get(KeyCode.DOWN)) {
+			recty++;
+		} if (MainGameController.getKeyboard().get(KeyCode.RIGHT)) {
+			rectx++;
+		} if (MainGameController.getKeyboard().get(KeyCode.LEFT)) {
+			rectx--;
 		}
 	}
 
