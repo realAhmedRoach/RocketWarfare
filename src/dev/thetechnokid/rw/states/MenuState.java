@@ -49,7 +49,12 @@ public class MenuState extends State {
 		g.setFill(Color.BLUEVIOLET);
 		if (textOn) {
 			Utils.centerText(g, "Welcome, " + name, 20);
-			g.fillRect(rectx, recty, Grid.SIZE, Grid.SIZE);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			State.setCurrentState(new BuildingState(g));
 		}
 		// Grid.render(g);
 	}
@@ -63,18 +68,7 @@ public class MenuState extends State {
 			Point2D p = Grid.getGridLocation(x, y);
 			g.fillRect(p.getX(), p.getY(), Grid.SIZE, Grid.SIZE);
 		}
-		if (MainGameController.getKeyboard().get(KeyCode.UP)) {
-			recty -= Grid.SIZE;
-		}
-		if (MainGameController.getKeyboard().get(KeyCode.DOWN)) {
-			recty += Grid.SIZE;
-		}
-		if (MainGameController.getKeyboard().get(KeyCode.RIGHT)) {
-			rectx += Grid.SIZE;
-		}
-		if (MainGameController.getKeyboard().get(KeyCode.LEFT)) {
-			rectx -= Grid.SIZE;
-		}
+
 	}
 
 	@Override
