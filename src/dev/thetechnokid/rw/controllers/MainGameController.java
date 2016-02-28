@@ -41,9 +41,7 @@ public class MainGameController implements Initializable {
 		gameLoop.setCycleCount(Timeline.INDEFINITE);
 		// final long timeStart = System.currentTimeMillis();
 
-		theCanvas.setFocusTraversable(true);
-		theCanvas.getParent().addEventHandler(KeyEvent.ANY, k);
-		theCanvas.addEventHandler(MouseEvent.ANY, mouse);
+		initCanvas();
 
 		State.setCurrentState(new MenuState(g));
 
@@ -63,6 +61,12 @@ public class MainGameController implements Initializable {
 
 		gameLoop.getKeyFrames().add(kf);
 		gameLoop.play();
+	}
+
+	private void initCanvas() {
+		theCanvas.setFocusTraversable(true);
+		theCanvas.getParent().addEventHandler(KeyEvent.ANY, k);
+		theCanvas.addEventHandler(MouseEvent.ANY, mouse);
 	}
 
 	public static MainGameController get() {
