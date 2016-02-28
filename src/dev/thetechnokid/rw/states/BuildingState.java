@@ -1,7 +1,7 @@
 package dev.thetechnokid.rw.states;
 
 import dev.thetechnokid.rw.controllers.MainGameController;
-import dev.thetechnokid.rw.utils.Grid;
+import dev.thetechnokid.rw.utils.*;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
@@ -10,7 +10,9 @@ import javafx.scene.paint.Color;
 public class BuildingState extends State {
 	private int x,y;
 	private Color color = Color.RED;
-
+	private Animator anim;
+	private int recty;
+	
 	public BuildingState(GraphicsContext g) {
 		super(g);
 		
@@ -20,6 +22,9 @@ public class BuildingState extends State {
 	protected void init() {
 		MainGameController.buttons().clear();
 		g.setFill(Color.RED);
+		
+		anim = new Animator(1000, () -> recty+=Grid.SIZE);
+		
 		Button b = new Button("Change Colors");
 		b.setOnAction((event) -> {
 			if (color.equals(Color.RED))
@@ -36,6 +41,8 @@ public class BuildingState extends State {
 	public void render() {
 		g.setFill(color);
 		g.fillRect(x, y, Grid.SIZE, Grid.SIZE);
+		g.setFill(Color.BEIGE);
+		g.fillRect(0, recty, Grid.SIZE, Grid.SIZE);
 	}
 
 	@Override
@@ -52,6 +59,7 @@ public class BuildingState extends State {
 		if (MainGameController.getKeyboard().get(KeyCode.LEFT)) {
 			x -= Grid.SIZE;
 		}
+		anim.tick();
 	}
 
 }
