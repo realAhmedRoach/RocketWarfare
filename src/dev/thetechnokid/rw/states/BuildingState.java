@@ -9,22 +9,23 @@ import javafx.scene.paint.Color;
 
 public class BuildingState extends State {
 	private int x,y;
+	private Color color = Color.RED;
 
 	public BuildingState(GraphicsContext g) {
 		super(g);
-		g.setFill(Color.RED);
+		
 	}
 
 	@Override
 	protected void init() {
 		MainGameController.buttons().clear();
-		
+		g.setFill(Color.RED);
 		Button b = new Button("Change Colors");
 		b.setOnAction((event) -> {
-			if (g.getFill() == Color.RED)
-				g.setFill(Color.ROSYBROWN);
+			if (color.equals(Color.RED))
+				color = (Color.ROSYBROWN);
 			else
-				g.setFill(Color.RED);
+				color = (Color.RED);
 			g.getCanvas().requestFocus();
 		});
 		
@@ -33,6 +34,7 @@ public class BuildingState extends State {
 
 	@Override
 	public void render() {
+		g.setFill(color);
 		g.fillRect(x, y, Grid.SIZE, Grid.SIZE);
 	}
 
