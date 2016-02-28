@@ -5,7 +5,6 @@ import dev.thetechnokid.rw.utils.*;
 import javafx.geometry.*;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 
@@ -14,8 +13,6 @@ public class MenuState extends State {
 	private boolean textOn;
 	private String name;
 	private boolean grid;
-
-	private int rectx, recty;
 
 	public MenuState(GraphicsContext g) {
 		super(g);
