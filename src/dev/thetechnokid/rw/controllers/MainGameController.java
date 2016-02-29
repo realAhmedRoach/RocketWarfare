@@ -67,6 +67,8 @@ public class MainGameController implements Initializable {
 		theCanvas.setFocusTraversable(true);
 		theCanvas.getParent().addEventHandler(KeyEvent.ANY, k);
 		theCanvas.addEventHandler(MouseEvent.ANY, mouse);
+		
+		g.setLineWidth(0.3);
 	}
 
 	public static MainGameController get() {
