@@ -2,6 +2,7 @@ package dev.thetechnokid.rw.input;
 
 import dev.thetechnokid.rw.controllers.MainGameController;
 import javafx.event.EventHandler;
+import javafx.geometry.Point2D;
 import javafx.scene.input.*;
 
 public class Mouse implements EventHandler<MouseEvent> {
@@ -37,5 +38,9 @@ public class Mouse implements EventHandler<MouseEvent> {
 
 	public int getY() {
 		return y;
+	}
+
+	public Point2D getPoint() {
+		return new Point2D(getX(), getY());
 	}
 }
