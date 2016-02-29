@@ -46,12 +46,8 @@ public class MenuState extends State {
 		g.setFill(Color.BLUEVIOLET);
 		if (textOn) {
 			Utils.centerText(g, "Welcome, " + name, 20);
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
 			State.setCurrentState(new BuildingState(g));
+			Utils.wait(1000);
 		}
 		// Grid.render(g);
 	}
