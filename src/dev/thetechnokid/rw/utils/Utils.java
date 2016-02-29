@@ -14,4 +14,9 @@ public class Utils {
 		g.setFont(new Font("Consolas", size));
 		g.fillText(text, x, y);
 	}
+	
+	public static void wait(int millisecs) {
+		long startTime = System.currentTimeMillis();
+		while (System.currentTimeMillis() - startTime < millisecs) {}
+	}
 }
