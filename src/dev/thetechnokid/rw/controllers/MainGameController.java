@@ -57,6 +57,8 @@ public class MainGameController implements Initializable {
 						Grid.render(g);
 					State.getCurrentState().render();
 					State.getCurrentState().tick();
+					
+					k.tick();
 				});
 
 		gameLoop.getKeyFrames().add(kf);

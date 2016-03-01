@@ -29,7 +29,7 @@ public class Keyboard implements EventHandler<KeyEvent> {
 	}
 
 	public void tick() {
-		if (System.currentTimeMillis() - clearTime < 16) {
+		if (System.currentTimeMillis() - clearTime > 16) {
 			releasedKey = null;
 		}
 	}

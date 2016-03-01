@@ -58,19 +58,19 @@ public class BuildingState extends State {
 
 	@Override
 	public void tick() {
-		if (MainGameController.getKeyboard().get(KeyCode.UP)) {
+		if (MainGameController.getKeyboard().releasedKey(KeyCode.UP)) {
 			y -= Grid.SIZE;
 		}
-		if (MainGameController.getKeyboard().get(KeyCode.DOWN)) {
+		else if (MainGameController.getKeyboard().releasedKey(KeyCode.DOWN)) {
 			y += Grid.SIZE;
 		}
-		if (MainGameController.getKeyboard().get(KeyCode.RIGHT)) {
+		else if (MainGameController.getKeyboard().releasedKey(KeyCode.RIGHT)) {
 			x += Grid.SIZE;
 		}
-		if (MainGameController.getKeyboard().get(KeyCode.LEFT)) {
+		else if (MainGameController.getKeyboard().releasedKey(KeyCode.LEFT)) {
 			x -= Grid.SIZE;
 		}
-		if (MainGameController.getMouse().isMousePressed()) {
+		else if (MainGameController.getMouse().isMousePressed()) {
 			locs.put(MainGameController.getMouse().getPointOnGrid(), true);
 		}
 		anim.tick();
