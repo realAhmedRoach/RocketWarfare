@@ -1,15 +1,15 @@
 package dev.thetechnokid.rw.input;
 
-import java.util.HashMap;
+import java.util.*;
 
 import javafx.event.EventHandler;
 import javafx.scene.control.TextInputControl;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.input.*;
 
 public class Keyboard implements EventHandler<KeyEvent> {
 
 	private HashMap<KeyCode, Boolean> keys = new HashMap<KeyCode, Boolean>();
+	private ArrayList<KeyCode> releasedKeys = new ArrayList<>();
 
 	@Override
 	public void handle(KeyEvent event) {
@@ -17,10 +17,15 @@ public class Keyboard implements EventHandler<KeyEvent> {
 		System.out.println("Target:" + event.getTarget().getClass().getName());
 		if (event.getTarget() instanceof TextInputControl)
 			return;
-		if (event.getEventType() == KeyEvent.KEY_PRESSED)
+		if (event.getEventType() == KeyEvent.KEY_PRESSED) {
 			keys.put(event.getCode(), true);
-		if (event.getEventType() == KeyEvent.KEY_RELEASED)
+			releasedKeys.remove(event.getCode());
+		}
+		if (event.getEventType() == KeyEvent.KEY_RELEASED) {
 			keys.put(event.getCode(), false);
+			if (!releasedKeys.contains(event.getCode()))
+				releasedKeys.add(event.getCode());
+		}
 	}
 
 	public boolean get(KeyCode k) {
@@ -31,5 +36,9 @@ public class Keyboard implements EventHandler<KeyEvent> {
 			return false;
 		}
 		return p;
+	}
+	
+	public boolean releasedKey(KeyCode k) {
+		return releasedKeys.contains(k);
 	}
 }
