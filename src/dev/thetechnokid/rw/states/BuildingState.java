@@ -51,7 +51,7 @@ public class BuildingState extends State {
 		g.setFill(Color.CADETBLUE);
 		for (Point2D p : locs.keySet()) {
 			if (locs.get(p)) {
-				g.fillRect(p.getX() * Grid.SIZE, p.getY() * Grid.SIZE, Grid.SIZE, Grid.SIZE);
+				g.fillOval(p.getX() * Grid.SIZE, p.getY() * Grid.SIZE, Grid.SIZE, Grid.SIZE);
 			}
 		}
 	}
