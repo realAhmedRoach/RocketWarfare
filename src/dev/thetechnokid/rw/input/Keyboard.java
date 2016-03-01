@@ -10,7 +10,6 @@ public class Keyboard implements EventHandler<KeyEvent> {
 
 	private HashMap<KeyCode, Boolean> keys = new HashMap<KeyCode, Boolean>();
 	private KeyCode releasedKey = null;
-	private long clearTime = System.currentTimeMillis();
 
 	@Override
 	public void handle(KeyEvent event) {
@@ -29,9 +28,7 @@ public class Keyboard implements EventHandler<KeyEvent> {
 	}
 
 	public void tick() {
-		if (System.currentTimeMillis() - clearTime > 16) {
-			releasedKey = null;
-		}
+		releasedKey = null;
 	}
 
 	public boolean get(KeyCode k) {
