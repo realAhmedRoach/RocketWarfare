@@ -9,8 +9,9 @@ import javafx.scene.input.*;
 public class Keyboard implements EventHandler<KeyEvent> {
 
 	private HashMap<KeyCode, Boolean> keys = new HashMap<KeyCode, Boolean>();
-	private ArrayList<KeyCode> releasedKeys = new ArrayList<>();
-
+	private KeyCode releasedKey = null;
+	private long clearTime = System.currentTimeMillis();
+	
 	@Override
 	public void handle(KeyEvent event) {
 		System.out.println("Source:" + event.getSource().getClass().getName());
@@ -19,15 +20,20 @@ public class Keyboard implements EventHandler<KeyEvent> {
 			return;
 		if (event.getEventType() == KeyEvent.KEY_PRESSED) {
 			keys.put(event.getCode(), true);
-			releasedKeys.remove(event.getCode());
+			releasedKey = null;
 		}
 		if (event.getEventType() == KeyEvent.KEY_RELEASED) {
 			keys.put(event.getCode(), false);
-			if (!releasedKeys.contains(event.getCode()))
-				releasedKeys.add(event.getCode());
+			releasedKey = event.getCode();
 		}
 	}
 
+	public void tick() {
+		if (System.currentTimeMillis() - clearTime < 16) {
+			releasedKey = null;
+		}
+	}
+	
 	public boolean get(KeyCode k) {
 		boolean p = false;
 		try {
@@ -39,6 +45,6 @@ public class Keyboard implements EventHandler<KeyEvent> {
 	}
 	
 	public boolean releasedKey(KeyCode k) {
-		return releasedKeys.contains(k);
+		return releasedKey == k;
 	}
 }
