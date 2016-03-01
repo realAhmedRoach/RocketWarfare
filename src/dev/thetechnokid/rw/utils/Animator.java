@@ -5,7 +5,7 @@ public class Animator {
 	private int duration;
 	private Runnable r;
 	private boolean stopped;
-	
+
 	public Animator(int duration, Runnable r) {
 		this.duration = duration;
 		lastTime = System.currentTimeMillis();
@@ -13,13 +13,14 @@ public class Animator {
 	}
 
 	public void tick() {
-		if(stopped) return;
+		if (stopped)
+			return;
 		if (System.currentTimeMillis() - lastTime > duration) {
 			r.run();
 			lastTime = System.currentTimeMillis();
 		}
 	}
-	
+
 	public void stop() {
 		stopped = true;
 	}

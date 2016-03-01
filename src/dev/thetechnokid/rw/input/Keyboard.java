@@ -11,7 +11,7 @@ public class Keyboard implements EventHandler<KeyEvent> {
 	private HashMap<KeyCode, Boolean> keys = new HashMap<KeyCode, Boolean>();
 	private KeyCode releasedKey = null;
 	private long clearTime = System.currentTimeMillis();
-	
+
 	@Override
 	public void handle(KeyEvent event) {
 		System.out.println("Source:" + event.getSource().getClass().getName());
@@ -33,7 +33,7 @@ public class Keyboard implements EventHandler<KeyEvent> {
 			releasedKey = null;
 		}
 	}
-	
+
 	public boolean get(KeyCode k) {
 		boolean p = false;
 		try {
@@ -43,7 +43,7 @@ public class Keyboard implements EventHandler<KeyEvent> {
 		}
 		return p;
 	}
-	
+
 	public boolean releasedKey(KeyCode k) {
 		return releasedKey == k;
 	}

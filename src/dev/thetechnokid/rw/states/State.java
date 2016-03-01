@@ -15,17 +15,19 @@ public abstract class State {
 	}
 
 	protected GraphicsContext g;
-	
+
 	public State(GraphicsContext g) {
 		this.g = g;
 		init();
 	}
-	
+
 	public boolean gridEnabled() {
 		return true;
 	}
-	
+
 	protected abstract void init();
+
 	public abstract void render();
+
 	public abstract void tick();
 }

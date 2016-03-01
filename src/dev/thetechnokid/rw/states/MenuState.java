@@ -44,12 +44,12 @@ public class MenuState extends State {
 	public void render() {
 		g.setStroke(Color.RED);
 		g.setFill(Color.BLUEVIOLET);
-		
+
 		if (change) {
 			Utils.wait(2000);
 			State.setCurrentState(new BuildingState(g));
 		}
-		
+
 		if (textOn) {
 			Utils.centerText(g, "Welcome, " + name, 20);
 			change = true;
