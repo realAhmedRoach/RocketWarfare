@@ -66,12 +66,8 @@ public class BuildingState extends State {
 			x += Grid.SIZE;
 		} else if (MainGameController.getKeyboard().releasedKey(KeyCode.LEFT)) {
 			x -= Grid.SIZE;
-		} else if (MainGameController.getMouse().isMousePressed()) {
-			 if (locs.containsKey(MainGameController.getMouse().getPointOnGrid())){
-				 locs.put(MainGameController.getMouse().getPointOnGrid(), false);
-			 } else {
-				 locs.put(MainGameController.getMouse().getPointOnGrid(), true);
-			 }
+		} if (MainGameController.getMouse().isMousePressed()) {
+			locs.put(MainGameController.getMouse().getPointOnGrid(), true);
 		}
 		anim.tick();
 	}
