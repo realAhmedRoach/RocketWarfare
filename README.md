@@ -1,5 +1,5 @@
 # Rocket Warfare 
-**Build Status:** ![Build](https://travis-ci.org/theTechnoKid/RocketWarfare.svg "Build Status")
+**Build Status:** [![Build Status](https://travis-ci.org/theTechnoKid/RocketWarfare.svg?branch=master)](https://travis-ci.org/theTechnoKid/RocketWarfare)
 
 A game idea: An MMORPG where you build rockets and fight them.
 
