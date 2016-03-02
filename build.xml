@@ -4,8 +4,15 @@
     <!--ANT 1.7 is required                                        -->
     <!--define folder properties-->
     <property name="dir.buildfile" value="."/>
-    <property name="dir.workspace" value="C:/Users/Tyler/Documents/Ahmed/Java"/>
+    <property name="dir.workspace" value="../"/>
     <property name="dir.jarfile" value="${dir.buildfile}"/>
+	<target name="compile">
+		<javac srcdir="src"
+         destdir="bin"
+         classpath="."
+         debug="on"
+	/>
+	</target>
     <target name="create_run_jar">
         <jar destfile="${dir.jarfile}/build.jar" filesetmanifest="mergewithoutmain">
             <manifest>
