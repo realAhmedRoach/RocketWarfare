@@ -9,29 +9,38 @@ import javafx.scene.input.*;
 public class Mouse implements EventHandler<MouseEvent> {
 
 	private boolean mousePressed;
+	private boolean secondaryMousePressed;
 	private int x, y;
 
 	@Override
 	public void handle(MouseEvent event) {
-		if (event.isPrimaryButtonDown()) {
-			x = (int) event.getX();
-			y = (int) event.getY();
-			mousePressed = true;
-			if (x > MainGameController.getWidth() || x < 0) {
-				event.consume();
-				mousePressed = false;
-			}
-			if (y > MainGameController.getHeight() || y < 0) {
-				event.consume();
-				mousePressed = false;
-			}
-		} else {
+		x = (int) event.getX();
+		y = (int) event.getY();
+		if (x > MainGameController.getWidth() || x < 0) {
+			event.consume();
 			mousePressed = false;
+			secondaryMousePressed = false;
+		}
+		if (y > MainGameController.getHeight() || y < 0) {
+			event.consume();
+			mousePressed = false;
+			secondaryMousePressed = false;
+		}
+		if (event.isPrimaryButtonDown()) {
+			mousePressed = true;
+			secondaryMousePressed = false;
+		} else if (event.isSecondaryButtonDown()) {
+			mousePressed = false;
+			secondaryMousePressed = true;
 		}
 	}
 
 	public boolean isMousePressed() {
 		return mousePressed;
+	}
+
+	public boolean isSecondaryMousePressed() {
+		return secondaryMousePressed;
 	}
 
 	public int getX() {
