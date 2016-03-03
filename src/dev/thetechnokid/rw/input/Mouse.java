@@ -32,6 +32,9 @@ public class Mouse implements EventHandler<MouseEvent> {
 		} else if (event.isSecondaryButtonDown()) {
 			mousePressed = false;
 			secondaryMousePressed = true;
+		} else {
+			mousePressed = false;
+			secondaryMousePressed = false;
 		}
 	}
 
