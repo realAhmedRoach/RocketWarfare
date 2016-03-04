@@ -31,7 +31,7 @@ public class MainGameController implements Initializable {
 	private Keyboard k = new Keyboard();
 	private Mouse mouse = new Mouse();
 
-	Timeline gameLoop = new Timeline();
+	private Timeline gameLoop = new Timeline();
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
