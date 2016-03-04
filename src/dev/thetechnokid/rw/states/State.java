@@ -4,6 +4,7 @@ import javafx.scene.canvas.GraphicsContext;
 
 public abstract class State {
 	private static State currentState;
+	protected GraphicsContext g;
 
 	public static State getCurrentState() {
 		return currentState;
@@ -14,7 +15,6 @@ public abstract class State {
 			currentState = state;
 	}
 
-	protected GraphicsContext g;
 
 	public State(GraphicsContext g) {
 		this.g = g;

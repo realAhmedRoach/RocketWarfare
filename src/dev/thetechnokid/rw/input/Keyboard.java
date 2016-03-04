@@ -42,6 +42,6 @@ public class Keyboard implements EventHandler<KeyEvent> {
 	}
 
 	public boolean releasedKey(KeyCode k) {
-		return releasedKey == k;
+		return (releasedKey != null) ? releasedKey.equals(k) : false;
 	}
 }
