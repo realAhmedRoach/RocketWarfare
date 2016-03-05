@@ -9,6 +9,8 @@ public class RocketPart extends Entity {
 	private Point2D posInRocket;
 	private RocketPart north, south, east, west;
 
+
+
 	public RocketPart(GraphicsContext g) {
 		super(g);
 	}
@@ -21,6 +23,13 @@ public class RocketPart extends Entity {
 	public void tick() {
 	}
 
+	public int getType() {
+		return type;
+	}
+
+	public int getWeight() {
+		return weight;
+	}
 	public Point2D getPosInRocket() {
 		return posInRocket;
 	}
