@@ -11,7 +11,9 @@ public class Rocket extends Entity {
 	
 	public Rocket(GraphicsContext g) {
 		super(g);
-
+		for (RocketPart rocketPart : parts) {
+			weight += rocketPart.getWeight();
+		}
 	}
 
 	@Override
