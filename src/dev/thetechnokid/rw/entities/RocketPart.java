@@ -8,9 +8,7 @@ public class RocketPart extends Entity {
 	private int type, weight;
 	private Point2D posInRocket;
 	private RocketPart north, south, east, west;
-
-
-
+	
 	public RocketPart(GraphicsContext g) {
 		super(g);
 	}
