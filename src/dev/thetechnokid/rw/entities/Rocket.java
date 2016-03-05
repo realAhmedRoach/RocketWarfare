@@ -6,7 +6,7 @@ import javafx.scene.canvas.GraphicsContext;
 
 public class Rocket extends Entity {
 
-	protected int weight, x, altitude, width, height, thrust;
+	protected int weight, x, altitude, width, height, acceleration;
 	protected ArrayList<RocketPart> parts;
 	
 	public Rocket(GraphicsContext g) {
@@ -50,8 +50,12 @@ public class Rocket extends Entity {
 		return height;
 	}
 
-	public int getThrust() {
-		return thrust;
+	public int getAcceleration() {
+		return acceleration;
+	}
+	
+	public int getForce() {
+		return weight * acceleration;
 	}
 	
 	public ArrayList<RocketPart> getParts() {
