@@ -37,6 +37,7 @@ public class BuildingState extends State {
 				color = (Color.RED);
 			g.getCanvas().requestFocus();
 		});
+		b.setFocusTraversable(false);
 
 		MainGameController.buttons().add(b);
 	}
