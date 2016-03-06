@@ -7,7 +7,8 @@ import javafx.scene.canvas.GraphicsContext;
 
 public class Rocket extends Entity {
 
-	protected int mass, x, altitude, width, height;
+	protected int mass, width, height;
+	protected Position pos;
 	protected VectorQuantity acceleration = new VectorQuantity(0, Direction.NORTH);
 	protected ArrayList<RocketPart> parts;
 	
@@ -24,7 +25,7 @@ public class Rocket extends Entity {
 
 	@Override
 	public void tick() {
-		altitude += acceleration.magnitude;
+		pos.altitude += acceleration.magnitude;
 	}
 
 	public int getX() {
@@ -35,8 +36,12 @@ public class Rocket extends Entity {
 		this.x = x;
 	}
 
+	public Position getPos() {
+		return pos;
+	}
+
 	public int getAltitude() {
-		return altitude;
+		return pos.altitude;
 	}
 
 	public int getMass() {
