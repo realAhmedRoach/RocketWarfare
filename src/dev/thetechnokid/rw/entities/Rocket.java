@@ -2,11 +2,13 @@ package dev.thetechnokid.rw.entities;
 
 import java.util.ArrayList;
 
+import dev.thetechnokid.rw.maths.*;
 import javafx.scene.canvas.GraphicsContext;
 
 public class Rocket extends Entity {
 
-	protected int weight, x, altitude, width, height, acceleration;
+	protected int weight, x, altitude, width, height;
+	protected VectorQuantity acceleration = new VectorQuantity(0, Direction.NORTH);
 	protected ArrayList<RocketPart> parts;
 	
 	public Rocket(GraphicsContext g) {
@@ -52,12 +54,12 @@ public class Rocket extends Entity {
 		return height;
 	}
 
-	public int getAcceleration() {
+	public VectorQuantity getAcceleration() {
 		return acceleration;
 	}
 	
 	public int getForce() {
-		return weight * acceleration;
+		return weight * acceleration.magnitude;
 	}
 	
 	public ArrayList<RocketPart> getParts() {
