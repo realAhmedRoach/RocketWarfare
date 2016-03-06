@@ -4,7 +4,7 @@
 [![Code](https://img.shields.io/badge/code-theTechnoKid-00B304.svg)](https://github.com/theTechnoKid)
 [![Graphics](https://img.shields.io/badge/graphics-UncleBobTheCoder-AEB300.svg)](https://github.com/UncleBobTheCoder)
 [![Code Quality](https://img.shields.io/codacy/4a2075912e5246c28485af3cbc61d470.svg)]()
-[![Latest Build](https://img.shields.io/badge/build-latest-red.svg)](/build/build.jar?raw=true)
+[![Latest Build](https://img.shields.io/badge/build-latest_[unstable]-ff0000.svg)](/build/build.jar?raw=true)
 
 A game idea: An MMORPG where you build rockets and fight them.
 
