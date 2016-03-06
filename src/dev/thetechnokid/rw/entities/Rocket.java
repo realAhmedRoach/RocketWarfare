@@ -24,6 +24,7 @@ public class Rocket extends Entity {
 
 	@Override
 	public void tick() {
+		altitude += acceleration.magnitude;
 	}
 
 	public int getX() {
@@ -36,10 +37,6 @@ public class Rocket extends Entity {
 
 	public int getAltitude() {
 		return altitude;
-	}
-
-	public void setAltitude(int altitude) {
-		this.altitude = altitude;
 	}
 
 	public int getMass() {
