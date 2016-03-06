@@ -6,6 +6,6 @@ public class VectorQuantity {
 	public Direction direction;
 
 	public boolean equals(VectorQuantity other) {
-		return (magnitude == other.magnitude) && (direction == other.direction);
+		return (magnitude == other.magnitude) && (direction.equals(other.direction));
 	}
 }
