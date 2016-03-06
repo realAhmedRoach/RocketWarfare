@@ -46,7 +46,7 @@ public class MenuState extends State {
 		g.setFill(Color.BLUEVIOLET);
 
 		if (change) {
-			Utils.wait(2000);
+			Utils.wait(1500);
 			State.setCurrentState(new BuildingState(g));
 		}
 
