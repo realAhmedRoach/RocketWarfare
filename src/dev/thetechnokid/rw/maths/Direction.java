@@ -15,4 +15,9 @@ public class Direction {
 	public boolean equals(Direction other) {
 		return this.degrees == other.degrees;
 	}
+	
+	@Override
+	public int hashCode() {
+		return degrees;
+	}
 }
