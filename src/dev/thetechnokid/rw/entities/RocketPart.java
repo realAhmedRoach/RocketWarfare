@@ -5,7 +5,7 @@ import javafx.scene.canvas.GraphicsContext;
 
 public class RocketPart extends Entity {
 
-	private int type, weight;
+	private int type, mass;
 	private Point2D posInRocket;
 	private RocketPart north, south, east, west;
 
@@ -25,8 +25,8 @@ public class RocketPart extends Entity {
 		return type;
 	}
 
-	public int getWeight() {
-		return weight;
+	public int getMass() {
+		return mass;
 	}
 
 	public Point2D getPosInRocket() {

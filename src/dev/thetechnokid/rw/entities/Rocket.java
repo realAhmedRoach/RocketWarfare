@@ -7,14 +7,14 @@ import javafx.scene.canvas.GraphicsContext;
 
 public class Rocket extends Entity {
 
-	protected int weight, x, altitude, width, height;
+	protected int mass, x, altitude, width, height;
 	protected VectorQuantity acceleration = new VectorQuantity(0, Direction.NORTH);
 	protected ArrayList<RocketPart> parts;
 	
 	public Rocket(GraphicsContext g) {
 		super(g);
 		for (RocketPart rocketPart : parts) {
-			weight += rocketPart.getWeight();
+			mass += rocketPart.getMass();
 		}
 	}
 
@@ -42,8 +42,8 @@ public class Rocket extends Entity {
 		this.altitude = altitude;
 	}
 
-	public int getWeight() {
-		return weight;
+	public int getMass() {
+		return mass;
 	}
 
 	public int getWidth() {
@@ -59,7 +59,7 @@ public class Rocket extends Entity {
 	}
 	
 	public int getForce() {
-		return weight * acceleration.magnitude;
+		return mass * acceleration.magnitude;
 	}
 	
 	public ArrayList<RocketPart> getParts() {
