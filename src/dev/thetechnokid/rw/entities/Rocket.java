@@ -36,7 +36,7 @@ public class Rocket extends Entity {
 		this.x = x;
 	}
 
-	public Position getPos() {
+	public Position getPosition() {
 		return pos;
 	}
 
