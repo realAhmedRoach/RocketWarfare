@@ -3,11 +3,13 @@ package dev.thetechnokid.rw.entities;
 import java.util.ArrayList;
 
 import dev.thetechnokid.rw.maths.*;
+import javafx.geometry.Dimension2D;
 import javafx.scene.canvas.GraphicsContext;
 
 public class Rocket extends Entity {
 
-	protected int mass, width, height;
+	protected int mass;
+	protected Dimension2D size;
 	protected Position pos;
 	protected VectorQuantity acceleration = new VectorQuantity(0, Direction.NORTH);
 	protected ArrayList<RocketPart> parts;
@@ -49,11 +51,11 @@ public class Rocket extends Entity {
 	}
 
 	public int getWidth() {
-		return width;
+		return (int) size.getWidth();
 	}
 
 	public int getHeight() {
-		return height;
+		return (int) size.getHeight();
 	}
 
 	public VectorQuantity getAcceleration() {
