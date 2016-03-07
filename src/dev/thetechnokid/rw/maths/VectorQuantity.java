@@ -2,8 +2,8 @@ package dev.thetechnokid.rw.maths;
 
 public class VectorQuantity {
 
-	public int magnitude;
-	public Direction direction;
+	private int magnitude;
+	private Direction direction;
 
 	public VectorQuantity() {
 		magnitude = 0;
@@ -17,5 +17,17 @@ public class VectorQuantity {
 	
 	public boolean equals(VectorQuantity other) {
 		return (magnitude == other.magnitude) && (direction.equals(other.direction));
+	}
+	
+	public int getMagnitude() {
+		return magnitude;
+	}
+	
+	public void setMagnitude(int magnitude) {
+		this.magnitude = magnitude;
+	}
+	
+	public Direction getDirection() {
+		return direction;
 	}
 }

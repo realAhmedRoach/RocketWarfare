@@ -26,7 +26,7 @@ public class Rocket extends Entity {
 
 	@Override
 	public void tick() {
-		pos.altitude += acceleration.magnitude;
+		pos.altitude += acceleration.getMagnitude();
 	}
 
 	public int getX() {
@@ -62,7 +62,7 @@ public class Rocket extends Entity {
 	}
 	
 	public int getForce() {
-		return mass * acceleration.magnitude;
+		return mass * acceleration.getMagnitude();
 	}
 	
 	public ArrayList<RocketPart> getParts() {
