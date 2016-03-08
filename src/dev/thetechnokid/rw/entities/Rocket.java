@@ -11,7 +11,7 @@ public class Rocket extends Entity {
 	protected Dimension size;
 	protected Position pos;
 	protected VectorQuantity acceleration = new VectorQuantity(0, Direction.NORTH);
-	protected ArrayList<RocketPart> parts;
+	protected ArrayList<RocketPart> parts = new ArrayList<>();
 	
 	public Rocket(GraphicsContext g) {
 		super(g);

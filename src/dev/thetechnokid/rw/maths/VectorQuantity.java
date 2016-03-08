@@ -30,4 +30,8 @@ public class VectorQuantity {
 	public Direction getDirection() {
 		return direction;
 	}
+
+	public void increaseMagnitude(int i) {
+		magnitude += 1;
+	}
 }
