@@ -20,4 +20,29 @@ public class Direction {
 	public int hashCode() {
 		return degrees;
 	}
+	
+	public int getAltitudeModifier() {
+		int percent = 0;
+		int degreesAbs = 0;
+		if(degrees == 0 || degrees == 180) 
+			return 0;
+		else if (degrees == 90) 
+			return 1;
+		else if (degrees == 270)
+			return -1;
+		if (degrees <= 180) {
+			if(degrees > 90) {
+				degreesAbs = degrees - 90;
+			}
+			percent = degreesAbs / 90;
+		} else if (degrees < 180) {
+			if (degrees < 270) {
+				degreesAbs = degrees - 180;
+			} else {
+				degreesAbs = degrees - 270;
+			}
+			percent = -degreesAbs / 90;
+		}
+		return percent;
+	}
 }
