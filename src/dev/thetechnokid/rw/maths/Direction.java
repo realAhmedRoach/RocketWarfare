@@ -21,8 +21,8 @@ public class Direction {
 		return degrees;
 	}
 	
-	public int getAltitudeModifier() {
-		int percent = 0;
+	public double getAltitudeModifier() {
+		double percent = 0;
 		int degreesAbs = 0;
 		if(degrees == 0 || degrees == 180) 
 			return 0;

@@ -41,7 +41,7 @@ public class Rocket extends Entity {
 		return pos;
 	}
 
-	public int getAltitude() {
+	public double getAltitude() {
 		return pos.altitude;
 	}
 
