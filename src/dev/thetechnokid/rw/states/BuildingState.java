@@ -3,10 +3,11 @@ package dev.thetechnokid.rw.states;
 import java.util.HashMap;
 
 import dev.thetechnokid.rw.controllers.MainGameController;
+import dev.thetechnokid.rw.entities.Rocket;
 import dev.thetechnokid.rw.utils.*;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 
@@ -17,9 +18,14 @@ public class BuildingState extends State {
 	private Animator anim;
 	private int recty;
 
+	private Rocket rocket;
+
+	private Label altitudeLabel;
+	private Label degreesLabel;
+
 	public BuildingState(GraphicsContext g) {
 		super(g);
-
+		rocket = new Rocket(g);
 	}
 
 	@Override
@@ -27,7 +33,12 @@ public class BuildingState extends State {
 		MainGameController.buttons().clear();
 		g.setFill(Color.RED);
 
-		anim = new Animator(1000, () -> recty += Grid.SIZE);
+		anim = new Animator(1000, () -> {
+			recty += Grid.SIZE;
+			altitudeLabel.setText(rocket.getAltitude() + "");
+			degreesLabel.setText("Modifier: " + rocket.getAcceleration().getDirection().getAltitudeModifier()
+					+ "Degrees: " + rocket.getAcceleration().getDirection().degrees);
+		});
 
 		Button b = new Button("Change Colors");
 		b.setOnAction((event) -> {
@@ -38,8 +49,25 @@ public class BuildingState extends State {
 			g.getCanvas().requestFocus();
 		});
 		b.setFocusTraversable(false);
+		Button tiltRight = new Button("->");
+		tiltRight.setOnAction((event) -> {
+			rocket.getAcceleration().getDirection().degrees++;
+		});
 
-		MainGameController.buttons().add(b);
+		Button tiltLeft = new Button("<-");
+		tiltLeft.setOnAction((event) -> {
+			rocket.getAcceleration().getDirection().degrees--;
+		});
+
+		Button thrust = new Button("THRUST");
+		thrust.setOnAction((event) -> {
+			rocket.getAcceleration().increaseMagnitude(1);
+		});
+
+		altitudeLabel = new Label();
+		degreesLabel = new Label();
+
+		MainGameController.buttons().addAll(b, tiltRight, tiltLeft, thrust, altitudeLabel, degreesLabel);
 	}
 
 	@Override
@@ -67,11 +95,13 @@ public class BuildingState extends State {
 			x += Grid.SIZE;
 		} else if (MainGameController.getKeyboard().releasedKey(KeyCode.LEFT)) {
 			x -= Grid.SIZE;
-		} if (MainGameController.getMouse().isMousePressed()) {
+		}
+		if (MainGameController.getMouse().isMousePressed()) {
 			locs.put(MainGameController.getMouse().getPointOnGrid(), true);
 		} else if (MainGameController.getMouse().isSecondaryMousePressed()) {
 			locs.put(MainGameController.getMouse().getPointOnGrid(), false);
 		}
+		rocket.tick();
 		anim.tick();
 	}
 
