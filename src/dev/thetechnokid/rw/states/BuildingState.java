@@ -36,7 +36,7 @@ public class BuildingState extends State {
 		anim = new Animator(1000, () -> {
 			recty += Grid.SIZE;
 			altitudeLabel.setText(rocket.getAltitude() + "");
-			degreesLabel.setText("Modifier: " + rocket.getAcceleration().getDirection().getAltitudeModifier()
+			degreesLabel.setText("Modifier: " + rocket.getAcceleration().getDirection().getAltitudeModifier() + " "
 					+ "Degrees: " + rocket.getAcceleration().getDirection().degrees);
 		});
 
