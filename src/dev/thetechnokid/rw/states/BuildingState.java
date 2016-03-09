@@ -38,7 +38,7 @@ public class BuildingState extends State {
 			altitudeLabel.setText("Atitude: " + String.format("%.2f", rocket.getAltitude()));
 			degreesLabel.setText(
 					"Modifier: " + String.format("%.4f", rocket.getAcceleration().getDirection().getAltitudeModifier())
-							+ " " + "Degrees: " + rocket.getAcceleration().getDirection().degrees);
+							+ " " + "Degrees: " + rocket.getAcceleration().getDirection().degrees + "°");
 		});
 
 		Button b = new Button("Change Colors");
