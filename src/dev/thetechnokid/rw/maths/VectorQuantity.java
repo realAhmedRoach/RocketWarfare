@@ -34,4 +34,8 @@ public class VectorQuantity {
 	public void increaseMagnitude(int i) {
 		magnitude += i;
 	}
+
+	public void decreaseMagnitude(int i) {
+		magnitude -= i;
+	}
 }
