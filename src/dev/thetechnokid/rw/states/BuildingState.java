@@ -65,15 +65,21 @@ public class BuildingState extends State {
 			rocket.getAcceleration().increaseMagnitude(1);
 		});
 		
+		Button dethrust = new Button("De-Thrust");
+		dethrust.setOnAction((event) -> {
+			rocket.getAcceleration().decreaseMagnitude(1);
+		});
+		
 		b.setFocusTraversable(false);
 		tiltRight.setFocusTraversable(false);
 		tiltLeft.setFocusTraversable(false);
 		thrust.setFocusTraversable(false);
+		dethrust.setFocusTraversable(false);
 		
 		altitudeLabel = new Label();
 		degreesLabel = new Label();
 
-		MainGameController.buttons().addAll(b, tiltRight, tiltLeft, thrust, altitudeLabel, degreesLabel);
+		MainGameController.buttons().addAll(b, tiltRight, tiltLeft, thrust, dethrust, altitudeLabel, degreesLabel);
 	}
 
 	@Override
