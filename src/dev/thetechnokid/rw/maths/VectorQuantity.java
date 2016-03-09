@@ -32,6 +32,6 @@ public class VectorQuantity {
 	}
 
 	public void increaseMagnitude(int i) {
-		magnitude += 1;
+		magnitude += i;
 	}
 }
