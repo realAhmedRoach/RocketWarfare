@@ -51,12 +51,12 @@ public class BuildingState extends State {
 		b.setFocusTraversable(false);
 		Button tiltRight = new Button("->");
 		tiltRight.setOnAction((event) -> {
-			rocket.getAcceleration().getDirection().degrees++;
+			rocket.getAcceleration().getDirection().degrees--;
 		});
 
 		Button tiltLeft = new Button("<-");
 		tiltLeft.setOnAction((event) -> {
-			rocket.getAcceleration().getDirection().degrees--;
+			rocket.getAcceleration().getDirection().degrees++;
 		});
 
 		Button thrust = new Button("THRUST");
