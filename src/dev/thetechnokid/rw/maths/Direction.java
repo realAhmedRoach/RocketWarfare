@@ -31,14 +31,13 @@ public class Direction {
 		else if (degrees == 270)
 			return -1;
 		if (degrees < 90) {
-			percent = degreesAbs / 90;
+			// do nothing, degreesAbs is already right
 		} else if (degrees > 90) {
 			degreesAbs = 180 - degrees;
-			percent = degreesAbs / 90;
 		} else if (degrees > 270) {
-			degreesAbs = (degrees - 270) - 90;
-			percent = degreesAbs / 90;
+			degreesAbs = degrees - 360;
 		}
+		percent = degreesAbs / 90;
 		System.out.println(percent);
 		return percent;
 	}
