@@ -35,9 +35,10 @@ public class BuildingState extends State {
 
 		anim = new Animator(1000, () -> {
 			recty += Grid.SIZE;
-			altitudeLabel.setText("Atitude: " + rocket.getAltitude());
-			degreesLabel.setText("Modifier: " + rocket.getAcceleration().getDirection().getAltitudeModifier() + " "
-					+ "Degrees: " + rocket.getAcceleration().getDirection().degrees);
+			altitudeLabel.setText("Atitude: " + String.format("%.2f", rocket.getAltitude()));
+			degreesLabel.setText(
+					"Modifier: " + String.format("%.4f", rocket.getAcceleration().getDirection().getAltitudeModifier())
+							+ " " + "Degrees: " + rocket.getAcceleration().getDirection().degrees);
 		});
 
 		Button b = new Button("Change Colors");
@@ -48,7 +49,7 @@ public class BuildingState extends State {
 				color = (Color.RED);
 			g.getCanvas().requestFocus();
 		});
-		b.setFocusTraversable(false);
+
 		Button tiltRight = new Button("->");
 		tiltRight.setOnAction((event) -> {
 			rocket.getAcceleration().getDirection().degrees--;
@@ -63,7 +64,12 @@ public class BuildingState extends State {
 		thrust.setOnAction((event) -> {
 			rocket.getAcceleration().increaseMagnitude(1);
 		});
-
+		
+		b.setFocusTraversable(false);
+		tiltRight.setFocusTraversable(false);
+		tiltLeft.setFocusTraversable(false);
+		thrust.setFocusTraversable(false);
+		
 		altitudeLabel = new Label();
 		degreesLabel = new Label();
 
