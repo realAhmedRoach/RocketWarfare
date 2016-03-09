@@ -38,7 +38,6 @@ public class Direction {
 			degreesAbs = degrees - 360;
 		}
 		percent = degreesAbs / 90;
-		System.out.println(percent);
 		return percent;
 	}
 }
