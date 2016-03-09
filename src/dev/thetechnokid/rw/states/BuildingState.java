@@ -60,7 +60,7 @@ public class BuildingState extends State {
 			rocket.getAcceleration().getDirection().degrees++;
 		});
 
-		Button thrust = new Button("THRUST");
+		Button thrust = new Button("Thrust");
 		thrust.setOnAction((event) -> {
 			rocket.getAcceleration().increaseMagnitude(1);
 		});
