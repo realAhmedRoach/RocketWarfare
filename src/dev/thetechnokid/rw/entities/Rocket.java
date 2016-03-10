@@ -27,6 +27,7 @@ public class Rocket extends Entity {
 	@Override
 	public void tick() {
 		pos.altitude += acceleration.getMagnitude() * acceleration.getDirection().getAltitudeModifier();
+		pos.x += acceleration.getMagnitude() * acceleration.getDirection().getXModifier();
 	}
 
 	public int getX() {
