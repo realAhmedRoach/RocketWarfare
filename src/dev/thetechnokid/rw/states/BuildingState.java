@@ -35,10 +35,11 @@ public class BuildingState extends State {
 
 		anim = new Animator(1000, () -> {
 			recty += Grid.SIZE;
-			altitudeLabel.setText("Atitude: " + String.format("%.2f", rocket.getAltitude()));
-			degreesLabel.setText(
-					"Modifier: " + String.format("%.4f", rocket.getAcceleration().getDirection().getAltitudeModifier())
-							+ " " + "Degrees: " + rocket.getAcceleration().getDirection().degrees + "°");
+			String altitudeText = String.format("%.2f", rocket.getAltitude());
+			String modifierText = String.format("%.4f", rocket.getAcceleration().getDirection().getAltitudeModifier());
+			String degreesText = rocket.getAcceleration().getDirection().degrees + "°";
+			altitudeLabel.setText("Atitude: " + altitudeText);
+			degreesLabel.setText("Modifier: " + modifierText + " " + degreesText);
 		});
 
 		Button b = new Button("Change Colors");
@@ -64,18 +65,18 @@ public class BuildingState extends State {
 		thrust.setOnAction((event) -> {
 			rocket.getAcceleration().increaseMagnitude(1);
 		});
-		
+
 		Button dethrust = new Button("De-Thrust");
 		dethrust.setOnAction((event) -> {
 			rocket.getAcceleration().decreaseMagnitude(1);
 		});
-		
+
 		b.setFocusTraversable(false);
 		tiltRight.setFocusTraversable(false);
 		tiltLeft.setFocusTraversable(false);
 		thrust.setFocusTraversable(false);
 		dethrust.setFocusTraversable(false);
-		
+
 		altitudeLabel = new Label();
 		degreesLabel = new Label();
 
