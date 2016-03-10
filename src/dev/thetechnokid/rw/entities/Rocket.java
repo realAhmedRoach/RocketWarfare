@@ -30,12 +30,12 @@ public class Rocket extends Entity {
 		pos.x += acceleration.getMagnitude() * acceleration.getDirection().getXModifier();
 	}
 
-	public int getX() {
-		return x;
+	public double getX() {
+		return pos.x;
 	}
 
-	public void setX(int x) {
-		this.x = x;
+	public void setX(double x) {
+		pos.x = x;
 	}
 
 	public Position getPosition() {
