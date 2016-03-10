@@ -10,7 +10,7 @@ public class Rocket extends Entity {
 	protected int mass;
 	protected Dimension size;
 	protected Position pos = new Position();
-	protected VectorQuantity acceleration = new VectorQuantity(0, Direction.NORTH);
+	protected VectorQuantity acceleration = new VectorQuantity(0, Direction.north());
 	protected ArrayList<RocketPart> parts = new ArrayList<>();
 	
 	public Rocket(GraphicsContext g) {
