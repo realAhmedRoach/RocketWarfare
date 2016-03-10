@@ -42,7 +42,7 @@ public class BuildingState extends State {
 			String modifierText = "Altitude Modifier: "
 					+ String.format("%.4f", rocket.getAcceleration().getDirection().getAltitudeModifier())
 					+ " X Modifier: " + rocket.getAcceleration().getDirection().getXModifier();
-			String degreesText = rocket.getAcceleration().getDirection().degrees + "\u00b0";
+			String degreesText = rocket.getAcceleration().getDirection().getDegrees() + "\u00b0";
 			altitudeLabel.setText("Atitude: " + altitudeText);
 			xLabel.setText("X: " + xText);
 			degreesLabel.setText("Degrees: " + degreesText);
@@ -60,12 +60,12 @@ public class BuildingState extends State {
 
 		Button tiltRight = new Button("->");
 		tiltRight.setOnAction((event) -> {
-			rocket.getAcceleration().getDirection().degrees--;
+			rocket.getAcceleration().getDirection().decreaseDegrees();
 		});
 
 		Button tiltLeft = new Button("<-");
 		tiltLeft.setOnAction((event) -> {
-			rocket.getAcceleration().getDirection().degrees++;
+			rocket.getAcceleration().getDirection().increaseDegrees();
 		});
 
 		Button thrust = new Button("Thrust");
