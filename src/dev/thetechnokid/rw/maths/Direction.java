@@ -23,7 +23,7 @@ public class Direction {
 
 	public double getAltitudeModifier() {
 		double percent = 0;
-		double degreesAbs = degrees;
+		double degreesAbs = 0;
 		if (degrees == 0 || degrees == 180)
 			return 0;
 		else if (degrees == 90)
@@ -31,7 +31,7 @@ public class Direction {
 		else if (degrees == 270)
 			return -1;
 		if (degrees < 90) {
-			// do nothing, degreesAbs is already right
+			degreesAbs = degrees;
 		} else if (degrees > 90) {
 			degreesAbs = 180 - degrees;
 		} else if (degrees > 270) {
