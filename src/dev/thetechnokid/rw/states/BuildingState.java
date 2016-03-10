@@ -21,7 +21,9 @@ public class BuildingState extends State {
 	private Rocket rocket;
 
 	private Label altitudeLabel;
+	private Label xLabel;
 	private Label degreesLabel;
+	private Label modifierLabel;
 
 	public BuildingState(GraphicsContext g) {
 		super(g);
@@ -36,10 +38,15 @@ public class BuildingState extends State {
 		anim = new Animator(1000, () -> {
 			recty += Grid.SIZE;
 			String altitudeText = String.format("%.2f", rocket.getAltitude());
-			String modifierText = String.format("%.4f", rocket.getAcceleration().getDirection().getAltitudeModifier());
+			String xText = String.format("%.2f", rocket.getX());
+			String modifierText = "Altitude Modifier: "
+					+ String.format("%.4f", rocket.getAcceleration().getDirection().getAltitudeModifier())
+					+ " X Modifier: " + rocket.getAcceleration().getDirection().getXModifier();
 			String degreesText = rocket.getAcceleration().getDirection().degrees + "\u00b0";
 			altitudeLabel.setText("Atitude: " + altitudeText);
-			degreesLabel.setText("Modifier: " + modifierText + " Degrees: " + degreesText);
+			xLabel.setText("X: " + xText);
+			degreesLabel.setText("Degrees: " + degreesText);
+			modifierLabel.setText(modifierText);
 		});
 
 		Button b = new Button("Change Colors");
@@ -78,9 +85,12 @@ public class BuildingState extends State {
 		dethrust.setFocusTraversable(false);
 
 		altitudeLabel = new Label();
+		xLabel = new Label();
 		degreesLabel = new Label();
+		modifierLabel = new Label();
 
-		MainGameController.buttons().addAll(b, tiltRight, tiltLeft, thrust, dethrust, altitudeLabel, degreesLabel);
+		MainGameController.buttons().addAll(b, tiltRight, tiltLeft, thrust, dethrust, altitudeLabel, xLabel,
+				degreesLabel, modifierLabel);
 	}
 
 	@Override
