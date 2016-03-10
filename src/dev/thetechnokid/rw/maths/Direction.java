@@ -3,10 +3,21 @@ package dev.thetechnokid.rw.maths;
 public class Direction {
 	public int degrees;
 
-	public static final Direction NORTH = new Direction(90);
-	public static final Direction SOUTH = new Direction(270);
-	public static final Direction EAST = new Direction(0);
-	public static final Direction WEST = new Direction(180);
+	public static Direction north() {
+		return new Direction(90);
+	}
+
+	public static Direction south() {
+		return new Direction(270);
+	}
+
+	public static Direction east() {
+		return new Direction(0);
+	}
+
+	public static Direction west() {
+		return new Direction(180);
+	}
 
 	public Direction(int degrees) {
 		this.degrees = degrees;
@@ -51,15 +62,19 @@ public class Direction {
 			return -1;
 		else if (degrees == 90 || degrees == 270)
 			return 0;
-		
+
 		if (degrees < 90 || degrees > 270) {
-			if (degrees < 90) degreesAbs = 90 - degrees;
-			else if (degrees > 270) degreesAbs = degrees - 270;
+			if (degrees < 90)
+				degreesAbs = 90 - degrees;
+			else if (degrees > 270)
+				degreesAbs = degrees - 270;
 		} else if (degrees > 90 || degrees < 270) {
-			if (degrees > 90) degreesAbs = 90 - degrees;
-			else if (degrees < 270) degreesAbs = degrees - 180;
+			if (degrees > 90)
+				degreesAbs = 90 - degrees;
+			else if (degrees < 270)
+				degreesAbs = degrees - 180;
 		}
-		
+
 		percent = degreesAbs / 90;
 		return percent;
 	}
