@@ -40,4 +40,27 @@ public class Direction {
 		percent = degreesAbs / 90;
 		return percent;
 	}
+
+	public double getXModifier() {
+		double percent = 0;
+		double degreesAbs = 0;
+
+		if (degrees == 0)
+			return 1;
+		else if (degrees == 180)
+			return -1;
+		else if (degrees == 90 || degrees == 270)
+			return 0;
+		
+		if (degrees < 90 || degrees > 270) {
+			if (degrees < 90) degreesAbs = 90 - degrees;
+			else if (degrees > 270) degreesAbs = degrees - 270;
+		} else if (degrees > 90 || degrees < 270) {
+			if (degrees > 90) degreesAbs = 90 - degrees;
+			else if (degrees < 270) degreesAbs = degrees - 180;
+		}
+		
+		percent = degreesAbs / 90;
+		return percent;
+	}
 }
