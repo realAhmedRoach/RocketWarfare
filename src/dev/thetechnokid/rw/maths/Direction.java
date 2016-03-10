@@ -1,7 +1,7 @@
 package dev.thetechnokid.rw.maths;
 
 public class Direction {
-	public int degrees;
+	private int degrees;
 
 	public static Direction north() {
 		return new Direction(90);
@@ -32,6 +32,20 @@ public class Direction {
 		return degrees;
 	}
 
+	public int getDegrees() {
+		return degrees;
+	}
+	
+	public void increaseDegrees() {
+		if (degrees < 360) degrees++;
+		else degrees = 1;
+	}
+	
+	public void decreaseDegrees() {
+		if (degrees > 0) degrees--;
+		else degrees = 359;
+	}
+	
 	public double getAltitudeModifier() {
 		double percent = 0;
 		double degreesAbs = 0;
