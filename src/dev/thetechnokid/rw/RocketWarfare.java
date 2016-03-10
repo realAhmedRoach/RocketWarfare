@@ -20,7 +20,7 @@ public class RocketWarfare extends Application {
 	@Override
 	public void start(Stage stage) {
 		try {
-			AnchorPane parent = (AnchorPane) FXMLLoader.load(getClass().getResource("fxml/Game.fxml"));
+			AnchorPane parent = (AnchorPane) FXMLLoader.load(RocketWarfare.class.getResource("fxml/Game.fxml"));
 			Scene scene = new Scene(parent);
 
 			stage.setScene(scene);
