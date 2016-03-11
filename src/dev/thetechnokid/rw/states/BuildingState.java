@@ -23,6 +23,8 @@ public class BuildingState extends State {
 	private Label xLabel;
 	private Label degreesLabel;
 	private Label modifierLabel;
+	
+	private double rockx, rocky;
 
 	public BuildingState(GraphicsContext g) {
 		super(g);
@@ -95,6 +97,7 @@ public class BuildingState extends State {
 	public void render() {
 		g.setFill(color);
 		g.fillRect(x, y, Grid.SIZE, Grid.SIZE);
+		g.fillOval(rockx, rocky, Grid.SIZE, Grid.SIZE);
 
 		g.setFill(Color.CADETBLUE);
 		for (Point2D p : locs.keySet()) {
@@ -122,6 +125,9 @@ public class BuildingState extends State {
 		}
 		rocket.tick();
 		anim.tick();
+		
+		rockx = rocket.getX() / 16;
+		rocky = rocket.getAltitude() / 16;
 	}
 
 }
