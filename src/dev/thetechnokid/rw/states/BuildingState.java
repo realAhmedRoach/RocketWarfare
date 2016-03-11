@@ -41,7 +41,7 @@ public class BuildingState extends State {
 			String xText = String.format("%.2f", rocket.getX());
 			String modifierText = "Altitude Modifier: "
 					+ String.format("%.4f", rocket.getAcceleration().getDirection().getAltitudeModifier())
-					+ " X Modifier: " + String.format("%.4f", rocket.getAcceleration().getDirection().getXModifier());
+					+ "; X Modifier: " + String.format("%.4f", rocket.getAcceleration().getDirection().getXModifier());
 			String degreesText = rocket.getAcceleration().getDirection().getDegrees() + "\u00b0";
 			altitudeLabel.setText("Atitude: " + altitudeText);
 			xLabel.setText("X: " + xText);
