@@ -126,8 +126,8 @@ public class BuildingState extends State {
 		rocket.tick();
 		anim.tick();
 		
-		rockx = rocket.getX() / 16;
-		rocky = rocket.getAltitude() / 16;
+		rockx = (rocket.getX() / 16);
+		rocky = MainGameController.getHeight() - (rocket.getAltitude() / 16);
 	}
 
 }
