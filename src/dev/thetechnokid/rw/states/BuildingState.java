@@ -16,7 +16,6 @@ public class BuildingState extends State {
 	private HashMap<Point2D, Boolean> locs = new HashMap<>();
 	private Color color = Color.RED;
 	private Animator anim;
-	private int recty;
 
 	private Rocket rocket;
 
@@ -36,7 +35,6 @@ public class BuildingState extends State {
 		g.setFill(Color.RED);
 
 		anim = new Animator(1000, () -> {
-			recty += Grid.SIZE;
 			String altitudeText = String.format("%.2f", rocket.getAltitude());
 			String xText = String.format("%.2f", rocket.getX());
 			String modifierText = "Altitude Modifier: "
@@ -97,8 +95,6 @@ public class BuildingState extends State {
 	public void render() {
 		g.setFill(color);
 		g.fillRect(x, y, Grid.SIZE, Grid.SIZE);
-		g.setFill(Color.BEIGE);
-		g.fillRect(0, recty, Grid.SIZE, Grid.SIZE);
 
 		g.setFill(Color.CADETBLUE);
 		for (Point2D p : locs.keySet()) {
