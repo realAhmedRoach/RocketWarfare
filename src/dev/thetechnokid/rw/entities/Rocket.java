@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import dev.thetechnokid.rw.maths.*;
 import javafx.scene.canvas.GraphicsContext;
 
-public class Rocket extends Entity {
+public class Rocket extends Entity implements FlyingObject {
 
 	protected int mass;
 	protected Dimension size;

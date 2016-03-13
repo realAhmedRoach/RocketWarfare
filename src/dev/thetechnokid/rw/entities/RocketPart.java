@@ -13,14 +13,6 @@ public class RocketPart extends Entity {
 		super(g);
 	}
 
-	@Override
-	public void render() {
-	}
-
-	@Override
-	public void tick() {
-	}
-
 	public int getType() {
 		return type;
 	}

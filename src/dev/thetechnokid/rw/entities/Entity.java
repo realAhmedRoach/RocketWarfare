@@ -10,8 +10,4 @@ public abstract class Entity {
 	public Entity(GraphicsContext g) {
 		this.g = g;
 	}
-
-	public abstract void render();
-
-	public abstract void tick();
 }
