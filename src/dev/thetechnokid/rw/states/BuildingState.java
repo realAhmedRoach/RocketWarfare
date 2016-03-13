@@ -110,6 +110,10 @@ public class BuildingState extends State {
 
 	@Override
 	public void tick() {
+		if (MainGameController.getKeyboard().get(KeyCode.RIGHT))
+			rocket.getAcceleration().getDirection().decreaseDegrees();
+		else if (MainGameController.getKeyboard().get(KeyCode.LEFT))
+			rocket.getAcceleration().getDirection().increaseDegrees();
 		if (MainGameController.getKeyboard().releasedKey(KeyCode.UP)) {
 			y -= Grid.SIZE;
 		} else if (MainGameController.getKeyboard().releasedKey(KeyCode.DOWN)) {
