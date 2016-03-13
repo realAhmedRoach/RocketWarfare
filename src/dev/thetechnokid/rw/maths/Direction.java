@@ -83,10 +83,10 @@ public class Direction {
 			else if (degrees > 270)
 				degreesAbs = degrees - 270;
 		} else if (degrees > 90 || degrees < 270) {
-			if (degrees > 90)
+			if (degrees > 90 && degrees < 180)
 				degreesAbs = 90 - degrees;
 			else if (degrees < 270)
-				degreesAbs = degrees - 180;
+				degreesAbs = degrees - 270;
 		}
 
 		percent = degreesAbs / 90;
