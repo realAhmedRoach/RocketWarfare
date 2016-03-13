@@ -57,7 +57,7 @@ public class Direction {
 			return -1;
 		if (degrees < 90) {
 			degreesAbs = degrees;
-		} else if (degrees > 90) {
+		} else if (degrees > 90 && degrees < 270) {
 			degreesAbs = 180 - degrees;
 		} else if (degrees > 270) {
 			degreesAbs = degrees - 360;
