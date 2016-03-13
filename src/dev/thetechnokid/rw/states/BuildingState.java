@@ -97,7 +97,6 @@ public class BuildingState extends State {
 	public void render() {
 		g.setFill(color);
 		g.fillRect(x, y, Grid.SIZE, Grid.SIZE);
-		g.setFill(Color.BEIGE);
 		g.fillOval(rockx, rocky, Grid.SIZE, Grid.SIZE);
 
 		g.setFill(Color.CADETBLUE);
