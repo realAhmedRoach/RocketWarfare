@@ -11,14 +11,10 @@ public class Assets {
 	}
 
 	public static Image ROCKET_PARTS = new Image(RocketWarfare.class.getResourceAsStream("res/images/spritesheet.png"));
-	public static BufferedImage PARTS = null; 
+	public static BufferedImage PARTS = SwingFXUtils.fromFXImage(ROCKET_PARTS, null); 
 	
-	static {
-		PARTS = SwingFXUtils.fromFXImage(ROCKET_PARTS, PARTS);
-	}
 	public static Image crop(Image image, int row, int col) {
 		BufferedImage img = PARTS.getSubimage(col * Grid.SIZE, row * Grid.SIZE, Grid.SIZE, Grid.SIZE);
-		WritableImage outImg = null;
-		return SwingFXUtils.toFXImage(img, outImg);
+		return SwingFXUtils.toFXImage(img, null);
 	}
 }
