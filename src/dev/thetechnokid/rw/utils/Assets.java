@@ -14,7 +14,7 @@ public class Assets {
 	}
 
 	public static void init() {
-		ROCKET_PARTS = new Image(RocketWarfare.class.getResourceAsStream("res/images/spritesheet.png"));
+		ROCKET_PARTS = new Image(RocketWarfare.class.getResourceAsStream("/images/spritesheet.png"));
 		PARTS = SwingFXUtils.fromFXImage(ROCKET_PARTS, null);
 	}
 	
