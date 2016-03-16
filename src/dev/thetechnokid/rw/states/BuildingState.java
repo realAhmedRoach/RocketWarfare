@@ -105,16 +105,16 @@ public class BuildingState extends State {
 		g.fillRect(x, y, Grid.SIZE, Grid.SIZE);
 		g.fillOval(rockx, rocky, Grid.SIZE, Grid.SIZE);
 
-		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 0, Grid.getGridLocation(3, 0));
-		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 1, Grid.getGridLocation(3, 1));
-		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 1, Grid.getGridLocation(3, 2));
-		Assets.renderCropped(g, Assets.ROCKET_PARTS, 1, 1, Grid.getGridLocation(2, 2));
-		Assets.renderCropped(g, Assets.ROCKET_PARTS, 1, 1, Grid.getGridLocation(4, 2));
-		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 1, Grid.getGridLocation(3, 3));
-		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 1, Grid.getGridLocation(3, 4));
-		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 1, Grid.getGridLocation(3, 5));
-		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 1, Grid.getGridLocation(3, 6));
-		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 1, Grid.getGridLocation(3, 7));
+		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 0, Grid.getCanvasLocation(3, 0));
+		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 1, Grid.getCanvasLocation(3, 1));
+		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 2, Grid.getCanvasLocation(3, 2));
+		Assets.renderCropped(g, Assets.ROCKET_PARTS, 1, 1, Grid.getCanvasLocation(2, 2));
+		Assets.renderCropped(g, Assets.ROCKET_PARTS, 1, 1, Grid.getCanvasLocation(4, 2));
+		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 3, Grid.getCanvasLocation(3, 3));
+		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 4, Grid.getCanvasLocation(3, 4));
+		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 5, Grid.getCanvasLocation(3, 5));
+		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 6, Grid.getCanvasLocation(3, 6));
+		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 7, Grid.getCanvasLocation(3, 7));
 		
 		g.setFill(Color.CADETBLUE);
 		for (Point2D p : locs.keySet()) {
