@@ -1,5 +1,6 @@
 package dev.thetechnokid.rw.utils;
 
+import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 
 import dev.thetechnokid.rw.RocketWarfare;
@@ -23,6 +24,14 @@ public class Assets {
 	public static Image crop(Image image, int col, int row) {
 		BufferedImage img = PARTS.getSubimage(col * Grid.SIZE, row * Grid.SIZE, Grid.SIZE, Grid.SIZE);
 		return SwingFXUtils.toFXImage(img, null);
+	}
+
+	public static void renderCropped(GraphicsContext g, Image image, int col, int row, int x, int y) {
+		g.drawImage(image, col * Grid.SIZE, row * Grid.SIZE, Grid.SIZE, Grid.SIZE, x, y, Grid.SIZE, Grid.SIZE);
+	}
+
+	public static void renderCropped(GraphicsContext g, Image image, int col, int row, Point2D pos) {
+		renderCropped(g, image, col, row, (int) pos.getX(), (int) pos.getY());
 	}
 
 	public static void renderFlip(GraphicsContext g, Image image, int col, int row, int angle) {
