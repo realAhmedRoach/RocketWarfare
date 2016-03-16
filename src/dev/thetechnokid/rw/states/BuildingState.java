@@ -33,6 +33,8 @@ public class BuildingState extends State {
 
 	@Override
 	protected void init() {
+		Assets.init();
+		
 		MainGameController.buttons().clear();
 		g.setFill(Color.RED);
 
