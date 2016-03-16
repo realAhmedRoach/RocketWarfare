@@ -25,9 +25,9 @@ public class Assets {
 		return SwingFXUtils.toFXImage(img, null);
 	}
 
-	public static void renderFlip(GraphicsContext g, Image image, int col, int row) {
+	public static void renderFlip(GraphicsContext g, Image image, int col, int row, int angle) {
 		g.save();
-		rotate(g, 270, (col * Grid.SIZE) + image.getWidth() / 2, (row * Grid.SIZE) + image.getHeight() / 2);
+		rotate(g, angle, (col * Grid.SIZE) + image.getWidth() / 2, (row * Grid.SIZE) + image.getHeight() / 2);
 		g.drawImage(image, col * Grid.SIZE, row * Grid.SIZE);
 		g.restore();
 	}

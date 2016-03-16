@@ -25,6 +25,7 @@ public class BuildingState extends State {
 	private Label modifierLabel;
 	
 	private double rockx, rocky;
+	private int angle;
 
 	public BuildingState(GraphicsContext g) {
 		super(g);
@@ -79,6 +80,9 @@ public class BuildingState extends State {
 		dethrust.setOnAction((event) -> {
 			rocket.getAcceleration().decreaseMagnitude(1);
 		});
+		
+		Button rotate = new Button("Rotate ->");
+		rotate.setOnAction((event) -> angle += 90);
 
 		b.setFocusTraversable(false);
 		tiltRight.setFocusTraversable(false);
@@ -92,7 +96,7 @@ public class BuildingState extends State {
 		modifierLabel = new Label();
 
 		MainGameController.buttons().addAll(b, tiltRight, tiltLeft, thrust, dethrust, altitudeLabel, xLabel,
-				degreesLabel, modifierLabel);
+				degreesLabel, modifierLabel, rotate);
 	}
 
 	@Override
@@ -105,7 +109,7 @@ public class BuildingState extends State {
 		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 1), 3, 1);
 		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 2), 3, 2);
 		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 1, 1), 4, 3);
-		Assets.renderFlip(g, Assets.crop(Assets.ROCKET_PARTS, 1, 1), 2, 3);
+		Assets.renderFlip(g, Assets.crop(Assets.ROCKET_PARTS, 1, 1), 2, 3, angle);
 		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 3), 3, 3);
 		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 4), 3, 4);
 		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 5), 3, 5);
