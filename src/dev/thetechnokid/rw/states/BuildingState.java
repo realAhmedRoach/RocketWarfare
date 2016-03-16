@@ -101,6 +101,15 @@ public class BuildingState extends State {
 		g.fillRect(x, y, Grid.SIZE, Grid.SIZE);
 		g.fillOval(rockx, rocky, Grid.SIZE, Grid.SIZE);
 
+		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 0), 3, 0);
+		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 1), 3, 1);
+		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 2), 3, 2);
+		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 1, 1), 4, 3);
+		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 3), 3, 3);
+		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 4), 3, 4);
+		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 5), 3, 5);
+		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 6), 3, 6);
+		
 		g.setFill(Color.CADETBLUE);
 		for (Point2D p : locs.keySet()) {
 			if (locs.get(p)) {
