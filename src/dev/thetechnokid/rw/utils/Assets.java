@@ -1,10 +1,10 @@
 package dev.thetechnokid.rw.utils;
 
-import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 
 import dev.thetechnokid.rw.RocketWarfare;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.transform.Rotate;
