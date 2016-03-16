@@ -18,7 +18,7 @@ public class Assets {
 		PARTS = SwingFXUtils.fromFXImage(ROCKET_PARTS, null);
 	}
 	
-	public static Image crop(Image image, int row, int col) {
+	public static Image crop(Image image, int col, int row) {
 		BufferedImage img = PARTS.getSubimage(col * Grid.SIZE, row * Grid.SIZE, Grid.SIZE, Grid.SIZE);
 		return SwingFXUtils.toFXImage(img, null);
 	}
