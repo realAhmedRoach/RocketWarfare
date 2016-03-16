@@ -28,7 +28,12 @@ public class Grid {
 
 		return point;
 	}
-	
+
+	public static Point2D getCanvasLocation(int x, int y) {
+		Point2D point = new Point2D(x * SIZE, y * SIZE);
+		return point;
+	}
+
 	public static void renderInGrid(GraphicsContext g, Image image, int col, int row) {
 		g.drawImage(image, col * SIZE, row * SIZE);
 	}

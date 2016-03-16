@@ -105,15 +105,16 @@ public class BuildingState extends State {
 		g.fillRect(x, y, Grid.SIZE, Grid.SIZE);
 		g.fillOval(rockx, rocky, Grid.SIZE, Grid.SIZE);
 
-		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 0), 3, 0);
-		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 1), 3, 1);
-		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 2), 3, 2);
-		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 1, 1), 4, 3);
-		Assets.renderFlip(g, Assets.crop(Assets.ROCKET_PARTS, 1, 1), 2, 3, angle);
-		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 3), 3, 3);
-		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 4), 3, 4);
-		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 5), 3, 5);
-		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 6), 3, 6);
+		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 0, Grid.getGridLocation(3, 0));
+		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 1, Grid.getGridLocation(3, 1));
+		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 1, Grid.getGridLocation(3, 2));
+		Assets.renderCropped(g, Assets.ROCKET_PARTS, 1, 1, Grid.getGridLocation(2, 2));
+		Assets.renderCropped(g, Assets.ROCKET_PARTS, 1, 1, Grid.getGridLocation(4, 2));
+		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 1, Grid.getGridLocation(3, 3));
+		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 1, Grid.getGridLocation(3, 4));
+		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 1, Grid.getGridLocation(3, 5));
+		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 1, Grid.getGridLocation(3, 6));
+		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 1, Grid.getGridLocation(3, 7));
 		
 		g.setFill(Color.CADETBLUE);
 		for (Point2D p : locs.keySet()) {
