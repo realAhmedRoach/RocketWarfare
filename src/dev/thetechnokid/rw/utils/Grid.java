@@ -2,6 +2,7 @@ package dev.thetechnokid.rw.utils;
 
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 
 public class Grid {
 	public static final int SIZE = 32;
@@ -26,5 +27,9 @@ public class Grid {
 		point = new Point2D(gx * SIZE, gy * SIZE);
 
 		return point;
+	}
+	
+	public static void renderInGrid(GraphicsContext g, Image image, int col, int row) {
+		g.drawImage(image, col * SIZE, row * SIZE);
 	}
 }
