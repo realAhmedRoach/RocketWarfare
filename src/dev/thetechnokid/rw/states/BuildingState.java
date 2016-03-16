@@ -105,6 +105,7 @@ public class BuildingState extends State {
 		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 1), 3, 1);
 		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 2), 3, 2);
 		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 1, 1), 4, 3);
+		Assets.renderFlip(g, Assets.crop(Assets.ROCKET_PARTS, 1, 1), 2, 3);
 		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 3), 3, 3);
 		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 4), 3, 4);
 		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 5), 3, 5);
