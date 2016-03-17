@@ -4,7 +4,6 @@ import dev.thetechnokid.rw.RocketWarfare;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.*;
-import javafx.scene.paint.Color;
 
 public class Assets {
 	public static Image ROCKET_PARTS;
@@ -32,8 +31,8 @@ public class Assets {
 		
 		for(int y = sy; y < ey; y++, ry++) {
 			for(int x = sx; x < ex; x++, rx++) {
-				Color c = r.getColor(x, y);
-				w.setColor(rx, ry, c);
+				int c = r.getArgb(x, y);
+				w.setArgb(rx, ry, c);
 				System.out.println(rx + ", " + ry + ", " + x + ", " + y);
 			}	
 		}
