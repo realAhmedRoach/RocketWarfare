@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 import dev.thetechnokid.rw.RocketWarfare;
 import dev.thetechnokid.rw.input.*;
 import dev.thetechnokid.rw.states.*;
-import dev.thetechnokid.rw.utils.Grid;
+import dev.thetechnokid.rw.utils.*;
 import javafx.animation.*;
 import javafx.collections.ObservableList;
 import javafx.fxml.*;
@@ -45,6 +45,14 @@ public class MainGameController implements Initializable {
 
 		State.setCurrentState(new MenuState(g));
 
+		// LOGGER TEST {
+		Logger l = new Logger();
+		l.log("SAVAGE", Logger.Level.INFO);
+		l.log("SAVAGE", Logger.Level.WARNING);
+		l.log("COW", Logger.Level.ERROR);
+		l.log("asdfasdf", Logger.Level.INFO);
+		// }
+		
 		KeyFrame kf = new KeyFrame(Duration.millis(1000 / RocketWarfare.FPS), // 60
 																				// FPS
 				(event) -> {

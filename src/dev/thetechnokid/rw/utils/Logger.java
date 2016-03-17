@@ -7,7 +7,7 @@ import java.time.Instant;
 
 public class Logger {
 	private File file;
-	BufferedWriter w;
+	private BufferedWriter w;
 
 	private static DateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -27,10 +27,8 @@ public class Logger {
 
 	public Logger(String name) {
 		try {
-			file = new File(getDefaultDir() + "/RocketWarfare/" + name + ".txt");
-			File parent = file.getParentFile();
-			if (!parent.exists()) {
-				parent.mkdirs();
+			file = new File(getDefaultDir() + "/RW_" + name + ".txt");
+			if (!file.exists()) {
 				file.createNewFile();
 			}
 			w = new BufferedWriter(new FileWriter(file));
