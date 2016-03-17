@@ -25,13 +25,16 @@ public class Assets {
 		int rx = 0;
 		int ry = 0;
 		
-		WritableImage out = new WritableImage(Grid.SIZE - 1, Grid.SIZE - 1);
+		System.out.println(sx + ", " + sy + ", " + ex + ", " + ey);
+		
+		WritableImage out = new WritableImage(Grid.SIZE, Grid.SIZE);
 		PixelWriter w = out.getPixelWriter();
 		
-		for(int y = sy; y <= ey; y++, ry++) {
-			for(int x = sx; x <= ex; x++, rx++) {
+		for(int y = sy; y < ey; y++, ry++) {
+			for(int x = sx; x < ex; x++, rx++) {
 				Color c = r.getColor(x, y);
 				w.setColor(rx, ry, c);
+				System.out.println(rx + ", " + ry + ", " + x + ", " + y);
 			}	
 		}
 		return out;
