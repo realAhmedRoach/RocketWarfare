@@ -16,6 +16,10 @@ public class Logger {
 
 		int level;
 
+		public int level() {
+			return level;
+		}
+		
 		Level(int level) {
 			this.level = level;
 		}
@@ -41,7 +45,10 @@ public class Logger {
 		String toWrite = f.format(Date.from(Instant.now())) + " [" + level.name() + "] : " + text;
 		try {
 			w.write(toWrite);
-			System.out.println(toWrite);
+			w.newLine();
+			w.flush();
+			if (level.level() < 2) System.out.println(toWrite);
+			else System.err.println(toWrite);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
