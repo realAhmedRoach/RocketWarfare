@@ -23,7 +23,7 @@ public class BuildingState extends State {
 	private Label xLabel;
 	private Label degreesLabel;
 	private Label modifierLabel;
-	
+
 	private double rockx, rocky;
 	private int angle;
 
@@ -35,7 +35,7 @@ public class BuildingState extends State {
 	@Override
 	protected void init() {
 		Assets.init();
-		
+
 		MainGameController.buttons().clear();
 		g.setFill(Color.RED);
 
@@ -80,7 +80,7 @@ public class BuildingState extends State {
 		dethrust.setOnAction((event) -> {
 			rocket.getAcceleration().decreaseMagnitude(1);
 		});
-		
+
 		Button rotate = new Button("Rotate ->");
 		rotate.setOnAction((event) -> angle += 90);
 
@@ -105,17 +105,18 @@ public class BuildingState extends State {
 		g.fillRect(x, y, Grid.SIZE, Grid.SIZE);
 		g.fillOval(rockx, rocky, Grid.SIZE, Grid.SIZE);
 
-		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 0, Grid.getCanvasLocation(3, 0));
+		//Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 0, Grid.getCanvasLocation(3, 0));
+		g.drawImage(Assets.crop(Assets.ROCKET_PARTS, 0, 0), 3 * Grid.SIZE, 0);
 		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 1, Grid.getCanvasLocation(3, 1));
 		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 2, Grid.getCanvasLocation(3, 2));
-		Assets.renderCropped(g, Assets.ROCKET_PARTS, 1, 1, Grid.getCanvasLocation(2, 2));
+		Assets.renderFlip(g, Assets.ROCKET_PARTS, 1, 1, Grid.getCanvasLocation(2, 2), -270);
 		Assets.renderCropped(g, Assets.ROCKET_PARTS, 1, 1, Grid.getCanvasLocation(4, 2));
 		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 3, Grid.getCanvasLocation(3, 3));
 		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 4, Grid.getCanvasLocation(3, 4));
 		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 5, Grid.getCanvasLocation(3, 5));
 		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 6, Grid.getCanvasLocation(3, 6));
 		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 7, Grid.getCanvasLocation(3, 7));
-		
+
 		g.setFill(Color.CADETBLUE);
 		for (Point2D p : locs.keySet()) {
 			if (locs.get(p)) {
@@ -146,7 +147,7 @@ public class BuildingState extends State {
 		}
 		rocket.tick();
 		anim.tick();
-		
+
 		rockx = (rocket.getX() / 16);
 		rocky = MainGameController.getHeight() - (rocket.getAltitude() / 16);
 	}
