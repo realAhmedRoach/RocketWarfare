@@ -1,5 +1,7 @@
 package dev.thetechnokid.rw.utils;
 
+import java.nio.IntBuffer;
+
 import dev.thetechnokid.rw.RocketWarfare;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
@@ -14,29 +16,18 @@ public class Assets {
 	public static void init() {
 		ROCKET_PARTS = new Image(RocketWarfare.class.getResourceAsStream("/images/spritesheet.png"));
 	}
-
+	
 	public static Image crop(Image src, int col, int row) {
-		PixelReader r = src.getPixelReader();
-		int sx = col * Grid.SIZE;
-		int sy = row * Grid.SIZE;
-		int ex = sx + Grid.SIZE;
-		int ey = sy + Grid.SIZE;
-		int rx = 0;
-		int ry = 0;
-		
-		System.out.println(sx + ", " + sy + ", " + ex + ", " + ey);
-		
-		WritableImage out = new WritableImage(Grid.SIZE, Grid.SIZE);
-		PixelWriter w = out.getPixelWriter();
-		
-		for(int y = sy; y < ey; y++, ry++) {
-			for(int x = sx; x < ex; x++, rx++) {
-				int c = r.getArgb(x, y);
-				w.setArgb(rx, ry, c);
-				System.out.println(rx + ", " + ry + ", " + x + ", " + y);
-			}	
-		}
-		return out;
+	    PixelReader r = src.getPixelReader();
+	    WritablePixelFormat<IntBuffer> pixelFormat = PixelFormat.getIntArgbInstance() ;
+	    int[] pixels = new int[Grid.SIZE * Grid.SIZE];
+	    r.getPixels(col * Grid.SIZE, row * Grid.SIZE, Grid.SIZE, Grid.SIZE, pixelFormat,
+	        pixels, 0, Grid.SIZE);
+	    WritableImage out = new WritableImage(Grid.SIZE, Grid.SIZE);
+	    PixelWriter w = out.getPixelWriter();
+	    w.setPixels(0, 0, Grid.SIZE, Grid.SIZE, pixelFormat,
+	        pixels, 0, Grid.SIZE);
+	    return out ;
 	}
 	
 	public static void renderCropped(GraphicsContext g, Image image, int col, int row, int x, int y) {
