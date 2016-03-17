@@ -105,8 +105,8 @@ public class BuildingState extends State {
 		g.fillRect(x, y, Grid.SIZE, Grid.SIZE);
 		g.fillOval(rockx, rocky, Grid.SIZE, Grid.SIZE);
 
-		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 0, Grid.getCanvasLocation(3, 0));
-		// g.drawImage(Assets.crop(Assets.ROCKET_PARTS, 0, 0), 3 * Grid.SIZE, 0);
+		//Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 0, Grid.getCanvasLocation(3, 0));
+		 g.drawImage(Assets.crop(Assets.ROCKET_PARTS, 0, 0), 3 * Grid.SIZE, 0);
 		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 1, Grid.getCanvasLocation(3, 1));
 		Assets.renderCropped(g, Assets.ROCKET_PARTS, 0, 2, Grid.getCanvasLocation(3, 2));
 		Assets.renderFlip(g, Assets.ROCKET_PARTS, 1, 1, Grid.getCanvasLocation(2, 2), -270);
