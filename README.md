@@ -13,4 +13,4 @@ From UFOs, enemy ships, and more... *This is Rocket Warfare*.
 
 This game uses JavaFX. I'm trying not to use any external libraries, to make it completely from scratch. First test version will be released at least 6 months from now.
 
-Here are the [graphics](res/images/spritesheet.png)
+Here are the [graphics](res/images/spritesheet.png).
