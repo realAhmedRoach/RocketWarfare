@@ -108,13 +108,12 @@ public class BuildingState extends State {
 		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 0), 3, 0);
 		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 1), 3, 1);
 		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 2), 3, 2);
-		Assets.renderFlip(g, Assets.ROCKET_PARTS, 1, 1, Grid.getCanvasLocation(2, 2), angle);
+		Grid.renderInGrid(g, Assets.flip(Assets.crop(Assets.ROCKET_PARTS, 1, 1)), 2, 2);
 		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 1, 1), 4, 2);
 		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 3), 3, 3);
 		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 4), 3, 4);
 		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 5), 3, 5);
 		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 6), 3, 6);
-		
 
 		g.setFill(Color.CADETBLUE);
 		for (Point2D p : locs.keySet()) {
