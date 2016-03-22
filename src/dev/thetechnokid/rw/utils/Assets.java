@@ -29,6 +29,24 @@ public class Assets {
 		return out;
 	}
 
+	public static Image flip(Image src) {
+		PixelReader r = src.getPixelReader();
+		WritablePixelFormat<IntBuffer> pixelFormat = PixelFormat.getIntArgbInstance();
+		int[] pixels = new int[Grid.SIZE * Grid.SIZE];
+		r.getPixels(0, 0, Grid.SIZE, Grid.SIZE, pixelFormat, pixels, 0, Grid.SIZE);
+		int[] newPixels = new int[Grid.SIZE * Grid.SIZE];
+
+		for (int i = 0; i < pixels.length; i++) {
+			newPixels[(i / Grid.SIZE) * Grid.SIZE
+					+ (i % Grid.SIZE)] = pixels[(Grid.SIZE - (i / Grid.SIZE) - 1) * Grid.SIZE + (i % Grid.SIZE)];
+		}
+		
+		WritableImage image = new WritableImage(Grid.SIZE, Grid.SIZE);
+		image.getPixelWriter().setPixels(0, 0, Grid.SIZE, Grid.SIZE, pixelFormat, newPixels, 0, Grid.SIZE);
+		
+		return image;
+	}
+
 	public static void renderCropped(GraphicsContext g, Image image, int col, int row, int x, int y) {
 		g.drawImage(image, col * Grid.SIZE, row * Grid.SIZE, Grid.SIZE, Grid.SIZE, x, y, Grid.SIZE, Grid.SIZE);
 	}
