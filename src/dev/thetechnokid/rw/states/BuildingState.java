@@ -23,6 +23,7 @@ public class BuildingState extends State {
 	private Label xLabel;
 	private Label degreesLabel;
 	private Label modifierLabel;
+	private Label forceLabel;
 
 	private double rockx, rocky;
 	private int angle;
@@ -50,6 +51,7 @@ public class BuildingState extends State {
 			xLabel.setText("X: " + xText);
 			degreesLabel.setText("Degrees: " + degreesText);
 			modifierLabel.setText(modifierText);
+			forceLabel.setText("Force: " + rocket.getForce());
 		});
 
 		Button b = new Button("Change Colors");
@@ -94,9 +96,10 @@ public class BuildingState extends State {
 		xLabel = new Label();
 		degreesLabel = new Label();
 		modifierLabel = new Label();
+		forceLabel = new Label();
 
 		MainGameController.buttons().addAll(b, tiltRight, tiltLeft, thrust, dethrust, altitudeLabel, xLabel,
-				degreesLabel, modifierLabel, rotate);
+				degreesLabel, modifierLabel, forceLabel, rotate);
 	}
 
 	@Override
