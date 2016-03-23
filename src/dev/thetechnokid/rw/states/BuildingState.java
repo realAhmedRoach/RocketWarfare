@@ -26,7 +26,6 @@ public class BuildingState extends State {
 	private Label forceLabel;
 
 	private double rockx, rocky;
-	private int angle;
 
 	public BuildingState(GraphicsContext g) {
 		super(g);
@@ -83,9 +82,6 @@ public class BuildingState extends State {
 			rocket.getAcceleration().decreaseMagnitude(1);
 		});
 
-		Button rotate = new Button("Rotate ->");
-		rotate.setOnAction((event) -> angle += 90);
-
 		b.setFocusTraversable(false);
 		tiltRight.setFocusTraversable(false);
 		tiltLeft.setFocusTraversable(false);
@@ -99,7 +95,7 @@ public class BuildingState extends State {
 		forceLabel = new Label();
 
 		MainGameController.buttons().addAll(b, tiltRight, tiltLeft, thrust, dethrust, altitudeLabel, xLabel,
-				degreesLabel, modifierLabel, forceLabel, rotate);
+				degreesLabel, modifierLabel, forceLabel);
 	}
 
 	@Override
