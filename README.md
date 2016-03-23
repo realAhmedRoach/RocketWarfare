@@ -6,7 +6,7 @@
 [![Code Quality](https://img.shields.io/codacy/4a2075912e5246c28485af3cbc61d470.svg?style=flat-square)]()
 [![Latest Build](https://img.shields.io/badge/build-latest_[test]-orange.svg?style=flat-square)](/build/build.jar?raw=true)
 
-A game idea: An MMORTS where you build rockets and fight them.
+An MMORTS where you build rockets and fight them.
 
 You are in a large world. Using your custom-built rocket, and the missiles that you have installed in it, you try to defend yourself and your team mates.
 From UFOs, enemy ships, and more... *This is Rocket Warfare*.
