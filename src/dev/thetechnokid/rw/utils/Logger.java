@@ -54,6 +54,10 @@ public class Logger {
 		}
 	}
 
+	public String getFileName() {
+		return file.getAbsolutePath();
+	}
+	
 	public static String getDefaultDir() {
 		String OS = System.getProperty("os.name").toUpperCase();
 		if (OS.contains("WIN"))
