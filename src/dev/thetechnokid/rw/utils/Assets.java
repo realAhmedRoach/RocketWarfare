@@ -37,13 +37,12 @@ public class Assets {
 		int[] newPixels = new int[Grid.SIZE * Grid.SIZE];
 
 		for (int i = 0; i < pixels.length; i++) {
-			newPixels[(i / Grid.SIZE) * Grid.SIZE
-					+ (i % Grid.SIZE)] = pixels[(Grid.SIZE - (i / Grid.SIZE) - 1) * Grid.SIZE + (i % Grid.SIZE)];
+			newPixels[i] = pixels[i - 2 * (i % Grid.SIZE) + Grid.SIZE - 1];
 		}
-		
+
 		WritableImage image = new WritableImage(Grid.SIZE, Grid.SIZE);
 		image.getPixelWriter().setPixels(0, 0, Grid.SIZE, Grid.SIZE, pixelFormat, newPixels, 0, Grid.SIZE);
-		
+
 		return image;
 	}
 
