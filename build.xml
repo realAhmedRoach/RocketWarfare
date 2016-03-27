@@ -12,7 +12,7 @@
          destdir="bin"
          classpath="."
          debug="on"
-	/>
+		/>
 	</target>
     <target name="create_run_jar">
         <jar destfile="${dir.jarfile}/build/build.jar" filesetmanifest="mergewithoutmain">
