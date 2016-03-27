@@ -4,6 +4,8 @@ public class VectorQuantity {
 
 	private int magnitude;
 	private Direction direction;
+	
+	public static final VectorQuantity GRAVITY = new VectorQuantity(5, Direction.south());
 
 	public VectorQuantity() {
 		magnitude = 0;
