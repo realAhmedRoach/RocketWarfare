@@ -12,7 +12,9 @@ public class Rocket extends Entity implements FlyingObject {
 	protected Position pos = new Position();
 	protected VectorQuantity acceleration = new VectorQuantity(0, Direction.north());
 	protected ArrayList<RocketPart> parts = new ArrayList<>();
-	
+
+	private boolean launched = false;
+
 	public Rocket(GraphicsContext g) {
 		super(g);
 		for (RocketPart rocketPart : parts) {
@@ -26,8 +28,10 @@ public class Rocket extends Entity implements FlyingObject {
 
 	@Override
 	public void tick() {
-		pos.altitude += acceleration.getMagnitude() * acceleration.getDirection().getAltitudeModifier();
-		pos.x += acceleration.getMagnitude() * acceleration.getDirection().getXModifier();
+		if (launched) {
+			pos.altitude += acceleration.getMagnitude() * acceleration.getDirection().getAltitudeModifier();
+			pos.x += acceleration.getMagnitude() * acceleration.getDirection().getXModifier();
+		}
 	}
 
 	public double getX() {
@@ -61,13 +65,20 @@ public class Rocket extends Entity implements FlyingObject {
 	public VectorQuantity getAcceleration() {
 		return acceleration;
 	}
-	
+
 	public int getForce() {
 		return mass * acceleration.getMagnitude();
 	}
-	
+
 	public ArrayList<RocketPart> getParts() {
 		return parts;
 	}
 
+	public void launch() {
+		launched = true;
+	}
+	
+	public boolean isLaunched() {
+		return launched;
+	}
 }
