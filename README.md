@@ -6,9 +6,9 @@
 [![Code Quality](https://img.shields.io/codacy/4a2075912e5246c28485af3cbc61d470.svg?style=flat-square)](https://www.codacy.com/app/thetechnokid11/RocketWarfare/dashboard)
 [![Latest Build](https://img.shields.io/badge/latest_build-test-orange.svg?style=flat-square)](/build/build.jar?raw=true)
 
-An MMORTS where you build a base, rockets, and missiles and fight with them.
+An MMORTS where you build a base, rockets, and missiles to fight with.
 
-You are in a large world. Using your custom-built rocket, and the missiles that you have installed in it, you try to defend yourself and your team mates.
+You are in a large world. Using your custom-built rocket, the missiles that you have installed in it, and your base, you try to defend yourself and your team mates for attacks.
 From UFOs, enemy ships, and more... *This is Rocket Warfare*.
 
 This game is made using JavaFX. I'm trying not to use any external libraries, and to make it completely from scratch. The first test version will be released at least 6 months from now.
