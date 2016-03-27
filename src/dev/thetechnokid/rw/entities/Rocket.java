@@ -29,7 +29,7 @@ public class Rocket extends Entity implements FlyingObject {
 	@Override
 	public void tick() {
 		if (launched) {
-			pos.altitude += acceleration.getMagnitude() * acceleration.getDirection().getAltitudeModifier();
+			pos.altitude += (acceleration.getMagnitude() * acceleration.getDirection().getAltitudeModifier()) - VectorQuantity.GRAVITY.getMagnitude();
 			pos.x += acceleration.getMagnitude() * acceleration.getDirection().getXModifier();
 		} else {
 			if (getAcceleration().getMagnitude() > VectorQuantity.GRAVITY.getMagnitude())
