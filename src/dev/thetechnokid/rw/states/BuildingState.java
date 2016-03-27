@@ -75,9 +75,6 @@ public class BuildingState extends State {
 		Button thrust = new Button("Thrust");
 		thrust.setOnAction((event) -> {
 			rocket.getAcceleration().increaseMagnitude(1);
-			if (!rocket.isLaunched()) {
-				rocket.launch();
-			}
 		});
 
 		Button dethrust = new Button("De-Thrust");
