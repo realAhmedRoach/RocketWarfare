@@ -11,7 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 
-public class BuildingState extends State {
+public class MissionControlState extends State {
 	private int x, y;
 	private HashMap<Point2D, Boolean> locs = new HashMap<>();
 	private Color color = Color.RED;
@@ -27,7 +27,7 @@ public class BuildingState extends State {
 
 	private double rockx, rocky;
 
-	public BuildingState(GraphicsContext g) {
+	public MissionControlState(GraphicsContext g) {
 		super(g);
 		rocket = new Rocket(g);
 	}
