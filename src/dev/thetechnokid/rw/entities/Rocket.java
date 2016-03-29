@@ -14,6 +14,8 @@ public class Rocket extends Entity implements FlyingObject {
 	protected ArrayList<RocketPart> parts = new ArrayList<>();
 
 	private boolean launched = false;
+	private boolean falling;
+	private long fallingTime = 0;
 
 	public Rocket(GraphicsContext g) {
 		super(g);
@@ -29,12 +31,28 @@ public class Rocket extends Entity implements FlyingObject {
 	@Override
 	public void tick() {
 		if (launched) {
-			pos.altitude += (acceleration.getMagnitude() * acceleration.getDirection().getAltitudeModifier()) - VectorQuantity.GRAVITY.getMagnitude();
-			pos.x += acceleration.getMagnitude() * acceleration.getDirection().getXModifier();
+			calculatePos();
 		} else {
 			if (getAcceleration().getMagnitude() > VectorQuantity.GRAVITY.getMagnitude())
 				launched = true;
 		}
+	}
+
+	private void calculatePos() {
+		double altitudeChange = (acceleration.getMagnitude() * acceleration.getDirection().getAltitudeModifier());
+		if (altitudeChange - VectorQuantity.GRAVITY.getMagnitude() < 0) {
+			falling = true;
+		} else {
+			falling = false;
+		}
+		if (falling) {
+			fallingTime++;
+		}
+
+		pos.altitude += !falling ? (altitudeChange - VectorQuantity.GRAVITY.getMagnitude())
+				: (altitudeChange - (VectorQuantity.GRAVITY.getMagnitude() + (fallingTime / 20)));
+		pos.x += acceleration.getMagnitude() * acceleration.getDirection().getXModifier();
+
 	}
 
 	public double getX() {
