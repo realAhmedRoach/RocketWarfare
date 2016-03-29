@@ -77,6 +77,9 @@ public class MissionControlState extends State {
 			rocket.getAcceleration().decreaseMagnitude(1);
 		});
 
+		Button build = new Button("To Building");
+		build.setOnAction((event) -> State.setCurrentState(new BuildingState(g)));
+
 		b.setFocusTraversable(false);
 		tiltRight.setFocusTraversable(false);
 		tiltLeft.setFocusTraversable(false);

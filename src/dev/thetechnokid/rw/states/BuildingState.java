@@ -23,12 +23,12 @@ public class BuildingState extends State {
 	@Override
 	protected void init() {
 		MainGameController.buttons().clear();
-		
+
 		Button mc = new Button("Mission Control");
 		mc.setOnAction((event) -> State.setCurrentState(new MissionControlState(g)));
-		
+
 		MainGameController.buttons().add(mc);
-		
+
 		g.setFill(Color.RED);
 	}
 
