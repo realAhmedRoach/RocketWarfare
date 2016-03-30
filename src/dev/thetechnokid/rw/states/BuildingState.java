@@ -26,6 +26,7 @@ public class BuildingState extends State {
 
 		Button mc = new Button("Mission Control");
 		mc.setOnAction((event) -> State.setCurrentState(new MissionControlState(g)));
+		mc.setFocusTraversable(false);
 
 		MainGameController.buttons().add(mc);
 

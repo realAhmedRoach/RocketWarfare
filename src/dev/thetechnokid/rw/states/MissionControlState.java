@@ -85,6 +85,7 @@ public class MissionControlState extends State {
 		tiltLeft.setFocusTraversable(false);
 		thrust.setFocusTraversable(false);
 		dethrust.setFocusTraversable(false);
+		build.setFocusTraversable(false);
 
 		altitudeLabel = new Label();
 		xLabel = new Label();
