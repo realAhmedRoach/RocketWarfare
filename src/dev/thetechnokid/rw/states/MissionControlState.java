@@ -93,7 +93,7 @@ public class MissionControlState extends State {
 		forceLabel = new Label();
 
 		MainGameController.buttons().addAll(b, tiltRight, tiltLeft, thrust, dethrust, altitudeLabel, xLabel,
-				degreesLabel, modifierLabel, forceLabel);
+				degreesLabel, modifierLabel, new Separator(), build);
 	}
 
 	@Override
