@@ -18,13 +18,6 @@ public class Rocket extends Entity implements FlyingObject {
 	private boolean launched = false;
 	private boolean falling;
 	private long fallingTime = 0;
-	
-
-	public Rocket() {
-		for (RocketPart rocketPart : parts) {
-			mass += rocketPart.getMass();
-		}
-	}
 
 	@Override
 	public void render() {
@@ -95,8 +88,9 @@ public class Rocket extends Entity implements FlyingObject {
 		return mass * acceleration.getMagnitude();
 	}
 
-	public ArrayList<RocketPart> getParts() {
-		return parts;
+	public void addPart(RocketPart part) {
+		parts.add(part);
+		mass += part.getMass();
 	}
 
 	public boolean isLaunched() {
