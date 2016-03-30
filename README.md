@@ -13,3 +13,6 @@ This game is made using JavaFX. I'm trying not to use any external libraries, an
 Hopefully, this game will be an MMORTS when it is finished.
 
 Here are the [graphics](res/images/spritesheet.png).
+
+### License
+This program is licensed under the [GPL v3](/LICENSE) license.
