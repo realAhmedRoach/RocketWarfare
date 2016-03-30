@@ -1,9 +1,11 @@
 package dev.thetechnokid.rw.entities;
 
-import java.util.*;
+import java.util.ArrayList;
 
-import dev.thetechnokid.rw.maths.*;
-import javafx.scene.canvas.GraphicsContext;
+import dev.thetechnokid.rw.maths.Dimension;
+import dev.thetechnokid.rw.maths.Direction;
+import dev.thetechnokid.rw.maths.Position;
+import dev.thetechnokid.rw.maths.VectorQuantity;
 
 public class Rocket extends Entity implements FlyingObject {
 
@@ -12,15 +14,13 @@ public class Rocket extends Entity implements FlyingObject {
 	protected Position pos = new Position();
 	protected VectorQuantity acceleration = new VectorQuantity(0, Direction.north());
 	protected ArrayList<RocketPart> parts = new ArrayList<>();
-	private GraphicsContext g;
 	
 	private boolean launched = false;
 	private boolean falling;
 	private long fallingTime = 0;
 	
 
-	public Rocket(GraphicsContext g) {
-		this.g = g;
+	public Rocket() {
 		for (RocketPart rocketPart : parts) {
 			mass += rocketPart.getMass();
 		}

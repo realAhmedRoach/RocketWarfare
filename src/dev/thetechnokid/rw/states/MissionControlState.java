@@ -24,7 +24,7 @@ public class MissionControlState extends State {
 
 	public MissionControlState(GraphicsContext g) {
 		super(g);
-		rocket = new Rocket(g);
+		rocket = new Rocket();
 	}
 
 	@Override
