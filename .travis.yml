@@ -2,3 +2,6 @@ language: java
 jdk:
   - oraclejdk8
 script: ant compile && ant create_run_jar
+
+notifications:
+  slack: rocketwarfare:fRSQ5r9sAo5OnDaQTLImun1O
