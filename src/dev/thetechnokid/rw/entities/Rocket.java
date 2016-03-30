@@ -44,7 +44,7 @@ public class Rocket extends Entity implements FlyingObject {
 			falling = true;
 		} else {
 			falling = false;
-			fallingTime = 0;
+			if(fallingTime > 0) fallingTime--;
 		}
 		if (falling) {
 			fallingTime++;
