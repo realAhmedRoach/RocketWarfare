@@ -12,13 +12,15 @@ public class Rocket extends Entity implements FlyingObject {
 	protected Position pos = new Position();
 	protected VectorQuantity acceleration = new VectorQuantity(0, Direction.north());
 	protected ArrayList<RocketPart> parts = new ArrayList<>();
-
+	private GraphicsContext g;
+	
 	private boolean launched = false;
 	private boolean falling;
 	private long fallingTime = 0;
+	
 
 	public Rocket(GraphicsContext g) {
-		super(g);
+		this.g = g;
 		for (RocketPart rocketPart : parts) {
 			mass += rocketPart.getMass();
 		}
