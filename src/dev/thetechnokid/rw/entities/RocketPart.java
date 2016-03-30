@@ -1,7 +1,12 @@
 package dev.thetechnokid.rw.entities;
 
+import java.io.*;
+import java.util.ArrayList;
+
+import dev.thetechnokid.rw.RocketWarfare;
+import dev.thetechnokid.rw.utils.Assets;
 import javafx.geometry.Point2D;
-import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 
 public class RocketPart extends Entity {
 
@@ -9,8 +14,30 @@ public class RocketPart extends Entity {
 	private Point2D posInRocket;
 	private RocketPart north, south, east, west;
 
-	public RocketPart(GraphicsContext g) {
-		super(g);
+	private static ArrayList<RocketPart> rocketParts = new ArrayList<>();
+
+	static {
+		BufferedReader r = new BufferedReader(
+				new InputStreamReader(RocketWarfare.class.getResourceAsStream("res/images/rparts.txt")));
+
+		String line = null;
+		try {
+			while ((line = r.readLine()) != null) {
+				if ((line.trim()).isEmpty())
+					continue;
+				RocketPart p = new RocketPart();
+				String[] parts = line.split(" ");
+				String[] locString = (parts[1].split(","));
+				int[] loc = { Integer.parseInt(locString[0]), Integer.valueOf(locString[1]) };
+				Image image = Assets.crop(Assets.ROCKET_PARTS, loc[0], loc[1]);
+				p.image = image;
+				p.mass = Integer.parseInt(parts[2]);
+				
+				rocketParts.add(p);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public int getType() {
