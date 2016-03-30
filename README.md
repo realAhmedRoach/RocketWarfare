@@ -15,4 +15,4 @@ Hopefully, this game will be an MMORTS when it is finished.
 Here are the [graphics](res/images/spritesheet.png).
 
 ### License
-This program is licensed under the [GPL v3](/LICENSE) license.
+This program is licensed under the [GPLv3](/LICENSE) license.
