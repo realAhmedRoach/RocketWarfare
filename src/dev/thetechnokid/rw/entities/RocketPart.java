@@ -10,7 +10,7 @@ import javafx.scene.image.Image;
 
 public class RocketPart extends Entity {
 
-	private int type, mass;
+	private int mass;
 	private Point2D posInRocket;
 	private RocketPart north, south, east, west;
 
@@ -38,10 +38,6 @@ public class RocketPart extends Entity {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public int getType() {
-		return type;
 	}
 
 	public int getMass() {
