@@ -14,6 +14,8 @@ public class RocketPart extends Entity {
 	private Point2D posInRocket;
 	private RocketPart north, south, east, west;
 
+	protected String type, tier;
+
 	private static ArrayList<RocketPart> rocketParts = new ArrayList<>();
 
 	static {
@@ -27,17 +29,28 @@ public class RocketPart extends Entity {
 					continue;
 				RocketPart p = new RocketPart();
 				String[] parts = line.split(" ");
+				String[] name = parts[0].split("_");
 				String[] locString = (parts[1].split(","));
 				int[] loc = { Integer.parseInt(locString[0]), Integer.valueOf(locString[1]) };
 				Image image = Assets.crop(Assets.ROCKET_PARTS, loc[0], loc[1]);
 				p.image = image;
 				p.mass = Integer.parseInt(parts[2]);
-				
+				p.type = name[0];
+				p.tier = name[1];
+
 				rocketParts.add(p);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static RocketPart get(String type, String tier) {
+		for (RocketPart part : rocketParts) {
+			if (part.type.equals(type) && part.tier.equals(tier))
+				return part;
+		}
+		return null;
 	}
 
 	public int getMass() {
