@@ -31,7 +31,7 @@ public class RocketPart extends Entity {
 				String[] parts = line.split(" ");
 				String[] name = parts[0].split("_");
 				String[] locString = (parts[1].split(","));
-				int[] loc = { Integer.parseInt(locString[0]), Integer.valueOf(locString[1]) };
+				int[] loc = { Integer.parseInt(locString[0]), Integer.parseInt(locString[1]) };
 				Image image = Assets.crop(Assets.ROCKET_PARTS, loc[0], loc[1]);
 				p.image = image;
 				p.mass = Integer.parseInt(parts[2]);
