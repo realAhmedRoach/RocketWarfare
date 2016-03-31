@@ -47,7 +47,7 @@ public class Rocket extends Entity implements FlyingObject {
 				fallingTime--;
 		}
 
-		pos.altitude += (altitudeChange - (VectorQuantity.GRAVITY.getMagnitude() + (fallingTime / 20)));
+		pos.altitude += (altitudeChange - (VectorQuantity.GRAVITY.getMagnitude() + (fallingTime / 15)));
 		pos.x += acceleration.getMagnitude() * acceleration.getDirection().getXModifier();
 
 	}
