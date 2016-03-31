@@ -20,7 +20,7 @@ public class RocketPart extends Entity {
 
 	static {
 		BufferedReader r = new BufferedReader(
-				new InputStreamReader(RocketWarfare.class.getResourceAsStream("res/images/rparts.txt")));
+				new InputStreamReader(RocketWarfare.class.getResourceAsStream("/images/rparts.txt")));
 
 		String line = null;
 		try {
