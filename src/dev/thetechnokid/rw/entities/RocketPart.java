@@ -47,7 +47,7 @@ public class RocketPart extends Entity {
 
 	public static RocketPart get(String type, String tier) {
 		for (RocketPart part : rocketParts) {
-			if (part.type.equals(type) && part.tier.equals(tier))
+			if (part.type.equals(type.toUpperCase()) && part.tier.equals(tier.toUpperCase()))
 				return part;
 		}
 		return null;
