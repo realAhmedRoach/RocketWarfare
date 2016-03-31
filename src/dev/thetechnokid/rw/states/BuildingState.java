@@ -3,6 +3,7 @@ package dev.thetechnokid.rw.states;
 import java.util.HashMap;
 
 import dev.thetechnokid.rw.controllers.MainGameController;
+import dev.thetechnokid.rw.entities.RocketPart;
 import dev.thetechnokid.rw.utils.*;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
@@ -38,7 +39,7 @@ public class BuildingState extends State {
 		g.setFill(color);
 		g.fillRect(x, y, Grid.SIZE, Grid.SIZE);
 
-		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 0), 3, 0);
+		Grid.renderInGrid(g, RocketPart.get("nose", "normal").getImage(), 3, 0);
 		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 1), 3, 1);
 		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 2), 3, 2);
 		Grid.renderInGrid(g, Assets.flip(Assets.crop(Assets.ROCKET_PARTS, 1, 1)), 2, 3);
