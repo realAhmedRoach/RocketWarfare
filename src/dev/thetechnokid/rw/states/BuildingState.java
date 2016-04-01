@@ -40,16 +40,15 @@ public class BuildingState extends State {
 		g.fillRect(x, y, Grid.SIZE, Grid.SIZE);
 
 		Grid.renderInGrid(g, RocketPart.get("nose", "normal").getImage(), 3, 0);
-		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 1), 3, 1);
-		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 2), 3, 2);
-		Grid.renderInGrid(g, Assets.flip(Assets.crop(Assets.ROCKET_PARTS, 1, 1)), 2, 3);
-		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 1, 1), 4, 3);
-		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 3), 3, 3);
-		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 4), 3, 4);
-		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 5), 3, 5);
-		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 1, 5), 4, 5);
-		Grid.renderInGrid(g, Assets.flip(Assets.crop(Assets.ROCKET_PARTS, 1, 5)), 2, 5);
-		Grid.renderInGrid(g, Assets.crop(Assets.ROCKET_PARTS, 0, 6), 3, 6);
+		Grid.renderInGrid(g, RocketPart.get("body", "normal").getImage(), 3, 1);
+		Grid.renderInGrid(g, RocketPart.get("window", "normal").getImage(), 3, 2);
+		Grid.renderInGrid(g, RocketPart.get("door", "normal").getImage(), 3, 3);
+		Grid.renderInGrid(g, RocketPart.get("missileholder", "normal").getImage(), 3, 4);
+		Grid.renderInGrid(g, RocketPart.get("thruster", "normal").getImage(), 3, 5);
+		Grid.renderInGrid(g, Assets.flip(RocketPart.get("fin", "camo").getImage()), 2, 3);
+		Grid.renderInGrid(g, RocketPart.get("fin", "camo").getImage(), 4, 3);
+		Grid.renderInGrid(g, Assets.flip(RocketPart.get("missile", "normal").getImage()), 2, 4);
+		Grid.renderInGrid(g, RocketPart.get("missile", "normal").getImage(), 4, 4);
 
 		g.setFill(Color.CADETBLUE);
 		for (Point2D p : locs.keySet()) {
