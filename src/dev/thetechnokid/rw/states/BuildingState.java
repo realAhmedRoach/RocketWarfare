@@ -45,8 +45,8 @@ public class BuildingState extends State {
 		Grid.renderInGrid(g, RocketPart.get("door", "normal").getImage(), 3, 3);
 		Grid.renderInGrid(g, RocketPart.get("missileholder", "normal").getImage(), 3, 4);
 		Grid.renderInGrid(g, RocketPart.get("thruster", "normal").getImage(), 3, 5);
-		Grid.renderInGrid(g, Assets.flip(RocketPart.get("fin", "camo").getImage()), 2, 3);
-		Grid.renderInGrid(g, RocketPart.get("fin", "camo").getImage(), 4, 3);
+		Grid.renderInGrid(g, Assets.flip(RocketPart.get("fin", "camo").getImage()), 2, 2);
+		Grid.renderInGrid(g, RocketPart.get("fin", "camo").getImage(), 4, 2);
 		Grid.renderInGrid(g, Assets.flip(RocketPart.get("missile", "normal").getImage()), 2, 4);
 		Grid.renderInGrid(g, RocketPart.get("missile", "normal").getImage(), 4, 4);
 
