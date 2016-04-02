@@ -10,7 +10,7 @@ You are in a large world. Using your custom-built rocket, the missiles that you 
 From UFOs, enemy ships, and more... *This is Rocket Warfare*.
 
 This game is made using JavaFX. I'm trying not to use any external libraries, and to make it completely from scratch. The first test version will be released at least 6 months from now.
-Hopefully, this game will be an MMORTS when it is finished.
+Hopefully, this game turn out to be an MMORTS.
 
 Here are the [graphics](res/images/spritesheet.png).
 
