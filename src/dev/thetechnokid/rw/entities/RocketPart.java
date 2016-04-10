@@ -97,4 +97,12 @@ public class RocketPart extends Entity {
 		this.west = west;
 	}
 
+	public String getType() {
+		return type;
+	}
+
+	public String getTier() {
+		return tier;
+	}
+
 }
