@@ -29,4 +29,12 @@
       </plugin>
     </plugins>
   </build>
+  <ciManagement>
+  	<system>Travis CI</system>
+  	<url>https://travis-ci.org/theTechnoKid/RocketWarfare</url>
+  </ciManagement>
+  <issueManagement>
+  	<system>Github Issues</system>
+  	<url>https://github.com/theTechnoKid/RocketWarfare/issues</url>
+  </issueManagement>
 </project>
