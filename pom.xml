@@ -39,15 +39,15 @@
 						</goals>
 						<configuration>
 							<outputDirectory>build</outputDirectory>
+							<archive>
+								<manifest>
+									<addClasspath />
+									<mainClass>dev.thetechnokid.rw.RocketWarfare</mainClass>
+								</manifest>
+							</archive>
 						</configuration>
 					</execution>
 				</executions>
-				<archive>
-					<manifest>
-						<addClasspath />
-						<mainClass>dev.thetechnokid.rw.RocketWarfare</mainClass>
-					</manifest>
-				</archive>
 			</plugin>
 		</plugins>
 	</build>
