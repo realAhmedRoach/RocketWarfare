@@ -6,6 +6,7 @@
   <name>RocketWarfare</name>
   <packaging>jar</packaging>
   <build>
+    <outputDirectory>build</outputDirectory>
     <sourceDirectory>src</sourceDirectory>
     <resources>
       <resource>
