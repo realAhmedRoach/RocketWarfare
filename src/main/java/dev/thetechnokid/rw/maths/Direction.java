@@ -2,25 +2,31 @@ package dev.thetechnokid.rw.maths;
 
 public class Direction {
 	private int degrees;
+	private boolean isFinal;
 
 	public static Direction north() {
-		return new Direction(90);
+		return new Direction(90, false);
 	}
 
 	public static Direction south() {
-		return new Direction(270);
+		return new Direction(270, false);
 	}
 
 	public static Direction east() {
-		return new Direction(0);
+		return new Direction(0, false);
 	}
 
 	public static Direction west() {
-		return new Direction(180);
+		return new Direction(180, false);
 	}
 
 	public Direction(int degrees) {
+		this(degrees, false);
+	}
+	
+	public Direction(int degrees, boolean isFinal) {
 		this.degrees = degrees;
+		this.isFinal = isFinal;
 	}
 
 	public boolean equals(Direction other) {
@@ -37,11 +43,13 @@ public class Direction {
 	}
 	
 	public void increaseDegrees() {
+		if(isFinal) return;
 		if (degrees < 360) degrees++;
 		else degrees = 1;
 	}
 	
 	public void decreaseDegrees() {
+		if(isFinal) return;
 		if (degrees > 0) degrees--;
 		else degrees = 359;
 	}
