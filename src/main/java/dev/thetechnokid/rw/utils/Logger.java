@@ -1,9 +1,9 @@
 package dev.thetechnokid.rw.utils;
 
 import java.io.*;
-import java.sql.Date;
 import java.text.*;
 import java.time.Instant;
+import java.util.Date;
 
 public class Logger {
 	private File file;
