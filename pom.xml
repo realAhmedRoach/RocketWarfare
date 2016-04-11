@@ -41,7 +41,7 @@
 							<outputDirectory>build</outputDirectory>
 							<archive>
 								<manifest>
-									<addClasspath />
+									<addClasspath>true</addClasspath>
 									<mainClass>dev.thetechnokid.rw.RocketWarfare</mainClass>
 								</manifest>
 							</archive>
