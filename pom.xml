@@ -27,7 +27,22 @@
           <target>1.8</target>
         </configuration>
       </plugin>
-    </plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <executions>
+         <execution>
+            <phase>package</phase>
+            <goals>
+               <goal>jar</goal>
+            </goals>
+            <configuration>
+               <outputDirectory>build</outputDirectory>
+            </configuration>
+         </execution>
+        </executions>
+      </plugin>
+   </plugins>
   </build>
   <ciManagement>
   	<system>Travis CI</system>
