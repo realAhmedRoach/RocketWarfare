@@ -4,6 +4,7 @@ public class VectorQuantity {
 
 	private int magnitude;
 	private Direction direction;
+	private boolean isFinal;
 	
 	public static final VectorQuantity GRAVITY = new VectorQuantity(5, Direction.south());
 
@@ -13,8 +14,13 @@ public class VectorQuantity {
 	}
 	
 	public VectorQuantity(int magnitude, Direction direction) {
+		this(magnitude, direction, false);
+	}
+	
+	public VectorQuantity(int magnitude, Direction direction, boolean isFinal) {
 		this.magnitude = magnitude;
 		this.direction = direction;
+		this.isFinal = isFinal;
 	}
 	
 	public boolean equals(VectorQuantity other) {
@@ -26,6 +32,8 @@ public class VectorQuantity {
 	}
 	
 	public void setMagnitude(int magnitude) {
+		if(isFinal)
+			return;
 		this.magnitude = magnitude;
 	}
 	
@@ -34,10 +42,14 @@ public class VectorQuantity {
 	}
 
 	public void increaseMagnitude(int i) {
+		if(isFinal)
+			return;
 		magnitude += i;
 	}
 
 	public void decreaseMagnitude(int i) {
+		if(isFinal)
+			return;
 		if (magnitude == 0) return;
 		magnitude -= i;
 	}
