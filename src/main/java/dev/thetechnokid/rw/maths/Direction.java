@@ -5,19 +5,19 @@ public class Direction {
 	private boolean isFinal;
 
 	public static Direction north() {
-		return new Direction(90, false);
+		return new Direction(90, true);
 	}
 
 	public static Direction south() {
-		return new Direction(270, false);
+		return new Direction(270, true);
 	}
 
 	public static Direction east() {
-		return new Direction(0, false);
+		return new Direction(0, true);
 	}
 
 	public static Direction west() {
-		return new Direction(180, false);
+		return new Direction(180, true);
 	}
 
 	public Direction(int degrees) {
