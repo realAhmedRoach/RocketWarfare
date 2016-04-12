@@ -10,7 +10,7 @@ import javafx.scene.text.TextAlignment;
 
 public class MenuState extends State {
 
-	private boolean textOn, change;
+	private boolean textOn, showWelcome;
 	private String name;
 	private boolean grid;
 
@@ -45,14 +45,14 @@ public class MenuState extends State {
 		g.setStroke(Color.RED);
 		g.setFill(Color.BLUEVIOLET);
 
-		if (change) {
+		if (showWelcome) {
 			Utils.wait(1500);
 			State.setCurrentState(new MissionControlState(g));
 		}
 
 		if (textOn) {
 			Utils.centerText(g, "Welcome, " + name, 20);
-			change = true;
+			showWelcome = true;
 		}
 		// Grid.render(g);
 	}
