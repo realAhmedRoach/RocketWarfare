@@ -12,12 +12,12 @@ public class Rocket extends Entity implements FlyingObject {
 	protected int mass;
 	protected Dimension size;
 	protected Position pos = new Position();
+	private long velocity = 0;
 	protected VectorQuantity acceleration = new VectorQuantity(0, Direction.NORTH.clone());
 	protected ArrayList<RocketPart> parts = new ArrayList<>();
 	
 	private boolean launched = false;
 	private boolean falling;
-	private long velocity = 0;
 
 	@Override
 	public void render() {
@@ -62,6 +62,10 @@ public class Rocket extends Entity implements FlyingObject {
 
 	public Position getPosition() {
 		return pos;
+	}
+	
+	public long getVelocity() {
+		return velocity;
 	}
 
 	public double getAltitude() {
