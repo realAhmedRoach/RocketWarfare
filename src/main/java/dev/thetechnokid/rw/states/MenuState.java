@@ -62,7 +62,6 @@ public class MenuState extends State {
 		if (MainGameController.getMouse().isMousePressed()) {
 			int x = MainGameController.getMouse().getX();
 			int y = MainGameController.getMouse().getY();
-			System.out.println(x + "," + y);
 			Point2D p = Grid.getGridLocation(x, y);
 			g.fillRect(p.getX(), p.getY(), Grid.SIZE, Grid.SIZE);
 		}

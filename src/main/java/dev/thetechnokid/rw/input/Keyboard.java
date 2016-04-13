@@ -13,8 +13,6 @@ public class Keyboard implements EventHandler<KeyEvent> {
 
 	@Override
 	public void handle(KeyEvent event) {
-		System.out.println("Source:" + event.getSource().getClass().getName());
-		System.out.println("Target:" + event.getTarget().getClass().getName());
 		if (event.getTarget() instanceof TextInputControl)
 			return;
 		if (event.getEventType() == KeyEvent.KEY_PRESSED) {
