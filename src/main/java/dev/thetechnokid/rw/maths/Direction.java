@@ -1,6 +1,6 @@
 package dev.thetechnokid.rw.maths;
 
-public class Direction {
+public class Direction implements Cloneable {
 	private int degrees;
 	private boolean isFinal;
 
@@ -97,5 +97,9 @@ public class Direction {
 
 		percent = degreesAbs / 90;
 		return percent;
+	}
+	
+	public Direction clone() {
+		return new Direction(degrees);
 	}
 }
