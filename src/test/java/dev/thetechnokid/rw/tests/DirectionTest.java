@@ -4,16 +4,20 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class DirectionTest {
+import dev.thetechnokid.rw.maths.Direction;
 
+public class DirectionTest {
+	
+	private Direction d = new Direction(87);
+	
 	@Test
 	public void testGetAltitudeModifier() {
-		fail("Not yet implemented");
+		assertEquals("Incorrect Altitude modifier for QI", 87/90, d.getAltitudeModifier(), 0);
 	}
 
 	@Test
 	public void testGetXModifier() {
-		fail("Not yet implemented");
+		assertEquals("Incorrect X modifier for QI", 3/90, d.getXModifier(), 0);
 	}
 
 }
