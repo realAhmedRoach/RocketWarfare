@@ -6,11 +6,11 @@ public class VectorQuantity {
 	private Direction direction;
 	private boolean isFinal;
 
-	public static final VectorQuantity GRAVITY = new VectorQuantity(5, Direction.south());
+	public static final VectorQuantity GRAVITY = new VectorQuantity(5, Direction.SOUTH);
 
 	public VectorQuantity() {
 		magnitude = 0;
-		direction = Direction.north();
+		direction = Direction.NORTH;
 	}
 
 	public VectorQuantity(int magnitude, Direction direction) {

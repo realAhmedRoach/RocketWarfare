@@ -12,7 +12,7 @@ public class Rocket extends Entity implements FlyingObject {
 	protected int mass;
 	protected Dimension size;
 	protected Position pos = new Position();
-	protected VectorQuantity acceleration = new VectorQuantity(0, Direction.north());
+	protected VectorQuantity acceleration = new VectorQuantity(0, Direction.NORTH);
 	protected ArrayList<RocketPart> parts = new ArrayList<>();
 	
 	private boolean launched = false;

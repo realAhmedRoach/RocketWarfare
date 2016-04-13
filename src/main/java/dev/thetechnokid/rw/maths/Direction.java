@@ -4,26 +4,18 @@ public class Direction {
 	private int degrees;
 	private boolean isFinal;
 
-	public static Direction north() {
-		return new Direction(90, true);
-	}
+	public static final Direction NORTH = new Direction(90, true);
 
-	public static Direction south() {
-		return new Direction(270, true);
-	}
+	public static final Direction SOUTH = new Direction(270, true);
 
-	public static Direction east() {
-		return new Direction(0, true);
-	}
+	public static final Direction EAST = new Direction(0, true);
 
-	public static Direction west() {
-		return new Direction(180, true);
-	}
+	public static final Direction WEST = new Direction(180, true);
 
 	public Direction(int degrees) {
 		this(degrees, false);
 	}
-	
+
 	public Direction(int degrees, boolean isFinal) {
 		this.degrees = degrees;
 		this.isFinal = isFinal;
@@ -41,19 +33,25 @@ public class Direction {
 	public int getDegrees() {
 		return degrees;
 	}
-	
+
 	public void increaseDegrees() {
-		if(isFinal) return;
-		if (degrees < 360) degrees++;
-		else degrees = 1;
+		if (isFinal)
+			return;
+		if (degrees < 360)
+			degrees++;
+		else
+			degrees = 1;
 	}
-	
+
 	public void decreaseDegrees() {
-		if(isFinal) return;
-		if (degrees > 0) degrees--;
-		else degrees = 359;
+		if (isFinal)
+			return;
+		if (degrees > 0)
+			degrees--;
+		else
+			degrees = 359;
 	}
-	
+
 	public double getAltitudeModifier() {
 		double percent = 0;
 		double degreesAbs = 0;
