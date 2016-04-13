@@ -4,7 +4,7 @@
 [![Code](https://img.shields.io/badge/code-theTechnoKid-00B304.svg?style=flat-square)](https://github.com/theTechnoKid)
 [![Graphics](https://img.shields.io/badge/graphics-UncleBobTheCoder-AEB300.svg?style=flat-square)](https://github.com/UncleBobTheCoder)
 [![Code Quality](https://img.shields.io/codacy/4a2075912e5246c28485af3cbc61d470.svg?style=flat-square)](https://www.codacy.com/app/thetechnokid/RocketWarfare/dashboard)
-[![Latest Build](https://img.shields.io/badge/latest_build-test-orange.svg?style=flat-square)](/build/build.jar?raw=true)
+[![Latest Build](https://img.shields.io/badge/latest_build-test-orange.svg?style=flat-square)](/build/)
 
 You are in a large world. Using your custom-built rocket, the missiles that you have installed in it, and your base, you try to defend yourself and your team mates from attacks.
 From UFOs, enemy ships, and more... *This is Rocket Warfare*.
