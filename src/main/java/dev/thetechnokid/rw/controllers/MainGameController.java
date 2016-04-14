@@ -8,6 +8,7 @@ import dev.thetechnokid.rw.input.Keyboard;
 import dev.thetechnokid.rw.input.Mouse;
 import dev.thetechnokid.rw.states.MenuState;
 import dev.thetechnokid.rw.states.State;
+import dev.thetechnokid.rw.utils.Assets;
 import dev.thetechnokid.rw.utils.Grid;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -52,6 +53,8 @@ public class MainGameController implements Initializable {
 		gameLoop.setCycleCount(Timeline.INDEFINITE);
 		// final long timeStart = System.currentTimeMillis();
 
+		Assets.init();
+		
 		initCanvas();
 
 		State.setCurrentState(new MenuState(g));
