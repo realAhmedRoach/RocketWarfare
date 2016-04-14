@@ -105,4 +105,8 @@ public class RocketPart extends Entity {
 		return tier;
 	}
 
+	public static ArrayList<RocketPart> allParts() {
+		return rocketParts;
+	}
+
 }
