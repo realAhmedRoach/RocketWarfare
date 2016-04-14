@@ -30,6 +30,8 @@ public class MissionControlState extends State {
 	@Override
 	protected void init() {
 		MainGameController.buttons().clear();
+		MainGameController.integrations().clear();
+		
 		g.setFill(Color.RED);
 
 		anim = new Animator(1000, () -> {
