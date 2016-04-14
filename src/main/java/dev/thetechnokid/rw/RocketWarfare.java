@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class RocketWarfare extends Application {
 
 	public static final String NAME = "Rocket Warfare";
-	public static final String VERSION = "Pre-Alpha";
+	public static final String VERSION = "Dev Edition";
 	public static final int BUILD_NUM = 0;
 	public static final int FPS = 60;
 
