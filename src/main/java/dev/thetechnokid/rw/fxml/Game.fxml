@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1028.0" xmlns="http://javafx.com/javafx/8.0.71" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.thetechnokid.rw.controllers.MainGameController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1028.0" xmlns="http://javafx.com/javafx/8.0.72" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.thetechnokid.rw.controllers.MainGameController">
    <children>
       <HBox layoutX="-4.0" layoutY="577.0" prefHeight="25.0" prefWidth="1048.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="575.0" />
       <GridPane layoutX="200.0" layoutY="167.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -24,7 +24,7 @@
         </rowConstraints>
          <children>
             <VBox fx:id="buttons" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" />
-            <HBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" />
+            <HBox fx:id="integrations" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" />
             <Canvas fx:id="theCanvas" height="608.0" width="352.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <cursor>
                   <Cursor fx:constant="HAND" />

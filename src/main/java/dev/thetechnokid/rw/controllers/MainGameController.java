@@ -6,14 +6,14 @@ import java.util.ResourceBundle;
 import dev.thetechnokid.rw.RocketWarfare;
 import dev.thetechnokid.rw.input.*;
 import dev.thetechnokid.rw.states.*;
-import dev.thetechnokid.rw.utils.*;
+import dev.thetechnokid.rw.utils.Grid;
 import javafx.animation.*;
 import javafx.collections.ObservableList;
 import javafx.fxml.*;
 import javafx.scene.Node;
 import javafx.scene.canvas.*;
 import javafx.scene.input.*;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
@@ -23,9 +23,10 @@ public class MainGameController implements Initializable {
 
 	@FXML
 	private Canvas theCanvas;
-
 	@FXML
-	public VBox buttons;
+	private VBox buttons;
+	@FXML
+	private HBox integrations;
 
 	private GraphicsContext g;
 	private Keyboard k = new Keyboard();
@@ -44,7 +45,7 @@ public class MainGameController implements Initializable {
 		initCanvas();
 
 		State.setCurrentState(new MenuState(g));
-		
+
 		KeyFrame kf = new KeyFrame(Duration.millis(1000 / RocketWarfare.FPS), // 60
 																				// FPS
 				(event) -> {
@@ -79,6 +80,10 @@ public class MainGameController implements Initializable {
 
 	public static ObservableList<Node> buttons() {
 		return currentController.buttons.getChildren();
+	}
+
+	public static ObservableList<Node> integrations() {
+		return currentController.integrations.getChildren();
 	}
 
 	public static Keyboard getKeyboard() {
