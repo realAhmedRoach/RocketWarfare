@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 import dev.thetechnokid.rw.RocketWarfare;
-import dev.thetechnokid.rw.utils.Assets;
+import dev.thetechnokid.rw.utils.*;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 
@@ -16,7 +16,7 @@ public class RocketPart extends Entity {
 
 	protected String type, tier;
 
-	private static ArrayList<RocketPart> rocketParts = new ArrayList<>();
+	private static ArrayList<RocketPart> rocketParts = new PartList();
 
 	public static final String[] FLIPPABLE_PARTS = { "FIN", "MISSILE" };
 
