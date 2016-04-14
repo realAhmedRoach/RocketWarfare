@@ -44,7 +44,7 @@ public class MissionControlState extends State {
 			xLabel.setText("X: " + xText);
 			degreesLabel.setText("Degrees: " + degreesText);
 			modifierLabel.setText(modifierText);
-			velocityLabel.setText(velocityText);
+			velocityLabel.setText("Velocity: " + velocityText);
 		});
 
 		Button b = new Button("Change Colors");
