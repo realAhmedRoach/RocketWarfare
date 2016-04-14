@@ -41,6 +41,14 @@ public class BuildingState extends State {
 			b.setGraphic(new ImageView(part.getImage()));
 			b.setTooltip(new Tooltip(part.getTier() + " " + part.getType()));
 			b.setOnAction((event) -> currPart = part);
+			if (Arrays.asList(RocketPart.FLIPPABLE_PARTS).contains(part.getType())) {
+				Button flipped = new Button();
+				RocketPart f = RocketPart.allParts().getFlipped(RocketPart.allParts().indexOf(part));
+				flipped.setGraphic(new ImageView(f.getImage()));
+				flipped.setTooltip(new Tooltip(f.getTier() + " " + f.getType()));
+				flipped.setOnAction((event) -> currPart = f);
+				MainGameController.integrations().add(flipped);
+			}
 			MainGameController.integrations().add(b);
 		}
 	}
@@ -49,6 +57,9 @@ public class BuildingState extends State {
 	public void render() {
 		g.setFill(color);
 		g.fillRect(x, y, Grid.SIZE, Grid.SIZE);
+
+		if (currPart != null)
+			Grid.renderInGrid(g, currPart.getImage(), 1, 1);
 
 		Grid.renderInGrid(g, RocketPart.get("nose", "normal").getImage(), 3, 0);
 		Grid.renderInGrid(g, RocketPart.get("body", "normal").getImage(), 3, 1);
