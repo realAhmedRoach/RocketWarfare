@@ -48,16 +48,8 @@ public class MainGameController implements Initializable {
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		currentController = this;
-		g = theCanvas.getGraphicsContext2D();
-
-		gameLoop.setCycleCount(Timeline.INDEFINITE);
-		// final long timeStart = System.currentTimeMillis();
-
-		Assets.init();
 		
-		initCanvas();
-
-		State.setCurrentState(new MenuState(g));
+		init();
 
 		KeyFrame kf = new KeyFrame(Duration.millis(1000 / RocketWarfare.FPS), // 60
 																				// FPS
@@ -77,6 +69,14 @@ public class MainGameController implements Initializable {
 
 		gameLoop.getKeyFrames().add(kf);
 		gameLoop.play();
+	}
+
+	private void init() {
+		g = theCanvas.getGraphicsContext2D();
+		gameLoop.setCycleCount(Timeline.INDEFINITE);
+		Assets.init();
+		initCanvas();
+		State.setCurrentState(new MenuState(g));
 	}
 
 	private void initCanvas() {
