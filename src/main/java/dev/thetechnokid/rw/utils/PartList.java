@@ -12,4 +12,8 @@ public class PartList extends ArrayList<RocketPart> {
 	public RocketPart get(int index) {
 		return new RocketPart(super.get(index));
 	}
+	
+	public RocketPart getFlipped(int index) {
+		return new RocketPart(super.get(index), true);
+	}
 }
