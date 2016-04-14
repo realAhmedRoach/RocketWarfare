@@ -26,7 +26,7 @@ public class MainGameController implements Initializable {
 	@FXML
 	private VBox buttons;
 	@FXML
-	private HBox integrations;
+	private FlowPane integrations;
 
 	private GraphicsContext g;
 	private Keyboard k = new Keyboard();
