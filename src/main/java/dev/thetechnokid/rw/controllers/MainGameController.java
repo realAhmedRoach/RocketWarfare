@@ -4,16 +4,24 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import dev.thetechnokid.rw.RocketWarfare;
-import dev.thetechnokid.rw.input.*;
-import dev.thetechnokid.rw.states.*;
+import dev.thetechnokid.rw.input.Keyboard;
+import dev.thetechnokid.rw.input.Mouse;
+import dev.thetechnokid.rw.states.MenuState;
+import dev.thetechnokid.rw.states.State;
 import dev.thetechnokid.rw.utils.Grid;
-import javafx.animation.*;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.ObservableList;
-import javafx.fxml.*;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.canvas.*;
-import javafx.scene.input.*;
-import javafx.scene.layout.*;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Label;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
@@ -27,6 +35,8 @@ public class MainGameController implements Initializable {
 	private VBox buttons;
 	@FXML
 	private FlowPane integrations;
+	@FXML
+	private Label status;
 
 	private GraphicsContext g;
 	private Keyboard k = new Keyboard();
@@ -84,6 +94,10 @@ public class MainGameController implements Initializable {
 
 	public static ObservableList<Node> integrations() {
 		return currentController.integrations.getChildren();
+	}
+	
+	public static void setStatus(String statusText) {
+		currentController.status.setText(statusText);
 	}
 
 	public static Keyboard getKeyboard() {

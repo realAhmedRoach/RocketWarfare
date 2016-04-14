@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
@@ -13,7 +14,10 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="608.0" prefWidth="1048.0" xmlns="http://javafx.com/javafx/8.0.72" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.thetechnokid.rw.controllers.MainGameController">
    <children>
-      <HBox layoutX="-4.0" layoutY="577.0" prefHeight="25.0" prefWidth="1048.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="575.0" />
+      <HBox layoutX="-4.0" layoutY="577.0" prefHeight="25.0" prefWidth="1048.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="575.0">
+         <children>
+            <Label fx:id="status" contentDisplay="TOP" prefHeight="33.0" prefWidth="1052.0" text="Status" textFill="RED" />
+         </children></HBox>
       <GridPane layoutX="200.0" layoutY="167.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -25,7 +29,7 @@
         </rowConstraints>
          <children>
             <VBox fx:id="buttons" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" />
-            <FlowPane fx:id="integrations" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" hgap="10.0" vgap="10.0" />
+            <FlowPane fx:id="integrations" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0" GridPane.columnIndex="2" />
             <Canvas fx:id="theCanvas" height="608.0" width="352.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <cursor>
                   <Cursor fx:constant="HAND" />
