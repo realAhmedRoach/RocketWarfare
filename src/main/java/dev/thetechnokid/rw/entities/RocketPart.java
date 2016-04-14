@@ -55,6 +55,20 @@ public class RocketPart extends Entity {
 		return null;
 	}
 
+	// no-arg constructor
+	public RocketPart() { }
+	
+	public RocketPart(RocketPart other) {
+		this.mass = other.mass;
+		this.type = other.type;
+		this.tier = other.tier;
+		this.north = other.south;
+		this.south = other.south;
+		this.east = other.west;
+		this.west = other.west;
+		this.posInRocket = other.posInRocket;
+	}
+	
 	public int getMass() {
 		return mass;
 	}
