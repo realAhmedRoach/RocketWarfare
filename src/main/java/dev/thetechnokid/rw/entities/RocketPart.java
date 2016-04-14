@@ -56,9 +56,10 @@ public class RocketPart extends Entity {
 	}
 
 	// no-arg constructor
-	public RocketPart() { }
-	
-	public RocketPart(RocketPart other) {
+	public RocketPart() {
+	}
+
+	public RocketPart(RocketPart other, boolean flip) {
 		this.mass = other.mass;
 		this.type = other.type;
 		this.tier = other.tier;
@@ -67,8 +68,15 @@ public class RocketPart extends Entity {
 		this.east = other.west;
 		this.west = other.west;
 		this.posInRocket = other.posInRocket;
+		this.image = other.image;
+		if (flip)
+			this.image = Assets.flip(image);
 	}
-	
+
+	public RocketPart(RocketPart other) {
+		this(other, false);
+	}
+
 	public int getMass() {
 		return mass;
 	}
