@@ -47,7 +47,7 @@ public class MenuState extends State {
 
 		if (showWelcome) {
 			Utils.wait(1500);
-			State.setCurrentState(new MissionControlState(g));
+			State.setCurrentState(new BuildingState(g));
 		}
 
 		if (textOn) {
