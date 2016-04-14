@@ -14,7 +14,7 @@ import javafx.scene.paint.Color;
 
 public class BuildingState extends State {
 	private int x, y;
-	private HashMap<Point2D, Boolean> locs = new HashMap<>();
+	private HashMap<Point2D, RocketPart> partLocs = new HashMap<>();
 	private Color color = Color.RED;
 
 	private RocketPart currPart;
@@ -59,7 +59,7 @@ public class BuildingState extends State {
 		g.fillRect(x, y, Grid.SIZE, Grid.SIZE);
 
 		if (currPart != null)
-			Grid.renderInGrid(g, currPart.getImage(), 1, 1);
+			Grid.renderInGrid(g, currPart.getImage(), 0, 0);
 
 		Grid.renderInGrid(g, RocketPart.get("nose", "normal").getImage(), 3, 0);
 		Grid.renderInGrid(g, RocketPart.get("body", "normal").getImage(), 3, 1);
@@ -73,10 +73,8 @@ public class BuildingState extends State {
 		Grid.renderInGrid(g, RocketPart.get("missile", "normal").getImage(), 4, 4);
 
 		g.setFill(Color.CADETBLUE);
-		for (Point2D p : locs.keySet()) {
-			if (locs.get(p)) {
-				g.fillOval(p.getX() * Grid.SIZE, p.getY() * Grid.SIZE, Grid.SIZE, Grid.SIZE);
-			}
+		for (Point2D p : partLocs.keySet()) {
+			Grid.renderInGrid(g, partLocs.get(p).getImage(), (int) p.getX(), (int) p.getY());
 		}
 	}
 
@@ -92,9 +90,9 @@ public class BuildingState extends State {
 			x -= Grid.SIZE;
 		}
 		if (MainGameController.getMouse().isMousePressed()) {
-			locs.put(MainGameController.getMouse().getPointOnGrid(), true);
+			partLocs.put(MainGameController.getMouse().getPointOnGrid(), currPart);
 		} else if (MainGameController.getMouse().isSecondaryMousePressed()) {
-			locs.put(MainGameController.getMouse().getPointOnGrid(), false);
+			partLocs.remove(MainGameController.getMouse().getPointOnGrid());
 		}
 	}
 
