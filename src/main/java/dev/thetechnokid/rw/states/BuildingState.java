@@ -72,7 +72,6 @@ public class BuildingState extends State {
 		Grid.renderInGrid(g, Assets.flip(RocketPart.get("missile", "normal").getImage()), 2, 4);
 		Grid.renderInGrid(g, RocketPart.get("missile", "normal").getImage(), 4, 4);
 
-		g.setFill(Color.CADETBLUE);
 		for (Point2D p : partLocs.keySet()) {
 			Grid.renderInGrid(g, partLocs.get(p).getImage(), (int) p.getX(), (int) p.getY());
 		}
