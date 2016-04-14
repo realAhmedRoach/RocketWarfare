@@ -1,13 +1,14 @@
 package dev.thetechnokid.rw.states;
 
-import java.util.HashMap;
+import java.util.*;
 
 import dev.thetechnokid.rw.controllers.MainGameController;
 import dev.thetechnokid.rw.entities.RocketPart;
 import dev.thetechnokid.rw.utils.*;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 
@@ -15,6 +16,8 @@ public class BuildingState extends State {
 	private int x, y;
 	private HashMap<Point2D, Boolean> locs = new HashMap<>();
 	private Color color = Color.RED;
+
+	private RocketPart currPart;
 
 	public BuildingState(GraphicsContext g) {
 		super(g);
@@ -32,6 +35,14 @@ public class BuildingState extends State {
 		MainGameController.buttons().add(mc);
 
 		g.setFill(Color.RED);
+
+		for (RocketPart part : RocketPart.allParts()) {
+			Button b = new Button();
+			b.setGraphic(new ImageView(part.getImage()));
+			b.setTooltip(new Tooltip(part.getTier() + " " + part.getType()));
+			b.setOnAction((event) -> currPart = part);
+			MainGameController.integrations().add(b);
+		}
 	}
 
 	@Override
