@@ -18,6 +18,8 @@ public class RocketPart extends Entity {
 
 	private static ArrayList<RocketPart> rocketParts = new ArrayList<>();
 
+	public static final String[] FLIPPABLE_PARTS = { "FIN", "MISSILE" };
+
 	static {
 		BufferedReader r = new BufferedReader(
 				new InputStreamReader(RocketWarfare.class.getResourceAsStream("/images/rparts.txt")));
