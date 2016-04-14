@@ -77,6 +77,12 @@ public class RocketPart extends Entity {
 		this(other, false);
 	}
 
+	public boolean equals(RocketPart other) {
+		return this.mass == other.mass && this.type == other.type && this.tier == other.tier
+				&& this.north == other.south && this.south == other.south && this.east == other.west
+				&& this.west == other.west;
+	}
+
 	public int getMass() {
 		return mass;
 	}
