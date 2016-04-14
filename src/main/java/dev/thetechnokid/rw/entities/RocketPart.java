@@ -1,7 +1,6 @@
 package dev.thetechnokid.rw.entities;
 
 import java.io.*;
-import java.util.ArrayList;
 
 import dev.thetechnokid.rw.RocketWarfare;
 import dev.thetechnokid.rw.utils.*;
@@ -16,7 +15,7 @@ public class RocketPart extends Entity {
 
 	protected String type, tier;
 
-	private static ArrayList<RocketPart> rocketParts = new PartList();
+	private static PartList rocketParts = new PartList();
 
 	public static final String[] FLIPPABLE_PARTS = { "FIN", "MISSILE" };
 
@@ -135,7 +134,7 @@ public class RocketPart extends Entity {
 		return tier;
 	}
 
-	public static ArrayList<RocketPart> allParts() {
+	public static PartList allParts() {
 		return rocketParts;
 	}
 
