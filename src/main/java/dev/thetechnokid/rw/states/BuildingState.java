@@ -62,7 +62,7 @@ public class BuildingState extends State {
 
 	@Override
 	public void tick() {
-		if (MainGameController.getMouse().isMousePressed()) {
+		if (MainGameController.getMouse().isMousePressed() && currPart != null) {
 			partLocs.put(MainGameController.getMouse().getPointOnGrid(), currPart);
 		} else if (MainGameController.getMouse().isSecondaryMousePressed()) {
 			partLocs.remove(MainGameController.getMouse().getPointOnGrid());
