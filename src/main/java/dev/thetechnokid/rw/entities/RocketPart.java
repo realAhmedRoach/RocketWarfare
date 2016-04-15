@@ -43,6 +43,12 @@ public class RocketPart extends Entity {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				r.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
