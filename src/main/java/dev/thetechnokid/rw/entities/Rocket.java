@@ -6,11 +6,12 @@ import dev.thetechnokid.rw.maths.*;
 import dev.thetechnokid.rw.utils.Physics;
 
 public class Rocket extends Entity implements FlyingObject {
+	private static final double VEL_DELTA = (1.0 / 10.0);
 
 	protected int mass;
 	protected Dimension size;
 	protected Position pos = new Position();
-	private long velocity = 0;
+	private double velocity = 0;
 	protected VectorQuantity acceleration = new VectorQuantity(0, Direction.NORTH.clone());
 	protected ArrayList<RocketPart> parts = new ArrayList<>();
 
@@ -34,15 +35,15 @@ public class Rocket extends Entity implements FlyingObject {
 	private void calculatePos() {
 		double aa = (acceleration.getMagnitude() * acceleration.getDirection().getAltitudeModifier());
 		double xa = (acceleration.getMagnitude() * acceleration.getDirection().getXModifier());
-		double v = velocity / 15;
+		double v = velocity;
 
 		falling = (aa - Physics.G < 0);
 
 		if (falling) {
-			velocity--;
+			velocity -= VEL_DELTA;
 		} else {
 			if (velocity <= 0)
-				velocity++;
+				velocity += VEL_DELTA;
 		}
 
 		pos.altitude += (aa + v - Physics.G);
@@ -62,8 +63,8 @@ public class Rocket extends Entity implements FlyingObject {
 		return pos;
 	}
 
-	public long getVelocity() {
-		return velocity;
+	public int getVelocity() {
+		return (int) velocity;
 	}
 
 	public double getAltitude() {
