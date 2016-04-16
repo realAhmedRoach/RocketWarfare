@@ -17,7 +17,7 @@ Here are the [graphics](res/images/spritesheet.png).
 
 ### Versioning
 The version tags for Rocket Warfare use [Semantic Versioning](http://semver.org). The display names are something else. 
-They use the Greek lowercase alphabet. From `v0.0.0` to `v0.9.9`, this will be version α (Alpha). Then comes `v1.0.0` to `v1.9.9`. That is version β (Beta), and then from `v2.0.0` it is γ (Gamma), and so on.
+They use the Greek lowercase alphabet. From `v0.0.1` to `v0.9.9`, this will be version α (Alpha). Then comes `v1.0.0` to `v1.9.9`. That is version β (Beta), and then from `v2.0.0` it is γ (Gamma), and so on.
 
 ### License
 This program is licensed under the [GPLv3](/LICENSE) license.
