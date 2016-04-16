@@ -33,10 +33,10 @@ public class Rocket extends Entity implements FlyingObject {
 
 	private void calculatePos() {
 		double aa = (acceleration.getMagnitude() * acceleration.getDirection().getAltitudeModifier());
-		double xa = (acceleration.getMagnitude() * acceleration.getDirection().getAltitudeModifier());
+		double xa = (acceleration.getMagnitude() * acceleration.getDirection().getXModifier());
 		double v = velocity / 15;
-		
-		falling = (acceleration.getMagnitude() - Physics.G < 0);
+
+		falling = (aa - Physics.G < 0);
 
 		if (falling) {
 			velocity--;
@@ -45,7 +45,7 @@ public class Rocket extends Entity implements FlyingObject {
 				velocity++;
 		}
 
-		pos.altitude += (aa - (Physics.G - v));
+		pos.altitude += (aa + v - Physics.G);
 		pos.x += xa;
 
 	}
