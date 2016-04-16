@@ -61,7 +61,7 @@ public class RocketPart extends Entity {
 	}
 
 	// no-arg constructor
-	public RocketPart() {
+	private RocketPart() {
 	}
 
 	public RocketPart(RocketPart other, boolean flip) {
