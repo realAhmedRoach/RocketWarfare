@@ -21,6 +21,7 @@ public class MissionControlState extends State {
 	private Label velocityLabel;
 
 	private double rockx, rocky;
+	private double ox, oy;
 
 	public MissionControlState(GraphicsContext g) {
 		super(g);
@@ -31,7 +32,7 @@ public class MissionControlState extends State {
 	protected void init() {
 		MainGameController.buttons().clear();
 		MainGameController.integrations().clear();
-		
+
 		g.setFill(Color.RED);
 
 		anim = new Animator(1000, () -> {
@@ -114,8 +115,15 @@ public class MissionControlState extends State {
 		rocket.tick();
 		anim.tick();
 
-		rockx = (rocket.getX() / 16);
-		rocky = MainGameController.getHeight() - (rocket.getAltitude() / 16);
+		rockx = (rocket.getX() / 16) - ox;
+		rocky = MainGameController.getHeight() - (rocket.getAltitude() / 16) - oy;
+		fixPos();
 	}
 
+	private void fixPos() {
+		if (rockx > MainGameController.getWidth()) ox += MainGameController.getWidth();
+		else if (rockx < 0) ox -= MainGameController.getWidth();
+		if (rocky > MainGameController.getHeight()) oy += MainGameController.getHeight();
+		else if (rocky < 0) oy -= MainGameController.getHeight();
+	}
 }
