@@ -5,7 +5,7 @@ public class Physics {
 	/**
 	 * This is the Gravity constant.
 	 */
-	public static final int G = 5;
+	public static final double G = 5;
 	
 	private Physics() {
 	}
