@@ -15,7 +15,7 @@ public class Rocket extends Entity implements FlyingObject {
 	private long velocity = 0;
 	protected VectorQuantity acceleration = new VectorQuantity(0, Direction.NORTH.clone());
 	protected ArrayList<RocketPart> parts = new ArrayList<>();
-	
+
 	private boolean launched = false;
 	private boolean falling;
 
@@ -34,11 +34,11 @@ public class Rocket extends Entity implements FlyingObject {
 	}
 
 	private void calculatePos() {
-		double altitudeChange = (acceleration.getMagnitude() * acceleration.getDirection().getAltitudeModifier());
-		if (altitudeChange - VectorQuantity.GRAVITY.getMagnitude() < 0)
-			falling = true;
-		else
-			falling = false;
+		double aa = (acceleration.getMagnitude() * acceleration.getDirection().getAltitudeModifier());
+		double xa = (acceleration.getMagnitude() * acceleration.getDirection().getAltitudeModifier());
+		double v = velocity / 15;
+		
+		falling = (acceleration.getMagnitude() - VectorQuantity.GRAVITY.getMagnitude() < 0);
 
 		if (falling) {
 			velocity--;
@@ -46,9 +46,9 @@ public class Rocket extends Entity implements FlyingObject {
 			if (velocity <= 0)
 				velocity++;
 		}
-		
-		pos.altitude += (altitudeChange - (VectorQuantity.GRAVITY.getMagnitude() - (velocity / 15)));
-		pos.x += acceleration.getMagnitude() * acceleration.getDirection().getXModifier();
+
+		pos.altitude += (aa - (VectorQuantity.GRAVITY.getMagnitude() - v));
+		pos.x += xa;
 
 	}
 
@@ -63,7 +63,7 @@ public class Rocket extends Entity implements FlyingObject {
 	public Position getPosition() {
 		return pos;
 	}
-	
+
 	public long getVelocity() {
 		return velocity;
 	}
