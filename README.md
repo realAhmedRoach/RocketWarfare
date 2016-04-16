@@ -21,3 +21,5 @@ They use the Greek lowercase alphabet. From `v0.0.0` to `v0.9.9`, this will be v
 
 ### License
 This program is licensed under the [GPLv3](/LICENSE) license.
+
+<img src="http://www.eclipse.org/artwork/images/v2/eclipse-mp-built-800x274.png" width="132"></img>
