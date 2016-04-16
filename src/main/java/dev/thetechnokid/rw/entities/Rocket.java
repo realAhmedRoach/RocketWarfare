@@ -2,10 +2,8 @@ package dev.thetechnokid.rw.entities;
 
 import java.util.ArrayList;
 
-import dev.thetechnokid.rw.maths.Dimension;
-import dev.thetechnokid.rw.maths.Direction;
-import dev.thetechnokid.rw.maths.Position;
-import dev.thetechnokid.rw.maths.VectorQuantity;
+import dev.thetechnokid.rw.maths.*;
+import dev.thetechnokid.rw.utils.Physics;
 
 public class Rocket extends Entity implements FlyingObject {
 
@@ -28,7 +26,7 @@ public class Rocket extends Entity implements FlyingObject {
 		if (launched) {
 			calculatePos();
 		} else {
-			if (getAcceleration().getMagnitude() > VectorQuantity.GRAVITY.getMagnitude())
+			if (getAcceleration().getMagnitude() > Physics.G)
 				launched = true;
 		}
 	}
@@ -38,7 +36,7 @@ public class Rocket extends Entity implements FlyingObject {
 		double xa = (acceleration.getMagnitude() * acceleration.getDirection().getAltitudeModifier());
 		double v = velocity / 15;
 		
-		falling = (acceleration.getMagnitude() - VectorQuantity.GRAVITY.getMagnitude() < 0);
+		falling = (acceleration.getMagnitude() - Physics.G < 0);
 
 		if (falling) {
 			velocity--;
@@ -47,7 +45,7 @@ public class Rocket extends Entity implements FlyingObject {
 				velocity++;
 		}
 
-		pos.altitude += (aa - (VectorQuantity.GRAVITY.getMagnitude() - v));
+		pos.altitude += (aa - (Physics.G - v));
 		pos.x += xa;
 
 	}
