@@ -142,4 +142,8 @@ public class RocketPart extends Entity {
 		return rocketParts;
 	}
 
+	public String toString() {
+		return "RocketPart: { " + getType() + " " + getTier() + ", " + getMass() + " }";
+	}
+
 }
