@@ -32,7 +32,7 @@ public class Rocket extends Entity implements FlyingObject {
 			Point2D partPos = rocketPart.getPosInRocket();
 			int xx = (int) (x + (partPos.getX() * Grid.SIZE));
 			int yy = (int) (y + (partPos.getY() * Grid.SIZE));
-			Utils.drawRotatedImage(g, rocketPart.getImage(), acceleration.getDirection().getDegrees()-90, xx, yy);
+			Utils.drawRotatedImage(g, rocketPart.getImage(), -(acceleration.getDirection().getDegrees() - 90), xx, yy);
 		}
 	}
 
