@@ -54,24 +54,19 @@ public class BuildingState extends State {
 		int ox = 0;
 		int oy = 0;
 		Set<Point2D> locset = partLocs.keySet();
-		for (Iterator<Point2D> i = locset.iterator(); i.hasNext();) {
-			Point2D p = i.next();
-			for (int k = 0; k < MainGameController.getWidth() / Grid.SIZE; k++) {
-				if ((int) p.getX() == k)
-					ox++;
-			}
-			for (int j = 0; j < MainGameController.getHeight() / Grid.SIZE; j++) {
-				if ((int) p.getY() == j)
-					oy++;
-			}
-		}
+		
+		oy = locset.stream().mapToInt(i -> (int) i.getY()).min().getAsInt();
+		ox = locset.stream().mapToInt(i -> (int) i.getX()).min().getAsInt();
+
+		MainGameController.setStatus("ox = " + ox + " oy = " + oy);
 
 		// List<RocketPart> parts = new ArrayList<RocketPart>();
-		Rocket r = new Rocket();
+		Rocket r = new Rocket(g);
 		for (Point2D orig : partLocs.keySet()) {
 			RocketPart p = partLocs.get(orig);
 			r.addPart(p);
 			p.setPosInRocket(new Point2D(orig.getX() - ox, orig.getY() - oy));
+			System.out.println("Pos:" + p.getPosInRocket());
 		}
 
 		State.setCurrentState(new MissionControlState(g, r));

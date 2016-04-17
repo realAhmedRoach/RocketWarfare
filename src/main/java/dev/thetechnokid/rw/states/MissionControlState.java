@@ -25,7 +25,7 @@ public class MissionControlState extends State {
 
 	public MissionControlState(GraphicsContext g, Rocket toControl) {
 		super(g);
-		rocket = toControl != null ? toControl : new Rocket();
+		rocket = toControl != null ? toControl : new Rocket(g);
 	}
 
 	@Override
@@ -102,7 +102,7 @@ public class MissionControlState extends State {
 	@Override
 	public void render() {
 		g.setFill(color);
-		g.fillOval(rockx, rocky, Grid.SIZE, Grid.SIZE);
+		rocket.render((int) rockx, (int) rocky);
 	}
 
 	@Override

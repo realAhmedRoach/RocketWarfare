@@ -3,7 +3,9 @@ package dev.thetechnokid.rw.entities;
 import java.util.ArrayList;
 
 import dev.thetechnokid.rw.maths.*;
-import dev.thetechnokid.rw.utils.Physics;
+import dev.thetechnokid.rw.utils.*;
+import javafx.geometry.Point2D;
+import javafx.scene.canvas.GraphicsContext;
 
 public class Rocket extends Entity implements FlyingObject {
 	private static final double VEL_DELTA = (1.0 / 10.0);
@@ -18,8 +20,22 @@ public class Rocket extends Entity implements FlyingObject {
 	private boolean launched = false;
 	private boolean falling;
 
+	private GraphicsContext g;
+
+	public Rocket(GraphicsContext g) {
+		this.g = g;
+	}
+
 	@Override
 	public void render(int x, int y) {
+		System.out.println("x " + x + " y " + y);
+		for (RocketPart rocketPart : parts) {
+			Point2D partPos = rocketPart.getPosInRocket();
+			int xx = (int) (x + partPos.getX());
+			int yy = (int) (y + partPos.getY());
+			Grid.renderInGrid(g, rocketPart.getImage(), xx, yy);
+			System.out.println("xx " + xx + " yy " + yy);
+		}
 	}
 
 	@Override
