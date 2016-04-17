@@ -53,20 +53,16 @@ public class BuildingState extends State {
 	private void createRocket(ActionEvent event) {
 		int ox = 0;
 		int oy = 0;
-		Set<Point2D> locset = partLocs.keySet();
 		
+		Set<Point2D> locset = partLocs.keySet();
 		oy = locset.stream().mapToInt(i -> (int) i.getY()).min().getAsInt();
 		ox = locset.stream().mapToInt(i -> (int) i.getX()).min().getAsInt();
 
-		MainGameController.setStatus("ox = " + ox + " oy = " + oy);
-
-		// List<RocketPart> parts = new ArrayList<RocketPart>();
 		Rocket r = new Rocket(g);
 		for (Point2D orig : partLocs.keySet()) {
 			RocketPart p = partLocs.get(orig);
 			r.addPart(p);
 			p.setPosInRocket(new Point2D(orig.getX() - ox, orig.getY() - oy));
-			System.out.println("Pos:" + p.getPosInRocket());
 		}
 
 		State.setCurrentState(new MissionControlState(g, r));

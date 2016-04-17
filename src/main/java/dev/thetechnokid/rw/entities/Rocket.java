@@ -28,16 +28,11 @@ public class Rocket extends Entity implements FlyingObject {
 
 	@Override
 	public void render(int x, int y) {
-		System.out.println("x " + x + " y " + y);
 		for (RocketPart rocketPart : parts) {
-			System.out.println("---");
-			System.out.println(rocketPart);
 			Point2D partPos = rocketPart.getPosInRocket();
 			int xx = (int) (x + (partPos.getX() * Grid.SIZE));
 			int yy = (int) (y + (partPos.getY() * Grid.SIZE));
 			g.drawImage(rocketPart.getImage(), xx, yy);
-			System.out.println("xx " + xx + " yy " + yy);
-			System.out.println("---");
 		}
 	}
 
