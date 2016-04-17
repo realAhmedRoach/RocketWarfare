@@ -19,7 +19,7 @@ public class Rocket extends Entity implements FlyingObject {
 	private boolean falling;
 
 	@Override
-	public void render() {
+	public void render(int x, int y) {
 	}
 
 	@Override
