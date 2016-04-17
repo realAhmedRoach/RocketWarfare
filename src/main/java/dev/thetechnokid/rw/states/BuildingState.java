@@ -1,15 +1,14 @@
 package dev.thetechnokid.rw.states;
 
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.*;
 
 import dev.thetechnokid.rw.controllers.MainGameController;
-import dev.thetechnokid.rw.entities.RocketPart;
+import dev.thetechnokid.rw.entities.*;
 import dev.thetechnokid.rw.utils.Grid;
+import javafx.event.ActionEvent;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 
 public class BuildingState extends State {
@@ -27,12 +26,6 @@ public class BuildingState extends State {
 		MainGameController.buttons().clear();
 		MainGameController.integrations().clear();
 
-		Button mc = new Button("Mission Control");
-		mc.setOnAction((event) -> State.setCurrentState(new MissionControlState(g)));
-		mc.setFocusTraversable(false);
-
-		MainGameController.buttons().add(mc);
-
 		for (RocketPart part : RocketPart.allParts()) {
 			Button b = new Button();
 			b.setGraphic(new ImageView(part.getImage()));
@@ -48,6 +41,40 @@ public class BuildingState extends State {
 			}
 			MainGameController.integrations().add(b);
 		}
+
+		MainGameController.buttons().add(new Separator());
+
+		Button finish = new Button("Complete!");
+		finish.setOnAction(this::createRocket);
+		finish.setFocusTraversable(false);
+		MainGameController.buttons().add(finish);
+	}
+
+	private void createRocket(ActionEvent event) {
+		int ox = 0;
+		int oy = 0;
+		Set<Point2D> locset = partLocs.keySet();
+		for (Iterator<Point2D> i = locset.iterator(); i.hasNext();) {
+			Point2D p = i.next();
+			for (int k = 0; k < MainGameController.getWidth() / Grid.SIZE; k++) {
+				if ((int) p.getX() == k)
+					ox++;
+			}
+			for (int j = 0; j < MainGameController.getHeight() / Grid.SIZE; j++) {
+				if ((int) p.getY() == j)
+					oy++;
+			}
+		}
+
+		// List<RocketPart> parts = new ArrayList<RocketPart>();
+		Rocket r = new Rocket();
+		for (Point2D orig : partLocs.keySet()) {
+			RocketPart p = partLocs.get(orig);
+			r.addPart(p);
+			p.setPosInRocket(new Point2D(orig.getX() - ox, orig.getY() - oy));
+		}
+
+		State.setCurrentState(new MissionControlState(g, r));
 	}
 
 	@Override

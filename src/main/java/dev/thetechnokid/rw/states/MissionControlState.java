@@ -23,9 +23,9 @@ public class MissionControlState extends State {
 	private double rockx, rocky;
 	private double ox, oy;
 
-	public MissionControlState(GraphicsContext g) {
+	public MissionControlState(GraphicsContext g, Rocket toControl) {
 		super(g);
-		rocket = new Rocket();
+		rocket = toControl != null ? toControl : new Rocket();
 	}
 
 	@Override
@@ -121,9 +121,13 @@ public class MissionControlState extends State {
 	}
 
 	private void fixPos() {
-		if (rockx > MainGameController.getWidth()) ox += MainGameController.getWidth();
-		else if (rockx < 0) ox -= MainGameController.getWidth();
-		if (rocky > MainGameController.getHeight()) oy += MainGameController.getHeight();
-		else if (rocky < 0) oy -= MainGameController.getHeight();
+		if (rockx > MainGameController.getWidth())
+			ox += MainGameController.getWidth();
+		else if (rockx < 0)
+			ox -= MainGameController.getWidth();
+		if (rocky > MainGameController.getHeight())
+			oy += MainGameController.getHeight();
+		else if (rocky < 0)
+			oy -= MainGameController.getHeight();
 	}
 }
