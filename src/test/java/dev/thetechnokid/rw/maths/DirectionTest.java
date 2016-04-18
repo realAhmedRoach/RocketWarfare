@@ -1,10 +1,8 @@
-package dev.thetechnokid.rw.tests;
+package dev.thetechnokid.rw.maths;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-
-import dev.thetechnokid.rw.maths.Direction;
 
 public class DirectionTest {
 
