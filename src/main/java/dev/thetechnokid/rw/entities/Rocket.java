@@ -6,6 +6,7 @@ import dev.thetechnokid.rw.maths.*;
 import dev.thetechnokid.rw.utils.*;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.transform.*;
 
 public class Rocket extends Entity implements FlyingObject {
 	private static final double VEL_DELTA = (1.0 / 10.0);
@@ -28,12 +29,15 @@ public class Rocket extends Entity implements FlyingObject {
 
 	@Override
 	public void render(int x, int y) {
+		g.save();
+		g.setTransform((new Affine(new Rotate(-(acceleration.getDirection().getDegrees() - 90), x, y))));
 		for (RocketPart rocketPart : parts) {
 			Point2D partPos = rocketPart.getPosInRocket();
 			int xx = (int) (x + (partPos.getX() * Grid.SIZE));
 			int yy = (int) (y + (partPos.getY() * Grid.SIZE));
-			Utils.drawRotatedImage(g, rocketPart.getImage(), -(acceleration.getDirection().getDegrees() - 90), xx, yy);
+			g.drawImage(rocketPart.getImage(), xx, yy);
 		}
+		g.restore();
 	}
 
 	@Override
