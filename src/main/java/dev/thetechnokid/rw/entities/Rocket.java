@@ -110,6 +110,8 @@ public class Rocket extends Entity implements FlyingObject {
 	}
 
 	public void addPart(RocketPart part) {
+		if (part == null)
+			return;
 		parts.add(part);
 		mass += part.getMass();
 	}
