@@ -10,6 +10,13 @@ public class Physics {
 	private Physics() {
 	}
 
+	/**
+	 * Equation for rocket position
+	 * @param a Acceleration
+	 * @param v Velocity
+	 * @param m Mass
+	 * @return The position delta
+	 */
 	public static double position(double a, double v, double m) {
 		return a + v - G;
 	}
