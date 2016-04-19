@@ -25,7 +25,8 @@ public class MissionControlState extends State {
 
 	public MissionControlState(GraphicsContext g, Rocket toControl) {
 		super(g);
-		rocket = toControl != null ? toControl : new Rocket(g);
+		if (toControl == null) throw new IllegalArgumentException("Rocket to control is null!");
+		rocket = toControl;
 	}
 
 	@Override
