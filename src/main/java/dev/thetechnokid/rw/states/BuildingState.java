@@ -53,7 +53,7 @@ public class BuildingState extends State {
 	private void createRocket(ActionEvent event) {
 		int ox = 0;
 		int oy = 0;
-		
+
 		Set<Point2D> locset = partLocs.keySet();
 		oy = locset.stream().mapToInt(i -> (int) i.getY()).min().getAsInt();
 		ox = locset.stream().mapToInt(i -> (int) i.getX()).min().getAsInt();

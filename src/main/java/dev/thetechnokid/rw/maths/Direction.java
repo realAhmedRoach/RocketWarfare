@@ -98,7 +98,7 @@ public class Direction implements Cloneable {
 		percent = degreesAbs / 90;
 		return percent;
 	}
-	
+
 	public Direction clone() {
 		return new Direction(degrees);
 	}

@@ -19,7 +19,7 @@ public class Logger {
 		public int level() {
 			return level;
 		}
-		
+
 		Level(int level) {
 			this.level = level;
 		}
@@ -47,8 +47,10 @@ public class Logger {
 			w.write(toWrite);
 			w.newLine();
 			w.flush();
-			if (level.level() < 2) System.out.println(toWrite);
-			else System.err.println(toWrite);
+			if (level.level() < 2)
+				System.out.println(toWrite);
+			else
+				System.err.println(toWrite);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -57,7 +59,7 @@ public class Logger {
 	public String getFileName() {
 		return file.getAbsolutePath();
 	}
-	
+
 	public static String getDefaultDir() {
 		String OS = System.getProperty("os.name").toUpperCase();
 		if (OS.contains("WIN"))

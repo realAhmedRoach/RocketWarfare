@@ -48,7 +48,7 @@ public class MainGameController implements Initializable {
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		currentController = this;
-		
+
 		init();
 
 		KeyFrame kf = new KeyFrame(Duration.millis(1000 / RocketWarfare.FPS), // 60
@@ -98,7 +98,7 @@ public class MainGameController implements Initializable {
 	public static ObservableList<Node> integrations() {
 		return currentController.integrations.getChildren();
 	}
-	
+
 	public static void setStatus(String statusText) {
 		currentController.status.setText(statusText);
 	}
