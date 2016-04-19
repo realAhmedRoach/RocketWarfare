@@ -6,10 +6,15 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import javafx.scene.canvas.Canvas;
+
 public class MissionControlStateTest {
+
+	static Canvas c;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		c = new Canvas();
 	}
 
 	@Test
@@ -18,9 +23,9 @@ public class MissionControlStateTest {
 		fail("Not yet implemented");
 	}
 
-	@Test(expected=IllegalArgumentException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testMissionControlState() {
-		new MissionControlState(null, null);
+		new MissionControlState(c.getGraphicsContext2D(), null);
 	}
 
 }
