@@ -10,4 +10,8 @@ public class Physics {
 	private Physics() {
 	}
 
+	public static double position(double a, double v, double m) {
+		return a + v - G;
+	}
+	
 }
