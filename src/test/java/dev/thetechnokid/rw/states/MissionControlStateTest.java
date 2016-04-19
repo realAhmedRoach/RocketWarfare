@@ -25,7 +25,7 @@ public class MissionControlStateTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testMissionControlState() {
-		new MissionControlState(c.getGraphicsContext2D(), null);
+		new MissionControlState(c.getGraphicsContext2D(), null, true);
 	}
 
 }

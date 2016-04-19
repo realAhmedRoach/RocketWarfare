@@ -15,10 +15,14 @@ public abstract class State {
 			currentState = state;
 	}
 
-
 	public State(GraphicsContext g) {
+		this(g, false);
+	}
+
+	public State(GraphicsContext g, boolean testing) {
 		this.g = g;
-		init();
+		if (!testing)
+			init();
 	}
 
 	public boolean gridEnabled() {

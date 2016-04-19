@@ -29,6 +29,12 @@ public class MissionControlState extends State {
 		rocket = toControl;
 	}
 
+	public MissionControlState(GraphicsContext g, Rocket toControl, boolean testing) {
+		super(g, testing);
+		if (toControl == null) throw new IllegalArgumentException("Rocket to control is null!");
+		rocket = toControl;
+	}
+	
 	@Override
 	protected void init() {
 		MainGameController.buttons().clear();
