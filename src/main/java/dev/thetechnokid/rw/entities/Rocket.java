@@ -19,7 +19,6 @@ public class Rocket extends Entity implements FlyingObject {
 	protected ArrayList<RocketPart> parts = new ArrayList<>();
 
 	private boolean launched = false;
-	private boolean falling;
 
 	private GraphicsContext g;
 
@@ -54,7 +53,7 @@ public class Rocket extends Entity implements FlyingObject {
 		double aa = (acceleration.getMagnitude() * acceleration.getDirection().getAltitudeModifier());
 		double xa = (acceleration.getMagnitude() * acceleration.getDirection().getXModifier());
 
-		falling = (aa - Physics.G < 0);
+		boolean falling = (aa - Physics.G < 0);
 
 		if (falling) {
 			velocity -= VEL_DELTA;
