@@ -21,7 +21,7 @@ public abstract class State {
 
 	public State(GraphicsContext g, boolean testing) {
 		this.g = g;
-		if (!testing)
+		if (testing == false)
 			init();
 	}
 
