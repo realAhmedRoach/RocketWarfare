@@ -3,6 +3,7 @@ package dev.thetechnokid.rw;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -27,6 +28,7 @@ public class RocketWarfare extends Application {
 			stage.setResizable(false);
 			stage.sizeToScene();
 			stage.setTitle(NAME + " | " + VERSION);
+			stage.getIcons().add(new Image(RocketWarfare.class.getResourceAsStream("/images/logo.png")));
 			stage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
