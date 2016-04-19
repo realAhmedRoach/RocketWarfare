@@ -2,7 +2,10 @@ language: java
 sudo: false
 jdk:
   - oraclejdk8
-script: mvn clean compile verify
+  
+install: true
+
+script: mvn clean verify
 
 notifications:
   slack: rocketwarfare:fRSQ5r9sAo5OnDaQTLImun1O
