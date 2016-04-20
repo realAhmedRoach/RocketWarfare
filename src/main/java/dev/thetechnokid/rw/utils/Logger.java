@@ -8,6 +8,7 @@ import java.util.Date;
 public class Logger {
 	private File file;
 	private BufferedWriter w;
+	private boolean inFile = true;
 
 	private static DateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -30,6 +31,8 @@ public class Logger {
 	}
 
 	public Logger(String name) {
+		if (name == null)
+			inFile = false;
 		try {
 			file = new File(getDefaultDir() + "/RW_" + name + ".txt");
 			if (!file.exists()) {
@@ -44,9 +47,11 @@ public class Logger {
 	public void log(String text, Level level) {
 		String toWrite = f.format(Date.from(Instant.now())) + " [" + level.name() + "] : " + text;
 		try {
-			w.write(toWrite);
-			w.newLine();
-			w.flush();
+			if (inFile) {
+				w.write(toWrite);
+				w.newLine();
+				w.flush();
+			}
 			if (level.level() < 2)
 				System.out.println(toWrite);
 			else
