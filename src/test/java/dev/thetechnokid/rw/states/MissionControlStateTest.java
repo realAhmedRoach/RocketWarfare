@@ -10,7 +10,7 @@ import javafx.scene.canvas.Canvas;
 
 public class MissionControlStateTest {
 
-	static Canvas c;
+	private static Canvas c;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -24,7 +24,7 @@ public class MissionControlStateTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testMissionControlState() {
+	public void testMissionControlStateNullRocket() {
 		new MissionControlState(c.getGraphicsContext2D(), null, true);
 	}
 
