@@ -1,16 +1,18 @@
 package dev.thetechnokid.rw.utils;
 
-import java.io.*;
-import java.text.*;
-import java.time.Instant;
-import java.util.Date;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Logger {
 	private File file;
 	private BufferedWriter w;
 	private boolean inFile = true;
 
-	private static DateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	private static DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
 	public static enum Level {
 		INFO(0), DEBUG(1), WARNING(2), ERROR(3);
@@ -45,7 +47,7 @@ public class Logger {
 	}
 
 	public void log(String text, Level level) {
-		String toWrite = f.format(Date.from(Instant.now())) + " [" + level.name() + "] : " + text;
+		String toWrite = LocalDateTime.now().format(f) + " [" + level.name() + "] : " + text;
 		try {
 			if (inFile) {
 				w.write(toWrite);
