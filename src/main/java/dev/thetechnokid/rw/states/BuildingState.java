@@ -61,8 +61,8 @@ public class BuildingState extends State {
 		Rocket r = new Rocket(g);
 		for (Point2D orig : partLocs.keySet()) {
 			RocketPart p = partLocs.get(orig);
-			r.addPart(p);
 			p.setPosInRocket(new Point2D(orig.getX() - ox, orig.getY() - oy));
+			r.addPart(p);
 		}
 
 		State.setCurrentState(new MissionControlState(g, r));
