@@ -37,7 +37,7 @@ public class Rocket extends Entity implements FlyingObject {
 		for (RocketPart rocketPart : parts) {
 			Point2D partPos = rocketPart.getPosInRocket();
 			int xx = (int) (x + (partPos.getX() * Grid.SIZE));
-			int yy = (int) (y + (partPos.getY() * Grid.SIZE));
+			int yy = (int) (y + (size.getHeight() * Grid.SIZE) + (partPos.getY() * Grid.SIZE));
 			g.drawImage(rocketPart.getImage(), xx, yy);
 		}
 		g.restore();
@@ -62,7 +62,7 @@ public class Rocket extends Entity implements FlyingObject {
 		if (falling) {
 			velocity -= VEL_DELTA;
 		} else {
-			if (velocity <= 0)
+			if (velocity <= Physics.initialVelocity(mass))
 				velocity += VEL_DELTA;
 		}
 
@@ -116,8 +116,8 @@ public class Rocket extends Entity implements FlyingObject {
 			return;
 		parts.add(part);
 		mass += part.getMass();
-		size.setWidth(parts.stream().mapToInt(p -> (int) p.getPosInRocket().getX()).max().getAsInt()); 
-		size.setHeight(parts.stream().mapToInt(p -> (int) p.getPosInRocket().getY()).max().getAsInt()); 
+		size.setWidth(parts.stream().mapToInt(p -> (int) p.getPosInRocket().getX()).max().getAsInt());
+		size.setHeight(parts.stream().mapToInt(p -> (int) p.getPosInRocket().getY()).max().getAsInt());
 		velocity = Physics.initialVelocity(mass);
 	}
 
