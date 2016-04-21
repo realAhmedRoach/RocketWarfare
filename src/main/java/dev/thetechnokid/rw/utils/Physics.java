@@ -18,7 +18,10 @@ public class Physics {
 	 * @return The position delta
 	 */
 	public static double position(double a, double v, double m) {
-		return a + v - G;
+		return a + v + (m * G);
 	}
 	
+	public static double initialVelocity(double m) {
+		return m * G;
+	}
 }
