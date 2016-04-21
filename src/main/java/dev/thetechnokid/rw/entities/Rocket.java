@@ -1,6 +1,6 @@
 package dev.thetechnokid.rw.entities;
 
-import java.util.ArrayList;
+import java.util.*;
 
 import dev.thetechnokid.rw.maths.*;
 import dev.thetechnokid.rw.utils.*;
@@ -13,10 +13,10 @@ public class Rocket extends Entity implements FlyingObject {
 
 	protected int mass;
 	protected Dimension size;
-	protected Position pos = new Position();
-	private double velocity = 0;
-	protected VectorQuantity acceleration = new VectorQuantity(0, Direction.NORTH.clone());
-	protected ArrayList<RocketPart> parts = new ArrayList<>();
+	protected Position pos;
+	private double velocity;
+	protected VectorQuantity acceleration;
+	protected List<RocketPart> parts;
 
 	private boolean launched = false;
 
@@ -24,6 +24,10 @@ public class Rocket extends Entity implements FlyingObject {
 
 	public Rocket(GraphicsContext g) {
 		this.g = g;
+		size = new Dimension();
+		pos = new Position();
+		acceleration = new VectorQuantity();
+		parts = new ArrayList<RocketPart>();
 	}
 
 	@Override
@@ -112,6 +116,9 @@ public class Rocket extends Entity implements FlyingObject {
 			return;
 		parts.add(part);
 		mass += part.getMass();
+		size.setWidth(parts.stream().mapToInt(p -> (int) p.getPosInRocket().getX()).max().getAsInt()); 
+		size.setHeight(parts.stream().mapToInt(p -> (int) p.getPosInRocket().getY()).max().getAsInt()); 
+		velocity = Physics.initialVelocity(mass);
 	}
 
 	public boolean isLaunched() {
