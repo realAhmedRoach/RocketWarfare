@@ -122,8 +122,8 @@ public class MissionControlState extends State {
 		rocket.tick();
 		anim.tick();
 
-		rockx = (rocket.getX() / 8) - ox;
-		rocky = MainGameController.getHeight() - (rocket.getAltitude() / 8) - oy;
+		rockx = (rocket.getX() / (Grid.SIZE)) - ox;
+		rocky = MainGameController.getHeight() - (rocket.getAltitude() / (Grid.SIZE)) - oy;
 		fixPos();
 	}
 

@@ -18,10 +18,15 @@ public class Physics {
 	 * @return The position delta
 	 */
 	public static double position(double a, double v, double m) {
-		return a + v + (m * G);
+		return a + v - initialVelocity(m);
 	}
 	
+	/**
+	 * Gets the initial velocity required for an object to be launched
+	 * @param m The mass of the object
+	 * @return Minimum velocity for launch
+	 */
 	public static double initialVelocity(double m) {
-		return m * G;
+		return (m * G) / 2;
 	}
 }
