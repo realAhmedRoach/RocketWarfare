@@ -8,7 +8,7 @@ public class VectorQuantity {
 
 	public VectorQuantity() {
 		magnitude = 0;
-		direction = Direction.NORTH;
+		direction = Direction.NORTH.clone();
 	}
 
 	public VectorQuantity(int magnitude, Direction direction) {
