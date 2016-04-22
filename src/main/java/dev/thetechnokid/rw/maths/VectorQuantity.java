@@ -15,7 +15,7 @@ public class VectorQuantity {
 		this.magnitude = (int) Math.hypot(x, y);
 		this.direction = new Direction((int) Math.toDegrees(Math.atan2(y, x)));
 	}
-	
+
 	public VectorQuantity(int magnitude, Direction direction) {
 		this(magnitude, direction, false);
 	}
