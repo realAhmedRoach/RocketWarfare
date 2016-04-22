@@ -49,8 +49,10 @@ public class Rocket extends Entity implements FlyingObject {
 		if (launched) {
 			calculatePos();
 		} else {
-			if (getAcceleration().getMagnitude() > Physics.G)
+			if (acceleration.getMagnitude() > 0) {
+				acceleration.setMagnitude((int) (Physics.G + 1));
 				launched = true;
+			}
 		}
 	}
 
