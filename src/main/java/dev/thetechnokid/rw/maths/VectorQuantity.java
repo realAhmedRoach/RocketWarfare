@@ -63,6 +63,6 @@ public class VectorQuantity {
 	 */
 	public double apf() {
 		return (Math.sin(Math.toRadians(direction.getDegrees())))
-				* ((double) magnitude * direction.getAltitudeModifier()) * 100.0;
+				* ((double) magnitude * direction.getAltitudeModifier());
 	}
 }
