@@ -10,7 +10,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 
 public class MissionControlState extends State {
-	private Color color = Color.RED;
+	private Color color = Color.ORANGERED;
 	private Animator anim;
 
 	private Rocket rocket;
@@ -116,6 +116,9 @@ public class MissionControlState extends State {
 	@Override
 	public void render() {
 		g.setFill(color);
+		g.fillText(String.format("%,d", (int) -oy) + "", 60, 20);
+		g.fillText(String.format("%,d", (int) ox) + "", MainGameController.getWidth() - 40,
+				MainGameController.getHeight() - 20);
 		rocket.render((int) rockx, (int) rocky);
 	}
 
