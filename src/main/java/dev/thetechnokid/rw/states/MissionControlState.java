@@ -1,5 +1,6 @@
 package dev.thetechnokid.rw.states;
 
+import dev.thetechnokid.rw.RocketWarfare;
 import dev.thetechnokid.rw.controllers.MainGameController;
 import dev.thetechnokid.rw.entities.Rocket;
 import dev.thetechnokid.rw.utils.*;
@@ -45,7 +46,7 @@ public class MissionControlState extends State {
 
 		g.setFill(Color.RED);
 
-		anim = new Animator(1000, () -> {
+		anim = new Animator(RocketWarfare.FPS / 1000, () -> {
 			String altitudeText = String.format("%.2f", rocket.getAltitude());
 			String xText = String.format("%.2f", rocket.getX());
 			String modifierText = "Altitude Modifier: "
