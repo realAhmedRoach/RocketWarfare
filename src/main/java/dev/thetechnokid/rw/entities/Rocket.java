@@ -34,7 +34,7 @@ public class Rocket extends Entity implements FlyingObject {
 	public void render(int x, int y) {
 		g.save();
 		g.setTransform((new Affine(new Rotate(-(acceleration.getDirection().getDegrees() - 90),
-				x + ((size.getWidth() * Grid.SIZE) / 2), y + (size.getHeight() * Grid.SIZE)))));
+				x + ((getWidth() * Grid.SIZE) / 2), y + (getHeight() * Grid.SIZE)))));
 		for (RocketPart rocketPart : parts) {
 			Point2D partPos = rocketPart.getPosInRocket();
 			int xx = (int) (x + (partPos.getX() * Grid.SIZE));
