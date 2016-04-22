@@ -55,4 +55,14 @@ public class VectorQuantity {
 			return;
 		magnitude -= i;
 	}
+
+	/**
+	 * Returns the speed of the rocket, in altitudes per frame.
+	 * 
+	 * @return The altitude per frame of the rocket.
+	 */
+	public double apf() {
+		return (Math.sin(Math.toRadians(direction.getDegrees())))
+				* ((double) magnitude * direction.getAltitudeModifier()) * 100.0;
+	}
 }

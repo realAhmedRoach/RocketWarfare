@@ -19,6 +19,7 @@ public class MissionControlState extends State {
 	private Label degreesLabel;
 	private Label modifierLabel;
 	private Label velocityLabel;
+	private Label apfLabel;
 
 	private double rockx, rocky;
 	private double ox, oy;
@@ -52,11 +53,13 @@ public class MissionControlState extends State {
 					+ "; X Modifier: " + String.format("%.4f", rocket.getAcceleration().getDirection().getXModifier());
 			String degreesText = rocket.getAcceleration().getDirection().getDegrees() + "\u00b0";
 			String velocityText = rocket.getVelocity() + "";
+			String apfText = String.format("%,.4f", rocket.getAcceleration().apf());
 			altitudeLabel.setText("Atitude: " + altitudeText);
 			xLabel.setText("X: " + xText);
 			degreesLabel.setText("Degrees: " + degreesText);
 			modifierLabel.setText(modifierText);
 			velocityLabel.setText("Velocity: " + velocityText);
+			apfLabel.setText("APF: " + apfText);
 		});
 
 		Button b = new Button("Change Colors");
@@ -103,9 +106,10 @@ public class MissionControlState extends State {
 		degreesLabel = new Label();
 		modifierLabel = new Label();
 		velocityLabel = new Label();
+		apfLabel = new Label();
 
 		MainGameController.buttons().addAll(b, tiltRight, tiltLeft, thrust, dethrust, altitudeLabel, xLabel,
-				degreesLabel, velocityLabel, modifierLabel, new Separator(), build);
+				degreesLabel, velocityLabel, modifierLabel, apfLabel, new Separator(), build);
 	}
 
 	@Override
