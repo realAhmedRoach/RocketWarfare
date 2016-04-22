@@ -46,9 +46,7 @@ public class VectorQuantity {
 	}
 
 	public void decreaseMagnitude(int i) {
-		if (isFinal)
-			return;
-		if (magnitude == 0)
+		if (isFinal || magnitude == 0)
 			return;
 		magnitude -= i;
 	}
