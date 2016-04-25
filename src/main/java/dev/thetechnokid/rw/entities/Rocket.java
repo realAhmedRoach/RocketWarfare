@@ -10,6 +10,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.transform.*;
 
 public class Rocket extends Entity implements FlyingObject, Serializable {
+	private static final long serialVersionUID = 7546621883949959769L;
+
 	private static final double VEL_DELTA = (1.0 / 10.0);
 
 	protected int mass;
