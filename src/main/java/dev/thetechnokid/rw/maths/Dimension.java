@@ -3,7 +3,8 @@ package dev.thetechnokid.rw.maths;
 import java.io.Serializable;
 
 public class Dimension implements Serializable{
-
+	private static final long serialVersionUID = 1622431993408507008L;
+	
 	private int width, height;
 
 	public Dimension() {

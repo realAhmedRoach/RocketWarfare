@@ -8,7 +8,8 @@ import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 
 public class RocketPart extends Entity implements Serializable {
-
+	private static final long serialVersionUID = 3857824053568051475L;
+	
 	private int mass;
 	private Point2D posInRocket;
 	private RocketPart north, south, east, west;
