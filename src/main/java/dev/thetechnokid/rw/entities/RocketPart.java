@@ -7,7 +7,7 @@ import dev.thetechnokid.rw.utils.*;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 
-public class RocketPart extends Entity {
+public class RocketPart extends Entity implements Serializable {
 
 	private int mass;
 	private Point2D posInRocket;

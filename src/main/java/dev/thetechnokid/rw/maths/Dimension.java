@@ -1,6 +1,8 @@
 package dev.thetechnokid.rw.maths;
 
-public class Dimension {
+import java.io.Serializable;
+
+public class Dimension implements Serializable{
 
 	private int width, height;
 

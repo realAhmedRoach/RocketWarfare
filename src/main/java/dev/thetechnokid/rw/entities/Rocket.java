@@ -1,5 +1,6 @@
 package dev.thetechnokid.rw.entities;
 
+import java.io.Serializable;
 import java.util.*;
 
 import dev.thetechnokid.rw.maths.*;
@@ -8,14 +9,14 @@ import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.transform.*;
 
-public class Rocket extends Entity implements FlyingObject {
+public class Rocket extends Entity implements FlyingObject, Serializable {
 	private static final double VEL_DELTA = (1.0 / 10.0);
 
 	protected int mass;
 	protected Dimension size;
-	protected Position pos;
+	protected transient Position pos;
 	private double velocity;
-	protected VectorQuantity acceleration;
+	protected transient VectorQuantity acceleration;
 	protected List<RocketPart> parts;
 
 	private boolean launched = false;
