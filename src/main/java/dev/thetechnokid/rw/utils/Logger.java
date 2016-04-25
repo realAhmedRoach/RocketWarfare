@@ -33,8 +33,10 @@ public class Logger {
 	}
 
 	public Logger(String name) {
-		if (name == null)
+		if (name == null) {
 			inFile = false;
+			return;
+		}
 		try {
 			file = new File(getDefaultDir() + "/RW_" + name + ".txt");
 			if (!file.exists()) {
