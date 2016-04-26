@@ -22,6 +22,7 @@ public class Rocket extends Entity implements FlyingObject, Serializable {
 	protected List<RocketPart> parts;
 
 	private boolean launched = false;
+	private int time;
 
 	private GraphicsContext g;
 
@@ -67,12 +68,14 @@ public class Rocket extends Entity implements FlyingObject, Serializable {
 
 		if (falling) {
 			velocity -= VEL_DELTA;
+			time++;
 		} else {
 			if (velocity <= Physics.initialVelocity(mass))
 				velocity += VEL_DELTA;
+			if(time < 1) time--;
 		}
 
-		pos.altitude += Physics.position(aa, velocity, mass);
+		pos.altitude += Physics.position(aa, velocity, time);
 		pos.x += xa;
 
 	}

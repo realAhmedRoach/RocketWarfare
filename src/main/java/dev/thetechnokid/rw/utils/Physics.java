@@ -6,6 +6,7 @@ public class Physics {
 	 * This is the Gravity constant.
 	 */
 	public static final double G = 5;
+	private static final double SLOW = 10;
 
 	private Physics() {
 	}
@@ -17,12 +18,12 @@ public class Physics {
 	 *            Acceleration
 	 * @param v
 	 *            Velocity
-	 * @param m
-	 *            Mass
+	 * @param t
+	 *            Time
 	 * @return The position delta
 	 */
-	public static double position(double a, double v, double m) {
-		return a + v - initialVelocity(m);
+	public static double position(double a, double v, double t) {
+		return a + v - ((G * t) / SLOW);
 	}
 
 	/**
@@ -33,6 +34,6 @@ public class Physics {
 	 * @return Minimum velocity for launch
 	 */
 	public static double initialVelocity(double m) {
-		return (m * G) / 2;
+		return G + 1;
 	}
 }
