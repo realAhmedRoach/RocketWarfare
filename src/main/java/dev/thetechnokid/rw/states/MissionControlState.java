@@ -50,11 +50,11 @@ public class MissionControlState extends State {
 			String altitudeText = String.format("%.2f", rocket.getAltitude());
 			String xText = String.format("%.2f", rocket.getX());
 			String modifierText = "Altitude Modifier: "
-					+ String.format("%.4f", rocket.getVelocity1().getDirection().getAltitudeModifier())
-					+ "; X Modifier: " + String.format("%.4f", rocket.getVelocity1().getDirection().getXModifier());
-			String degreesText = rocket.getVelocity1().getDirection().getDegrees() + "\u00b0";
+					+ String.format("%.4f", rocket.getVelocity().getDirection().getAltitudeModifier())
+					+ "; X Modifier: " + String.format("%.4f", rocket.getVelocity().getDirection().getXModifier());
+			String degreesText = rocket.getVelocity().getDirection().getDegrees() + "\u00b0";
 			String velocityText = rocket.getAcceleration() + "";
-			String apfText = String.format("%,.4f", rocket.getVelocity1().apf());
+			String apfText = String.format("%,.4f", rocket.getVelocity().apf());
 			altitudeLabel.setText("Atitude: " + altitudeText);
 			xLabel.setText("X: " + xText);
 			degreesLabel.setText("Degrees: " + degreesText);
@@ -74,22 +74,22 @@ public class MissionControlState extends State {
 
 		Button tiltRight = new Button("->");
 		tiltRight.setOnAction((event) -> {
-			rocket.getVelocity1().getDirection().decreaseDegrees();
+			rocket.getVelocity().getDirection().decreaseDegrees();
 		});
 
 		Button tiltLeft = new Button("<-");
 		tiltLeft.setOnAction((event) -> {
-			rocket.getVelocity1().getDirection().increaseDegrees();
+			rocket.getVelocity().getDirection().increaseDegrees();
 		});
 
 		Button thrust = new Button("Thrust");
 		thrust.setOnAction((event) -> {
-			rocket.getVelocity1().increaseMagnitude(1);
+			rocket.getVelocity().increaseMagnitude(1);
 		});
 
 		Button dethrust = new Button("De-Thrust");
 		dethrust.setOnAction((event) -> {
-			rocket.getVelocity1().decreaseMagnitude(1);
+			rocket.getVelocity().decreaseMagnitude(1);
 		});
 
 		Button build = new Button("To Building");
@@ -125,9 +125,9 @@ public class MissionControlState extends State {
 	@Override
 	public void tick() {
 		if (MainGameController.getKeyboard().get(KeyCode.RIGHT))
-			rocket.getVelocity1().getDirection().decreaseDegrees();
+			rocket.getVelocity().getDirection().decreaseDegrees();
 		else if (MainGameController.getKeyboard().get(KeyCode.LEFT))
-			rocket.getVelocity1().getDirection().increaseDegrees();
+			rocket.getVelocity().getDirection().increaseDegrees();
 
 		rocket.tick();
 		anim.tick();
