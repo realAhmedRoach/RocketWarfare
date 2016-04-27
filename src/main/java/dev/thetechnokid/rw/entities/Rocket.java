@@ -92,7 +92,7 @@ public class Rocket extends Entity implements FlyingObject, Serializable {
 		return pos;
 	}
 
-	public int getVelocity() {
+	public int getAcceleration() {
 		return (int) acceleration;
 	}
 
@@ -112,7 +112,7 @@ public class Rocket extends Entity implements FlyingObject, Serializable {
 		return (int) size.getHeight();
 	}
 
-	public VectorQuantity getAcceleration() {
+	public VectorQuantity getVelocity1() {
 		return velocity;
 	}
 
