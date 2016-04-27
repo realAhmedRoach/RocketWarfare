@@ -46,7 +46,7 @@ public class MissionControlState extends State {
 
 		g.setFill(Color.RED);
 
-		anim = new Animator(RocketWarfare.FPS / 1000, () -> {
+		anim = new Animator(1000 / RocketWarfare.FPS, () -> {
 			String altitudeText = String.format("%.2f", rocket.getAltitude());
 			String xText = String.format("%.2f", rocket.getX());
 			String modifierText = "Altitude Modifier: "

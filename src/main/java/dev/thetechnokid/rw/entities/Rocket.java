@@ -17,8 +17,8 @@ public class Rocket extends Entity implements FlyingObject, Serializable {
 	protected int mass;
 	protected Dimension size;
 	protected transient Position pos;
-	private double velocity;
-	protected transient VectorQuantity acceleration;
+	private double acceleration;
+	protected transient VectorQuantity velocity;
 	protected List<RocketPart> parts;
 
 	private boolean launched = false;
@@ -30,14 +30,14 @@ public class Rocket extends Entity implements FlyingObject, Serializable {
 		this.g = g;
 		size = new Dimension();
 		pos = new Position();
-		acceleration = new VectorQuantity();
+		velocity = new VectorQuantity();
 		parts = new ArrayList<RocketPart>();
 	}
 
 	@Override
 	public void render(int x, int y) {
 		g.save();
-		g.setTransform((new Affine(new Rotate(-(acceleration.getDirection().getDegrees() - 90),
+		g.setTransform((new Affine(new Rotate(-(velocity.getDirection().getDegrees() - 90),
 				x + ((getWidth() * Grid.SIZE) / 2), y + (getHeight() * Grid.SIZE)))));
 		for (RocketPart rocketPart : parts) {
 			Point2D partPos = rocketPart.getPosInRocket();
@@ -53,29 +53,29 @@ public class Rocket extends Entity implements FlyingObject, Serializable {
 		if (launched) {
 			calculatePos();
 		} else {
-			if (acceleration.getMagnitude() > 0) {
-				acceleration.setMagnitude((int) (Physics.G + 1));
+			if (velocity.getMagnitude() > 0) {
+				velocity.setMagnitude((int) (Physics.G + 1));
 				launched = true;
 			}
 		}
 	}
 
 	private void calculatePos() {
-		double aa = (acceleration.getMagnitude() * acceleration.getDirection().getAltitudeModifier());
-		double xa = (acceleration.getMagnitude() * acceleration.getDirection().getXModifier());
+		double aa = (velocity.getMagnitude() * velocity.getDirection().getAltitudeModifier());
+		double xa = (velocity.getMagnitude() * velocity.getDirection().getXModifier());
 
 		boolean falling = (aa - Physics.G < 0);
 
 		if (falling) {
-			velocity -= VEL_DELTA;
+			acceleration -= VEL_DELTA;
 			time++;
 		} else {
-			if (velocity <= Physics.initialVelocity(mass))
-				velocity += VEL_DELTA;
-			if(time < 1) time--;
+			if (acceleration <= Physics.initialVelocity(mass))
+				acceleration += VEL_DELTA;
+			if(time >= 1) time--;
 		}
 
-		pos.altitude += Physics.position(aa, velocity, time);
+		pos.altitude += Physics.position(aa, acceleration, time);
 		pos.x += xa;
 
 	}
@@ -93,7 +93,7 @@ public class Rocket extends Entity implements FlyingObject, Serializable {
 	}
 
 	public int getVelocity() {
-		return (int) velocity;
+		return (int) acceleration;
 	}
 
 	public double getAltitude() {
@@ -113,11 +113,11 @@ public class Rocket extends Entity implements FlyingObject, Serializable {
 	}
 
 	public VectorQuantity getAcceleration() {
-		return acceleration;
+		return velocity;
 	}
 
 	public int getForce() {
-		return mass * acceleration.getMagnitude();
+		return mass * velocity.getMagnitude();
 	}
 
 	public void addPart(RocketPart part) {
@@ -127,7 +127,7 @@ public class Rocket extends Entity implements FlyingObject, Serializable {
 		mass += part.getMass();
 		size.setWidth(parts.stream().mapToInt(p -> (int) p.getPosInRocket().getX()).max().getAsInt());
 		size.setHeight(parts.stream().mapToInt(p -> (int) p.getPosInRocket().getY()).max().getAsInt());
-		velocity = Physics.initialVelocity(mass);
+		acceleration = Physics.initialVelocity(mass);
 	}
 
 	public boolean isLaunched() {
