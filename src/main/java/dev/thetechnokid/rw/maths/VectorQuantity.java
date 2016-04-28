@@ -62,7 +62,7 @@ public class VectorQuantity {
 	 * @return The altitude per frame of the rocket.
 	 */
 	public double apf() {
-		return (Math.sin(Math.toRadians(direction.getDegrees())))
-				* ((double) magnitude * direction.getAltitudeModifier());
+		return ((Math.sin(Math.toRadians(direction.getDegrees())))
+				* ((double) magnitude) * direction.getAltitudeModifier());
 	}
 }
