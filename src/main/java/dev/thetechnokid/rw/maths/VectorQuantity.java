@@ -2,7 +2,7 @@ package dev.thetechnokid.rw.maths;
 
 public class VectorQuantity {
 
-	private int magnitude;
+	private double magnitude;
 	private Direction direction;
 	private boolean isFinal;
 
@@ -16,11 +16,11 @@ public class VectorQuantity {
 		this.direction = new Direction((int) Math.toDegrees(Math.atan2(y, x)));
 	}
 
-	public VectorQuantity(int magnitude, Direction direction) {
+	public VectorQuantity(double magnitude, Direction direction) {
 		this(magnitude, direction, false);
 	}
 
-	public VectorQuantity(int magnitude, Direction direction, boolean isFinal) {
+	public VectorQuantity(double magnitude, Direction direction, boolean isFinal) {
 		this.magnitude = magnitude;
 		this.direction = direction;
 		this.isFinal = isFinal;
@@ -30,11 +30,11 @@ public class VectorQuantity {
 		return (magnitude == other.magnitude) && (direction.equals(other.direction));
 	}
 
-	public int getMagnitude() {
+	public double getMagnitude() {
 		return magnitude;
 	}
 
-	public void setMagnitude(int magnitude) {
+	public void setMagnitude(double magnitude) {
 		if (isFinal)
 			return;
 		this.magnitude = magnitude;
@@ -44,13 +44,13 @@ public class VectorQuantity {
 		return direction;
 	}
 
-	public void increaseMagnitude(int i) {
+	public void increaseMagnitude(double i) {
 		if (isFinal)
 			return;
 		magnitude += i;
 	}
 
-	public void decreaseMagnitude(int i) {
+	public void decreaseMagnitude(double i) {
 		if (isFinal || magnitude == 0)
 			return;
 		magnitude -= i;
@@ -63,6 +63,6 @@ public class VectorQuantity {
 	 */
 	public double apf() {
 		return ((Math.sin(Math.toRadians(direction.getDegrees())))
-				* ((double) magnitude) * direction.getAltitudeModifier());
+				* (magnitude)) * direction.getAltitudeModifier();
 	}
 }

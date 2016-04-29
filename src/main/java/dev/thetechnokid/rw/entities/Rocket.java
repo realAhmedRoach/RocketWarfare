@@ -116,7 +116,7 @@ public class Rocket extends Entity implements FlyingObject, Serializable {
 		return velocity;
 	}
 
-	public int getForce() {
+	public double getForce() {
 		return mass * velocity.getMagnitude();
 	}
 
