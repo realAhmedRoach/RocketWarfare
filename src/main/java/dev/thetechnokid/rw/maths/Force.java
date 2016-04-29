@@ -14,4 +14,12 @@ public class Force {
 	public VectorQuantity getAcceleration() {
 		return acceleration;
 	}
+	
+	public double getForceY(int time) {
+		return (acceleration.getMagnitude() * acceleration.getDirection().getAltitudeModifier()) * time;
+	}
+	
+	public double getForceX(int time) {
+		return (acceleration.getMagnitude() * acceleration.getDirection().getXModifier()) * time;
+	}
 }

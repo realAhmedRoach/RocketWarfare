@@ -1,31 +1,47 @@
 package dev.thetechnokid.rw.utils;
 
+import dev.thetechnokid.rw.maths.Force;
+
 public class Physics {
 
 	/**
 	 * This is the Gravity constant.
 	 */
 	public static final double G = 5;
-	private static final double SLOW = 10;
 
 	private Physics() {
 	}
 
 	/**
-	 * Equation for rocket position
+	 * Equation for rocket altitude
 	 * 
-	 * @param a
-	 *            Acceleration
-	 * @param v
-	 *            Velocity
 	 * @param t
 	 *            Time
 	 * @return The position delta
 	 */
-	public static double position(double a, double v, double t) {
-		return a + v - ((G * t) / SLOW);
+	public static double positionY(int t, Force... forces) {
+		double add = 0.0;
+		for (Force force : forces) {
+			add += force.getForceY(t);
+		}
+		return add;
 	}
 
+	/**
+	 * Equation for rocket x
+	 * 
+	 * @param t
+	 *            Time
+	 * @return The position delta
+	 */
+	public static double positionX(int t, Force... forces) {
+		double add = 0.0;
+		for (Force force : forces) {
+			add += force.getForceX(t);
+		}
+		return add;
+	}
+	
 	/**
 	 * Gets the initial velocity required for an object to be launched
 	 * 
