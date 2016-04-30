@@ -22,7 +22,7 @@ public class Physics {
 	public static double positionY(int t, Force... forces) {
 		double add = 0.0;
 		for (Force force : forces) {
-			add += force.getForceY(t);
+			add += force.isAccelerated() ? force.getForceY(t) : force.getForceY();
 		}
 		return add;
 	}
@@ -37,11 +37,11 @@ public class Physics {
 	public static double positionX(int t, Force... forces) {
 		double add = 0.0;
 		for (Force force : forces) {
-			add += force.getForceX(t);
+			add += force.getForceX();
 		}
 		return add;
 	}
-	
+
 	/**
 	 * Gets the initial velocity required for an object to be launched
 	 * 
