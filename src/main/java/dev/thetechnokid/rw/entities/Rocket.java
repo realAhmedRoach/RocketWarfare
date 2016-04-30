@@ -16,10 +16,11 @@ public class Rocket extends Entity implements FlyingObject, Serializable {
 	protected Dimension size;
 	protected transient Position pos;
 	protected List<RocketPart> parts;
-	
-	private Force thrust = new Force(0, Direction.NORTH.clone());
+
+	private Force thrust = new Force(0, Direction.NORTH.clone(), false);
 
 	private boolean launched = false;
+	private boolean falling;
 	private int time;
 
 	private GraphicsContext g;
@@ -48,21 +49,35 @@ public class Rocket extends Entity implements FlyingObject, Serializable {
 	@Override
 	public void tick() {
 		if (launched) {
-			time++;
 			calculatePos();
 		} else {
 			if (thrust.getAcceleration().getMagnitude() > 0) {
 				thrust.getAcceleration().setMagnitude((int) (Physics.G + 1));
+				time = 1;
 				launched = true;
 			}
 		}
 	}
 
 	private void calculatePos() {
+		if (thrust.getForceY() - Force.GRAVITY.getForceY() < 0) {
+			Force.GRAVITY.setAccelerated(true);
+			if (!falling) {
+				time = 1;
+				falling = true;
+			}
+			pos.altitude += Physics.positionY(++time, Force.GRAVITY, thrust);
+		} else {
+			pos.altitude += falling ? Physics.positionY(--time, Force.GRAVITY, thrust)
+					: Physics.positionY(++time, Force.GRAVITY, thrust);
+			if (time <= Force.GRAVITY.getForceY()) {
+				falling = false;
+				Force.GRAVITY.setAccelerated(false);
+			}
+		}
 
-		pos.altitude += Physics.positionY(time, Force.GRAVITY, thrust);
 		pos.x += Physics.positionX(time, Force.GRAVITY, thrust);
-
+		System.out.println(time);
 	}
 
 	public double getX() {
