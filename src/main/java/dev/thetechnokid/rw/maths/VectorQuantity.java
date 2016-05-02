@@ -37,7 +37,7 @@ public class VectorQuantity {
 	public void setMagnitude(double magnitude) {
 		if (isFinal)
 			return;
-		this.magnitude = magnitude;
+		this.magnitude = Math.abs(magnitude);
 	}
 
 	public Direction getDirection() {
