@@ -11,14 +11,13 @@
 You are in a large world. Using your custom-built rocket, the missiles that you have installed in it, and your base, you try to defend yourself and your team mates from attacks.
 From UFOs, enemy ships, and more... *This is Rocket Warfare*.
 
-This game is made using JavaFX. I'm trying to minimize my use of external libraries, and to make it completely from scratch. The first test version will be released at least December 2016.
-Hopefully, this game turn out to be an MMORTS.
+Rocket Warfare is going to be an MMORTS made using JavaFX, with minimal use of external libraries. The first official release is set to go off January 2017.
 
 Here are the [graphics](res/images/spritesheet.png).
 
 ### Versioning
 The version tags for Rocket Warfare use [Semantic Versioning](http://semver.org). The display names are something else. 
-They use the Greek lowercase alphabet. From `v0.0.1` to `v0.9.9`, this will be version α (Alpha). Then comes `v1.0.0` to `v1.9.9`. That is version β (Beta), and then from `v2.0.0` it is γ (Gamma), and so on.
+They use the lowercase Greek alphabet. From `v0.0.1` to `v0.9.9`, this will be version α (Alpha). Then comes `v1.0.0` to `v1.9.9`. That is version β (Beta), and then from `v2.0.0` it is γ (Gamma), and so on.
 
 ### License
 This program is licensed under the [GPLv3](/LICENSE) license.
