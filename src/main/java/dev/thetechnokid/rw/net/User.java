@@ -9,7 +9,7 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 12395656776345L;
 
 	private String name;
-	private int level;
+	private Rank rank = Rank.NOOB;
 	private int money;
 	private ArrayList<Rocket> blueprints;
 
@@ -20,13 +20,9 @@ public class User implements Serializable {
 	public String getName() {
 		return name;
 	}
-
-	public int getLevel() {
-		return level;
-	}
-
-	public void setLevel(int level) {
-		this.level = level;
+	
+	public Rank getRank() {
+		return rank;
 	}
 	
 	public int getMoney() {
