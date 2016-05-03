@@ -12,9 +12,6 @@ import javafx.scene.transform.*;
 public class Rocket extends FlyingObject implements Serializable {
 	private static final long serialVersionUID = 7546621883949959769L;
 
-	protected int mass;
-	protected Dimension size;
-	protected transient Position pos;
 	protected List<RocketPart> parts;
 
 	private Force thrust = new Force(0, Direction.NORTH.clone(), false);
@@ -79,37 +76,9 @@ public class Rocket extends FlyingObject implements Serializable {
 		pos.x += Physics.positionX(time, Force.GRAVITY, thrust);
 		System.out.println(time);
 	}
-
-	public double getX() {
-		return pos.x;
-	}
-
-	public void setX(double x) {
-		pos.x = x;
-	}
-
-	public Position getPosition() {
-		return pos;
-	}
-
+	
 	public double getAcceleration() {
 		return thrust.getAcceleration().getMagnitude();
-	}
-
-	public double getAltitude() {
-		return pos.altitude;
-	}
-
-	public int getMass() {
-		return mass;
-	}
-
-	public int getWidth() {
-		return (int) size.getWidth();
-	}
-
-	public int getHeight() {
-		return (int) size.getHeight();
 	}
 
 	public VectorQuantity getVelocity() {
