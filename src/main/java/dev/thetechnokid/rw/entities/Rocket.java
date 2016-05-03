@@ -9,7 +9,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.transform.*;
 
-public class Rocket extends Entity implements FlyingObject, Serializable {
+public class Rocket extends FlyingObject implements Serializable {
 	private static final long serialVersionUID = 7546621883949959769L;
 
 	protected int mass;

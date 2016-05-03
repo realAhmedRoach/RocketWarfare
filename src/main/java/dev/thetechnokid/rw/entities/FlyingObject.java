@@ -1,6 +1,6 @@
 package dev.thetechnokid.rw.entities;
 
-public interface FlyingObject {
-	void render(int x, int y);
-	void tick();
+public abstract class FlyingObject {
+	public abstract void render(int x, int y);
+	public abstract void tick();
 }
