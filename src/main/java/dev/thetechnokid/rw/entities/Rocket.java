@@ -60,7 +60,7 @@ public class Rocket extends FlyingObject implements Serializable {
 			Force.GRAVITY.setAccelerated(true);
 			pos.altitude += Physics.positionY(++time, Force.GRAVITY, thrust);
 		} else {
-			pos.altitude += time == 1 ? Physics.positionY(--time, Force.GRAVITY, thrust)
+			pos.altitude += time > 1 ? Physics.positionY(--time, Force.GRAVITY, thrust)
 					: Physics.positionY(time, Force.GRAVITY, thrust);
 			if (time == 1)
 				Force.GRAVITY.setAccelerated(false);
