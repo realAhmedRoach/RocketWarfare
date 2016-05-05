@@ -28,4 +28,16 @@ public enum Rank {
 		this.name = name;
 		this.abbv = abbv;
 	}
+
+	public int getNum() {
+		return num;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getAbbv() {
+		return abbv;
+	}
 }
