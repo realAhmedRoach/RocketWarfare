@@ -17,7 +17,6 @@ public class Rocket extends FlyingObject implements Serializable {
 	private Force thrust = new Force(0, Direction.NORTH.clone(), false);
 
 	private boolean launched = false;
-	private boolean falling;
 	private int time;
 
 	private GraphicsContext g;
@@ -59,24 +58,18 @@ public class Rocket extends FlyingObject implements Serializable {
 	private void calculatePos() {
 		if (thrust.getForceY() - Force.GRAVITY.getForceY() < 0) {
 			Force.GRAVITY.setAccelerated(true);
-			if (!falling) {
-				time = 1;
-				falling = true;
-			}
 			pos.altitude += Physics.positionY(++time, Force.GRAVITY, thrust);
 		} else {
-			pos.altitude += falling ? Physics.positionY(--time, Force.GRAVITY, thrust)
-					: Physics.positionY(++time, Force.GRAVITY, thrust);
-			if (time <= Force.GRAVITY.getForceY()) {
-				falling = false;
+			pos.altitude += time == 1 ? Physics.positionY(--time, Force.GRAVITY, thrust)
+					: Physics.positionY(time, Force.GRAVITY, thrust);
+			if (time == 1)
 				Force.GRAVITY.setAccelerated(false);
-			}
 		}
 
 		pos.x += Physics.positionX(time, Force.GRAVITY, thrust);
 		System.out.println(time);
 	}
-	
+
 	public double getAcceleration() {
 		return thrust.getAcceleration().getMagnitude();
 	}
