@@ -23,10 +23,16 @@ public enum Rank {
 	private String name;
 	private String abbv;
 
+	private static Rank[] vals = values();
+
 	Rank(int num, String name, String abbv) {
 		this.num = num;
 		this.name = name;
 		this.abbv = abbv;
+	}
+
+	public Rank next() {
+		return vals[(this.ordinal() + 1) % vals.length];
 	}
 
 	public int getNum() {
