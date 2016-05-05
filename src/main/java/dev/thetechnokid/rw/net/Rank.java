@@ -7,7 +7,7 @@ public enum Rank {
 					"MSrgt"), SENIOR_MASTER_SERGEANT(7, "Senior Master Sergeant", "SrMSrgt"), CHIEF_MASTER_SERGEANT(8,
 							"Chief Master Sergeant", "CMSrgt"), COMMAND_CHIEF_MASTER_SERGEANT(9,
 									"Command Chief Master Sergeant",
-									"CoCMSrgt"), SECOND_LIEUTENANT(10, "Second Lieutenant", "SecLt"), FIRST_LIEUTENANT(
+									"CoCMSrgt"), SECOND_LIEUTENANT(10, "Second Lieutenant", "SLt"), FIRST_LIEUTENANT(
 											11, "First Lieutenant", "FLt"), CAPTAIN(12, "Captian", "Cap"), MAJOR(13,
 													"Major", "Mjr"), LIEUTENANT_COLONEL(14, "Lieutenant Colonel",
 															"LtCl"), COLONEL(15, "Colonel", "Cl"), BRIGADIER_GENERAL(16,
@@ -17,7 +17,7 @@ public enum Rank {
 																					"Lieutenant General",
 																					"LtGnrl"), GENERAL(19, "General",
 																							"Gnrl"), DICTATOR(20,
-																									"Dictator", "Dctr");
+																									"Dictator", "Dcttr");
 
 	private int num;
 	private String name;
