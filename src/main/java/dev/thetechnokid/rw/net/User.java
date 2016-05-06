@@ -12,6 +12,8 @@ public class User implements Serializable {
 	private Rank rank = Rank.NOOB;
 	private int money;
 	private ArrayList<Rocket> blueprints;
+	private String encryptedPassword;
+	private byte[] salt;
 
 	public User(String name) {
 		this.name = name;
