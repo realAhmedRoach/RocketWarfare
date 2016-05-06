@@ -1,4 +1,4 @@
-package dev.thetechnokid.rw.net;
+package dev.thetechnokid.rw.utils;
 
 import java.security.*;
 import java.security.spec.*;
