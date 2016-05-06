@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import dev.thetechnokid.rw.entities.Rocket;
+import dev.thetechnokid.rw.utils.StringEncryptor;
 
 public class User implements Serializable {
 	private static final long serialVersionUID = 12395656776345L;
@@ -12,11 +13,17 @@ public class User implements Serializable {
 	private Rank rank = Rank.NOOB;
 	private int money;
 	private ArrayList<Rocket> blueprints;
-	private String encryptedPassword;
+	private byte[] encryptedPassword;
 	private byte[] salt;
 
-	public User(String name) {
+	public User(String name, String password) {
 		this.name = name;
+		this.salt = StringEncryptor.generateSalt();
+		this.encryptedPassword = StringEncryptor.encryptPassword(password, salt);
+	}
+	
+	public boolean authenticate(String attemptedPassword) {
+		return StringEncryptor.authenticate(attemptedPassword, encryptedPassword, salt);
 	}
 	
 	public String getName() {
