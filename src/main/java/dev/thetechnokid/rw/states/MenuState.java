@@ -29,7 +29,7 @@ public class MenuState extends State {
 		grid.setHgap(10);
 		grid.setVgap(10);
 		
-		Label nameLabel = new Label("Name:");
+		Label nameLabel = new Label(Language.get("name", true) + ": ");
 		TextField nameField = new TextField();
 		nameField.setFocusTraversable(false);
 		nameField.setPromptText("JSmith");
