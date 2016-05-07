@@ -5,6 +5,7 @@ import dev.thetechnokid.rw.utils.*;
 import javafx.geometry.*;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 
@@ -12,7 +13,7 @@ public class MenuState extends State {
 
 	private boolean textOn, showWelcome;
 	private String name;
-	private boolean grid;
+	private boolean gridded;
 
 	public MenuState(GraphicsContext g) {
 		super(g);
@@ -23,21 +24,38 @@ public class MenuState extends State {
 		g.setTextAlign(TextAlignment.CENTER);
 		g.setTextBaseline(VPos.CENTER);
 
+		GridPane grid = new GridPane();
+		grid.setAlignment(Pos.CENTER);
+		grid.setHgap(10);
+		grid.setVgap(10);
+		
 		Label nameLabel = new Label("Name:");
 		TextField nameField = new TextField();
 		nameField.setFocusTraversable(false);
 		nameField.setPromptText("JSmith");
 		nameField.setMaxWidth(100);
+		
+		Label pwLabel = new Label("Password:");
+		PasswordField pwField = new PasswordField();
+		pwField.setFocusTraversable(false);
+		pwField.setPromptText("Password");
+		pwField.setMaxWidth(100);
+		
+		grid.add(nameLabel, 0, 1);
+		grid.add(nameField, 1, 1);
+		grid.add(pwLabel, 0, 2);
+		grid.add(pwField, 1, 2);
+		
 		Button start = new Button("Start Building!");
 		start.setOnAction((event) -> {
 			name = nameField.getText();
 			textOn = true;
-			grid = true;
+			gridded = true;
 			start.disableProperty().set(true);
 			g.getCanvas().requestFocus();
 		});
 
-		MainGameController.buttons().addAll(nameLabel, nameField, start);
+		MainGameController.buttons().addAll(grid, start);
 	}
 
 	@Override
@@ -70,6 +88,6 @@ public class MenuState extends State {
 
 	@Override
 	public boolean gridEnabled() {
-		return grid;
+		return gridded;
 	}
 }
