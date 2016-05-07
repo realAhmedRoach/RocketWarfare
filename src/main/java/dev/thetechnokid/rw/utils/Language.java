@@ -37,6 +37,10 @@ public class Language {
 		return get(thing, true);
 	}
 
+	public static String getLocale() {
+		return LOCALE;
+	}
+	
 	private static void init() {
 		try {
 			InputStream inputStream = RocketWarfare.class.getResourceAsStream("/languages/" + LOCALE + ".properties");
