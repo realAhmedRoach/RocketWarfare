@@ -28,24 +28,24 @@ public class MenuState extends State {
 		grid.setAlignment(Pos.CENTER);
 		grid.setHgap(10);
 		grid.setVgap(10);
-		
-		Label nameLabel = new Label(Language.get("name", true) + ": ");
+
+		Label nameLabel = new Label(Language.get("name") + ": ");
 		TextField nameField = new TextField();
 		nameField.setFocusTraversable(false);
 		nameField.setPromptText("JSmith");
 		nameField.setMaxWidth(100);
-		
-		Label pwLabel = new Label("Password:");
+
+		Label pwLabel = new Label(Language.get("password") + ":");
 		PasswordField pwField = new PasswordField();
 		pwField.setFocusTraversable(false);
-		pwField.setPromptText("Password");
+		pwField.setPromptText(Language.get("password"));
 		pwField.setMaxWidth(100);
-		
+
 		grid.add(nameLabel, 0, 1);
 		grid.add(nameField, 1, 1);
 		grid.add(pwLabel, 0, 2);
 		grid.add(pwField, 1, 2);
-		
+
 		Button start = new Button("Start Building!");
 		start.setOnAction((event) -> {
 			name = nameField.getText();
