@@ -13,6 +13,8 @@ public class User implements Serializable {
 	private Rank rank = Rank.NOOB;
 	private int money;
 	private ArrayList<Rocket> blueprints;
+	private Prefrences prefs;
+	
 	private byte[] encryptedPassword;
 	private byte[] salt;
 
@@ -20,6 +22,8 @@ public class User implements Serializable {
 		this.name = name;
 		this.salt = StringEncryptor.generateSalt();
 		this.encryptedPassword = StringEncryptor.encryptPassword(password, salt);
+		
+		prefs = new Prefrences(this);
 	}
 	
 	public boolean authenticate(String attemptedPassword) {
@@ -44,6 +48,10 @@ public class User implements Serializable {
 	
 	public void addBlueprint(Rocket print) {
 		blueprints.add(print);
+	}
+
+	public Prefrences getPrefs() {
+		return prefs;
 	}
 
 }
