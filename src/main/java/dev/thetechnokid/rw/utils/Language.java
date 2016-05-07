@@ -32,6 +32,10 @@ public class Language {
 
 		return b.substring(0, b.length() - 1);
 	}
+	
+	public static String get(String thing) {
+		return get(thing, true);
+	}
 
 	private static void init() {
 		try {
