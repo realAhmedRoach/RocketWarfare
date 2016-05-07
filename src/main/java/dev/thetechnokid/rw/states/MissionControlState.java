@@ -10,7 +10,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 
 public class MissionControlState extends State {
-	private Color color = Color.ORANGERED;
 	private Animator anim;
 
 	private Rocket rocket;
@@ -63,15 +62,6 @@ public class MissionControlState extends State {
 			apfLabel.setText("APF: " + apfText);
 		});
 
-		Button b = new Button("Change Colors");
-		b.setOnAction((event) -> {
-			if (color.equals(Color.RED))
-				color = (Color.ROSYBROWN);
-			else
-				color = (Color.RED);
-			g.getCanvas().requestFocus();
-		});
-
 		Button tiltRight = new Button("->");
 		tiltRight.setOnAction((event) -> {
 			rocket.getVelocity().getDirection().decreaseDegrees();
@@ -95,7 +85,6 @@ public class MissionControlState extends State {
 		Button build = new Button("To Building");
 		build.setOnAction((event) -> State.setCurrentState(new BuildingState(g)));
 
-		b.setFocusTraversable(false);
 		tiltRight.setFocusTraversable(false);
 		tiltLeft.setFocusTraversable(false);
 		thrust.setFocusTraversable(false);
@@ -109,13 +98,13 @@ public class MissionControlState extends State {
 		velocityLabel = new Label();
 		apfLabel = new Label();
 
-		MainGameController.buttons().addAll(b, tiltRight, tiltLeft, thrust, dethrust, altitudeLabel, xLabel,
+		MainGameController.buttons().addAll(tiltRight, tiltLeft, thrust, dethrust, altitudeLabel, xLabel,
 				degreesLabel, velocityLabel, modifierLabel, apfLabel, new Separator(), build);
 	}
 
 	@Override
 	public void render() {
-		g.setFill(color);
+		g.setFill(Color.ORANGERED);
 		g.fillText(String.format("%,d", (int) -oy) + "", 60, 20);
 		g.fillText(String.format("%,d", (int) ox) + "", MainGameController.getWidth() - 40,
 				MainGameController.getHeight() - 20);
