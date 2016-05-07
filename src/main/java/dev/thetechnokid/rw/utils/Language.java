@@ -13,6 +13,9 @@ public class Language {
 		init();
 	}
 
+	private Language() {
+	}
+
 	public static void setLocale(String locale) {
 		LOCALE = locale;
 		init();
