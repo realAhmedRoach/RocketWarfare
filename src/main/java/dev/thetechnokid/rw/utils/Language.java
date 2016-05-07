@@ -21,7 +21,7 @@ public class Language {
 		init();
 	}
 
-	public String get(String thing, boolean capitalize) {
+	public static String get(String thing, boolean capitalize) {
 		StringBuilder b = new StringBuilder();
 		for (String element : thing.split(" ")) {
 			String loc = props.getProperty(element, element);
