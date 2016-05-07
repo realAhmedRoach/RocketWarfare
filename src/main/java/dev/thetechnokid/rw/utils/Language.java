@@ -21,10 +21,13 @@ public class Language {
 		init();
 	}
 
-	public String get(String thing) {
+	public String get(String thing, boolean capitalize) {
 		StringBuilder b = new StringBuilder();
 		for (String element : thing.split(" ")) {
-			b.append(props.getProperty(element) + " ");
+			String loc = props.getProperty(element, element);
+			if (capitalize)
+				loc = loc.substring(0, 1).toUpperCase() + loc.substring(1);
+			b.append(loc + " ");
 		}
 		return b.toString();
 	}
