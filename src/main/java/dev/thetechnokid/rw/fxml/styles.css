@@ -1,3 +1,11 @@
+.root {
+	-fx-background-color: linear-gradient(#555555, #000000);
+}
+
+.label {
+	-fx-text-fill: #aaaaaa;
+}
+
 .button {
     -fx-background-color: 
         linear-gradient(#ffd65b, #e68400),
