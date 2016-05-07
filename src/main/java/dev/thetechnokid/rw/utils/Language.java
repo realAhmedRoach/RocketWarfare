@@ -29,7 +29,8 @@ public class Language {
 				loc = loc.substring(0, 1).toUpperCase() + loc.substring(1);
 			b.append(loc + " ");
 		}
-		return b.toString();
+		
+		return b.substring(0, b.length());
 	}
 
 	private static void init() {
