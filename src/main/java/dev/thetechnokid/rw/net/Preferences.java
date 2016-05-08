@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
-public class Prefrences implements java.io.Serializable {
+public class Preferences implements java.io.Serializable {
 	private static final long serialVersionUID = 9435437432L;
 	
 	private Color color;
@@ -14,7 +14,7 @@ public class Prefrences implements java.io.Serializable {
 	private ArrayList<User> friends;
 	private String status;
 
-	public Prefrences(User user) {
+	public Preferences(User user) {
 		color = Color.RED;
 		pic = null;
 		displayName = user.getName();
