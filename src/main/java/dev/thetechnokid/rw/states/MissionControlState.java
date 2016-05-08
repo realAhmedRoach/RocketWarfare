@@ -49,8 +49,9 @@ public class MissionControlState extends State {
 			String altitudeText = String.format("%.2f", rocket.getAltitude());
 			String xText = String.format("%.2f", rocket.getX());
 			String modifierText = Language.get("altitude modifier") + ": "
-					+ String.format("%.4f", rocket.getVelocity().getDirection().getAltitudeModifier())
-					+ "; X "+ Language.get("modifier") + ": " + String.format("%.4f", rocket.getVelocity().getDirection().getXModifier());
+					+ String.format("%.4f", rocket.getVelocity().getDirection().getAltitudeModifier()) + "; X "
+					+ Language.get("modifier") + ": "
+					+ String.format("%.4f", rocket.getVelocity().getDirection().getXModifier());
 			String degreesText = rocket.getVelocity().getDirection().getDegrees() + "\u00b0";
 			String velocityText = rocket.getAcceleration() + "";
 			String apfText = String.format("%,.4f", rocket.getVelocity().apf());
@@ -98,8 +99,8 @@ public class MissionControlState extends State {
 		velocityLabel = new Label();
 		apfLabel = new Label();
 
-		MainGameController.buttons().addAll(tiltRight, tiltLeft, thrust, dethrust, altitudeLabel, xLabel, degreesLabel,
-				velocityLabel, modifierLabel, apfLabel, new Separator(), build);
+		MainGameController.buttons().addAll(tiltRight, tiltLeft, thrust, dethrust, new Separator(), altitudeLabel,
+				xLabel, degreesLabel, velocityLabel, modifierLabel, apfLabel, new Separator(), build);
 	}
 
 	@Override
