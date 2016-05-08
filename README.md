@@ -8,7 +8,7 @@
 [![Waffle.io Progress](https://img.shields.io/waffle/label/theTechnoKid/RocketWarfare/in%20progress.svg?style=flat-square)](http://waffle.io/theTechnoKid/RocketWarfare)
 [![Waffle.io Ready](https://img.shields.io/waffle/label/theTechnoKid/RocketWarfare/ready.svg?style=flat-square)](http://waffle.io/theTechnoKid/RocketWarfare)
 
-[![forthebadge](http://forthebadge.com/images/badges/built-with-swag.svg)](http://forthebadge.com)
+![logo](res/images/logo.png) [![forthebadge](http://forthebadge.com/images/badges/built-with-swag.svg)](http://forthebadge.com) ![logo](res/images/logo.png)
 
 You are in a large world. Using your custom-built rocket, the missiles that you have installed in it, and your base, you try to defend yourself and your team mates from attacks.
 From UFOs, enemy ships, and more... *This is Rocket Warfare*.
