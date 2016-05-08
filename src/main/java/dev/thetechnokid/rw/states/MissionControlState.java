@@ -48,17 +48,17 @@ public class MissionControlState extends State {
 		anim = new Animator(1000 / RocketWarfare.FPS, () -> {
 			String altitudeText = String.format("%.2f", rocket.getAltitude());
 			String xText = String.format("%.2f", rocket.getX());
-			String modifierText = "Altitude Modifier: "
+			String modifierText = Language.get("altitude modifier") + ": "
 					+ String.format("%.4f", rocket.getVelocity().getDirection().getAltitudeModifier())
-					+ "; X Modifier: " + String.format("%.4f", rocket.getVelocity().getDirection().getXModifier());
+					+ "; X "+ Language.get("modifier") + ": " + String.format("%.4f", rocket.getVelocity().getDirection().getXModifier());
 			String degreesText = rocket.getVelocity().getDirection().getDegrees() + "\u00b0";
 			String velocityText = rocket.getAcceleration() + "";
 			String apfText = String.format("%,.4f", rocket.getVelocity().apf());
-			altitudeLabel.setText("Atitude: " + altitudeText);
+			altitudeLabel.setText(Language.get("altitud") + ": " + altitudeText);
 			xLabel.setText("X: " + xText);
-			degreesLabel.setText("Degrees: " + degreesText);
+			degreesLabel.setText(Language.get("degrees") + ": " + degreesText);
 			modifierLabel.setText(modifierText);
-			velocityLabel.setText("Velocity: " + velocityText);
+			velocityLabel.setText(Language.get("velocity") + ": " + velocityText);
 			apfLabel.setText("APF: " + apfText);
 		});
 
@@ -98,8 +98,8 @@ public class MissionControlState extends State {
 		velocityLabel = new Label();
 		apfLabel = new Label();
 
-		MainGameController.buttons().addAll(tiltRight, tiltLeft, thrust, dethrust, altitudeLabel, xLabel,
-				degreesLabel, velocityLabel, modifierLabel, apfLabel, new Separator(), build);
+		MainGameController.buttons().addAll(tiltRight, tiltLeft, thrust, dethrust, altitudeLabel, xLabel, degreesLabel,
+				velocityLabel, modifierLabel, apfLabel, new Separator(), build);
 	}
 
 	@Override
@@ -122,7 +122,8 @@ public class MissionControlState extends State {
 		anim.tick();
 
 		rockx = (rocket.getX() / (Grid.SIZE)) - ox;
-		rocky = MainGameController.getHeight() - (rocket.getAltitude() / (Grid.SIZE)) - ((rocket.getHeight() + 1) * Grid.SIZE) - oy;
+		rocky = MainGameController.getHeight() - (rocket.getAltitude() / (Grid.SIZE))
+				- ((rocket.getHeight() + 1) * Grid.SIZE) - oy;
 		fixPos();
 	}
 
