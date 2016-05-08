@@ -23,3 +23,7 @@ They use the lowercase Greek alphabet. From `v0.0.1` to `v0.9.9`, this will be v
 This program is licensed under the [GPLv3](/LICENSE) license.
 
 <img src="http://www.eclipse.org/artwork/images/v2/eclipse-mp-built-800x274.png" width="132"></img>
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/theTechnoKid/rocketwarfare/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
