@@ -4,25 +4,17 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import dev.thetechnokid.rw.RocketWarfare;
-import dev.thetechnokid.rw.input.Keyboard;
-import dev.thetechnokid.rw.input.Mouse;
-import dev.thetechnokid.rw.states.MenuState;
-import dev.thetechnokid.rw.states.State;
-import dev.thetechnokid.rw.utils.Assets;
-import dev.thetechnokid.rw.utils.Grid;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+import dev.thetechnokid.rw.input.*;
+import dev.thetechnokid.rw.states.*;
+import dev.thetechnokid.rw.utils.*;
+import javafx.animation.*;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.fxml.*;
 import javafx.scene.Node;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.canvas.*;
 import javafx.scene.control.Label;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.input.*;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
@@ -45,6 +37,8 @@ public class MainGameController implements Initializable {
 
 	private Timeline gameLoop = new Timeline();
 
+	private Logger log = new Logger();
+
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		currentController = this;
@@ -61,8 +55,14 @@ public class MainGameController implements Initializable {
 
 					if (State.getCurrentState().gridEnabled())
 						Grid.render(g);
-					State.getCurrentState().render();
-					State.getCurrentState().tick();
+
+					try {
+						State.getCurrentState().render();
+						State.getCurrentState().tick();
+					} catch (Exception e) {
+						e.printStackTrace();
+						log.log(e.getMessage(), Logger.Level.ERROR);
+					}
 
 					k.tick();
 				});
