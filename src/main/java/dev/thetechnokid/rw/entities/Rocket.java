@@ -56,7 +56,7 @@ public class Rocket extends FlyingObject implements Serializable {
 	}
 
 	private void calculatePos() {
-		if (thrust.getForceY() - Force.GRAVITY.getForceY() < 0) {
+		if (thrust.getForceY() < Force.GRAVITY.getForceY()) {
 			Force.GRAVITY.setAccelerated(true);
 			pos.altitude += Physics.positionY(++time, Force.GRAVITY, thrust);
 		} else {
