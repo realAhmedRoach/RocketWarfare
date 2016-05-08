@@ -67,7 +67,7 @@ public class MenuState extends State {
 		}
 
 		if (textOn) {
-			Utils.centerText(g, "Welcome, " + name, 20);
+			Utils.centerText(g, Language.get("welcome") + ", " + name, 20);
 			showWelcome = true;
 		}
 		// Grid.render(g);
