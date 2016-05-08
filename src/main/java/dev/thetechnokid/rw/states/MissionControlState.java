@@ -72,12 +72,12 @@ public class MissionControlState extends State {
 			rocket.getVelocity().getDirection().increaseDegrees();
 		});
 
-		Button thrust = new Button("Thrust");
+		Button thrust = new Button(Language.get("thrust"));
 		thrust.setOnAction((event) -> {
 			rocket.getVelocity().increaseMagnitude(1);
 		});
 
-		Button dethrust = new Button("De-Thrust");
+		Button dethrust = new Button(Language.get("dethrust"));
 		dethrust.setOnAction((event) -> {
 			rocket.getVelocity().decreaseMagnitude(1);
 		});
