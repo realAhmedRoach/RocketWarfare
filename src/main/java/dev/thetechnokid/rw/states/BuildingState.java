@@ -42,8 +42,6 @@ public class BuildingState extends State {
 			MainGameController.integrations().add(b);
 		}
 
-		MainGameController.buttons().add(new Separator());
-
 		Button finish = new Button("Complete!");
 		finish.setOnAction(this::createRocket);
 		finish.setFocusTraversable(false);
