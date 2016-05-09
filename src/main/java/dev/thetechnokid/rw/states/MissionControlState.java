@@ -135,7 +135,7 @@ public class MissionControlState extends State {
 			ox -= MainGameController.getWidth();
 		if (rocky > MainGameController.getHeight())
 			oy += MainGameController.getHeight();
-		else if (rocky < 0)
+		else if (rocky < -(rocket.getHeight() * Grid.SIZE))
 			oy -= MainGameController.getHeight();
 	}
 }
