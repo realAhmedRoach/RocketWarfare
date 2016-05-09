@@ -99,6 +99,10 @@ public class MainGameController implements Initializable {
 		return currentController.integrations.getChildren();
 	}
 
+	public static Canvas getCanvas() {
+		return currentController.theCanvas;
+	}
+	
 	public static void setStatus(String statusText) {
 		currentController.status.setText(statusText);
 	}
