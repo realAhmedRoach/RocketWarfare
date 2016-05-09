@@ -13,6 +13,7 @@ public class Preferences implements java.io.Serializable {
 	private String displayName;
 	private ArrayList<User> friends;
 	private String status;
+	private String locale;
 
 	public Preferences(User user) {
 		color = Color.RED;
@@ -20,6 +21,7 @@ public class Preferences implements java.io.Serializable {
 		displayName = user.getName();
 		friends = new ArrayList<>();
 		status = "Hi";
+		locale = "en_US";
 	}
 
 	public Color getColor() {
@@ -56,5 +58,13 @@ public class Preferences implements java.io.Serializable {
 
 	public ArrayList<User> getFriends() {
 		return friends;
+	}
+
+	public String getLocale() {
+		return locale;
+	}
+
+	public void setLocale(String locale) {
+		this.locale = locale;
 	}
 }
