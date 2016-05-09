@@ -82,6 +82,11 @@ public class MissionControlState extends State {
 		dethrust.setOnAction((event) -> {
 			rocket.getVelocity().decreaseMagnitude(1);
 		});
+		
+		Button expand = new Button("Expand");
+		expand.setOnAction((event) -> {
+			MainGameController.getCanvas().setWidth(1056);
+		});
 
 		Button build = new Button("To Building");
 		build.setOnAction((event) -> State.setCurrentState(new BuildingState(g)));
@@ -99,7 +104,7 @@ public class MissionControlState extends State {
 		velocityLabel = new Label();
 		apfLabel = new Label();
 
-		MainGameController.buttons().addAll(tiltRight, tiltLeft, thrust, dethrust, new Separator(), altitudeLabel,
+		MainGameController.buttons().addAll(tiltRight, tiltLeft, thrust, dethrust, expand, new Separator(), altitudeLabel,
 				xLabel, degreesLabel, velocityLabel, modifierLabel, apfLabel, new Separator(), build);
 	}
 
@@ -118,6 +123,9 @@ public class MissionControlState extends State {
 			rocket.getVelocity().getDirection().decreaseDegrees();
 		else if (MainGameController.getKeyboard().get(KeyCode.LEFT))
 			rocket.getVelocity().getDirection().increaseDegrees();
+		
+		if (MainGameController.getKeyboard().get(KeyCode.ESCAPE))
+			MainGameController.getCanvas().setWidth(352);
 
 		rocket.tick();
 		anim.tick();
