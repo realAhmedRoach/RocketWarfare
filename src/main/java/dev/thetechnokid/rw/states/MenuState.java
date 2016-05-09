@@ -31,7 +31,7 @@ public class MenuState extends State {
 
 		Label nameLabel = new Label(Language.get("name") + ": ");
 		TextField nameField = new TextField();
-		nameField.setPromptText("JSmith");
+		nameField.setPromptText(Language.get("name"));
 		nameField.setMaxWidth(100);
 
 		Label pwLabel = new Label(Language.get("password") + ":");
