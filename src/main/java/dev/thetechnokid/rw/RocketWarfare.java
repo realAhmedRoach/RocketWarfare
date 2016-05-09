@@ -13,6 +13,7 @@ public class RocketWarfare extends Application {
 	public static final String VERSION = "Dev Edition";
 	public static final int BUILD_NUM = 0;
 	public static final int FPS = 60;
+	public static final String OS = (System.getProperty("os.name")).toUpperCase();
 
 	public static void main(String[] args) {
 		Application.launch(args);
@@ -33,6 +34,16 @@ public class RocketWarfare extends Application {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static String settingsFolder() {
+		if (OS.contains("WIN"))
+			return System.getenv("APPDATA");
+		else if (OS.contains("MAC"))
+			return System.getProperty("user.home") + "/Library/Application Support";
+		else if (OS.contains("NUX"))
+			return System.getProperty("user.home");
+		return System.getProperty("user.dir");
 	}
 
 }
