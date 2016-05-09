@@ -87,8 +87,8 @@ public class Rocket extends FlyingObject implements Serializable {
 			return;
 		parts.add(part);
 		mass += part.getMass();
-		size.setWidth(parts.stream().mapToInt(p -> (int) p.getPosInRocket().getX()).max().getAsInt());
-		size.setHeight(parts.stream().mapToInt(p -> (int) p.getPosInRocket().getY()).max().getAsInt());
+		size.setWidth(parts.stream().mapToInt(p -> (int) p.getPosInRocket().getX()).max().getAsInt() + 1);
+		size.setHeight(parts.stream().mapToInt(p -> (int) p.getPosInRocket().getY()).max().getAsInt() + 1);
 	}
 
 	public boolean isLaunched() {
