@@ -84,7 +84,6 @@ public class MissionControlState extends State {
 		});
 		
 		Button expand = new Button("Expand");
-		expand.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.F11), () -> expand.fire());
 		expand.setOnAction((event) -> {
 			MainGameController.getCanvas().setWidth(1056);
 		});
@@ -127,6 +126,8 @@ public class MissionControlState extends State {
 		
 		if (MainGameController.getKeyboard().get(KeyCode.ESCAPE))
 			MainGameController.getCanvas().setWidth(352);
+		else if (MainGameController.getKeyboard().get(KeyCode.F11))
+			MainGameController.getCanvas().setWidth(1056);
 
 		rocket.tick();
 		anim.tick();
