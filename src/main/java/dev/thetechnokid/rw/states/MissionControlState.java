@@ -6,7 +6,7 @@ import dev.thetechnokid.rw.entities.Rocket;
 import dev.thetechnokid.rw.utils.*;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
+import javafx.scene.input.*;
 import javafx.scene.paint.Color;
 
 public class MissionControlState extends State {
@@ -84,6 +84,7 @@ public class MissionControlState extends State {
 		});
 		
 		Button expand = new Button("Expand");
+		expand.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.F11), () -> expand.fire());
 		expand.setOnAction((event) -> {
 			MainGameController.getCanvas().setWidth(1056);
 		});
