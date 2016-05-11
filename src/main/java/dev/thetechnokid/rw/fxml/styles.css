@@ -35,3 +35,8 @@
         linear-gradient(#e68400, #ffd65b),
         linear-gradient(#f2ba44, #ffef84);
 }
+
+.button #parts {
+	-fx-background-radius: 15.0;
+	-fx-padding: 5.0 15.0 5.0 15.0;
+}
