@@ -129,6 +129,11 @@ public class MissionControlState extends State {
 		else if (MainGameController.getKeyboard().releasedKey(KeyCode.F11))
 			MainGameController.getCanvas().setWidth(1056);
 
+		if (MainGameController.getKeyboard().releasedKey(KeyCode.UP))
+			rocket.getVelocity().increaseMagnitude(1);
+		else if (MainGameController.getKeyboard().releasedKey(KeyCode.DOWN))
+			rocket.getVelocity().decreaseMagnitude(1);
+		
 		rocket.tick();
 		anim.tick();
 
