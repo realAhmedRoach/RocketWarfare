@@ -28,11 +28,13 @@ public class BuildingState extends State {
 
 		for (RocketPart part : RocketPart.allParts()) {
 			Button b = new Button();
+			b.getStyleClass().add("parts");
 			b.setGraphic(new ImageView(part.getImage()));
 			b.setTooltip(new Tooltip(part.getTier() + " " + part.getType()));
 			b.setOnAction((event) -> currPart = part);
 			if (Arrays.asList(RocketPart.FLIPPABLE_PARTS).contains(part.getType())) {
 				Button flipped = new Button();
+				flipped.getStyleClass().add("parts");
 				RocketPart f = RocketPart.allParts().getFlipped(RocketPart.allParts().indexOf(part));
 				flipped.setGraphic(new ImageView(f.getImage()));
 				flipped.setTooltip(new Tooltip(f.getTier() + " " + f.getType()));
