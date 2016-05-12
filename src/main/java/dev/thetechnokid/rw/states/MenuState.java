@@ -39,11 +39,6 @@ public class MenuState extends State {
 		pwField.setPromptText(Language.get("password"));
 		pwField.setMaxWidth(100);
 
-		grid.add(nameLabel, 0, 1);
-		grid.add(nameField, 1, 1);
-		grid.add(pwLabel, 0, 2);
-		grid.add(pwField, 1, 2);
-
 		Button start = new Button("Start Building!");
 		start.setOnAction((event) -> {
 			name = nameField.getText();
@@ -52,8 +47,15 @@ public class MenuState extends State {
 			start.disableProperty().set(true);
 			g.getCanvas().requestFocus();
 		});
+		
+		grid.add(nameLabel, 0, 1);
+		grid.add(nameField, 1, 1);
+		grid.add(pwLabel, 0, 2);
+		grid.add(pwField, 1, 2);
+		grid.add(start, 1, 3);
 
-		MainGameController.buttons().addAll(grid, start);
+
+		MainGameController.buttons().addAll(grid);
 	}
 
 	@Override
