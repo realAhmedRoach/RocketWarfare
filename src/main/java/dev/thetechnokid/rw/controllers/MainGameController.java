@@ -38,6 +38,8 @@ public class MainGameController implements Initializable {
 	private Timeline gameLoop = new Timeline();
 
 	private Logger log = new Logger();
+	
+	public boolean FIRST_TIME = false;
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
