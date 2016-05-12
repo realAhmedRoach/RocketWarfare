@@ -39,7 +39,7 @@ public class MenuState extends State {
 		pwField.setPromptText(Language.get("password"));
 		pwField.setMaxWidth(100);
 
-		Button start = new Button("Start Building!");
+		Button start = new Button(Language.get("login"));
 		start.setOnAction((event) -> {
 			name = nameField.getText();
 			textOn = true;
