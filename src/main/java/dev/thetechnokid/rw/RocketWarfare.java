@@ -1,5 +1,6 @@
 package dev.thetechnokid.rw;
 
+import dev.thetechnokid.rw.controllers.MainGameController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -36,6 +37,13 @@ public class RocketWarfare extends Application {
 		}
 	}
 	
+	@Override
+	public void stop() throws Exception {
+		if (MainGameController.get().USER != null) {
+			MainGameController.get().USER.save();
+		}
+	}
+
 	public static String settingsFolder() {
 		String thing = null;
 		if (OS.contains("WIN"))
