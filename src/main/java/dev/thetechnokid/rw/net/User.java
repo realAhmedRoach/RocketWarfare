@@ -63,6 +63,7 @@ public class User implements Serializable {
 
 	public void save() throws Exception {
 		File file = new File(RocketWarfare.settingsFolder() + "/users/" + name);
+		file.mkdirs();
 		file.createNewFile();
 		ObjectOutputStream o = new ObjectOutputStream(new FileOutputStream(file));
 		o.writeObject(this);
