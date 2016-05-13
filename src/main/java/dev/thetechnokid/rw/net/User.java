@@ -1,6 +1,12 @@
 package dev.thetechnokid.rw.net;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import dev.thetechnokid.rw.RocketWarfare;
@@ -27,7 +33,7 @@ public class User implements Serializable {
 		prefs = new Preferences(this);
 	}
 
-	public boolean authenticate(String attemptedPassword) {
+	private boolean authenticate(String attemptedPassword) {
 		return StringEncryptor.authenticate(attemptedPassword, encryptedPassword, salt);
 	}
 
