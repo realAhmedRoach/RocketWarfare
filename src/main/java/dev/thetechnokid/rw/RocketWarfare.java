@@ -37,13 +37,16 @@ public class RocketWarfare extends Application {
 	}
 	
 	public static String settingsFolder() {
+		String thing = null;
 		if (OS.contains("WIN"))
-			return System.getenv("APPDATA");
+			thing = System.getenv("APPDATA");
 		else if (OS.contains("MAC"))
-			return System.getProperty("user.home") + "/Library/Application Support";
+			thing = System.getProperty("user.home") + "/Library/Application Support";
 		else if (OS.contains("NUX"))
-			return System.getProperty("user.home");
-		return System.getProperty("user.dir");
+			thing = System.getProperty("user.home");
+		else
+			thing = System.getProperty("user.dir");
+		return thing + "/RocketWarfare";
 	}
 
 }
