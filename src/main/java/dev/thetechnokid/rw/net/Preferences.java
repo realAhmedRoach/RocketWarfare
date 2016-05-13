@@ -3,12 +3,11 @@ package dev.thetechnokid.rw.net;
 import java.util.ArrayList;
 
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 
 public class Preferences implements java.io.Serializable {
 	private static final long serialVersionUID = 9435437432L;
 	
-	private Color color;
+	private String color;
 	private Image pic;
 	private String displayName;
 	private ArrayList<User> friends;
@@ -16,7 +15,7 @@ public class Preferences implements java.io.Serializable {
 	private String locale;
 
 	public Preferences(User user) {
-		color = Color.RED;
+		color = "#ff0000";
 		pic = null;
 		displayName = user.getName();
 		friends = new ArrayList<>();
@@ -24,11 +23,11 @@ public class Preferences implements java.io.Serializable {
 		locale = "en_US";
 	}
 
-	public Color getColor() {
+	public String getColor() {
 		return color;
 	}
 
-	public void setColor(Color color) {
+	public void setColor(String color) {
 		this.color = color;
 	}
 
