@@ -4,17 +4,27 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import dev.thetechnokid.rw.RocketWarfare;
-import dev.thetechnokid.rw.input.*;
-import dev.thetechnokid.rw.states.*;
-import dev.thetechnokid.rw.utils.*;
-import javafx.animation.*;
+import dev.thetechnokid.rw.input.Keyboard;
+import dev.thetechnokid.rw.input.Mouse;
+import dev.thetechnokid.rw.net.User;
+import dev.thetechnokid.rw.states.MenuState;
+import dev.thetechnokid.rw.states.State;
+import dev.thetechnokid.rw.utils.Assets;
+import dev.thetechnokid.rw.utils.Grid;
+import dev.thetechnokid.rw.utils.Logger;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.ObservableList;
-import javafx.fxml.*;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.canvas.*;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
-import javafx.scene.input.*;
-import javafx.scene.layout.*;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
@@ -40,6 +50,7 @@ public class MainGameController implements Initializable {
 	private Logger log = new Logger();
 	
 	public boolean FIRST_TIME = false;
+	public User USER;
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
