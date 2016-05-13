@@ -60,7 +60,6 @@ public class MenuState extends State {
 				textOn = true;
 				gridded = true;
 			}
-			start.disableProperty().set(true);
 			g.getCanvas().requestFocus();
 		});
 
@@ -79,7 +78,10 @@ public class MenuState extends State {
 		try {
 			User user = User.load(name, password);
 			if (user == null) {
-				if (register) {
+				if (!register) {
+					MainGameController.setStatus("Incorrect username or password.");
+					return false;
+				} else if (register) {
 					if (file.exists()) {
 						MainGameController.setStatus("User with that name already exists!");
 						return false;
@@ -87,14 +89,13 @@ public class MenuState extends State {
 					MainGameController.get().FIRST_TIME = true;
 					User newUser = new User(name, password);
 					MainGameController.get().USER = newUser;
+					newUser.save();
 					return true;
-				} else {
-					MainGameController.setStatus("Incorrect username of password.");
-					return false;
 				}
 			} else if (user != null) {
 				MainGameController.get().USER = user;
 				MainGameController.setStatus("Login Successfull!");
+				return true;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
