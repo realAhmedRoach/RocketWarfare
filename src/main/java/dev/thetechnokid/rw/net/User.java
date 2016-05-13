@@ -63,6 +63,7 @@ public class User implements Serializable {
 
 	public void save() throws Exception {
 		File file = new File(RocketWarfare.settingsFolder() + "/users/" + name);
+		file.setWritable(true);
 		file.mkdirs();
 		file.createNewFile();
 		ObjectOutputStream o = new ObjectOutputStream(new FileOutputStream(file));
@@ -74,6 +75,7 @@ public class User implements Serializable {
 	public static User load(String name, String attemptedPassword) throws Exception {
 		User user = null;
 		File file = new File(RocketWarfare.settingsFolder() + "/users/" + name);
+		file.setReadable(true);
 		try (ObjectInputStream i = new ObjectInputStream(new FileInputStream(file));){
 			user = (User) i.readObject();
 			if (!user.authenticate(attemptedPassword))
