@@ -1,9 +1,6 @@
 package dev.thetechnokid.rw.utils;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -54,7 +51,7 @@ public class Logger {
 		String toWrite = LocalDateTime.now().format(f) + " [" + level.name() + "] : " + text;
 		try {
 			if (inFile) {
-				w.write(toWrite);
+				w.append(toWrite);
 				w.newLine();
 				w.flush();
 			}
