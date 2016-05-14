@@ -84,7 +84,7 @@ public class RocketPart extends Entity implements Serializable {
 	}
 
 	public boolean equals(RocketPart other) {
-		return this.mass == other.mass && this.type == other.type && this.tier == other.tier;
+		return (this == other) ? true : false;
 	}
 
 	public int getMass() {
