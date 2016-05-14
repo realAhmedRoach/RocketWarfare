@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import dev.thetechnokid.rw.RocketWarfare;
+
 public class Logger {
 	private File file;
 	private BufferedWriter w;
@@ -38,7 +40,7 @@ public class Logger {
 			return;
 		}
 		try {
-			file = new File(getDefaultDir() + "/RW_" + name + ".txt");
+			file = new File(RocketWarfare.settingsFolder() + "/RW_" + name + ".txt");
 			if (!file.exists()) {
 				file.createNewFile();
 			}
@@ -67,16 +69,5 @@ public class Logger {
 
 	public String getFileName() {
 		return file.getAbsolutePath();
-	}
-
-	public static String getDefaultDir() {
-		String OS = System.getProperty("os.name").toUpperCase();
-		if (OS.contains("WIN"))
-			return System.getenv("APPDATA");
-		else if (OS.contains("MAC"))
-			return System.getProperty("user.home") + "/Library/Application Support";
-		else if (OS.contains("NUX"))
-			return System.getProperty("user.home");
-		return System.getProperty("user.dir");
 	}
 }
