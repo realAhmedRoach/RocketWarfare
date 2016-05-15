@@ -6,7 +6,7 @@ import javafx.scene.canvas.GraphicsContext;
 
 public abstract class State {
 	private static State currentState;
-	private static ArrayList<BackgroundState> bgStates;
+	private static ArrayList<BackgroundState> bgStates = new ArrayList<>();
 
 	protected GraphicsContext g;
 
