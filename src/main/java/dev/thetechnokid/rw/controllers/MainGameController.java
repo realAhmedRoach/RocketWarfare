@@ -62,7 +62,7 @@ public class MainGameController implements Initializable {
 
 					try {
 						State.getCurrentState().render();
-						State.getCurrentState().tick();
+						State.tickAll();
 					} catch (Exception e) {
 						e.printStackTrace();
 						log.log(e.getMessage(), Logger.Level.ERROR);

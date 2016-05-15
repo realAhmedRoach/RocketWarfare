@@ -1,9 +1,13 @@
 package dev.thetechnokid.rw.states;
 
+import java.util.ArrayList;
+
 import javafx.scene.canvas.GraphicsContext;
 
 public abstract class State {
 	private static State currentState;
+	private static ArrayList<BackgroundState> bgStates;
+
 	protected GraphicsContext g;
 
 	public static State getCurrentState() {
@@ -13,6 +17,17 @@ public abstract class State {
 	public static void setCurrentState(State state) {
 		if (state != null)
 			currentState = state;
+	}
+
+	public static void addBackgroundState(BackgroundState state) {
+		bgStates.add(state);
+	}
+
+	public static void tickAll() {
+		currentState.tick();
+		for (BackgroundState backgroundState : bgStates) {
+			backgroundState.tick();
+		}
 	}
 
 	public State(GraphicsContext g) {
