@@ -51,6 +51,9 @@ public class BuildingState extends State {
 	}
 
 	private void createRocket(ActionEvent event) {
+		if (partLocs.isEmpty())
+			return;
+
 		int ox = 0;
 		int oy = 0;
 
