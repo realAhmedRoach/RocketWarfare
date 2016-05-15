@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 public class RocketWarfarePreloader extends Preloader implements Initializable {
 	
-	private static final String NEWS = "https://github.com/theTechnoKid/RocketWarfare/blob/master/NEWS.md";
+	private static final String NEWS = " http://thetechnokid.github.io/RocketWarfare";
 	@FXML
 	private WebView news;
 	@FXML
