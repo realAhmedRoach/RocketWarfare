@@ -36,7 +36,8 @@ public class RocketPartData {
 				return null;
 			String[] locString = (parts[1].split(","));
 			int[] loc = { Integer.parseInt(locString[0]), Integer.parseInt(locString[1]) };
-			Image image = Assets.crop(Assets.ROCKET_PARTS, loc[0], loc[1]);
+			Image image = flipped ? Assets.flip(Assets.crop(Assets.ROCKET_PARTS, loc[0], loc[1]))
+					: Assets.crop(Assets.ROCKET_PARTS, loc[0], loc[1]);
 			return image;
 		} catch (Exception e) {
 			e.printStackTrace();
