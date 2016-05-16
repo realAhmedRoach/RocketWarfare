@@ -34,6 +34,7 @@ public class RocketPart extends Entity implements Serializable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		System.out.println(rocketParts);
 	}
 
 	public RocketPart(RocketPart other, boolean flip) {
