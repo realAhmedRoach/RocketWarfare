@@ -14,8 +14,6 @@ import javafx.scene.image.ImageView;
 public class BuildingState extends State {
 	private HashMap<Point2D, RocketPart> partLocs = new HashMap<>();
 
-	private RocketPart currPart;
-
 	private String[] currPartString;
 
 	public BuildingState(GraphicsContext g) {
@@ -83,7 +81,7 @@ public class BuildingState extends State {
 
 	@Override
 	public void tick() {
-		if (MainGameController.getMouse().isMousePressed() && currPart != null) {
+		if (MainGameController.getMouse().isMousePressed() && currPartString != null) {
 			partLocs.put(MainGameController.getMouse().getPointOnGrid(),
 					RocketPartData.get(currPartString[0], currPartString[1], false));
 		} else if (MainGameController.getMouse().isSecondaryMousePressed()) {

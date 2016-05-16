@@ -14,7 +14,6 @@ public class RocketPartData {
 					new InputStreamReader(RocketWarfare.class.getResourceAsStream("/images/rparts.txt")));
 			String line = r.lines().filter(stuff -> stuff.startsWith(type + "_" + tier)).findAny().get();
 			String[] parts = line.split(" ");
-			String[] name = parts[0].split("_");
 			String[] locString = (parts[1].split(","));
 			int[] loc = { Integer.parseInt(locString[0]), Integer.parseInt(locString[1]) };
 			Image image = Assets.crop(Assets.ROCKET_PARTS, loc[0], loc[1]);
