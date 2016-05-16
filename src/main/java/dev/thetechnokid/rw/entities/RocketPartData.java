@@ -1,6 +1,7 @@
 package dev.thetechnokid.rw.entities;
 
 import java.io.*;
+import java.util.stream.Stream;
 
 import dev.thetechnokid.rw.RocketWarfare;
 import dev.thetechnokid.rw.utils.Assets;
@@ -10,10 +11,11 @@ public class RocketPartData {
 
 	private static BufferedReader r = new BufferedReader(
 			new InputStreamReader(RocketWarfare.class.getResourceAsStream("/images/rparts.txt")));
+	private static Stream<String> lines = r.lines();
 
 	public static RocketPart get(String type, String tier, boolean flipped) {
 		try {
-			String line = r.lines().filter(stuff -> stuff.startsWith(type + "_" + tier)).findAny().get();
+			String line = lines.filter(stuff -> stuff.startsWith(type + "_" + tier)).findAny().get();
 			System.out.println(line);
 			String[] parts = line.split(" ");
 			String[] name = parts[0].split("_");
@@ -30,7 +32,7 @@ public class RocketPartData {
 
 	public static Image image(String type, String tier, boolean flipped) {
 		try {
-			String line = r.lines().filter(stuff -> stuff.startsWith(type + "_" + tier)).findAny().get();
+			String line = lines.filter(stuff -> stuff.startsWith(type + "_" + tier)).findAny().get();
 			System.out.println(line);
 			String[] parts = line.split(" ");
 			String[] name = parts[0].split("_");
