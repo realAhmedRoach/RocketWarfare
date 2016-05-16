@@ -73,8 +73,8 @@ public class BuildingState extends State {
 
 	@Override
 	public void render() {
-		if (currPart != null)
-			Grid.renderInGrid(g, currPart.getImage(), 0, 0);
+		if (currPartString != null)
+			Grid.renderInGrid(g, RocketPartData.image(currPartString[0], currPartString[1], false), 0, 0);
 
 		for (Point2D p : partLocs.keySet()) {
 			Grid.renderInGrid(g, partLocs.get(p).getImage(), (int) p.getX(), (int) p.getY());

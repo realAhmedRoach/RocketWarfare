@@ -13,7 +13,7 @@ public class RocketPartData {
 
 	public static RocketPart get(String type, String tier, boolean flipped) {
 		try {
-			String line = r.lines().filter(stuff -> stuff.startsWith(type + "_" + tier)).findFirst().get();
+			String line = r.lines().filter(stuff -> stuff.startsWith(type + "_" + tier)).findAny().get();
 			System.out.println(line);
 			String[] parts = line.split(" ");
 			String[] name = parts[0].split("_");
@@ -30,7 +30,7 @@ public class RocketPartData {
 
 	public static Image image(String type, String tier, boolean flipped) {
 		try {
-			String line = r.lines().filter(stuff -> stuff.startsWith(type + "_" + tier)).findFirst().get();
+			String line = r.lines().filter(stuff -> stuff.startsWith(type + "_" + tier)).findAny().get();
 			System.out.println(line);
 			String[] parts = line.split(" ");
 			String[] name = parts[0].split("_");
