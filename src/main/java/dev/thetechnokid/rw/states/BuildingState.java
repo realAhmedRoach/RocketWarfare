@@ -14,7 +14,7 @@ import javafx.scene.image.ImageView;
 public class BuildingState extends State {
 	private HashMap<Point2D, RocketPart> partLocs = new HashMap<>();
 
-	private RocketPart currPart;
+	private String[] currPartString;
 
 	public BuildingState(GraphicsContext g) {
 		super(g);
@@ -26,19 +26,20 @@ public class BuildingState extends State {
 		MainGameController.buttons().clear();
 		MainGameController.integrations().clear();
 
-		for (RocketPart part : RocketPart.allParts()) {
+		for (String part : RocketPart.allParts()) {
+			String type = part.split("_")[0];
+			String tier = part.split("_")[1];
 			Button b = new Button();
 			b.setId("parts");
-			b.setGraphic(new ImageView(part.getImage()));
-			b.setTooltip(new Tooltip(part.getTier() + " " + part.getType()));
-			b.setOnAction((event) -> currPart = part);
-			if (Arrays.asList(RocketPart.FLIPPABLE_PARTS).contains(part.getType())) {
+			b.setGraphic(new ImageView(RocketPartData.image(type, tier, false)));
+			b.setTooltip(new Tooltip(tier + " " + type));
+			b.setOnAction((event) -> currPartString = new String[] { type, tier });
+			if (Arrays.asList(RocketPart.FLIPPABLE_PARTS).contains(type)) {
 				Button flipped = new Button();
 				flipped.setId("parts");
-				RocketPart f = RocketPart.allParts().getFlipped(RocketPart.allParts().indexOf(part));
-				flipped.setGraphic(new ImageView(f.getImage()));
-				flipped.setTooltip(new Tooltip(f.getTier() + " " + f.getType()));
-				flipped.setOnAction((event) -> currPart = f);
+				flipped.setGraphic(new ImageView(RocketPartData.image(type, tier, true)));
+				flipped.setTooltip(new Tooltip(tier + " " + type));
+				flipped.setOnAction((event) -> currPartString = new String[] { type, tier });
 				MainGameController.integrations().add(flipped);
 			}
 			MainGameController.integrations().add(b);
@@ -73,8 +74,8 @@ public class BuildingState extends State {
 
 	@Override
 	public void render() {
-		if (currPart != null)
-			Grid.renderInGrid(g, currPart.getImage(), 0, 0);
+		if (currPartString != null)
+			Grid.renderInGrid(g, RocketPartData.image(currPartString[0], currPartString[1], false), 0, 0);
 
 		for (Point2D p : partLocs.keySet()) {
 			Grid.renderInGrid(g, partLocs.get(p).getImage(), (int) p.getX(), (int) p.getY());
@@ -83,8 +84,9 @@ public class BuildingState extends State {
 
 	@Override
 	public void tick() {
-		if (MainGameController.getMouse().isMousePressed() && currPart != null) {
-			partLocs.put(MainGameController.getMouse().getPointOnGrid(), currPart);
+		if (MainGameController.getMouse().isMousePressed() && currPartString != null) {
+			partLocs.put(MainGameController.getMouse().getPointOnGrid(),
+					RocketPartData.get(currPartString[0], currPartString[1], false));
 		} else if (MainGameController.getMouse().isSecondaryMousePressed()) {
 			partLocs.remove(MainGameController.getMouse().getPointOnGrid());
 		}

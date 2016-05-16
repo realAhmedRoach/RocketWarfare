@@ -1,68 +1,40 @@
 package dev.thetechnokid.rw.entities;
 
 import java.io.*;
+import java.util.ArrayList;
 
 import dev.thetechnokid.rw.RocketWarfare;
-import dev.thetechnokid.rw.utils.*;
+import dev.thetechnokid.rw.utils.Assets;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 
 public class RocketPart extends Entity implements Serializable {
 	private static final long serialVersionUID = 3857824053568051475L;
-	
+
 	private int mass;
 	private Point2D posInRocket;
 	private RocketPart north, south, east, west;
 
 	protected String type, tier;
 
-	private static PartList rocketParts = new PartList();
+	private static ArrayList<String> rocketParts = new ArrayList<String>();
 
 	public static final String[] FLIPPABLE_PARTS = { "FIN", "MISSILE" };
 
 	static {
-		BufferedReader r = new BufferedReader(
-				new InputStreamReader(RocketWarfare.class.getResourceAsStream("/images/rparts.txt")));
 
 		String line = null;
-		try {
+		try (BufferedReader r = new BufferedReader(
+				new InputStreamReader(RocketWarfare.class.getResourceAsStream("/images/rparts.txt")));) {
 			while ((line = r.readLine()) != null) {
-				if ((line.trim()).isEmpty())
-					continue;
-				RocketPart p = new RocketPart();
-				String[] parts = line.split(" ");
-				String[] name = parts[0].split("_");
-				String[] locString = (parts[1].split(","));
-				int[] loc = { Integer.parseInt(locString[0]), Integer.parseInt(locString[1]) };
-				Image image = Assets.crop(Assets.ROCKET_PARTS, loc[0], loc[1]);
-				p.image = image;
-				p.mass = Integer.parseInt(parts[2]);
-				p.type = name[0];
-				p.tier = name[1];
+				String name = line.split(" ")[0];
 
-				rocketParts.add(p);
+				rocketParts.add(name);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				r.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
 		}
-	}
-
-	public static RocketPart get(String type, String tier) {
-		for (RocketPart part : rocketParts) {
-			if (part.type.equals(type.toUpperCase()) && part.tier.equals(tier.toUpperCase()))
-				return part;
-		}
-		return null;
-	}
-
-	// no-arg constructor
-	private RocketPart() {
+		System.out.println(rocketParts);
 	}
 
 	public RocketPart(RocketPart other, boolean flip) {
@@ -81,6 +53,25 @@ public class RocketPart extends Entity implements Serializable {
 
 	public RocketPart(RocketPart other) {
 		this(other, false);
+	}
+
+	/**
+	 * @param mass
+	 *            the mass of the rocket part
+	 * @param type
+	 *            the type of the rocket part (e.g. 'fin')
+	 * @param tier
+	 *            the tier of the rocket part (e.g. 'advanced')
+	 * @param image
+	 *            the image representing this rocket part
+	 * @param flipped
+	 *            whether this is flipped or not
+	 */
+	public RocketPart(String type, String tier, int mass, Image image, boolean flipped) {
+		this.mass = mass;
+		this.type = type;
+		this.tier = tier;
+		this.image = (flipped) ? Assets.flip(image) : image;
 	}
 
 	public boolean equals(RocketPart other) {
@@ -139,10 +130,11 @@ public class RocketPart extends Entity implements Serializable {
 		return tier;
 	}
 
-	public static PartList allParts() {
+	public static ArrayList<String> allParts() {
 		return rocketParts;
 	}
 
+	@Override
 	public String toString() {
 		return "RocketPart: { " + getType() + " " + getTier() + ", " + getMass() + " }";
 	}
