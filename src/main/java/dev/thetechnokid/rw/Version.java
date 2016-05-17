@@ -69,4 +69,8 @@ public class Version {
 	public static String getDescription() {
 		return OFFLINE ? DESCRIPTION : data.get(3);
 	}
+
+	public static boolean isOffline() {
+		return OFFLINE;
+	}
 }
