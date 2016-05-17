@@ -10,9 +10,6 @@ import javafx.stage.Stage;
 
 public class RocketWarfare extends Application {
 
-	public static final String NAME = "Rocket Warfare";
-	public static final String VERSION = "Dev Edition";
-	public static final int BUILD_NUM = 0;
 	public static final int FPS = 60;
 	public static final String OS = (System.getProperty("os.name")).toUpperCase();
 
