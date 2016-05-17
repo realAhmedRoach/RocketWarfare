@@ -53,10 +53,8 @@ public class Version {
 
 		if (majorOther > majorThis || minorOther > minorThis)
 			return true;
-		if (patchOther > patchThis && (majorOther >= majorThis || minorOther >= minorThis))
-			return true;
+		return (patchOther > patchThis && (majorOther >= majorThis || minorOther >= minorThis));
 
-		return false;
 	}
 
 	public static String getVersion() {
