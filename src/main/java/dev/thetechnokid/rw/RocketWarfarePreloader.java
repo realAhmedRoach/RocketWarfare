@@ -4,9 +4,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.application.Preloader;
-import javafx.fxml.*;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.web.WebView;
@@ -14,7 +18,7 @@ import javafx.stage.Stage;
 
 public class RocketWarfarePreloader extends Preloader implements Initializable {
 	
-	private static final String NEWS = " http://thetechnokid.github.io/RocketWarfare";
+	private static final String NEWS = "http://thetechnokid.github.io/RocketWarfare";
 	@FXML
 	private WebView news;
 	@FXML
@@ -44,7 +48,7 @@ public class RocketWarfarePreloader extends Preloader implements Initializable {
 	}
 
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
+	public void initialize(URL url, ResourceBundle rb) {
 		news.getEngine().load(NEWS);
 	}
 }
