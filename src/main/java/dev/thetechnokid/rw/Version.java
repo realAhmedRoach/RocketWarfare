@@ -1,6 +1,9 @@
 package dev.thetechnokid.rw;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -25,6 +28,35 @@ public class Version {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * Checks whether there is a new version, ignore SNAPSHOT versions and the
+	 * like.
+	 * 
+	 * @return Whether there is a new version available.
+	 */
+	public static boolean newVersion() {
+		String thisVersion = VERSION.split("-")[0];
+		String otherVersion = getVersion().split("-")[0];
+
+		String[] splitThis = thisVersion.split(".");
+		String[] splitOther = otherVersion.split(".");
+
+		int majorThis = Integer.parseInt(splitThis[0]);
+		int minorThis = Integer.parseInt(splitThis[1]);
+		int patchThis = Integer.parseInt(splitThis[2]);
+
+		int majorOther = Integer.parseInt(splitOther[0]);
+		int minorOther = Integer.parseInt(splitOther[1]);
+		int patchOther = Integer.parseInt(splitOther[2]);
+
+		if (majorOther > majorThis || minorOther > minorThis)
+			return true;
+		else if (patchOther > patchThis)
+			return true;
+		else
+			return false;
 	}
 
 	public static String getVersion() {
