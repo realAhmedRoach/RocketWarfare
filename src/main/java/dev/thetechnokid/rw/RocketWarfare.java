@@ -29,7 +29,7 @@ public class RocketWarfare extends Application {
 			stage.setScene(scene);
 			stage.setResizable(false);
 			stage.sizeToScene();
-			stage.setTitle(NAME + " | " + VERSION);
+			stage.setTitle(Version.NAME + " | " + Version.FRIENDLY);
 			stage.getIcons().add(new Image(RocketWarfare.class.getResourceAsStream("/images/logo.png")));
 			stage.show();
 		} catch (Exception e) {
