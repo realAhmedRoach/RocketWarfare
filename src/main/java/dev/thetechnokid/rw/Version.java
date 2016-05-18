@@ -44,8 +44,8 @@ public class Version {
 		String thisVersion = VERSION.split("-")[0];
 		String otherVersion = getVersion().split("-")[0];
 
-		String[] splitThis = thisVersion.split(".");
-		String[] splitOther = otherVersion.split(".");
+		String[] splitThis = thisVersion.split("\\.");
+		String[] splitOther = otherVersion.split("\\.");
 
 		int majorThis = Integer.parseInt(splitThis[0]);
 		int minorThis = Integer.parseInt(splitThis[1]);
