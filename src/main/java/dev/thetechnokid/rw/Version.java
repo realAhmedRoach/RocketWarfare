@@ -1,9 +1,6 @@
 package dev.thetechnokid.rw;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -65,15 +62,15 @@ public class Version {
 	}
 
 	public static String getVersion() {
-		return OFFLINE ? VERSION : data.get(1);
+		return OFFLINE ? VERSION : data.get(0);
 	}
 
 	public static String getFriendly() {
-		return OFFLINE ? FRIENDLY : data.get(2);
+		return OFFLINE ? FRIENDLY : data.get(1);
 	}
 
 	public static String getDescription() {
-		return OFFLINE ? DESCRIPTION : data.get(3);
+		return OFFLINE ? DESCRIPTION : data.get(2);
 	}
 
 	public static boolean isOffline() {
