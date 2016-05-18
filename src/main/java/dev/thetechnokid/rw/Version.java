@@ -1,6 +1,9 @@
 package dev.thetechnokid.rw;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -38,6 +41,9 @@ public class Version {
 	 * @return Whether there is a new version available.
 	 */
 	public static boolean newVersion() {
+		if (OFFLINE)
+			return false;
+
 		String thisVersion = VERSION.split("-")[0];
 		String otherVersion = getVersion().split("-")[0];
 
