@@ -1,6 +1,9 @@
 package dev.thetechnokid.rw.utils;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -39,6 +42,7 @@ public class Logger {
 		try {
 			file = new File(RocketWarfare.settingsFolder() + "/RW_" + name + ".txt");
 			if (!file.exists()) {
+				file.getParentFile().mkdirs();
 				file.createNewFile();
 			}
 			w = new BufferedWriter(new FileWriter(file));
