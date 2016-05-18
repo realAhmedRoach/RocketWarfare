@@ -13,10 +13,6 @@ public class RocketWarfare extends Application {
 	public static final int FPS = 60;
 	public static final String OS = (System.getProperty("os.name")).toUpperCase();
 
-	public static void main(String[] args) {
-		Application.launch(args);
-	}
-
 	@Override
 	public void start(Stage stage) {
 		try {

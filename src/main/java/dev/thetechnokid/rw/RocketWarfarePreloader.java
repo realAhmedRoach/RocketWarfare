@@ -11,9 +11,6 @@ public class RocketWarfarePreloader extends Preloader {
 	
 	public static final String NEWS = "http://thetechnokid.github.io/RocketWarfare";
 
-	public static void main(String[] args) {
-		launch(args);
-	}
 	@Override
 	public void start(Stage stage) throws Exception {
 		BorderPane parent = (BorderPane) FXMLLoader.load(getClass().getResource("fxml/Preloader.fxml"));
