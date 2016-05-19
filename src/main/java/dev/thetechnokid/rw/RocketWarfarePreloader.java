@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 public class RocketWarfarePreloader extends Preloader {
 	
 	public static final String NEWS = "http://thetechnokid.github.io/RocketWarfare";
+	public static boolean DONE = false;
 
 	@Override
 	public void start(Stage stage) throws Exception {
@@ -22,6 +23,5 @@ public class RocketWarfarePreloader extends Preloader {
 		stage.setTitle("Rocket Warfare Launcher");
 		stage.getIcons().add(new Image(RocketWarfare.class.getResourceAsStream("/images/logo.png")));
 		stage.show();
-
 	}
 }

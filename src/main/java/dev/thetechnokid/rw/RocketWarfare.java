@@ -12,29 +12,30 @@ public class RocketWarfare extends Application {
 
 	public static final int FPS = 60;
 	public static final String OS = (System.getProperty("os.name")).toUpperCase();
+	private static Stage stage;
 
 	@Override
-	public void start(Stage stage) {
-		try {
-			AnchorPane parent = (AnchorPane) FXMLLoader.load(RocketWarfare.class.getResource("fxml/Game.fxml"));
-			Scene scene = new Scene(parent);
+	public void start(Stage owner) throws Exception {
+		AnchorPane parent = (AnchorPane) FXMLLoader.load(RocketWarfare.class.getResource("fxml/Game.fxml"));
+		Scene scene = new Scene(parent);
 
-			stage.setScene(scene);
-			stage.setResizable(false);
-			stage.sizeToScene();
-			stage.setTitle(Version.NAME + " | " + Version.FRIENDLY);
-			stage.getIcons().add(new Image(RocketWarfare.class.getResourceAsStream("/images/logo.png")));
-			stage.show();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		stage = owner;
+		stage.setScene(scene);
+		stage.setResizable(false);
+		stage.sizeToScene();
+		stage.setTitle(Version.NAME + " | " + Version.FRIENDLY);
+		stage.getIcons().add(new Image(RocketWarfare.class.getResourceAsStream("/images/logo.png")));
 	}
-	
+
 	@Override
 	public void stop() throws Exception {
 		if (MainGameController.get().USER != null) {
 			MainGameController.get().USER.save();
 		}
+	}
+
+	public static Stage getStage() {
+		return stage;
 	}
 
 	public static String settingsFolder() {

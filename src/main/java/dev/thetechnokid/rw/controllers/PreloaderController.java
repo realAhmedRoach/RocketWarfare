@@ -46,7 +46,10 @@ public class PreloaderController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		go.setOnAction(event -> go.getParent().getScene().getWindow().hide());
+		go.setOnAction(event -> {
+			RocketWarfare.getStage().show();
+			go.getParent().getScene().getWindow().hide();
+		});
 		news.getEngine().load(RocketWarfarePreloader.NEWS);
 		initTasks();
 		startTasks();
