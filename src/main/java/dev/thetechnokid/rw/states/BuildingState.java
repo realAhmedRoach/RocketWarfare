@@ -33,13 +33,13 @@ public class BuildingState extends State {
 			b.setId("parts");
 			b.setGraphic(new ImageView(RocketPartData.image(type, tier, false)));
 			b.setTooltip(new Tooltip(tier + " " + type));
-			b.setOnAction((event) -> currPartString = new String[] { type, tier });
+			b.setOnAction((event) -> currPartString = new String[] { type, tier, "false" });
 			if (Arrays.asList(RocketPart.FLIPPABLE_PARTS).contains(type)) {
 				Button flipped = new Button();
 				flipped.setId("parts");
 				flipped.setGraphic(new ImageView(RocketPartData.image(type, tier, true)));
 				flipped.setTooltip(new Tooltip(tier + " " + type));
-				flipped.setOnAction((event) -> currPartString = new String[] { type, tier });
+				flipped.setOnAction((event) -> currPartString = new String[] { type, tier, "true" });
 				MainGameController.integrations().add(flipped);
 			}
 			MainGameController.integrations().add(b);
@@ -85,8 +85,8 @@ public class BuildingState extends State {
 	@Override
 	public void tick() {
 		if (MainGameController.getMouse().isMousePressed() && currPartString != null) {
-			partLocs.put(MainGameController.getMouse().getPointOnGrid(),
-					RocketPartData.get(currPartString[0], currPartString[1], false));
+			partLocs.put(MainGameController.getMouse().getPointOnGrid(), RocketPartData.get(currPartString[0],
+					currPartString[1], currPartString[2].equals("true") ? true : false));
 		} else if (MainGameController.getMouse().isSecondaryMousePressed()) {
 			partLocs.remove(MainGameController.getMouse().getPointOnGrid());
 		}
