@@ -39,7 +39,7 @@ public class PreloaderController implements Initializable {
 		double i = 0.0;
 		for (Function<Boolean, String> function : tasks) {
 			status.appendText(function.apply(true) + "\n");
-			progress.setProgress(i / tasks.size());
+			progress.setProgress(i / (tasks.size() - 1));
 			i++;
 		}
 	}
