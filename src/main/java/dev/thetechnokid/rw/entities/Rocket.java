@@ -13,6 +13,7 @@ public class Rocket extends FlyingObject implements Serializable {
 	private static final long serialVersionUID = 7546621883949959769L;
 
 	protected List<RocketPart> parts;
+	protected String name;
 
 	private Force thrust = new Force(0, Direction.NORTH.clone(), false);
 
@@ -21,7 +22,7 @@ public class Rocket extends FlyingObject implements Serializable {
 
 	private GraphicsContext g;
 
-	public Rocket(GraphicsContext g) {
+	public Rocket(GraphicsContext g, String name) {
 		this.g = g;
 		size = new Dimension();
 		pos = new Position();
@@ -80,6 +81,10 @@ public class Rocket extends FlyingObject implements Serializable {
 
 	public double getForce() {
 		return mass * thrust.getAcceleration().getMagnitude();
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	public void addPart(RocketPart part) {
