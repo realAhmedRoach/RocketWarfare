@@ -1,12 +1,6 @@
 package dev.thetechnokid.rw.net;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.*;
 import java.util.ArrayList;
 
 import dev.thetechnokid.rw.RocketWarfare;
@@ -30,6 +24,7 @@ public class User implements Serializable {
 		this.salt = StringEncryptor.generateSalt();
 		this.encryptedPassword = StringEncryptor.encryptPassword(password, salt);
 
+		blueprints = new ArrayList<>();
 		prefs = new Preferences(this);
 	}
 
@@ -76,7 +71,7 @@ public class User implements Serializable {
 		User user = null;
 		File file = new File(RocketWarfare.settingsFolder() + "/users/" + name);
 		file.setReadable(true);
-		try (ObjectInputStream i = new ObjectInputStream(new FileInputStream(file));){
+		try (ObjectInputStream i = new ObjectInputStream(new FileInputStream(file));) {
 			user = (User) i.readObject();
 			if (!user.authenticate(attemptedPassword))
 				return null;
