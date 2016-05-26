@@ -5,7 +5,6 @@ import java.util.*;
 import dev.thetechnokid.rw.controllers.MainGameController;
 import dev.thetechnokid.rw.entities.*;
 import dev.thetechnokid.rw.utils.Grid;
-import javafx.event.ActionEvent;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
@@ -15,6 +14,8 @@ public class BuildingState extends State {
 	private HashMap<Point2D, RocketPart> partLocs = new HashMap<>();
 
 	private String[] currPartString;
+	private Rocket rocket;
+	private TextField name;
 
 	public BuildingState(GraphicsContext g) {
 		super(g);
@@ -46,12 +47,30 @@ public class BuildingState extends State {
 		}
 
 		Button finish = new Button("Complete!");
-		finish.setOnAction(this::createRocket);
+		finish.setOnAction(event -> {
+			createRocket();
+			State.setCurrentState(new MissionControlState(g, rocket));
+		});
 		finish.setFocusTraversable(false);
-		MainGameController.buttons().add(finish);
+
+		name = new TextField();
+		name.setPromptText("Rocket's Name");
+		name.setFocusTraversable(false);
+
+		Button save = new Button("Save Rocket");
+		save.setOnAction(event -> saveRocket());
+		save.setFocusTraversable(false);
+
+		Button load = new Button("Load Rocket");
+		load.setOnAction(event -> loadRocket());
+		load.setFocusTraversable(false);
+
+		MainGameController.buttons().addAll(finish, new Separator(), name, save, load);
 	}
 
-	private void createRocket(ActionEvent event) {
+	private void createRocket() {
+		if (rocket != null)
+			return;
 		if (partLocs.isEmpty())
 			return;
 
@@ -62,14 +81,24 @@ public class BuildingState extends State {
 		oy = locset.stream().mapToInt(i -> (int) i.getY()).min().getAsInt();
 		ox = locset.stream().mapToInt(i -> (int) i.getX()).min().getAsInt();
 
-		Rocket r = new Rocket(g);
+		rocket = new Rocket(g, name.getText());
 		for (Point2D orig : partLocs.keySet()) {
 			RocketPart p = partLocs.get(orig);
 			p.setPosInRocket(new Point2D(orig.getX() - ox, orig.getY() - oy));
-			r.addPart(p);
+			rocket.addPart(p);
 		}
+	}
 
-		State.setCurrentState(new MissionControlState(g, r));
+	private void saveRocket() {
+		createRocket();
+		MainGameController.get().USER.addBlueprint(rocket);
+	}
+
+	private void loadRocket() {
+		for (Rocket stuff : MainGameController.get().USER.getBlueprints()) {
+			if (stuff.getName().equals(name.getText()))
+				rocket = stuff;
+		}
 	}
 
 	@Override
