@@ -20,7 +20,7 @@ public class Rocket extends FlyingObject implements Serializable {
 	private boolean launched = false;
 	private int time;
 
-	private GraphicsContext g;
+	private transient GraphicsContext g;
 
 	public Rocket(GraphicsContext g, String name) {
 		this.g = g;
