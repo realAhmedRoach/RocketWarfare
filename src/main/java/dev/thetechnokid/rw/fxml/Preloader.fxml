@@ -21,7 +21,7 @@
             </Tab>
             <Tab closable="false" text="Startup">
                <content>
-                  <TextArea fx:id="status">
+                  <TextArea fx:id="status" editable="false">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
