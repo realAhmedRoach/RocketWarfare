@@ -30,7 +30,7 @@ public enum Rank {
 		return vals[(this.ordinal() + 1) % vals.length];
 	}
 
-	public int getNum() {
+	public int getLevel() {
 		return this.ordinal() + 1;
 	}
 
