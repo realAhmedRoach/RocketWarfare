@@ -24,6 +24,7 @@ public class Rocket extends FlyingObject implements Serializable {
 
 	public Rocket(GraphicsContext g, String name) {
 		this.g = g;
+		this.name = name;
 		size = new Dimension();
 		pos = new Position();
 		parts = new ArrayList<RocketPart>();
