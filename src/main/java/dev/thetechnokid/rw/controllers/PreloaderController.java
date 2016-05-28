@@ -31,6 +31,9 @@ public class PreloaderController implements Initializable {
 			return Version.getVersion() + ": " + Version.getFriendly() + "; " + Version.getDescription();
 		});
 		tasks.add((stuff) -> {
+			return "You are in " + (Version.isOffline() ? "offline" : "online") + " mode";
+		});
+		tasks.add((stuff) -> {
 			return "Done!";
 		});
 	}
