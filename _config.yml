@@ -7,13 +7,13 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Site Title"
+title                    : "Rocket Warfare"
 title_separator          : "-"
-name                     : "Your Name"
-description              : "An amazing website."
-url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+name                     : "theTechnoKid"
+description              : "The official news and updates blog of Rocket Warfare."
+url                      : http://theTechnoKid.github.io/RocketWarfare
 baseurl                  : # the subpath of your site, e.g. "/blog"
-gh_repo                  :
+gh_repo                  : theTechnoKid/RocketWarfare
 teaser                   : # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
@@ -21,11 +21,6 @@ comments:
   provider               : # false (default), "disqus", "facebook", "google-plus", custom"
   disqus:
     shortname            : # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
-  facebook:
-    # https://developers.facebook.com/docs/plugins/comments
-    appid                :
-    num_posts            : # 5 (default)
-    colorscheme          : # "light" (default), "dark"
 
 # SEO Related
 google_site_verification :
@@ -35,7 +30,7 @@ yandex_site_verification :
 
 # Social Sharing
 twitter:
-  username               :
+  username               : theTechnoKid
 facebook:
   username               :
   app_id                 :
@@ -61,9 +56,9 @@ google_ad_slot           :
 
 # Site Author
 author:
-  name             : "Your Name"
+  name             : "theTechnoKid"
   avatar           : "bio-photo.jpg"
-  bio              : "I am an amazing person."
+  bio              : "I am a hobbyist programmer. I make games, simple utility apps, and anything that comes to mind."
   location         : "Somewhere"
   email            :
   uri              :
@@ -73,7 +68,7 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           :
+  github           : theTechnoKid
   google_plus      :
   keybase          :
   instagram        :
@@ -81,10 +76,10 @@ author:
   linkedin         :
   pinterest        :
   soundcloud       :
-  stackoverflow    : # http://stackoverflow.com/users/123456/username
-  steam            :
+  stackoverflow    : https://stackoverflow.com/users/3508796/thetechnokid
+  steam            : thetechnokid
   tumblr           :
-  twitter          :
+  twitter          : theTechnoKid_
   vine             :
   weibo            :
   xing             :
