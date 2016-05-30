@@ -30,7 +30,7 @@ yandex_site_verification :
 
 # Social Sharing
 twitter:
-  username               : theTechnoKid
+  username               : theTechnoKid_
 facebook:
   username               :
   app_id                 :
@@ -49,17 +49,13 @@ analytics:
   google:
     tracking_id          :
 
-# Google AdSense
-google_ad_client         :
-google_ad_slot           :
-
 
 # Site Author
 author:
   name             : "theTechnoKid"
   avatar           : "bio-photo.jpg"
-  bio              : "I am a hobbyist programmer. I make games, simple utility apps, and anything that comes to mind."
-  location         : "Somewhere"
+  bio              : "I am a hobbyist programmer, doing stuff mostly in Java. I make games, simple utility apps, and anything that comes to mind."
+  location         : "Somewhere in America"
   email            :
   uri              :
   bitbucket        :
