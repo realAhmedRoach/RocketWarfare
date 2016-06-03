@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import dev.thetechnokid.rw.RocketWarfare;
 import dev.thetechnokid.rw.entities.Rocket;
+import dev.thetechnokid.rw.logic.Rank;
 import dev.thetechnokid.rw.utils.StringEncryptor;
 
 public class User implements Serializable {

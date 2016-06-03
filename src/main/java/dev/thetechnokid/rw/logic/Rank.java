@@ -1,4 +1,4 @@
-package dev.thetechnokid.rw.net;
+package dev.thetechnokid.rw.logic;
 
 public enum Rank {
 	NOOB("Noob", "Nb"),
