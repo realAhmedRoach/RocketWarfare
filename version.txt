@@ -1,0 +1,3 @@
+0.0.1-SNAPSHOT
+Dev Edition
+This is a really unstable initial development build.
