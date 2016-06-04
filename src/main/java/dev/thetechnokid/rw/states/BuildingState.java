@@ -70,8 +70,6 @@ public class BuildingState extends State {
 	}
 
 	private void createRocket() {
-		if (rocket != null)
-			return;
 		if (partLocs.isEmpty())
 			return;
 
@@ -91,6 +89,8 @@ public class BuildingState extends State {
 	}
 
 	private void saveRocket() {
+		if (rocket == null)
+			return;
 		createRocket();
 		MainGameController.get().USER.addBlueprint(rocket);
 	}
