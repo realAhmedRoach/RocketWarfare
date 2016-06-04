@@ -5,7 +5,6 @@ import java.util.*;
 
 import dev.thetechnokid.rw.maths.*;
 import dev.thetechnokid.rw.utils.*;
-import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.transform.*;
 
@@ -15,7 +14,7 @@ public class Rocket extends FlyingObject implements Serializable {
 	protected List<RocketPart> parts;
 	protected String name;
 
-	private Force thrust = new Force(0, Direction.NORTH.clone(), false);
+	private transient Force thrust = new Force(0, Direction.NORTH.clone(), false);
 
 	private boolean launched = false;
 	private int time;
@@ -36,9 +35,9 @@ public class Rocket extends FlyingObject implements Serializable {
 		g.setTransform((new Affine(new Rotate(-(thrust.getAcceleration().getDirection().getDegrees() - 90),
 				x + ((getWidth() * Grid.SIZE) / 2), y + (getHeight() * Grid.SIZE)))));
 		for (RocketPart rocketPart : parts) {
-			Point2D partPos = rocketPart.getPosInRocket();
-			int xx = (int) (x + (partPos.getX() * Grid.SIZE));
-			int yy = (int) (y + (partPos.getY() * Grid.SIZE));
+			Position partPos = rocketPart.getPosInRocket();
+			int xx = (int) (x + (partPos.x * Grid.SIZE));
+			int yy = (int) (y + (partPos.y * Grid.SIZE));
 			g.drawImage(rocketPart.getImage(), xx, yy);
 		}
 		g.restore();
@@ -60,9 +59,9 @@ public class Rocket extends FlyingObject implements Serializable {
 	private void calculatePos() {
 		if (thrust.getForceY() < Force.GRAVITY.getForceY()) {
 			Force.GRAVITY.setAccelerated(true);
-			pos.altitude += Physics.positionY(++time, Force.GRAVITY, thrust);
+			pos.y += Physics.positionY(++time, Force.GRAVITY, thrust);
 		} else {
-			pos.altitude += time > 1 ? Physics.positionY(--time, Force.GRAVITY, thrust)
+			pos.y += time > 1 ? Physics.positionY(--time, Force.GRAVITY, thrust)
 					: Physics.positionY(time, Force.GRAVITY, thrust);
 			if (time == 1)
 				Force.GRAVITY.setAccelerated(false);
@@ -93,8 +92,8 @@ public class Rocket extends FlyingObject implements Serializable {
 			return;
 		parts.add(part);
 		mass += part.getMass();
-		size.setWidth(parts.stream().mapToInt(p -> (int) p.getPosInRocket().getX()).max().getAsInt() + 1);
-		size.setHeight(parts.stream().mapToInt(p -> (int) p.getPosInRocket().getY()).max().getAsInt() + 1);
+		size.setWidth(parts.stream().mapToInt(p -> (int) p.getPosInRocket().x).max().getAsInt() + 1);
+		size.setHeight(parts.stream().mapToInt(p -> (int) p.getPosInRocket().y).max().getAsInt() + 1);
 	}
 
 	public boolean isLaunched() {

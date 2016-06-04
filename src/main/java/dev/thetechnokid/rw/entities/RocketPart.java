@@ -4,15 +4,15 @@ import java.io.*;
 import java.util.ArrayList;
 
 import dev.thetechnokid.rw.RocketWarfare;
+import dev.thetechnokid.rw.maths.Position;
 import dev.thetechnokid.rw.utils.Assets;
-import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 
 public class RocketPart extends Entity implements Serializable {
 	private static final long serialVersionUID = 3857824053568051475L;
 
 	private int mass;
-	private Point2D posInRocket;
+	private Position posInRocket;
 	private RocketPart north, south, east, west;
 
 	protected String type, tier;
@@ -82,11 +82,11 @@ public class RocketPart extends Entity implements Serializable {
 		return mass;
 	}
 
-	public Point2D getPosInRocket() {
+	public Position getPosInRocket() {
 		return posInRocket;
 	}
 
-	public void setPosInRocket(Point2D posInRocket) {
+	public void setPosInRocket(Position posInRocket) {
 		this.posInRocket = posInRocket;
 	}
 

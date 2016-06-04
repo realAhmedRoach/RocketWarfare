@@ -4,6 +4,7 @@ import java.util.*;
 
 import dev.thetechnokid.rw.controllers.MainGameController;
 import dev.thetechnokid.rw.entities.*;
+import dev.thetechnokid.rw.maths.Position;
 import dev.thetechnokid.rw.utils.Grid;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
@@ -84,7 +85,7 @@ public class BuildingState extends State {
 		rocket = new Rocket(g, name.getText());
 		for (Point2D orig : partLocs.keySet()) {
 			RocketPart p = partLocs.get(orig);
-			p.setPosInRocket(new Point2D(orig.getX() - ox, orig.getY() - oy));
+			p.setPosInRocket(new Position(orig.getX() - ox, orig.getY() - oy));
 			rocket.addPart(p);
 		}
 	}

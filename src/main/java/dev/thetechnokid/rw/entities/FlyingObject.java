@@ -22,7 +22,7 @@ public abstract class FlyingObject {
 
 
 	public double getAltitude() {
-		return pos.altitude;
+		return pos.y;
 	}
 
 	public int getMass() {
