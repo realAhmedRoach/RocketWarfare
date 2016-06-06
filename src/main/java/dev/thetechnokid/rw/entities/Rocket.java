@@ -57,7 +57,7 @@ public class Rocket extends FlyingObject implements Serializable {
 	}
 
 	private void calculatePos() {
-		if (thrust.getForceY() < Force.GRAVITY.getForceY()) {
+		if (thrust.getForceY() < Force.GRAVITY.getForceY(time)) {
 			Force.GRAVITY.setAccelerated(true);
 			pos.y += Physics.positionY(++time, Force.GRAVITY, thrust);
 		} else {
@@ -68,7 +68,7 @@ public class Rocket extends FlyingObject implements Serializable {
 		}
 
 		pos.x += Physics.positionX(time, Force.GRAVITY, thrust);
-		System.out.println(time);
+		System.out.println(thrust.getForceY() + " " + Force.GRAVITY.getForceY(time));
 	}
 
 	public double getAcceleration() {
