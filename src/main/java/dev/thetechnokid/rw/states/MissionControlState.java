@@ -6,7 +6,7 @@ import dev.thetechnokid.rw.entities.Rocket;
 import dev.thetechnokid.rw.utils.*;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
-import javafx.scene.input.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 
 public class MissionControlState extends State {
@@ -82,7 +82,7 @@ public class MissionControlState extends State {
 		dethrust.setOnAction((event) -> {
 			rocket.getVelocity().decreaseMagnitude(1);
 		});
-		
+
 		Button expand = new Button("Expand");
 		expand.setOnAction((event) -> {
 			MainGameController.getCanvas().setWidth(1056);
@@ -104,8 +104,8 @@ public class MissionControlState extends State {
 		velocityLabel = new Label();
 		apfLabel = new Label();
 
-		MainGameController.buttons().addAll(tiltRight, tiltLeft, thrust, dethrust, expand, new Separator(), altitudeLabel,
-				xLabel, degreesLabel, velocityLabel, modifierLabel, apfLabel, new Separator(), build);
+		MainGameController.buttons().addAll(tiltRight, tiltLeft, thrust, dethrust, expand, new Separator(),
+				altitudeLabel, xLabel, degreesLabel, velocityLabel, modifierLabel, apfLabel, new Separator(), build);
 	}
 
 	@Override
@@ -123,7 +123,7 @@ public class MissionControlState extends State {
 			rocket.getVelocity().getDirection().decreaseDegrees();
 		else if (MainGameController.getKeyboard().get(KeyCode.LEFT))
 			rocket.getVelocity().getDirection().increaseDegrees();
-		
+
 		if (MainGameController.getKeyboard().releasedKey(KeyCode.ESCAPE))
 			MainGameController.getCanvas().setWidth(352);
 		else if (MainGameController.getKeyboard().releasedKey(KeyCode.F11))
@@ -133,7 +133,7 @@ public class MissionControlState extends State {
 			rocket.getVelocity().increaseMagnitude(1);
 		else if (MainGameController.getKeyboard().releasedKey(KeyCode.DOWN))
 			rocket.getVelocity().decreaseMagnitude(1);
-		
+
 		rocket.tick();
 		anim.tick();
 
@@ -144,13 +144,13 @@ public class MissionControlState extends State {
 	}
 
 	private void fixPos() {
-		if (rockx > MainGameController.getWidth())
+		if (rockx > MainGameController.getWidth() - rocket.getWidth())
 			ox += MainGameController.getWidth();
 		else if (rockx < 0)
 			ox -= MainGameController.getWidth();
-		if (rocky > MainGameController.getHeight())
+		if (rocky > MainGameController.getHeight() - rocket.getHeight())
 			oy += MainGameController.getHeight();
-		else if (rocky < -(rocket.getHeight() * Grid.SIZE))
+		else if (rocky < 0)
 			oy -= MainGameController.getHeight();
 	}
 }
