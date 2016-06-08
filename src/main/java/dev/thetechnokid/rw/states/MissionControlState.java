@@ -54,13 +54,11 @@ public class MissionControlState extends State {
 					+ String.format("%.4f", rocket.getVelocity().getDirection().getXModifier());
 			String degreesText = rocket.getVelocity().getDirection().getDegrees() + "\u00b0";
 			String velocityText = rocket.getAcceleration() + "";
-			String apfText = String.format("%,.4f", rocket.getVelocity().apf());
 			altitudeLabel.setText(Language.get("altitude") + ": " + altitudeText);
 			xLabel.setText("X: " + xText);
 			degreesLabel.setText(Language.get("degrees") + ": " + degreesText);
 			modifierLabel.setText(modifierText);
 			velocityLabel.setText(Language.get("velocity") + ": " + velocityText);
-			apfLabel.setText("APF: " + apfText);
 		});
 
 		Button tiltRight = new Button("->");
