@@ -14,6 +14,10 @@ public class RocketWarfare extends Application {
 	public static final String OS = (System.getProperty("os.name")).toUpperCase();
 	private static Stage stage;
 
+	public static void main(String[] args) {
+		launch(args);
+	}
+
 	@Override
 	public void start(Stage owner) throws Exception {
 		AnchorPane parent = (AnchorPane) FXMLLoader.load(RocketWarfare.class.getResource("fxml/Game.fxml"));
