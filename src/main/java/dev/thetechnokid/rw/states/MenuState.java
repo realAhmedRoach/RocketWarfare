@@ -5,18 +5,10 @@ import java.io.File;
 import dev.thetechnokid.rw.RocketWarfare;
 import dev.thetechnokid.rw.controllers.MainGameController;
 import dev.thetechnokid.rw.net.User;
-import dev.thetechnokid.rw.utils.Grid;
-import dev.thetechnokid.rw.utils.Language;
-import dev.thetechnokid.rw.utils.Utils;
-import javafx.geometry.Point2D;
-import javafx.geometry.Pos;
-import javafx.geometry.VPos;
+import dev.thetechnokid.rw.utils.*;
+import javafx.geometry.*;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
@@ -26,6 +18,8 @@ public class MenuState extends State {
 	private boolean textOn, showWelcome;
 	private String name;
 	private boolean gridded;
+	private int i = 0;
+	private Animator logo;
 
 	public MenuState(GraphicsContext g) {
 		super(g);
@@ -35,6 +29,13 @@ public class MenuState extends State {
 	protected void init() {
 		g.setTextAlign(TextAlignment.CENTER);
 		g.setTextBaseline(VPos.CENTER);
+
+		logo = new Animator(100, () -> {
+			i++;
+			if (i >= 10) {
+				i = 0;
+			}
+		});
 
 		GridPane grid = new GridPane();
 		grid.setAlignment(Pos.CENTER);
@@ -117,7 +118,10 @@ public class MenuState extends State {
 		if (textOn) {
 			Utils.centerText(g, Language.get("welcome") + ", " + name, 20);
 			showWelcome = true;
+		} else {
+			g.drawImage(Assets.crop(Assets.LOGO, i, 0), 50, 50);
 		}
+		logo.tick();
 		// Grid.render(g);
 	}
 

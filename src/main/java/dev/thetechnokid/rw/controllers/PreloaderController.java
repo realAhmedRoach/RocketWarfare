@@ -41,7 +41,11 @@ public class PreloaderController implements Initializable {
 	private void startTasks() {
 		double i = 0.0;
 		for (Function<Boolean, String> function : tasks) {
-			status.appendText(function.apply(true) + "\n");
+			try {
+				status.appendText(function.apply(true) + "\n");
+			} catch (Exception e) {
+				status.appendText("Error: " + e);
+			}
 			progress.setProgress(i / (tasks.size() - 1));
 			i++;
 		}

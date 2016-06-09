@@ -7,12 +7,14 @@ import javafx.scene.image.*;
 
 public class Assets {
 	public static Image ROCKET_PARTS;
+	public static Image LOGO;
 
 	private Assets() {
 	}
 
 	public static void init() {
 		ROCKET_PARTS = new Image(RocketWarfare.class.getResourceAsStream("/images/spritesheet.png"));
+		LOGO = new Image(RocketWarfare.class.getResourceAsStream("/images/logosheet.png"));
 	}
 
 	public static Image crop(Image src, int col, int row) {
