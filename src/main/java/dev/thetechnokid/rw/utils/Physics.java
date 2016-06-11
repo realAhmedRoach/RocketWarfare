@@ -44,7 +44,17 @@ public class Physics {
 
 	public static void position(int time, Position pos, VectorQuantity velocity, VectorQuantity acceleration,
 			Force... forces) {
+		double netForceY = 0;
+		double netForceX = 0;
+		for (Force force : forces) {
+			netForceY += force.isAccelerated() ? force.getForceY(time) : force.getForceY();
+			netForceX += force.getForceX();
+		}
 
+		velocity.increaseMagnitude(acceleration.getMagnitude());
+		velocity.getDirection().set(acceleration.getDirection());
+		pos.y += velocity.magnitudeActualY() + netForceY;
+		pos.x += velocity.magnitudeActualX() + netForceX;
 	}
 
 	/**
