@@ -1,6 +1,6 @@
 package dev.thetechnokid.rw.utils;
 
-import dev.thetechnokid.rw.maths.Force;
+import dev.thetechnokid.rw.maths.*;
 
 public class Physics {
 
@@ -40,6 +40,11 @@ public class Physics {
 			add += force.getForceX();
 		}
 		return add;
+	}
+
+	public static void position(int time, Position pos, VectorQuantity velocity, VectorQuantity acceleration,
+			Force... forces) {
+
 	}
 
 	/**
