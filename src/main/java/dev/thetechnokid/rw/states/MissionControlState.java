@@ -81,12 +81,12 @@ public class MissionControlState extends State {
 			rocket.getVelocity().decreaseMagnitude(1);
 		});
 
-		Button expand = new Button("Expand");
+		Button expand = new Button(Language.get("expand"));
 		expand.setOnAction((event) -> {
 			MainGameController.getCanvas().setWidth(1056);
 		});
 
-		Button build = new Button("To Building");
+		Button build = new Button(Language.get("rebuild"));
 		build.setOnAction((event) -> State.setCurrentState(new BuildingState(g)));
 
 		tiltRight.setFocusTraversable(false);
