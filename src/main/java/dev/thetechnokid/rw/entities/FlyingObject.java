@@ -15,6 +15,14 @@ public abstract class FlyingObject {
 		velocity = new VectorQuantity();
 	}
 
+	public VectorQuantity getAcceleration() {
+		return acceleration;
+	}
+
+	public VectorQuantity getVelocity() {
+		return velocity;
+	}
+
 	public double getX() {
 		return pos.x;
 	}
