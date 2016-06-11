@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.*;
 
 import dev.thetechnokid.rw.maths.*;
-import dev.thetechnokid.rw.utils.*;
+import dev.thetechnokid.rw.utils.Grid;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.transform.*;
 import physics.*;
@@ -70,14 +70,6 @@ public class Rocket extends FlyingObject implements Serializable {
 
 		pos.x += Physics.positionX(time, Force.GRAVITY, thrust);
 		System.out.println(thrust.getForceY() + " " + Force.GRAVITY.getForceY(time));
-	}
-
-	public double getAcceleration() {
-		return thrust.getAcceleration().getMagnitude();
-	}
-
-	public VectorQuantity getVelocity() {
-		return thrust.getAcceleration();
 	}
 
 	public double getForce() {
