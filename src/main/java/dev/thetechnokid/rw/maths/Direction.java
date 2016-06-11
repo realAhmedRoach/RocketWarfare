@@ -99,7 +99,14 @@ public class Direction implements Cloneable {
 		return percent;
 	}
 
+	@Override
 	public Direction clone() {
 		return new Direction(degrees);
+	}
+
+	public void set(Direction direction) {
+		if (isFinal)
+			return;
+		this.degrees = direction.degrees;
 	}
 }
