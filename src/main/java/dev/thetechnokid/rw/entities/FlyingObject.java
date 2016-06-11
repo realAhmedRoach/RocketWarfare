@@ -10,6 +10,11 @@ public abstract class FlyingObject {
 	protected transient VectorQuantity acceleration;
 	protected transient VectorQuantity velocity;
 
+	public FlyingObject() {
+		acceleration = new VectorQuantity();
+		velocity = new VectorQuantity();
+	}
+
 	public double getX() {
 		return pos.x;
 	}
