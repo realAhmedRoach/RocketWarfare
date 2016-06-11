@@ -1,6 +1,6 @@
-package dev.thetechnokid.rw.maths;
+package physics;
 
-import dev.thetechnokid.rw.utils.Physics;
+import dev.thetechnokid.rw.maths.*;
 
 public class Force {
 	public static final Force GRAVITY = new Force(Physics.G, Direction.SOUTH.clone(), false);

@@ -1,4 +1,4 @@
-package dev.thetechnokid.rw.utils;
+package physics;
 
 import dev.thetechnokid.rw.maths.*;
 
