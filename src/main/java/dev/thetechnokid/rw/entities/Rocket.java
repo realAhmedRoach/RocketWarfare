@@ -15,8 +15,6 @@ public class Rocket extends FlyingObject implements Serializable {
 	protected List<RocketPart> parts;
 	protected String name;
 
-	private transient Force thrust = new Force(0, Direction.NORTH.clone(), false);
-
 	private boolean launched = false;
 	private int time;
 
@@ -33,7 +31,7 @@ public class Rocket extends FlyingObject implements Serializable {
 	@Override
 	public void render(int x, int y) {
 		g.save();
-		g.setTransform((new Affine(new Rotate(-(thrust.getAcceleration().getDirection().getDegrees() - 90),
+		g.setTransform((new Affine(new Rotate(-(acceleration.getDirection().getDegrees() - 90),
 				x + ((getWidth() * Grid.SIZE) / 2), y + (getHeight() * Grid.SIZE)))));
 		for (RocketPart rocketPart : parts) {
 			Position partPos = rocketPart.getPosInRocket();
@@ -49,8 +47,8 @@ public class Rocket extends FlyingObject implements Serializable {
 		if (launched) {
 			calculatePos();
 		} else {
-			if (thrust.getAcceleration().getMagnitude() > 0) {
-				thrust.getAcceleration().setMagnitude((int) (Physics.G + 1));
+			if (acceleration.getMagnitude() > 0) {
+				// acceleration.setMagnitude((int) (Physics.G + 1));
 				time = 1;
 				launched = true;
 			}
@@ -58,22 +56,19 @@ public class Rocket extends FlyingObject implements Serializable {
 	}
 
 	private void calculatePos() {
-		if (thrust.getForceY() < Force.GRAVITY.getForceY(time)) {
+		if (acceleration.magnitudeActualY() < Force.GRAVITY.getForceY(time)) {
 			Force.GRAVITY.setAccelerated(true);
-			pos.y += Physics.positionY(++time, Force.GRAVITY, thrust);
 		} else {
-			pos.y += time > 1 ? Physics.positionY(--time, Force.GRAVITY, thrust)
-					: Physics.positionY(time, Force.GRAVITY, thrust);
+			time--;
 			if (time == 1)
 				Force.GRAVITY.setAccelerated(false);
 		}
 
-		pos.x += Physics.positionX(time, Force.GRAVITY, thrust);
-		System.out.println(thrust.getForceY() + " " + Force.GRAVITY.getForceY(time));
+		Physics.position(time, pos, velocity, acceleration, Force.GRAVITY);
 	}
 
 	public double getForce() {
-		return mass * thrust.getAcceleration().getMagnitude();
+		return mass * acceleration.getMagnitude();
 	}
 
 	public String getName() {
