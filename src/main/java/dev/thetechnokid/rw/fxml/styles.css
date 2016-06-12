@@ -8,10 +8,10 @@
 
 .button {
     -fx-background-color: 
-        linear-gradient(#ffd65b, #e68400),
+        linear-gradient(#F57C00, #E65100),
         linear-gradient(#ffef84, #f2ba44),
-        linear-gradient(#ffea6a, #efaa22),
-        linear-gradient(#ffe657 0.0%, #f8c202 50.0%, #eea10b 100.0%),
+        linear-gradient(#FBC02D, #efaa22),
+        linear-gradient(#F9A825 0.0%, #F57F17 50.0%, #FF6F00 100.0%),
         linear-gradient(from 0.0% 0.0% to 15.0% 50.0%, rgba(255.0,255.0,255.0,0.9), rgba(255.0,255.0,255.0,0.0));
     -fx-background-radius: 30.0;
     -fx-background-insets: 0.0,1.0,2.0,3.0,0.0;
@@ -23,8 +23,8 @@
 
 .button:hover {
     -fx-background-color: 
-        linear-gradient(#e68400, #ffd65b),
-        linear-gradient(#f2ba44, #ffef84),
+        linear-gradient(#E65100, #F57C00),
+        linear-gradient(#F57F17, #F9A825),
         linear-gradient(#efaa22, #ffea6a),
         linear-gradient(from 0.0% 0.0% to 15.0% 50.0%, rgba(255.0,255.0,255.0,0.9), rgba(255.0,255.0,255.0,0.0)),
         linear-gradient(#ffe657 0.0%, #f8c202 50.0%, #eea10b 100.0%);
@@ -32,11 +32,26 @@
 
 .button:pressed {
 	-fx-background-color:
-        linear-gradient(#e68400, #ffd65b),
-        linear-gradient(#f2ba44, #ffef84);
+        linear-gradient(#E65100, #F57C00),
+        linear-gradient(#F57F17, #F9A825);
 }
 
 #parts {
+	-fx-background-color:
+        linear-gradient(#4CAF50, #9CCC65),
+        linear-gradient(#C0CA33, #CDDC39);
 	-fx-background-radius: 15.0;
 	-fx-padding: 5.0 15.0 5.0 15.0;
+}
+
+#parts:hover {
+	-fx-background-color:
+        linear-gradient(#2E7D32, #7CB342),
+        linear-gradient(#558B2F, #AFB42B);
+}
+
+#parts:pressed {
+	-fx-background-color: 
+		linear-gradient(#558B2F, #AFB42B), 
+		linear-gradient(#2E7D32, #7CB342);
 }
