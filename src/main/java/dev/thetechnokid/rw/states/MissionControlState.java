@@ -65,22 +65,22 @@ public class MissionControlState extends State {
 
 		Button tiltRight = new Button("->");
 		tiltRight.setOnAction((event) -> {
-			rocket.getVelocity().getDirection().decreaseDegrees();
+			rocket.getAcceleration().getDirection().decreaseDegrees();
 		});
 
 		Button tiltLeft = new Button("<-");
 		tiltLeft.setOnAction((event) -> {
-			rocket.getVelocity().getDirection().increaseDegrees();
+			rocket.getAcceleration().getDirection().increaseDegrees();
 		});
 
 		Button thrust = new Button(Language.get("thrust"));
 		thrust.setOnAction((event) -> {
-			rocket.getVelocity().increaseMagnitude(1);
+			rocket.getAcceleration().increaseMagnitude(0.5);
 		});
 
 		Button dethrust = new Button(Language.get("dethrust"));
 		dethrust.setOnAction((event) -> {
-			rocket.getVelocity().decreaseMagnitude(1);
+			rocket.getAcceleration().decreaseMagnitude(0.5);
 		});
 
 		Button expand = new Button(Language.get("expand"));
