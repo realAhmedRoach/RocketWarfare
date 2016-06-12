@@ -19,7 +19,7 @@ public class MissionControlState extends State {
 	private Label degreesLabel;
 	private Label modifierLabel;
 	private Label velocityLabel;
-	private Label apfLabel;
+	private Label accelerationLabel;
 
 	private double rockx, rocky;
 	private double ox, oy;
@@ -53,12 +53,14 @@ public class MissionControlState extends State {
 					+ Language.get("modifier") + ": "
 					+ String.format("%.4f", rocket.getVelocity().getDirection().getXModifier());
 			String degreesText = rocket.getVelocity().getDirection().getDegrees() + "\u00b0";
-			String velocityText = rocket.getAcceleration() + "";
+			String velocityText = rocket.getVelocity().magnitudeActualY() + "";
+			String accelerationText = rocket.getAcceleration().magnitudeActualY() + "";
 			altitudeLabel.setText(Language.get("altitude") + ": " + altitudeText);
 			xLabel.setText("X: " + xText);
 			degreesLabel.setText(Language.get("degrees") + ": " + degreesText);
 			modifierLabel.setText(modifierText);
 			velocityLabel.setText(Language.get("velocity") + ": " + velocityText);
+			accelerationLabel.setText(Language.get("acceleration") + ": " + accelerationText);
 		});
 
 		Button tiltRight = new Button("->");
@@ -100,10 +102,11 @@ public class MissionControlState extends State {
 		degreesLabel = new Label();
 		modifierLabel = new Label();
 		velocityLabel = new Label();
-		apfLabel = new Label();
+		accelerationLabel = new Label();
 
 		MainGameController.buttons().addAll(tiltRight, tiltLeft, thrust, dethrust, expand, new Separator(),
-				altitudeLabel, xLabel, degreesLabel, velocityLabel, modifierLabel, apfLabel, new Separator(), build);
+				altitudeLabel, xLabel, degreesLabel, velocityLabel, modifierLabel, accelerationLabel, new Separator(),
+				build);
 	}
 
 	@Override
@@ -128,9 +131,9 @@ public class MissionControlState extends State {
 			MainGameController.getCanvas().setWidth(1056);
 
 		if (MainGameController.getKeyboard().releasedKey(KeyCode.UP))
-			rocket.getVelocity().increaseMagnitude(1);
+			rocket.getAcceleration().increaseMagnitude(0.5);
 		else if (MainGameController.getKeyboard().releasedKey(KeyCode.DOWN))
-			rocket.getVelocity().decreaseMagnitude(1);
+			rocket.getAcceleration().decreaseMagnitude(0.5);
 
 		rocket.tick();
 		anim.tick();
