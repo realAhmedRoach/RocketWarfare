@@ -29,15 +29,15 @@ public class Rocket extends FlyingObject implements Serializable {
 	}
 
 	@Override
-	public void render(int x, int y) {
+	public void render(int x, int y, double scale) {
 		g.save();
 		g.setTransform((new Affine(new Rotate(-(acceleration.getDirection().getDegrees() - 90),
-				x + ((getWidth() * Grid.SIZE) / 2), y + (getHeight() * Grid.SIZE)))));
+				x + ((getWidth() * (Grid.SIZE * scale)) / 2), y + (getHeight() * (Grid.SIZE * scale))))));
 		for (RocketPart rocketPart : parts) {
 			Position partPos = rocketPart.getPosInRocket();
 			int xx = (int) (x + (partPos.x * Grid.SIZE));
 			int yy = (int) (y + (partPos.y * Grid.SIZE));
-			g.drawImage(rocketPart.getImage(), xx, yy);
+			g.drawImage(rocketPart.getImage(), xx, yy, Grid.SIZE * scale, Grid.SIZE * scale);
 		}
 		g.restore();
 	}

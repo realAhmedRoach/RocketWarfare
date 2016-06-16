@@ -115,7 +115,7 @@ public class MissionControlState extends State {
 		g.fillText(String.format("%,d", (int) -oy) + "", 60, 20);
 		g.fillText(String.format("%,d", (int) ox) + "", MainGameController.getWidth() - 40,
 				MainGameController.getHeight() - 20);
-		rocket.render((int) rockx, (int) rocky);
+		rocket.render((int) rockx, (int) rocky, 0.5);
 	}
 
 	@Override

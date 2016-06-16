@@ -51,7 +51,7 @@ public abstract class FlyingObject {
 		return size.getHeight();
 	}
 
-	public abstract void render(int x, int y);
-
 	public abstract void tick();
+
+	public abstract void render(int x, int y, double scale);
 }
