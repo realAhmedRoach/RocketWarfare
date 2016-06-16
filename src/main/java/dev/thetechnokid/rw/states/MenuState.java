@@ -19,6 +19,7 @@ public class MenuState extends State {
 	private String name;
 	private boolean gridded;
 	private int i = 0;
+	private int z = 0;
 	private Animator logo;
 
 	public MenuState(GraphicsContext g) {
@@ -30,10 +31,15 @@ public class MenuState extends State {
 		g.setTextAlign(TextAlignment.CENTER);
 		g.setTextBaseline(VPos.CENTER);
 
-		logo = new Animator(100, () -> {
+		logo = new Animator(150, () -> {
 			i++;
-			if (i >= 10) {
+			if (i == 10) {
 				i = 0;
+				z = 1;
+			}
+			if (i == 1 && z == 1) {
+				i = 0;
+				z = 0;
 			}
 		});
 
@@ -119,7 +125,8 @@ public class MenuState extends State {
 			Utils.centerText(g, Language.get("welcome") + ", " + name, 20);
 			showWelcome = true;
 		} else {
-			g.drawImage(Assets.crop(Assets.LOGO, i, 0), 50, 50);
+			g.drawImage(Assets.crop(Assets.LOGO, i, z), MainGameController.getWidth() / 2 - Grid.SIZE,
+					MainGameController.getHeight() / 2 - Grid.SIZE);
 		}
 		logo.tick();
 		// Grid.render(g);
