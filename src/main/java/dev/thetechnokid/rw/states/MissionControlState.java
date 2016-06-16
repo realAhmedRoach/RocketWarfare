@@ -121,9 +121,9 @@ public class MissionControlState extends State {
 	@Override
 	public void tick() {
 		if (MainGameController.getKeyboard().get(KeyCode.RIGHT))
-			rocket.getVelocity().getDirection().decreaseDegrees();
+			rocket.getAcceleration().getDirection().decreaseDegrees();
 		else if (MainGameController.getKeyboard().get(KeyCode.LEFT))
-			rocket.getVelocity().getDirection().increaseDegrees();
+			rocket.getAcceleration().getDirection().increaseDegrees();
 
 		if (MainGameController.getKeyboard().releasedKey(KeyCode.ESCAPE))
 			MainGameController.getCanvas().setWidth(352);
