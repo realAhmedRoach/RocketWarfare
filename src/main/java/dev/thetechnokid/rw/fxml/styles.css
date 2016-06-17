@@ -3,7 +3,7 @@
 }
 
 .label {
-	-fx-text-fill: #aaaaaa;
+	-fx-text-fill: #cccccc;
 }
 
 .button {
@@ -41,7 +41,6 @@
         linear-gradient(#4CAF50, #9CCC65),
         linear-gradient(#C0CA33, #CDDC39);
 	-fx-background-radius: 15.0;
-	-fx-padding: 5.0 15.0 5.0 15.0;
 }
 
 #parts:hover {
