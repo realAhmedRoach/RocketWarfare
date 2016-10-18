@@ -20,9 +20,12 @@ public class MissionControlState extends State {
 	private Label modifierLabel;
 	private Label velocityLabel;
 	private Label accelerationLabel;
+	private Label timeLabel;
 
 	private double rockx, rocky;
 	private double ox, oy;
+
+	public static final double DELTA = 0.25;
 
 	public MissionControlState(GraphicsContext g, Rocket toControl) {
 		super(g);
@@ -55,12 +58,14 @@ public class MissionControlState extends State {
 			String degreesText = rocket.getVelocity().getDirection().getDegrees() + "\u00b0";
 			String velocityText = rocket.getVelocity().magnitudeActualY() + "";
 			String accelerationText = rocket.getAcceleration().magnitudeActualY() + "";
+			String timeText = rocket.getTime() / RocketWarfare.FPS + "";
 			altitudeLabel.setText(Language.get("altitude") + ": " + altitudeText);
 			xLabel.setText("X: " + xText);
 			degreesLabel.setText(Language.get("degrees") + ": " + degreesText);
 			modifierLabel.setText(modifierText);
 			velocityLabel.setText(Language.get("velocity") + ": " + velocityText);
 			accelerationLabel.setText(Language.get("acceleration") + ": " + accelerationText);
+			timeLabel.setText(Language.get("time") + ": " + timeText);
 		});
 
 		Button tiltRight = new Button("->");
@@ -75,12 +80,12 @@ public class MissionControlState extends State {
 
 		Button thrust = new Button(Language.get("thrust"));
 		thrust.setOnAction((event) -> {
-			rocket.getAcceleration().increaseMagnitude(0.5);
+			rocket.getAcceleration().increaseMagnitude(DELTA);
 		});
 
 		Button dethrust = new Button(Language.get("dethrust"));
 		dethrust.setOnAction((event) -> {
-			rocket.getAcceleration().decreaseMagnitude(0.5);
+			rocket.getAcceleration().decreaseMagnitude(DELTA);
 		});
 
 		Button expand = new Button(Language.get("expand"));
@@ -103,10 +108,11 @@ public class MissionControlState extends State {
 		modifierLabel = new Label();
 		velocityLabel = new Label();
 		accelerationLabel = new Label();
+		timeLabel = new Label();
 
 		MainGameController.buttons().addAll(tiltRight, tiltLeft, thrust, dethrust, expand, new Separator(),
-				altitudeLabel, xLabel, degreesLabel, velocityLabel, modifierLabel, accelerationLabel, new Separator(),
-				build);
+				altitudeLabel, xLabel, degreesLabel, velocityLabel, modifierLabel, accelerationLabel, timeLabel,
+				new Separator(), build);
 	}
 
 	@Override
@@ -131,9 +137,9 @@ public class MissionControlState extends State {
 			MainGameController.getCanvas().setWidth(1056);
 
 		if (MainGameController.getKeyboard().releasedKey(KeyCode.UP))
-			rocket.getAcceleration().increaseMagnitude(0.5);
+			rocket.getAcceleration().increaseMagnitude(DELTA);
 		else if (MainGameController.getKeyboard().releasedKey(KeyCode.DOWN))
-			rocket.getAcceleration().decreaseMagnitude(0.5);
+			rocket.getAcceleration().decreaseMagnitude(DELTA);
 
 		rocket.tick();
 		anim.tick();

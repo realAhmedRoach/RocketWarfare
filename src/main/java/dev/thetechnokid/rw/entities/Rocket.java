@@ -4,10 +4,10 @@ import java.io.Serializable;
 import java.util.*;
 
 import dev.thetechnokid.rw.maths.*;
+import dev.thetechnokid.rw.physics.*;
 import dev.thetechnokid.rw.utils.Grid;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.transform.*;
-import physics.*;
 
 public class Rocket extends FlyingObject implements Serializable {
 	private static final long serialVersionUID = 7546621883949959769L;
@@ -25,7 +25,7 @@ public class Rocket extends FlyingObject implements Serializable {
 		this.name = name;
 		size = new Dimension();
 		pos = new Position();
-		parts = new ArrayList<RocketPart>();
+		parts = new ArrayList<>();
 	}
 
 	@Override
@@ -86,5 +86,9 @@ public class Rocket extends FlyingObject implements Serializable {
 
 	public boolean isLaunched() {
 		return launched;
+	}
+
+	public int getTime() {
+		return time;
 	}
 }
