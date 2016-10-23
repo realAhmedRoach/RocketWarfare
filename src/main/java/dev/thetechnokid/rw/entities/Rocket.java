@@ -5,6 +5,7 @@ import java.util.*;
 
 import dev.thetechnokid.rw.maths.*;
 import dev.thetechnokid.rw.physics.*;
+import dev.thetechnokid.rw.states.State;
 import dev.thetechnokid.rw.utils.Grid;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.transform.*;
@@ -29,14 +30,15 @@ public class Rocket extends FlyingObject implements Serializable {
 	}
 
 	@Override
-	public void render(int x, int y, double scale) {
+	public void render(double x, double y) {
+		double scale = State.getCurrentState().scale();
 		g.save();
 		g.setTransform((new Affine(new Rotate(-(acceleration.getDirection().getDegrees() - 90),
 				x + ((getWidth() * (Grid.SIZE * scale)) / 2), y + (getHeight() * (Grid.SIZE * scale))))));
 		for (RocketPart rocketPart : parts) {
 			Position partPos = rocketPart.getPosInRocket();
-			int xx = (int) (x + (partPos.x * Grid.SIZE));
-			int yy = (int) (y + (partPos.y * Grid.SIZE));
+			int xx = (int) (x + (partPos.x * (Grid.SIZE * scale)));
+			int yy = (int) (y + (partPos.y * (Grid.SIZE * scale)));
 			g.drawImage(rocketPart.getImage(), xx, yy, Grid.SIZE * scale, Grid.SIZE * scale);
 		}
 		g.restore();

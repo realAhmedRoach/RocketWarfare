@@ -53,5 +53,5 @@ public abstract class FlyingObject {
 
 	public abstract void tick();
 
-	public abstract void render(int x, int y, double scale);
+	public abstract void render(double x, double y);
 }

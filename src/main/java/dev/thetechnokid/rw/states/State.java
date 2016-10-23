@@ -44,6 +44,10 @@ public abstract class State {
 		return true;
 	}
 
+	public double scale() {
+		return 1;
+	}
+
 	protected abstract void init();
 
 	public abstract void render();

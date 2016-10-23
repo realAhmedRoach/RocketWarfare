@@ -24,6 +24,7 @@ public class MissionControlState extends State {
 
 	private double rockx, rocky;
 	private double ox, oy;
+	private double scale = 1;
 
 	public static final double DELTA = 0.25;
 
@@ -78,6 +79,18 @@ public class MissionControlState extends State {
 			rocket.getAcceleration().getDirection().increaseDegrees();
 		});
 
+		Button scaleUp = new Button("+");
+		scaleUp.setOnAction((event) -> {
+			if (scale < 2)
+				scale += 0.5;
+		});
+
+		Button scaleDown = new Button("+");
+		scaleDown.setOnAction((event) -> {
+			if (scale > 0.5)
+				scale -= 0.5;
+		});
+
 		Button thrust = new Button(Language.get("thrust"));
 		thrust.setOnAction((event) -> {
 			rocket.getAcceleration().increaseMagnitude(DELTA);
@@ -98,6 +111,8 @@ public class MissionControlState extends State {
 
 		tiltRight.setFocusTraversable(false);
 		tiltLeft.setFocusTraversable(false);
+		scaleUp.setFocusTraversable(false);
+		scaleDown.setFocusTraversable(false);
 		thrust.setFocusTraversable(false);
 		dethrust.setFocusTraversable(false);
 		build.setFocusTraversable(false);
@@ -110,9 +125,9 @@ public class MissionControlState extends State {
 		accelerationLabel = new Label();
 		timeLabel = new Label();
 
-		MainGameController.buttons().addAll(tiltRight, tiltLeft, thrust, dethrust, expand, new Separator(),
-				altitudeLabel, xLabel, degreesLabel, velocityLabel, modifierLabel, accelerationLabel, timeLabel,
-				new Separator(), build);
+		MainGameController.buttons().addAll(tiltRight, tiltLeft, scaleUp, scaleDown, thrust, dethrust, expand,
+				new Separator(), altitudeLabel, xLabel, degreesLabel, velocityLabel, modifierLabel, accelerationLabel,
+				timeLabel, new Separator(), build);
 	}
 
 	@Override
@@ -121,7 +136,7 @@ public class MissionControlState extends State {
 		g.fillText(String.format("%,d", (int) -oy) + "", 60, 20);
 		g.fillText(String.format("%,d", (int) ox) + "", MainGameController.getWidth() - 40,
 				MainGameController.getHeight() - 20);
-		rocket.render((int) rockx, (int) rocky, 0.5);
+		rocket.render((int) rockx, (int) rocky);
 	}
 
 	@Override
@@ -150,12 +165,17 @@ public class MissionControlState extends State {
 		fixPos();
 	}
 
+	@Override
+	public double scale() {
+		return scale;
+	}
+
 	private void fixPos() {
 		if (rockx > MainGameController.getWidth() - rocket.getWidth())
 			ox += MainGameController.getWidth();
 		else if (rockx < 0)
 			ox -= MainGameController.getWidth();
-		if (rocky > MainGameController.getHeight() - rocket.getHeight())
+		if (rocky > MainGameController.getHeight() - (rocket.getHeight()))
 			oy += MainGameController.getHeight();
 		else if (rocky < 0)
 			oy -= MainGameController.getHeight();
