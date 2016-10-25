@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.*;
 
 import dev.thetechnokid.rw.maths.*;
-import dev.thetechnokid.rw.physics.*;
+import dev.thetechnokid.rw.physics.Physics;
 import dev.thetechnokid.rw.states.State;
 import dev.thetechnokid.rw.utils.Grid;
 import javafx.scene.canvas.GraphicsContext;
@@ -58,15 +58,7 @@ public class Rocket extends FlyingObject implements Serializable {
 	}
 
 	private void calculatePos() {
-		if (acceleration.magnitudeActualY() < Force.GRAVITY.getForceY(time)) {
-			Force.GRAVITY.setAccelerated(true);
-		} else if (time > 1) {
-			time--;
-		} else {
-			Force.GRAVITY.setAccelerated(false);
-		}
-
-		Physics.position(time, pos, velocity, acceleration, Force.GRAVITY);
+		Physics.position(time, pos, velocity, acceleration);
 	}
 
 	public double getForce() {

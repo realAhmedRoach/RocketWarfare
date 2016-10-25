@@ -156,7 +156,10 @@ public class MissionControlState extends State {
 		} else if (MainGameController.getKeyboard().get(KeyCode.DOWN) && rocket.getAcceleration().getMagnitude() > 0) {
 			rocket.getAcceleration().decreaseMagnitude(DELTA);
 		} else if (rocket.getAcceleration().getMagnitude() > 0)
-			rocket.getAcceleration().decreaseMagnitude(DELTA / 2);
+			rocket.getAcceleration().decreaseMagnitude(DELTA);
+
+		if (rocket.getAcceleration().getMagnitude() < 0)
+			rocket.getAcceleration().setMagnitude(0);
 
 		rocket.tick();
 		anim.tick();

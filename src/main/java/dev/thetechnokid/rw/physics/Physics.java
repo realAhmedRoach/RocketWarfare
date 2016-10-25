@@ -1,5 +1,6 @@
 package dev.thetechnokid.rw.physics;
 
+import dev.thetechnokid.rw.RocketWarfare;
 import dev.thetechnokid.rw.maths.*;
 
 public class Physics {
@@ -7,25 +8,21 @@ public class Physics {
 	/**
 	 * This is the Gravity constant.
 	 */
-	public static final double G = (9.82) / 30;
+	public static final double G = 16;
 
 	private Physics() {
 	}
 
-	public static void position(int time, Position pos, VectorQuantity velocity, VectorQuantity acceleration,
-			Force... forces) {
-		double netForceY = 0;
-		double netForceX = 0;
-		for (Force force : forces) {
-			netForceY += force.isAccelerated() ? force.getForceY(time) : force.getForceY();
-			netForceX += force.getForceX();
-		}
-
+	public static void position(int time, Position pos, VectorQuantity velocity, VectorQuantity acceleration) {
 		velocity.increaseMagnitude(acceleration.getMagnitude());
-		velocity.decreaseMagnitude(G);
+		if (acceleration.getDirection().getDegrees() > 180) {
+			velocity.increaseMagnitude(G / RocketWarfare.FPS);
+		} else {
+			velocity.decreaseMagnitude(G / RocketWarfare.FPS);
+		}
 		velocity.getDirection().set(acceleration.getDirection());
-		pos.y += velocity.magnitudeActualY() + netForceY;
-		pos.x += velocity.magnitudeActualX() + netForceX;
+		pos.y += velocity.magnitudeActualY();
+		pos.x += velocity.magnitudeActualX();
 	}
 
 	/**
