@@ -26,7 +26,7 @@ public class MissionControlState extends State {
 	private double ox, oy;
 	private double scale = 1;
 
-	public static final double DELTA = 0.25;
+	public static final double DELTA = 0.025;
 
 	public MissionControlState(GraphicsContext g, Rocket toControl) {
 		super(g);
@@ -57,8 +57,8 @@ public class MissionControlState extends State {
 					+ Language.get("modifier") + ": "
 					+ String.format("%.4f", rocket.getVelocity().getDirection().getXModifier());
 			String degreesText = rocket.getVelocity().getDirection().getDegrees() + "\u00b0";
-			String velocityText = rocket.getVelocity().magnitudeActualY() + "";
-			String accelerationText = rocket.getAcceleration().magnitudeActualY() + "";
+			String velocityText = rocket.getVelocity().getMagnitude() + "";
+			String accelerationText = rocket.getAcceleration().getMagnitude() + "";
 			String timeText = rocket.getTime() / RocketWarfare.FPS + "";
 			altitudeLabel.setText(Language.get("altitude") + ": " + altitudeText);
 			xLabel.setText("X: " + xText);
@@ -151,10 +151,12 @@ public class MissionControlState extends State {
 		else if (MainGameController.getKeyboard().releasedKey(KeyCode.F11))
 			MainGameController.getCanvas().setWidth(1056);
 
-		if (MainGameController.getKeyboard().releasedKey(KeyCode.UP))
+		if (MainGameController.getKeyboard().get(KeyCode.UP) && rocket.getAcceleration().getMagnitude() < 1) {
 			rocket.getAcceleration().increaseMagnitude(DELTA);
-		else if (MainGameController.getKeyboard().releasedKey(KeyCode.DOWN))
+		} else if (MainGameController.getKeyboard().get(KeyCode.DOWN) && rocket.getAcceleration().getMagnitude() > 0) {
 			rocket.getAcceleration().decreaseMagnitude(DELTA);
+		} else if (rocket.getAcceleration().getMagnitude() > 0)
+			rocket.getAcceleration().decreaseMagnitude(DELTA / 2);
 
 		rocket.tick();
 		anim.tick();
