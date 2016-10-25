@@ -3,8 +3,7 @@ package dev.thetechnokid.rw.utils;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.text.Font;
-import javafx.scene.transform.Affine;
-import javafx.scene.transform.Rotate;
+import javafx.scene.transform.*;
 
 public class Utils {
 	public static void centerText(GraphicsContext g, String text, int size) {
@@ -67,5 +66,16 @@ public class Utils {
 		rotate(g, angle, tlpx + image.getWidth() / 2, tlpy + image.getHeight() / 2);
 		g.drawImage(image, tlpx, tlpy);
 		g.restore(); // back to original state (before rotation)
+	}
+
+	/**
+	 * Formats a double.
+	 * 
+	 * @param number
+	 *            The number to be formatted
+	 * @return A formatted double with 2 decimal points.
+	 */
+	public static String format(double number) {
+		return String.format("%,.2f", number);
 	}
 }

@@ -17,10 +17,8 @@ public class MissionControlState extends State {
 	private Label altitudeLabel;
 	private Label xLabel;
 	private Label degreesLabel;
-	private Label modifierLabel;
 	private Label velocityLabel;
 	private Label accelerationLabel;
-	private Label timeLabel;
 
 	private double rockx, rocky;
 	private double ox, oy;
@@ -50,23 +48,16 @@ public class MissionControlState extends State {
 		g.setFill(Color.RED);
 
 		anim = new Animator(1000 / RocketWarfare.FPS, () -> {
-			String altitudeText = String.format("%.2f", rocket.getAltitude());
-			String xText = String.format("%.2f", rocket.getX());
-			String modifierText = Language.get("altitude modifier") + ": "
-					+ String.format("%.4f", rocket.getVelocity().getDirection().getAltitudeModifier()) + "; X "
-					+ Language.get("modifier") + ": "
-					+ String.format("%.4f", rocket.getVelocity().getDirection().getXModifier());
+			String altitudeText = Utils.format(rocket.getAltitude());
+			String xText = Utils.format(rocket.getX());
 			String degreesText = rocket.getVelocity().getDirection().getDegrees() + "\u00b0";
-			String velocityText = rocket.getVelocity().getMagnitude() + "";
-			String accelerationText = rocket.getAcceleration().getMagnitude() + "";
-			String timeText = rocket.getTime() / RocketWarfare.FPS + "";
+			String velocityText = Utils.format(rocket.getVelocity().getMagnitude());
+			String accelerationText = Utils.format(rocket.getAcceleration().getMagnitude());
 			altitudeLabel.setText(Language.get("altitude") + ": " + altitudeText);
 			xLabel.setText("X: " + xText);
 			degreesLabel.setText(Language.get("degrees") + ": " + degreesText);
-			modifierLabel.setText(modifierText);
 			velocityLabel.setText(Language.get("velocity") + ": " + velocityText);
 			accelerationLabel.setText(Language.get("acceleration") + ": " + accelerationText);
-			timeLabel.setText(Language.get("time") + ": " + timeText);
 		});
 
 		Button tiltRight = new Button("->");
@@ -85,20 +76,10 @@ public class MissionControlState extends State {
 				scale += 0.5;
 		});
 
-		Button scaleDown = new Button("+");
+		Button scaleDown = new Button("-");
 		scaleDown.setOnAction((event) -> {
 			if (scale > 0.5)
 				scale -= 0.5;
-		});
-
-		Button thrust = new Button(Language.get("thrust"));
-		thrust.setOnAction((event) -> {
-			rocket.getAcceleration().increaseMagnitude(DELTA);
-		});
-
-		Button dethrust = new Button(Language.get("dethrust"));
-		dethrust.setOnAction((event) -> {
-			rocket.getAcceleration().decreaseMagnitude(DELTA);
 		});
 
 		Button expand = new Button(Language.get("expand"));
@@ -113,21 +94,16 @@ public class MissionControlState extends State {
 		tiltLeft.setFocusTraversable(false);
 		scaleUp.setFocusTraversable(false);
 		scaleDown.setFocusTraversable(false);
-		thrust.setFocusTraversable(false);
-		dethrust.setFocusTraversable(false);
 		build.setFocusTraversable(false);
 
 		altitudeLabel = new Label();
 		xLabel = new Label();
 		degreesLabel = new Label();
-		modifierLabel = new Label();
 		velocityLabel = new Label();
 		accelerationLabel = new Label();
-		timeLabel = new Label();
 
-		MainGameController.buttons().addAll(tiltRight, tiltLeft, scaleUp, scaleDown, thrust, dethrust, expand,
-				new Separator(), altitudeLabel, xLabel, degreesLabel, velocityLabel, modifierLabel, accelerationLabel,
-				timeLabel, new Separator(), build);
+		MainGameController.buttons().addAll(tiltRight, tiltLeft, scaleUp, scaleDown, expand, new Separator(),
+				altitudeLabel, xLabel, degreesLabel, velocityLabel, accelerationLabel, new Separator(), build);
 	}
 
 	@Override
