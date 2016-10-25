@@ -12,7 +12,7 @@
 You are in a large world. Using your custom-built rocket, the missiles that you have installed in it, and your base, you try to defend yourself and your team mates from attacks.
 From UFOs, enemy ships, and more... *This is Rocket Warfare*.
 
-Rocket Warfare is going to be an MMORTS made using JavaFX, with minimal use of external libraries. The first official release is set to go off January 2017.
+Rocket Warfare is going to be an MMORTS made using JavaFX, with minimal use of external libraries. The first official release is set to go off June 2017.
 
 Here are the [graphics](res/images/spritesheet.png).
 
