@@ -7,7 +7,7 @@ public class Physics {
 	/**
 	 * This is the Gravity constant.
 	 */
-	public static final double G = 10;
+	public static final double G = (9.82) / 30;
 
 	private Physics() {
 	}
@@ -22,6 +22,7 @@ public class Physics {
 		}
 
 		velocity.increaseMagnitude(acceleration.getMagnitude());
+		velocity.decreaseMagnitude(G);
 		velocity.getDirection().set(acceleration.getDirection());
 		pos.y += velocity.magnitudeActualY() + netForceY;
 		pos.x += velocity.magnitudeActualX() + netForceX;
