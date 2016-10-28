@@ -52,6 +52,7 @@
 							<goal>jar</goal>
 						</goals>
 						<configuration>
+							<classifier>build</classifier>
 							<outputDirectory>build</outputDirectory>
 							<archive>
 								<manifest>
