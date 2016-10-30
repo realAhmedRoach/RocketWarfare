@@ -24,15 +24,6 @@
 				<directory>res</directory>
 			</resource>
 		</resources>
-		<pluginManagement>
-			<plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.0.2</version>
-        </plugin>
-      </plugins>
-		</pluginManagement>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -45,6 +36,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.3.1</version>
 				<executions>
 					<execution>
 						<phase>package</phase>
@@ -52,7 +44,6 @@
 							<goal>jar</goal>
 						</goals>
 						<configuration>
-							<classifier>build</classifier>
 							<outputDirectory>build</outputDirectory>
 							<archive>
 								<manifest>
