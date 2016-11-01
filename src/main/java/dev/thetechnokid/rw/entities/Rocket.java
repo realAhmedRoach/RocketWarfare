@@ -5,7 +5,7 @@ import java.util.*;
 
 import dev.thetechnokid.rw.maths.*;
 import dev.thetechnokid.rw.physics.Physics;
-import dev.thetechnokid.rw.states.State;
+import dev.thetechnokid.rw.states.*;
 import dev.thetechnokid.rw.utils.Grid;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.transform.*;
@@ -58,7 +58,7 @@ public class Rocket extends FlyingObject implements Serializable {
 	}
 
 	private void calculatePos() {
-		Physics.position(time, pos, velocity, acceleration);
+		Physics.position(time, this, pos);
 	}
 
 	public double getForce() {
@@ -84,5 +84,9 @@ public class Rocket extends FlyingObject implements Serializable {
 
 	public int getTime() {
 		return time;
+	}
+
+	public void crash() {
+		State.setCurrentState(new BuildingState(g));
 	}
 }

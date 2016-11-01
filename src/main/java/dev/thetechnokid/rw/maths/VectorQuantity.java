@@ -11,8 +11,8 @@ public class VectorQuantity {
 		direction = Direction.NORTH.clone();
 	}
 
-	public VectorQuantity(int x, int y) {
-		this.magnitude = (int) Math.hypot(x, y);
+	public VectorQuantity(double x, double y) {
+		this.magnitude = Math.hypot(x, y);
 		this.direction = new Direction((int) Math.toDegrees(Math.atan2(y, x)));
 	}
 
@@ -54,6 +54,22 @@ public class VectorQuantity {
 		if (isFinal)
 			return;
 		magnitude -= i;
+	}
+
+	public void add(VectorQuantity other) {
+		double x = this.magnitudeActualX() + other.magnitudeActualX();
+		double y = this.magnitudeActualY() + other.magnitudeActualY();
+		VectorQuantity newV = new VectorQuantity(x, y);
+		this.magnitude = newV.magnitude;
+		this.direction = newV.direction;
+	}
+
+	public void subtract(VectorQuantity other) {
+		double x = this.magnitudeActualX() - other.magnitudeActualX();
+		double y = this.magnitudeActualY() - other.magnitudeActualY();
+		VectorQuantity newV = new VectorQuantity(x, y);
+		this.magnitude = newV.magnitude;
+		this.direction = newV.direction;
 	}
 
 	public double magnitudeActualY() {

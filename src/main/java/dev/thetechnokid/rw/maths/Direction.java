@@ -99,6 +99,13 @@ public class Direction implements Cloneable {
 		return percent;
 	}
 
+	public Direction opposite() {
+		if (degrees >= 180)
+			return new Direction(degrees - 180);
+		else
+			return new Direction(degrees + 180);
+	}
+
 	@Override
 	public Direction clone() {
 		return new Direction(degrees);
