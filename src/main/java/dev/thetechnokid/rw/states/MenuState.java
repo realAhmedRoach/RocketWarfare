@@ -1,6 +1,6 @@
 package dev.thetechnokid.rw.states;
 
-import java.io.File;
+import java.io.*;
 
 import dev.thetechnokid.rw.RocketWarfare;
 import dev.thetechnokid.rw.controllers.MainGameController;
@@ -28,6 +28,8 @@ public class MenuState extends State {
 
 	@Override
 	protected void init() {
+		loadRemembered();
+
 		g.setTextAlign(TextAlignment.CENTER);
 		g.setTextBaseline(VPos.CENTER);
 
@@ -59,11 +61,12 @@ public class MenuState extends State {
 		pwField.setMaxWidth(100);
 
 		CheckBox register = new CheckBox("Register");
+		CheckBox rememberMe = new CheckBox("Remember Me");
 
 		Button start = new Button(Language.get("login"));
 		start.setOnAction((event) -> {
 			name = nameField.getText();
-			if (login(name, pwField.getText(), register.isSelected())) {
+			if (login(name, pwField.getText(), register.isSelected(), rememberMe.isSelected())) {
 				textOn = true;
 				gridded = true;
 			}
@@ -74,13 +77,35 @@ public class MenuState extends State {
 		grid.add(nameField, 1, 1);
 		grid.add(pwLabel, 0, 2);
 		grid.add(pwField, 1, 2);
-		grid.add(start, 1, 3);
+		grid.add(rememberMe, 1, 3);
 		grid.add(register, 0, 3);
 
-		MainGameController.buttons().addAll(grid);
+		MainGameController.buttons().addAll(grid, start);
 	}
 
-	private boolean login(String name, String password, boolean register) {
+	private void loadRemembered() {
+		File folder = new File(RocketWarfare.settingsFolder() + "/users/");
+		File rem = null;
+		for (File file : folder.listFiles()) {
+			if (file.getName().endsWith("-"))
+				rem = file;
+		}
+
+		if (rem == null)
+			return;
+
+		User user = null;
+		File file = new File(RocketWarfare.settingsFolder() + "/users/" + rem.getName());
+		file.setReadable(true);
+		try (ObjectInputStream i = new ObjectInputStream(new FileInputStream(file));) {
+			user = (User) i.readObject();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		MainGameController.get().USER = user;
+	}
+
+	private boolean login(String name, String password, boolean register, boolean rememberMe) {
 		File file = new File(RocketWarfare.settingsFolder() + "/users/" + name);
 		try {
 			User user = User.load(name, password);
@@ -100,6 +125,7 @@ public class MenuState extends State {
 					return true;
 				}
 			} else if (user != null) {
+				user.getPrefs().setRemembered(rememberMe);
 				MainGameController.get().USER = user;
 				MainGameController.setStatus("Login Successfull!");
 				return true;

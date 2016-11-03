@@ -6,13 +6,14 @@ import javafx.scene.image.Image;
 
 public class Preferences implements java.io.Serializable {
 	private static final long serialVersionUID = 9435437432L;
-	
+
 	private String color;
 	private Image pic;
 	private String displayName;
 	private ArrayList<User> friends;
 	private String status;
 	private String locale;
+	private boolean remembered;
 
 	public Preferences(User user) {
 		color = "#ff0000";
@@ -65,5 +66,13 @@ public class Preferences implements java.io.Serializable {
 
 	public void setLocale(String locale) {
 		this.locale = locale;
+	}
+
+	public boolean isRemembered() {
+		return remembered;
+	}
+
+	public void setRemembered(boolean remembered) {
+		this.remembered = remembered;
 	}
 }

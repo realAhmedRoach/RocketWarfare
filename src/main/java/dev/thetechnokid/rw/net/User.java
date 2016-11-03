@@ -58,7 +58,8 @@ public class User implements Serializable {
 	}
 
 	public void save() throws Exception {
-		File file = new File(RocketWarfare.settingsFolder() + "/users/" + name);
+		File file = new File(
+				RocketWarfare.settingsFolder() + "/users/" + name + (getPrefs().isRemembered() ? "-" : ""));
 		file.setWritable(true);
 		file.getParentFile().mkdirs();
 		file.createNewFile();
