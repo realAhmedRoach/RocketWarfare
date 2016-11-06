@@ -28,7 +28,6 @@ public class MenuState extends State {
 
 	@Override
 	protected void init() {
-		loadRemembered();
 
 		g.setTextAlign(TextAlignment.CENTER);
 		g.setTextBaseline(VPos.CENTER);
@@ -81,6 +80,7 @@ public class MenuState extends State {
 		grid.add(register, 0, 3);
 
 		MainGameController.buttons().addAll(grid, start);
+		loadRemembered();
 	}
 
 	private void loadRemembered() {
@@ -103,6 +103,12 @@ public class MenuState extends State {
 			e.printStackTrace();
 		}
 		MainGameController.get().USER = user;
+		if (user != null) {
+			MainGameController.buttons().clear();
+			MainGameController.integrations().clear();
+
+			State.setCurrentState(new BuildingState(g));
+		}
 	}
 
 	private boolean login(String name, String password, boolean register, boolean rememberMe) {
@@ -125,8 +131,8 @@ public class MenuState extends State {
 					return true;
 				}
 			} else if (user != null) {
-				user.getPrefs().setRemembered(rememberMe);
 				MainGameController.get().USER = user;
+				MainGameController.get().USER.getPrefs().setRemembered(rememberMe);
 				MainGameController.setStatus("Login Successfull!");
 				return true;
 			}
