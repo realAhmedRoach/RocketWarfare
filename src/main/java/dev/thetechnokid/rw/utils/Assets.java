@@ -13,7 +13,7 @@ public class Assets {
 	}
 
 	public static void init() {
-		ROCKET_PARTS = new Image(RocketWarfare.class.getResourceAsStream("/images/spritesheet.png"));
+		ROCKET_PARTS = new Image(RocketWarfare.class.getResourceAsStream("/images/spritesheetOld.png"));
 		LOGO = new Image(RocketWarfare.class.getResourceAsStream("/images/logosheet.png"));
 	}
 
