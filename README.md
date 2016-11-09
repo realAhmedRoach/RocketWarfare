@@ -4,8 +4,7 @@
 [![Code Quality](https://img.shields.io/codacy/4a2075912e5246c28485af3cbc61d470.svg?style=flat-square)](https://www.codacy.com/app/thetechnokid/RocketWarfare/dashboard)
 [![Dependency Status](https://www.versioneye.com/user/projects/575d56747757a0004a1dedcc/badge.svg?style=flat)](https://www.versioneye.com/user/projects/575d56747757a0004a1dedcc)
 [![GitHub issues](https://img.shields.io/github/issues/theTechnoKid/RocketWarfare.svg?style=flat-square)](https://github.com/theTechnoKid/RocketWarfare/issues)
-[![Waffle.io Progress](https://img.shields.io/waffle/label/theTechnoKid/RocketWarfare/in%20progress.svg?style=flat-square)](http://waffle.io/theTechnoKid/RocketWarfare)
-[![Waffle.io Ready](https://img.shields.io/waffle/label/theTechnoKid/RocketWarfare/ready.svg?style=flat-square)](http://waffle.io/theTechnoKid/RocketWarfare)
+<a href="https://zenhub.com"><img src="https://raw.githubusercontent.com/ZenHubIO/support/master/zenhub-badge.png"></a>
 
 ![logo](res/images/logo.png) [![forthebadge](http://forthebadge.com/images/badges/built-with-swag.svg)](http://forthebadge.com) ![logo](res/images/logo.png)
 
