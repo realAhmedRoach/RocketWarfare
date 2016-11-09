@@ -19,6 +19,7 @@ public class MissionControlState extends State {
 	private Label degreesLabel;
 	private Label velocityLabel;
 	private Label accelerationLabel;
+	private Label timeLabel;
 
 	private double rockx, rocky;
 	private double ox, oy;
@@ -53,11 +54,16 @@ public class MissionControlState extends State {
 			String degreesText = rocket.getVelocity().getDirection().getDegrees() + "\u00b0";
 			String velocityText = Utils.format(rocket.getVelocity().getMagnitude());
 			String accelerationText = Utils.format(rocket.getAcceleration().getMagnitude());
+			int timeSecs = rocket.getTime() / RocketWarfare.FPS;
+			int mins = timeSecs / 60;
+			int secs = timeSecs % 60;
+			String timeText = mins + " mins " + secs + " secs";
 			altitudeLabel.setText(Language.get("altitude") + ": " + altitudeText);
 			xLabel.setText("X: " + xText);
 			degreesLabel.setText(Language.get("degrees") + ": " + degreesText);
 			velocityLabel.setText(Language.get("velocity") + ": " + velocityText);
 			accelerationLabel.setText(Language.get("acceleration") + ": " + accelerationText);
+			timeLabel.setText(timeText);
 		});
 
 		Button tiltRight = new Button("->");
@@ -101,9 +107,10 @@ public class MissionControlState extends State {
 		degreesLabel = new Label();
 		velocityLabel = new Label();
 		accelerationLabel = new Label();
+		timeLabel = new Label();
 
 		MainGameController.buttons().addAll(tiltRight, tiltLeft, scaleUp, scaleDown, expand, new Separator(),
-				altitudeLabel, xLabel, degreesLabel, velocityLabel, accelerationLabel, new Separator(), build);
+				altitudeLabel, xLabel, degreesLabel, velocityLabel, accelerationLabel, timeLabel, new Separator(), build);
 	}
 
 	@Override

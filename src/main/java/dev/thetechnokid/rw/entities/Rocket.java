@@ -48,12 +48,10 @@ public class Rocket extends FlyingObject implements Serializable {
 	public void tick() {
 		if (launched) {
 			calculatePos();
+			time++;
 		} else {
-			if (acceleration.getMagnitude() > 0) {
-				// acceleration.setMagnitude((int) (Physics.G + 1));
-				time = 1;
+			if (acceleration.getMagnitude() > 0) 
 				launched = true;
-			}
 		}
 	}
 
