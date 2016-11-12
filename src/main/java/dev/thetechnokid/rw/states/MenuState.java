@@ -104,6 +104,8 @@ public class MenuState extends State {
 		}
 		MainGameController.get().USER = user;
 		if (user != null) {
+			Language.init();
+
 			MainGameController.buttons().clear();
 			MainGameController.integrations().clear();
 
@@ -134,6 +136,7 @@ public class MenuState extends State {
 				MainGameController.get().USER = user;
 				MainGameController.get().USER.getPrefs().setRemembered(rememberMe);
 				MainGameController.setStatus("Login Successfull!");
+				Language.init();
 				return true;
 			}
 		} catch (Exception e) {

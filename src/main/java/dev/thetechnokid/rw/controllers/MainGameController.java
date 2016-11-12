@@ -1,5 +1,6 @@
 package dev.thetechnokid.rw.controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -12,12 +13,13 @@ import javafx.animation.*;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.*;
-import javafx.scene.Node;
+import javafx.scene.*;
 import javafx.scene.canvas.*;
 import javafx.scene.control.*;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.*;
 import javafx.util.Duration;
 
 public class MainGameController implements Initializable {
@@ -92,10 +94,24 @@ public class MainGameController implements Initializable {
 	}
 
 	private void initMenu() {
-		close.setOnAction((event) -> {
+		close.setOnAction(event -> {
 			Platform.exit();
 		});
+		settings.setOnAction(event -> {
+			try {
+				final Stage dialog = new Stage();
+				dialog.initModality(Modality.APPLICATION_MODAL);
+				dialog.initOwner(RocketWarfare.getStage());
+				dialog.setTitle("Settings");
 
+				VBox parent = (VBox) FXMLLoader.load(RocketWarfare.class.getResource("fxml/Settings.fxml"));
+				Scene scene = new Scene(parent, parent.getPrefWidth(), parent.getPrefHeight());
+				dialog.setScene(scene);
+				dialog.show();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		});
 	}
 
 	private void initCanvas() {
