@@ -112,6 +112,21 @@ public class MainGameController implements Initializable {
 				e.printStackTrace();
 			}
 		});
+		guide.setOnAction(event -> {
+			final Stage dialog = new Stage();
+			dialog.initModality(Modality.APPLICATION_MODAL);
+			dialog.initOwner(RocketWarfare.getStage());
+			dialog.setTitle("Guide");
+
+			try {
+				VBox parent = (VBox) FXMLLoader.load(RocketWarfare.class.getResource("fxml/Help.fxml"));
+				Scene scene = new Scene(parent, parent.getPrefWidth(), parent.getPrefHeight());
+				dialog.setScene(scene);
+				dialog.show();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		});
 	}
 
 	private void initCanvas() {
