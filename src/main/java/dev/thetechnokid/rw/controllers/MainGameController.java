@@ -1,5 +1,6 @@
 package dev.thetechnokid.rw.controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -9,14 +10,16 @@ import dev.thetechnokid.rw.net.User;
 import dev.thetechnokid.rw.states.*;
 import dev.thetechnokid.rw.utils.*;
 import javafx.animation.*;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.*;
-import javafx.scene.Node;
+import javafx.scene.*;
 import javafx.scene.canvas.*;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.*;
 import javafx.util.Duration;
 
 public class MainGameController implements Initializable {
@@ -31,6 +34,12 @@ public class MainGameController implements Initializable {
 	private FlowPane integrations;
 	@FXML
 	private Label status;
+	@FXML
+	private MenuItem close;
+	@FXML
+	private MenuItem settings;
+	@FXML
+	private MenuItem guide;
 
 	private GraphicsContext g;
 	private Keyboard k = new Keyboard();
@@ -39,7 +48,7 @@ public class MainGameController implements Initializable {
 	private Timeline gameLoop = new Timeline();
 
 	private Logger log = new Logger();
-	
+
 	public boolean FIRST_TIME = false;
 	public User USER;
 
@@ -79,8 +88,45 @@ public class MainGameController implements Initializable {
 		g = theCanvas.getGraphicsContext2D();
 		gameLoop.setCycleCount(Timeline.INDEFINITE);
 		Assets.init();
+		initMenu();
 		initCanvas();
 		State.setCurrentState(new MenuState(g));
+	}
+
+	private void initMenu() {
+		close.setOnAction(event -> {
+			Platform.exit();
+		});
+		settings.setOnAction(event -> {
+			try {
+				final Stage dialog = new Stage();
+				dialog.initModality(Modality.APPLICATION_MODAL);
+				dialog.initOwner(RocketWarfare.getStage());
+				dialog.setTitle("Settings");
+
+				VBox parent = (VBox) FXMLLoader.load(RocketWarfare.class.getResource("fxml/Settings.fxml"));
+				Scene scene = new Scene(parent, parent.getPrefWidth(), parent.getPrefHeight());
+				dialog.setScene(scene);
+				dialog.show();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		});
+		guide.setOnAction(event -> {
+			final Stage dialog = new Stage();
+			dialog.initModality(Modality.APPLICATION_MODAL);
+			dialog.initOwner(RocketWarfare.getStage());
+			dialog.setTitle("Guide");
+
+			try {
+				VBox parent = (VBox) FXMLLoader.load(RocketWarfare.class.getResource("fxml/Help.fxml"));
+				Scene scene = new Scene(parent, parent.getPrefWidth(), parent.getPrefHeight());
+				dialog.setScene(scene);
+				dialog.show();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		});
 	}
 
 	private void initCanvas() {
@@ -106,7 +152,7 @@ public class MainGameController implements Initializable {
 	public static Canvas getCanvas() {
 		return currentController.theCanvas;
 	}
-	
+
 	public static void setStatus(String statusText) {
 		currentController.status.setText(statusText);
 	}

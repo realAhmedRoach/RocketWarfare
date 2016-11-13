@@ -1,24 +1,25 @@
 package dev.thetechnokid.rw.utils;
 
 import java.io.*;
-import java.util.Properties;
+import java.util.*;
 
 import dev.thetechnokid.rw.RocketWarfare;
+import dev.thetechnokid.rw.controllers.MainGameController;
 
 public class Language {
-	private static String LOCALE = "en_US";
 	private static Properties props = new Properties();
 
+	public static HashMap<String, String> LOCALES;
+
+	private static String LOCALE = null;
+
 	static {
-		init();
+		LOCALES = new HashMap<>();
+		LOCALES.put("English", "en_US");
+		LOCALES.put("Spanish", "es_ES");
 	}
 
 	private Language() {
-	}
-
-	public static void setLocale(String locale) {
-		LOCALE = locale;
-		init();
 	}
 
 	public static String get(String thing, boolean capitalize) {
@@ -32,19 +33,23 @@ public class Language {
 
 		return b.substring(0, b.length() - 1);
 	}
-	
+
 	public static String get(String thing) {
 		return get(thing, true);
 	}
 
-	public static String getLocale() {
-		return LOCALE;
+	public static void setLocale(String locale) {
+		LOCALE = locale;
+		init();
 	}
-	
-	private static void init() {
+
+	public static void init() {
 		try {
-			InputStream inputStream = RocketWarfare.class.getResourceAsStream("/languages/" + LOCALE + ".properties");
-			props.load(inputStream);
+			InputStream inputStream = RocketWarfare.class.getResourceAsStream(
+					"/languages/" + (LOCALE == null ? MainGameController.get().USER.getPrefs().getLanguage() : LOCALE)
+							+ ".properties");
+			if (inputStream != null)
+				props.load(inputStream);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

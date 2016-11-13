@@ -12,7 +12,7 @@ public class Preferences implements java.io.Serializable {
 	private String displayName;
 	private ArrayList<User> friends;
 	private String status;
-	private String locale;
+	private String language;
 	private boolean remembered;
 
 	public Preferences(User user) {
@@ -21,7 +21,7 @@ public class Preferences implements java.io.Serializable {
 		displayName = user.getName();
 		friends = new ArrayList<>();
 		status = "Hi";
-		locale = "en_US";
+		language = "en_US";
 	}
 
 	public String getColor() {
@@ -60,12 +60,12 @@ public class Preferences implements java.io.Serializable {
 		return friends;
 	}
 
-	public String getLocale() {
-		return locale;
+	public String getLanguage() {
+		return language;
 	}
 
-	public void setLocale(String locale) {
-		this.locale = locale;
+	public void setLanguage(String language) {
+		this.language = language;
 	}
 
 	public boolean isRemembered() {

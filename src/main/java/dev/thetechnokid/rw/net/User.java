@@ -29,7 +29,7 @@ public class User implements Serializable {
 		prefs = new Preferences(this);
 	}
 
-	private boolean authenticate(String attemptedPassword) {
+	public boolean authenticate(String attemptedPassword) {
 		return StringEncryptor.authenticate(attemptedPassword, encryptedPassword, salt);
 	}
 
