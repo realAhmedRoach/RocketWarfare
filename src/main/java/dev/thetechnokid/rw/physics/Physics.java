@@ -21,7 +21,7 @@ public class Physics {
 		velocity.getDirection().set(acceleration.getDirection());
 		velocity.increaseMagnitude(acceleration.getMagnitude());
 
-		VectorQuantity airResistance = airResistance(1.225, velocity.getMagnitude(), 0.5, rocket.getWidth(),
+		VectorQuantity airResistance = airResistance(1.225, velocity.getMagnitude(), 0.25, rocket.getWidth(),
 				velocity.getDirection());
 
 		if (acceleration.getDirection().getDegrees() > 180) {
