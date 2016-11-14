@@ -1,8 +1,10 @@
 package dev.thetechnokid.rw.controllers;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import dev.thetechnokid.rw.RocketWarfare;
 import dev.thetechnokid.rw.net.Preferences;
 import dev.thetechnokid.rw.utils.Language;
 import javafx.event.ActionEvent;
@@ -47,6 +49,12 @@ public class SettingsController implements Initializable {
 			if (!status.getText().isEmpty())
 				prefs.setStatus(status.getText());
 			prefs.setRemembered(rememberMe.isSelected());
+			if (!rememberMe.isSelected()) {
+				File remFile = new File(
+						RocketWarfare.settingsFolder() + "/users/" + MainGameController.get().USER.getName() + "-");
+				if (remFile.exists())
+					remFile.delete();
+			}
 			if (language.getValue() != null)
 				prefs.setLanguage(Language.LOCALES.get(language.getValue()));
 
