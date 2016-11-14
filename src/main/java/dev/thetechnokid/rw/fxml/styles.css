@@ -3,7 +3,15 @@
 }
 
 .label {
-	-fx-text-fill: #cccccc;
+	-fx-text-fill: #ffffff;
+}
+
+.check-box {
+	-fx-text-fill: #aaaaaa;
+}
+
+.menu .label {
+	-fx-text-fill: #222222;
 }
 
 .button {
