@@ -10,17 +10,16 @@ import javafx.geometry.*;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 
 public class MenuState extends State {
 
-	private boolean textOn, showWelcome;
 	private String name;
 	private boolean gridded;
 	private int i = 0;
 	private int z = 0;
 	private Animator logo;
+	private boolean go;
 
 	public MenuState(GraphicsContext g) {
 		super(g);
@@ -66,8 +65,7 @@ public class MenuState extends State {
 		start.setOnAction((event) -> {
 			name = nameField.getText();
 			if (login(name, pwField.getText(), register.isSelected(), rememberMe.isSelected())) {
-				textOn = true;
-				gridded = true;
+				go = true;
 			}
 			g.getCanvas().requestFocus();
 		});
@@ -106,10 +104,7 @@ public class MenuState extends State {
 		if (user != null) {
 			Language.init();
 
-			MainGameController.buttons().clear();
-			MainGameController.integrations().clear();
-
-			State.setCurrentState(new BuildingState(g));
+			go = true;
 		}
 	}
 
@@ -148,34 +143,17 @@ public class MenuState extends State {
 
 	@Override
 	public void render() {
-		g.setStroke(Color.RED);
-		g.setFill(Color.BLUEVIOLET);
+		g.drawImage(Assets.crop(Assets.LOGO, i, z), MainGameController.getWidth() / 2 - Grid.SIZE,
+				MainGameController.getHeight() / 2 - Grid.SIZE);
 
-		if (showWelcome) {
-			Utils.wait(1500);
-			State.setCurrentState(new BuildingState(g));
-		}
-
-		if (textOn) {
-			Utils.centerText(g, Language.get("welcome") + ", " + name, 20);
-			showWelcome = true;
-		} else {
-			g.drawImage(Assets.crop(Assets.LOGO, i, z), MainGameController.getWidth() / 2 - Grid.SIZE,
-					MainGameController.getHeight() / 2 - Grid.SIZE);
-		}
 		logo.tick();
-		// Grid.render(g);
 	}
 
 	@Override
 	public void tick() {
-		if (MainGameController.getMouse().isMousePressed()) {
-			int x = MainGameController.getMouse().getX();
-			int y = MainGameController.getMouse().getY();
-			Point2D p = Grid.getGridLocation(x, y);
-			g.fillRect(p.getX(), p.getY(), Grid.SIZE, Grid.SIZE);
+		if (go) {
+			State.setCurrentState(new BuildingState(g));
 		}
-
 	}
 
 	@Override
