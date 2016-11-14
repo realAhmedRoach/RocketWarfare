@@ -49,8 +49,8 @@ public class BuildingState extends State {
 
 		Button finish = new Button("Complete!");
 		finish.setOnAction(event -> {
-			createRocket();
-			State.setCurrentState(new MissionControlState(g, rocket));
+			if (createRocket())
+				State.setCurrentState(new MissionControlState(g, rocket));
 		});
 		finish.setFocusTraversable(false);
 
@@ -69,9 +69,9 @@ public class BuildingState extends State {
 		MainGameController.buttons().addAll(finish, new Separator(), name, save, load);
 	}
 
-	private void createRocket() {
+	private boolean createRocket() {
 		if (partLocs.isEmpty())
-			return;
+			return false;
 
 		int ox = 0;
 		int oy = 0;
@@ -86,6 +86,8 @@ public class BuildingState extends State {
 			p.setPosInRocket(new Position(orig.getX() - ox, orig.getY() - oy));
 			rocket.addPart(p);
 		}
+
+		return true;
 	}
 
 	private void saveRocket() {
