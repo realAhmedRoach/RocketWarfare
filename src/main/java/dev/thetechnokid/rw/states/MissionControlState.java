@@ -4,6 +4,7 @@ import dev.thetechnokid.rw.RocketWarfare;
 import dev.thetechnokid.rw.controllers.MainGameController;
 import dev.thetechnokid.rw.entities.Rocket;
 import dev.thetechnokid.rw.utils.*;
+import eu.hansolo.medusa.*;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
@@ -17,9 +18,10 @@ public class MissionControlState extends State {
 	private Label altitudeLabel;
 	private Label xLabel;
 	private Label degreesLabel;
-	private Label velocityLabel;
-	private Label accelerationLabel;
 	private Label timeLabel;
+
+	private Gauge velocity;
+	private Gauge acceleration;
 
 	private double rockx, rocky;
 	private double ox, oy;
@@ -48,12 +50,15 @@ public class MissionControlState extends State {
 
 		g.setFill(Color.RED);
 
+		velocity = GaugeBuilder.create().skinType(Gauge.SkinType.MODERN).title("Velocity").unit("FPS").decimals(2)
+				.maxValue(200).build();
+		acceleration = GaugeBuilder.create().skinType(Gauge.SkinType.INDICATOR).title("Acceleration").unit("FPS/S")
+				.decimals(4).maxValue(1).build();
+
 		anim = new Animator(1000 / RocketWarfare.FPS, () -> {
 			String altitudeText = Utils.format(rocket.getAltitude());
 			String xText = Utils.format(rocket.getX());
 			String degreesText = rocket.getVelocity().getDirection().getDegrees() + "\u00b0";
-			String velocityText = Utils.format(rocket.getVelocity().getMagnitude());
-			String accelerationText = Utils.format(rocket.getAcceleration().getMagnitude());
 			int timeSecs = rocket.getTime() / RocketWarfare.FPS;
 			int mins = timeSecs / 60;
 			int secs = timeSecs % 60;
@@ -61,19 +66,9 @@ public class MissionControlState extends State {
 			altitudeLabel.setText(Language.get("altitude") + ": " + altitudeText);
 			xLabel.setText("X: " + xText);
 			degreesLabel.setText(Language.get("degrees") + ": " + degreesText);
-			velocityLabel.setText(Language.get("velocity") + ": " + velocityText);
-			accelerationLabel.setText(Language.get("acceleration") + ": " + accelerationText);
+			velocity.setValue(rocket.getVelocity().getMagnitude());
+			acceleration.setValue(rocket.getAcceleration().getMagnitude());
 			timeLabel.setText(timeText);
-		});
-
-		Button tiltRight = new Button("->");
-		tiltRight.setOnAction((event) -> {
-			rocket.getAcceleration().getDirection().decreaseDegrees();
-		});
-
-		Button tiltLeft = new Button("<-");
-		tiltLeft.setOnAction((event) -> {
-			rocket.getAcceleration().getDirection().increaseDegrees();
 		});
 
 		Button scaleUp = new Button("+");
@@ -96,8 +91,6 @@ public class MissionControlState extends State {
 		Button build = new Button(Language.get("rebuild"));
 		build.setOnAction((event) -> State.setCurrentState(new BuildingState(g)));
 
-		tiltRight.setFocusTraversable(false);
-		tiltLeft.setFocusTraversable(false);
 		scaleUp.setFocusTraversable(false);
 		scaleDown.setFocusTraversable(false);
 		build.setFocusTraversable(false);
@@ -105,12 +98,11 @@ public class MissionControlState extends State {
 		altitudeLabel = new Label();
 		xLabel = new Label();
 		degreesLabel = new Label();
-		velocityLabel = new Label();
-		accelerationLabel = new Label();
 		timeLabel = new Label();
 
-		MainGameController.getRight().addAll(tiltRight, tiltLeft, scaleUp, scaleDown, expand, new Separator(),
-				altitudeLabel, xLabel, degreesLabel, velocityLabel, accelerationLabel, timeLabel, new Separator(), build);
+		MainGameController.getRight().addAll(scaleUp, scaleDown, expand, new Separator(), altitudeLabel, xLabel,
+				degreesLabel, timeLabel, new Separator(), build);
+		MainGameController.getLeft().addAll(velocity, acceleration);
 	}
 
 	@Override
