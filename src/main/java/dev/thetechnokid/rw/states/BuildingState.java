@@ -25,8 +25,8 @@ public class BuildingState extends State {
 
 	@Override
 	protected void init() {
-		MainGameController.buttons().clear();
-		MainGameController.integrations().clear();
+		MainGameController.getRight().clear();
+		MainGameController.getLeft().clear();
 
 		for (String part : RocketPart.allParts()) {
 			String type = part.split("_")[0];
@@ -42,9 +42,9 @@ public class BuildingState extends State {
 				flipped.setGraphic(new ImageView(RocketPartData.image(type, tier, true)));
 				flipped.setTooltip(new Tooltip(tier + " " + type));
 				flipped.setOnAction((event) -> currPartString = new String[] { type, tier, "true" });
-				MainGameController.integrations().add(flipped);
+				MainGameController.getLeft().add(flipped);
 			}
-			MainGameController.integrations().add(b);
+			MainGameController.getLeft().add(b);
 		}
 
 		Button finish = new Button("Complete!");
@@ -66,7 +66,7 @@ public class BuildingState extends State {
 		load.setOnAction(event -> loadRocket());
 		load.setFocusTraversable(false);
 
-		MainGameController.buttons().addAll(finish, new Separator(), name, save, load);
+		MainGameController.getRight().addAll(finish, new Separator(), name, save, load);
 	}
 
 	private boolean createRocket() {

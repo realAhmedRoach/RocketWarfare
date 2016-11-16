@@ -31,9 +31,9 @@ public class MainGameController implements Initializable {
 	@FXML
 	private Canvas theCanvas;
 	@FXML
-	private VBox buttons;
+	private VBox right;
 	@FXML
-	private FlowPane integrations;
+	private FlowPane left;
 	@FXML
 	private Label status;
 	@FXML
@@ -143,12 +143,12 @@ public class MainGameController implements Initializable {
 		return currentController;
 	}
 
-	public static ObservableList<Node> buttons() {
-		return currentController.buttons.getChildren();
+	public static ObservableList<Node> getRight() {
+		return currentController.right.getChildren();
 	}
 
-	public static ObservableList<Node> integrations() {
-		return currentController.integrations.getChildren();
+	public static ObservableList<Node> getLeft() {
+		return currentController.left.getChildren();
 	}
 
 	public static Canvas getCanvas() {

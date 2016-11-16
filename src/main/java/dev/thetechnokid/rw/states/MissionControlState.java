@@ -43,8 +43,8 @@ public class MissionControlState extends State {
 
 	@Override
 	protected void init() {
-		MainGameController.buttons().clear();
-		MainGameController.integrations().clear();
+		MainGameController.getRight().clear();
+		MainGameController.getLeft().clear();
 
 		g.setFill(Color.RED);
 
@@ -109,7 +109,7 @@ public class MissionControlState extends State {
 		accelerationLabel = new Label();
 		timeLabel = new Label();
 
-		MainGameController.buttons().addAll(tiltRight, tiltLeft, scaleUp, scaleDown, expand, new Separator(),
+		MainGameController.getRight().addAll(tiltRight, tiltLeft, scaleUp, scaleDown, expand, new Separator(),
 				altitudeLabel, xLabel, degreesLabel, velocityLabel, accelerationLabel, timeLabel, new Separator(), build);
 	}
 
