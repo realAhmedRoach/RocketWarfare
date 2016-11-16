@@ -84,5 +84,10 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+  			<groupId>eu.hansolo</groupId>
+  			<artifactId>Medusa</artifactId>
+  			<version>6.1</version>
+		</dependency>
 	</dependencies>
 </project>
