@@ -1,5 +1,11 @@
 package dev.thetechnokid.rw;
 
+import java.io.*;
+import java.net.URISyntaxException;
+import java.nio.file.*;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import dev.thetechnokid.rw.controllers.MainGameController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -53,6 +59,20 @@ public class RocketWarfare extends Application {
 		else
 			thing = System.getProperty("user.dir");
 		return thing + "/RocketWarfare";
+	}
+
+	public static List<String> getThemes() {
+		List<String> themes = null;
+		Path path = null;
+		try {
+			path = new File(Main.class.getResource("fxml/Game.fxml").toURI()).getParentFile().toPath();
+			themes = Files.walk(path).map(Path::getFileName).map(Path::toString).filter(n -> n.endsWith(".css"))
+					.collect(Collectors.toList());
+		} catch (URISyntaxException | IOException e) {
+			e.printStackTrace();
+		}
+
+		return themes;
 	}
 
 }

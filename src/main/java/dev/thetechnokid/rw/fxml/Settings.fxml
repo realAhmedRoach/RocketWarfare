@@ -48,7 +48,7 @@
             <Insets bottom="10.0" top="10.0" />
          </VBox.margin>
       </Separator>
-      <HBox alignment="CENTER_LEFT" disable="true" prefHeight="40.0" prefWidth="578.0" spacing="50.0">
+      <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="578.0" spacing="50.0">
          <VBox.margin>
             <Insets />
          </VBox.margin>
@@ -57,7 +57,7 @@
          </padding>
          <children>
             <Label prefWidth="76.0" text="Theme:" />
-            <ComboBox prefWidth="150.0" promptText="Select to change" />
+            <ComboBox fx:id="theme" prefWidth="150.0" promptText="Select to change" />
          </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="578.0" spacing="50.0">

@@ -3,10 +3,11 @@ package dev.thetechnokid.rw.net;
 import java.io.*;
 import java.util.ArrayList;
 
-import dev.thetechnokid.rw.RocketWarfare;
+import dev.thetechnokid.rw.*;
+import dev.thetechnokid.rw.controllers.MainGameController;
 import dev.thetechnokid.rw.entities.Rocket;
 import dev.thetechnokid.rw.logic.Rank;
-import dev.thetechnokid.rw.utils.StringEncryptor;
+import dev.thetechnokid.rw.utils.*;
 
 public class User implements Serializable {
 	private static final long serialVersionUID = 12395656776345L;
@@ -55,6 +56,14 @@ public class User implements Serializable {
 
 	public Preferences getPrefs() {
 		return prefs;
+	}
+
+	public void init() {
+		Language.init();
+		MainGameController.getCanvas().getParent().getStylesheets().clear();
+		if (getPrefs().getTheme() != null)
+			MainGameController.getParent().getStylesheets()
+					.add(Main.class.getResource("fxml/" + getPrefs().getTheme()).toExternalForm());
 	}
 
 	public void save() throws Exception {

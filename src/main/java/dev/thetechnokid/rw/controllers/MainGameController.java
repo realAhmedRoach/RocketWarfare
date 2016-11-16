@@ -27,6 +27,8 @@ public class MainGameController implements Initializable {
 	private static MainGameController currentController;
 
 	@FXML
+	private AnchorPane parent;
+	@FXML
 	private Canvas theCanvas;
 	@FXML
 	private VBox buttons;
@@ -171,5 +173,9 @@ public class MainGameController implements Initializable {
 
 	public static int getHeight() {
 		return (int) currentController.theCanvas.getHeight();
+	}
+
+	public static Parent getParent() {
+		return get().parent;
 	}
 }
