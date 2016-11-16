@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="658.0" prefWidth="1056.0" xmlns="http://javafx.com/javafx/8.0.92" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.thetechnokid.rw.controllers.MainGameController">
+<AnchorPane fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="658.0" prefWidth="1056.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.thetechnokid.rw.controllers.MainGameController">
    <children>
       <MenuBar prefWidth="1056.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -47,7 +47,7 @@
         </rowConstraints>
          <children>
             <VBox fx:id="right" alignment="CENTER" fillWidth="false" maxWidth="352.0" prefHeight="608.0" prefWidth="352.0" spacing="10.0" GridPane.hgrow="NEVER" />
-            <FlowPane fx:id="left" hgap="10.0" maxWidth="352.0" prefHeight="608.0" prefWidth="352.0" vgap="10.0" GridPane.columnIndex="2" GridPane.hgrow="NEVER">
+            <FlowPane fx:id="left" alignment="CENTER" hgap="10.0" maxWidth="352.0" prefHeight="608.0" prefWidth="352.0" vgap="10.0" GridPane.columnIndex="2" GridPane.hgrow="NEVER">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding></FlowPane>
