@@ -4,7 +4,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import dev.thetechnokid.rw.RocketWarfare;
+import dev.thetechnokid.rw.*;
 import dev.thetechnokid.rw.net.Preferences;
 import dev.thetechnokid.rw.utils.Language;
 import javafx.event.ActionEvent;
@@ -38,6 +38,7 @@ public class SettingsController implements Initializable {
 		rememberMe.setSelected(prefs.isRemembered());
 
 		language.getItems().addAll(Language.LOCALES.keySet());
+		theme.getItems().addAll(RocketWarfare.getThemes());
 
 		ok.setOnAction((event) -> {
 			if (!MainGameController.get().USER.authenticate(password.getText())) {
@@ -54,6 +55,12 @@ public class SettingsController implements Initializable {
 						RocketWarfare.settingsFolder() + "/users/" + MainGameController.get().USER.getName() + "-");
 				if (remFile.exists())
 					remFile.delete();
+			}
+			if (theme.getValue() != null) {
+				prefs.setTheme(theme.getValue().toLowerCase());
+				MainGameController.getParent().getStylesheets().clear();
+				MainGameController.getParent().getStylesheets()
+						.add(Main.class.getResource("fxml/" + prefs.getTheme()).toExternalForm());
 			}
 			if (language.getValue() != null)
 				prefs.setLanguage(Language.LOCALES.get(language.getValue()));

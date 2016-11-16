@@ -3,7 +3,7 @@ package dev.thetechnokid.rw.net;
 import java.io.*;
 import java.util.ArrayList;
 
-import dev.thetechnokid.rw.RocketWarfare;
+import dev.thetechnokid.rw.*;
 import dev.thetechnokid.rw.controllers.MainGameController;
 import dev.thetechnokid.rw.entities.Rocket;
 import dev.thetechnokid.rw.logic.Rank;
@@ -61,7 +61,9 @@ public class User implements Serializable {
 	public void init() {
 		Language.init();
 		MainGameController.getCanvas().getParent().getStylesheets().clear();
-		MainGameController.getCanvas().getParent().getStylesheets().add("/" + getPrefs().getTheme() + ".css");
+		if (getPrefs().getTheme() != null)
+			MainGameController.getParent().getStylesheets()
+					.add(Main.class.getResource("fxml/" + getPrefs().getTheme()).toExternalForm());
 	}
 
 	public void save() throws Exception {

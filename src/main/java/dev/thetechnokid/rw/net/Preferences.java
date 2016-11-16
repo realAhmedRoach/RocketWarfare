@@ -16,7 +16,7 @@ public class Preferences implements java.io.Serializable {
 	private boolean remembered;
 
 	public Preferences(User user) {
-		theme = "#ff0000";
+		theme = "dark.css";
 		pic = null;
 		displayName = user.getName();
 		friends = new ArrayList<>();
