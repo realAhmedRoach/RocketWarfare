@@ -18,7 +18,6 @@ public class MissionControlState extends State {
 	private Label altitudeLabel;
 	private Label xLabel;
 	private Label degreesLabel;
-	private Label timeLabel;
 
 	private Gauge velocity;
 	private Gauge acceleration;
@@ -66,16 +65,12 @@ public class MissionControlState extends State {
 			String xText = Utils.format(rocket.getX());
 			String degreesText = rocket.getVelocity().getDirection().getDegrees() + "\u00b0";
 			int timeSecs = rocket.getTime() / RocketWarfare.FPS;
-			int mins = timeSecs / 60;
-			int secs = timeSecs % 60;
-			String timeText = mins + " mins " + secs + " secs";
 			altitudeLabel.setText(Language.get("altitude") + ": " + altitudeText);
 			xLabel.setText("X: " + xText);
 			degreesLabel.setText(Language.get("degrees") + ": " + degreesText);
 			velocity.setValue(Math.abs(rocket.getVelocity().getMagnitude()));
 			acceleration.setValue(rocket.getAcceleration().getMagnitude());
 			time.setValue(timeSecs);
-			timeLabel.setText(timeText);
 		});
 
 		Button scaleUp = new Button("+");
@@ -105,10 +100,9 @@ public class MissionControlState extends State {
 		altitudeLabel = new Label();
 		xLabel = new Label();
 		degreesLabel = new Label();
-		timeLabel = new Label();
 
 		MainGameController.getRight().addAll(scaleUp, scaleDown, expand, new Separator(), altitudeLabel, xLabel,
-				degreesLabel, timeLabel, new Separator(), build);
+				degreesLabel, new Separator(), build);
 		MainGameController.getLeft().addAll(velocity, acceleration, time);
 	}
 
