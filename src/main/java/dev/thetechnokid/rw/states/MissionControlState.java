@@ -22,6 +22,7 @@ public class MissionControlState extends State {
 
 	private Gauge velocity;
 	private Gauge acceleration;
+	private Gauge time;
 
 	private double rockx, rocky;
 	private double ox, oy;
@@ -51,9 +52,14 @@ public class MissionControlState extends State {
 		g.setFill(Color.RED);
 
 		velocity = GaugeBuilder.create().skinType(Gauge.SkinType.MODERN).title("Velocity").unit("FPS").decimals(2)
-				.maxValue(200).build();
+				.maxValue(500).build();
 		acceleration = GaugeBuilder.create().skinType(Gauge.SkinType.INDICATOR).title("Acceleration").unit("FPS/S")
 				.decimals(4).maxValue(1).build();
+		time = GaugeBuilder.create().skinType(Gauge.SkinType.LCD).title("Time").unit("Secs").maxValue(Double.MAX_VALUE)
+				.decimals(0).build();
+		time.setMinMeasuredValueVisible(false);
+		time.setMaxMeasuredValueVisible(false);
+		time.setAverageVisible(false);
 
 		anim = new Animator(1000 / RocketWarfare.FPS, () -> {
 			String altitudeText = Utils.format(rocket.getAltitude());
@@ -66,8 +72,9 @@ public class MissionControlState extends State {
 			altitudeLabel.setText(Language.get("altitude") + ": " + altitudeText);
 			xLabel.setText("X: " + xText);
 			degreesLabel.setText(Language.get("degrees") + ": " + degreesText);
-			velocity.setValue(rocket.getVelocity().getMagnitude());
+			velocity.setValue(Math.abs(rocket.getVelocity().getMagnitude()));
 			acceleration.setValue(rocket.getAcceleration().getMagnitude());
+			time.setValue(timeSecs);
 			timeLabel.setText(timeText);
 		});
 
@@ -102,7 +109,7 @@ public class MissionControlState extends State {
 
 		MainGameController.getRight().addAll(scaleUp, scaleDown, expand, new Separator(), altitudeLabel, xLabel,
 				degreesLabel, timeLabel, new Separator(), build);
-		MainGameController.getLeft().addAll(velocity, acceleration);
+		MainGameController.getLeft().addAll(velocity, acceleration, time);
 	}
 
 	@Override
