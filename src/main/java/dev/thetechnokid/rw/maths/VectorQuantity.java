@@ -56,10 +56,9 @@ public class VectorQuantity {
 		VectorQuantity add = new VectorQuantity(i, direction);
 		double x = this.magnitudeActualX() + add.magnitudeActualX();
 		double y = this.magnitudeActualY() + add.magnitudeActualY();
-		VectorQuantity sum = new VectorQuantity(this.magnitudeActualX() - add.magnitudeActualX(),
-				this.magnitudeActualY() - add.magnitudeActualY());
-		magnitude -= sum.getMagnitude();
-		direction = sum.getDirection();
+		VectorQuantity sum = new VectorQuantity(x, y);
+		magnitude = sum.getMagnitude();
+		direction = new Direction((int) Math.toDegrees(Math.atan2(y, x)));
 	}
 
 	public void decreaseMagnitude(double i) {
@@ -72,11 +71,10 @@ public class VectorQuantity {
 		if (isFinal)
 			return;
 		VectorQuantity sub = new VectorQuantity(i, direction);
-		double x = this.magnitudeActualX() + sub.magnitudeActualX();
-		double y = this.magnitudeActualY() + sub.magnitudeActualY();
-		VectorQuantity difference = new VectorQuantity(this.magnitudeActualX() - sub.magnitudeActualX(),
-				this.magnitudeActualY() - sub.magnitudeActualY());
-		magnitude -= difference.getMagnitude();
+		double x = this.magnitudeActualX() - sub.magnitudeActualX();
+		double y = this.magnitudeActualY() - sub.magnitudeActualY();
+		VectorQuantity difference = new VectorQuantity(x, y);
+		magnitude = difference.getMagnitude();
 		direction = difference.getDirection();
 	}
 
