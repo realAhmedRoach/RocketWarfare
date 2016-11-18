@@ -18,6 +18,9 @@ public class Rocket extends FlyingObject implements Serializable {
 
 	private boolean launched = false;
 	private int time;
+	private boolean accelerationLocked;
+
+	public static double MAX_ACCELERATION = 1;
 
 	private transient GraphicsContext g;
 
@@ -50,7 +53,7 @@ public class Rocket extends FlyingObject implements Serializable {
 			calculatePos();
 			time++;
 		} else {
-			if (acceleration.getMagnitude() > 0) 
+			if (acceleration.getMagnitude() > 0)
 				launched = true;
 		}
 	}
@@ -86,5 +89,13 @@ public class Rocket extends FlyingObject implements Serializable {
 
 	public void crash() {
 		State.setCurrentState(new BuildingState(g));
+	}
+
+	public boolean isAccelerationLocked() {
+		return accelerationLocked;
+	}
+
+	public void toggleAccelerationLocked() {
+		accelerationLocked = !accelerationLocked;
 	}
 }

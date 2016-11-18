@@ -53,7 +53,7 @@ public class MissionControlState extends State {
 		velocity = GaugeBuilder.create().skinType(Gauge.SkinType.MODERN).title("Velocity").unit("FPS").decimals(2)
 				.maxValue(500).build();
 		acceleration = GaugeBuilder.create().skinType(Gauge.SkinType.INDICATOR).title("Acceleration").unit("FPS/S")
-				.decimals(4).maxValue(1).build();
+				.decimals(4).maxValue(Rocket.MAX_ACCELERATION).build();
 		time = GaugeBuilder.create().skinType(Gauge.SkinType.LCD).title("Time").unit("Secs").maxValue(Double.MAX_VALUE)
 				.decimals(0).build();
 		time.setMinMeasuredValueVisible(false);
@@ -95,6 +95,7 @@ public class MissionControlState extends State {
 
 		scaleUp.setFocusTraversable(false);
 		scaleDown.setFocusTraversable(false);
+		expand.setFocusTraversable(false);
 		build.setFocusTraversable(false);
 
 		altitudeLabel = new Label();
@@ -104,6 +105,8 @@ public class MissionControlState extends State {
 		MainGameController.getRight().addAll(scaleUp, scaleDown, expand, new Separator(), altitudeLabel, xLabel,
 				degreesLabel, new Separator(), build);
 		MainGameController.getLeft().addAll(velocity, acceleration, time);
+
+		MainGameController.getCanvas().requestFocus();
 	}
 
 	@Override
@@ -127,12 +130,17 @@ public class MissionControlState extends State {
 		else if (MainGameController.getKeyboard().releasedKey(KeyCode.F11))
 			MainGameController.getCanvas().setWidth(1056);
 
-		if (MainGameController.getKeyboard().get(KeyCode.UP) && rocket.getAcceleration().getMagnitude() < 1) {
+		if (MainGameController.getKeyboard().get(KeyCode.UP)
+				&& rocket.getAcceleration().getMagnitude() < Rocket.MAX_ACCELERATION) {
 			rocket.getAcceleration().increaseMagnitude(DELTA);
 		} else if (MainGameController.getKeyboard().get(KeyCode.DOWN) && rocket.getAcceleration().getMagnitude() > 0) {
 			rocket.getAcceleration().decreaseMagnitude(DELTA);
-		} else if (rocket.getAcceleration().getMagnitude() > 0)
+		} else if (rocket.getAcceleration().getMagnitude() > 0 && !rocket.isAccelerationLocked())
 			rocket.getAcceleration().decreaseMagnitude(DELTA);
+
+		if (MainGameController.getKeyboard().releasedKey(KeyCode.SPACE)) {
+			rocket.toggleAccelerationLocked();
+		}
 
 		if (rocket.getAcceleration().getMagnitude() < 0)
 			rocket.getAcceleration().setMagnitude(0);
