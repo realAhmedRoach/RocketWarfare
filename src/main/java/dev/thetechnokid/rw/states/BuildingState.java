@@ -30,18 +30,18 @@ public class BuildingState extends State {
 
 		for (String part : RocketPart.allParts()) {
 			String type = part.split("_")[0];
-			String tier = part.split("_")[1];
+			String _class = part.split("_")[1];
 			Button b = new Button();
 			b.setId("parts");
-			b.setGraphic(new ImageView(RocketPartData.image(type, tier, false)));
-			b.setTooltip(new Tooltip(tier + " " + type));
-			b.setOnAction((event) -> currPartString = new String[] { type, tier, "false" });
+			b.setGraphic(new ImageView(RocketPartData.image(type, _class, false)));
+			b.setTooltip(new Tooltip(_class + " " + type));
+			b.setOnAction((event) -> currPartString = new String[] { type, _class, "false" });
 			if (Arrays.asList(RocketPart.FLIPPABLE_PARTS).contains(type)) {
 				Button flipped = new Button();
 				flipped.setId("parts");
-				flipped.setGraphic(new ImageView(RocketPartData.image(type, tier, true)));
-				flipped.setTooltip(new Tooltip(tier + " " + type));
-				flipped.setOnAction((event) -> currPartString = new String[] { type, tier, "true" });
+				flipped.setGraphic(new ImageView(RocketPartData.image(type, _class, true)));
+				flipped.setTooltip(new Tooltip(_class + " " + type));
+				flipped.setOnAction((event) -> currPartString = new String[] { type, _class, "true" });
 				MainGameController.getLeft().add(flipped);
 			}
 			MainGameController.getLeft().add(b);
