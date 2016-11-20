@@ -55,10 +55,9 @@ public class MissionControlState extends State {
 		acceleration = GaugeBuilder.create().skinType(Gauge.SkinType.INDICATOR).title("Acceleration").unit("FPS/S")
 				.decimals(4).maxValue(Rocket.MAX_ACCELERATION).build();
 		time = GaugeBuilder.create().skinType(Gauge.SkinType.LCD).title("Time").unit("Secs").maxValue(Double.MAX_VALUE)
-				.decimals(0).build();
+				.averageVisible(false).maxSize(200, 200).decimals(0).build();
 		time.setMinMeasuredValueVisible(false);
 		time.setMaxMeasuredValueVisible(false);
-		time.setAverageVisible(false);
 
 		anim = new Animator(1000 / RocketWarfare.FPS, () -> {
 			String altitudeText = Utils.format(rocket.getAltitude());
@@ -111,10 +110,6 @@ public class MissionControlState extends State {
 
 	@Override
 	public void render() {
-		g.setFill(Color.ORANGERED);
-		g.fillText(String.format("%,d", (int) -oy) + "", 60, 20);
-		g.fillText(String.format("%,d", (int) ox) + "", MainGameController.getWidth() - 40,
-				MainGameController.getHeight() - 20);
 		rocket.render((int) rockx, (int) rocky);
 	}
 
