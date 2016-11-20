@@ -17,6 +17,7 @@ public class BuildingState extends State {
 	private String[] currPartString;
 	private Rocket rocket;
 	private TextField name;
+	private ImageView currPart;
 
 	public BuildingState(GraphicsContext g) {
 		super(g);
@@ -35,7 +36,11 @@ public class BuildingState extends State {
 			b.setId("parts");
 			b.setGraphic(new ImageView(RocketPartData.image(type, _class, false)));
 			b.setTooltip(new Tooltip(_class + " " + type));
-			b.setOnAction((event) -> currPartString = new String[] { type, _class, "false" });
+			b.setOnAction((event) -> {
+				currPartString = new String[] { type, _class, "false" };
+				currPart.setImage(RocketPartData.image(currPartString[0], currPartString[1],
+						currPartString[2].equals("true") ? true : false));
+			});
 			if (Arrays.asList(RocketPart.FLIPPABLE_PARTS).contains(type)) {
 				Button flipped = new Button();
 				flipped.setId("parts");
@@ -46,6 +51,8 @@ public class BuildingState extends State {
 			}
 			MainGameController.getLeft().add(b);
 		}
+
+		currPart = new ImageView();
 
 		Button finish = new Button("Complete!");
 		finish.setOnAction(event -> {
@@ -66,7 +73,7 @@ public class BuildingState extends State {
 		load.setOnAction(event -> loadRocket());
 		load.setFocusTraversable(false);
 
-		MainGameController.getRight().addAll(finish, new Separator(), name, save, load);
+		MainGameController.getRight().addAll(currPart, new Separator(), finish, new Separator(), name, save, load);
 	}
 
 	private boolean createRocket() {
@@ -106,10 +113,6 @@ public class BuildingState extends State {
 
 	@Override
 	public void render() {
-		if (currPartString != null)
-			Grid.renderInGrid(g, RocketPartData.image(currPartString[0], currPartString[1],
-					currPartString[2].equals("true") ? true : false), 0, 0);
-
 		for (Point2D p : partLocs.keySet()) {
 			Grid.renderInGrid(g, partLocs.get(p).getImage(), (int) p.getX(), (int) p.getY());
 		}
