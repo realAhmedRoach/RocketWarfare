@@ -1,6 +1,6 @@
 package dev.thetechnokid.rw.logic;
 
-public enum Tier {
+public enum Class {
 	CAMO,
 	ARMORED,
 	LITE,
