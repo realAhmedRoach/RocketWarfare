@@ -1,14 +1,21 @@
 package dev.thetechnokid.rw.states;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Set;
 
 import dev.thetechnokid.rw.controllers.MainGameController;
-import dev.thetechnokid.rw.entities.*;
+import dev.thetechnokid.rw.entities.Rocket;
+import dev.thetechnokid.rw.entities.RocketPart;
+import dev.thetechnokid.rw.entities.RocketPartData;
 import dev.thetechnokid.rw.maths.Position;
 import dev.thetechnokid.rw.utils.Grid;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Separator;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 
 public class BuildingState extends State {
@@ -91,11 +98,19 @@ public class BuildingState extends State {
 		for (Point2D orig : partLocs.keySet()) {
 			RocketPart p = partLocs.get(orig);
 			p.setPosInRocket(new Position(orig.getX() - ox, orig.getY() - oy));
-			p.setNorth(partLocs.get(new Point2D(orig.getX(), orig.getY()+1)));
-			p.setSouth(partLocs.get(new Point2D(orig.getX(), orig.getY()-1)));
-			p.setEast(partLocs.get(new Point2D(orig.getX()+1, orig.getY())));
-			p.setWest(partLocs.get(new Point2D(orig.getX()-1, orig.getY())));
+			p.setNorth(partLocs.get(new Point2D(orig.getX(), orig.getY() + 1)));
+			p.setSouth(partLocs.get(new Point2D(orig.getX(), orig.getY() - 1)));
+			p.setEast(partLocs.get(new Point2D(orig.getX() + 1, orig.getY())));
+			p.setWest(partLocs.get(new Point2D(orig.getX() - 1, orig.getY())));
 			rocket.addPart(p);
+		}
+
+		if (rocket.getParts().size() > 1) {
+			for (RocketPart part : rocket.getParts()) {
+				if (part.getNorth() == null && part.getSouth() == null && part.getEast() == null
+						&& part.getWest() == null)
+					return false;
+			}
 		}
 
 		return true;

@@ -98,4 +98,8 @@ public class Rocket extends FlyingObject implements Serializable {
 	public void toggleAccelerationLocked() {
 		accelerationLocked = !accelerationLocked;
 	}
+
+	public List<RocketPart> getParts() {
+		return parts;
+	}
 }
