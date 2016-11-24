@@ -1,14 +1,24 @@
 package dev.thetechnokid.rw.states;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 
 import dev.thetechnokid.rw.RocketWarfare;
 import dev.thetechnokid.rw.controllers.MainGameController;
 import dev.thetechnokid.rw.net.User;
-import dev.thetechnokid.rw.utils.*;
-import javafx.geometry.*;
+import dev.thetechnokid.rw.utils.Animator;
+import dev.thetechnokid.rw.utils.Assets;
+import dev.thetechnokid.rw.utils.Grid;
+import dev.thetechnokid.rw.utils.Language;
+import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.TextAlignment;
 
@@ -58,8 +68,8 @@ public class MenuState extends State {
 		pwField.setPromptText(Language.get("password"));
 		pwField.setMaxWidth(100);
 
-		CheckBox register = new CheckBox("Register");
-		CheckBox rememberMe = new CheckBox("Remember Me");
+		CheckBox register = new CheckBox(Language.get("register"));
+		CheckBox rememberMe = new CheckBox(Language.get("remember me"));
 
 		Button start = new Button(Language.get("login"));
 		start.setOnAction((event) -> {

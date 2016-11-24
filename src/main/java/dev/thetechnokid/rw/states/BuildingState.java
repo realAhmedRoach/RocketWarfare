@@ -10,6 +10,7 @@ import dev.thetechnokid.rw.entities.RocketPart;
 import dev.thetechnokid.rw.entities.RocketPartData;
 import dev.thetechnokid.rw.maths.Position;
 import dev.thetechnokid.rw.utils.Grid;
+import dev.thetechnokid.rw.utils.Language;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
@@ -61,7 +62,7 @@ public class BuildingState extends State {
 
 		currPart = new ImageView();
 
-		Button finish = new Button("Complete!");
+		Button finish = new Button(Language.get("complete") + "!");
 		finish.setOnAction(event -> {
 			if (createRocket())
 				State.setCurrentState(new MissionControlState(g, rocket));
@@ -69,14 +70,14 @@ public class BuildingState extends State {
 		finish.setFocusTraversable(false);
 
 		name = new TextField();
-		name.setPromptText("Rocket's Name");
+		name.setPromptText(Language.get("rocket name"));
 		name.setFocusTraversable(false);
 
-		Button save = new Button("Save Rocket");
+		Button save = new Button(Language.get("save rocket"));
 		save.setOnAction(event -> saveRocket());
 		save.setFocusTraversable(false);
 
-		Button load = new Button("Load Rocket");
+		Button load = new Button(Language.get("load rocket"));
 		load.setOnAction(event -> loadRocket());
 		load.setFocusTraversable(false);
 

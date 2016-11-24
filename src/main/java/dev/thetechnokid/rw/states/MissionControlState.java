@@ -3,10 +3,16 @@ package dev.thetechnokid.rw.states;
 import dev.thetechnokid.rw.RocketWarfare;
 import dev.thetechnokid.rw.controllers.MainGameController;
 import dev.thetechnokid.rw.entities.Rocket;
-import dev.thetechnokid.rw.utils.*;
-import eu.hansolo.medusa.*;
+import dev.thetechnokid.rw.utils.Animator;
+import dev.thetechnokid.rw.utils.Grid;
+import dev.thetechnokid.rw.utils.Language;
+import dev.thetechnokid.rw.utils.Utils;
+import eu.hansolo.medusa.Gauge;
+import eu.hansolo.medusa.GaugeBuilder;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 
@@ -50,12 +56,12 @@ public class MissionControlState extends State {
 
 		g.setFill(Color.RED);
 
-		velocity = GaugeBuilder.create().skinType(Gauge.SkinType.MODERN).title("Velocity").unit("FPS").decimals(2)
-				.maxValue(500).build();
-		acceleration = GaugeBuilder.create().skinType(Gauge.SkinType.INDICATOR).title("Acceleration").unit("FPS/S")
-				.decimals(4).maxValue(Rocket.MAX_ACCELERATION).build();
-		time = GaugeBuilder.create().skinType(Gauge.SkinType.LCD).title("Time").unit("Secs").maxValue(Double.MAX_VALUE)
-				.averageVisible(false).maxSize(200, 200).decimals(0).build();
+		velocity = GaugeBuilder.create().skinType(Gauge.SkinType.MODERN).title(Language.get("velocity")).unit("FPS")
+				.decimals(2).maxValue(500).build();
+		acceleration = GaugeBuilder.create().skinType(Gauge.SkinType.INDICATOR).title(Language.get("acceleration"))
+				.unit("FPS/S").decimals(4).maxValue(Rocket.MAX_ACCELERATION).build();
+		time = GaugeBuilder.create().skinType(Gauge.SkinType.LCD).title(Language.get("time")).unit("Secs")
+				.maxValue(Double.MAX_VALUE).averageVisible(false).maxSize(200, 200).decimals(0).build();
 		time.setMinMeasuredValueVisible(false);
 		time.setMaxMeasuredValueVisible(false);
 
