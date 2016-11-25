@@ -1,24 +1,15 @@
 package dev.thetechnokid.rw.states;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
+import java.io.*;
 
 import dev.thetechnokid.rw.RocketWarfare;
 import dev.thetechnokid.rw.controllers.MainGameController;
 import dev.thetechnokid.rw.net.User;
-import dev.thetechnokid.rw.utils.Animator;
-import dev.thetechnokid.rw.utils.Assets;
-import dev.thetechnokid.rw.utils.Grid;
-import dev.thetechnokid.rw.utils.Language;
+import dev.thetechnokid.rw.utils.*;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.TextAlignment;
 
