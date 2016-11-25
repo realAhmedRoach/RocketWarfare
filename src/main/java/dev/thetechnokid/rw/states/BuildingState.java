@@ -1,22 +1,16 @@
 package dev.thetechnokid.rw.states;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Set;
+import java.util.*;
 
 import dev.thetechnokid.rw.controllers.MainGameController;
-import dev.thetechnokid.rw.entities.Rocket;
-import dev.thetechnokid.rw.entities.RocketPart;
-import dev.thetechnokid.rw.entities.RocketPartData;
+import dev.thetechnokid.rw.entities.*;
+import dev.thetechnokid.rw.logic.Parts;
 import dev.thetechnokid.rw.maths.Position;
 import dev.thetechnokid.rw.utils.Grid;
 import dev.thetechnokid.rw.utils.Language;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
-import javafx.scene.control.Separator;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 
 public class BuildingState extends State {
@@ -106,13 +100,32 @@ public class BuildingState extends State {
 			rocket.addPart(p);
 		}
 
-		if (rocket.getParts().size() > 1) {
-			for (RocketPart part : rocket.getParts()) {
-				if (part.getNorth() == null && part.getSouth() == null && part.getEast() == null
-						&& part.getWest() == null)
-					return false;
-			}
+		return validate(rocket);
+	}
+
+	public static boolean validate(Rocket rocket) {
+		for (RocketPart part : rocket.getParts()) {
+			if (part.getNorth() == null && part.getSouth() == null && part.getEast() == null && part.getWest() == null)
+				return false;
 		}
+
+		boolean noseFound = false;
+		boolean thrusterFound = false;
+		for (RocketPart part : rocket.getParts()) {
+			if (part.getType().equalsIgnoreCase(Parts.NOSE.name()))
+				if (noseFound != true)
+					noseFound = true;
+				else
+					return false;
+			if (part.getType().equalsIgnoreCase(Parts.THRUSTER.name()))
+				if (thrusterFound != true)
+					thrusterFound = true;
+				else
+					return false;
+		}
+
+		if (!noseFound || !thrusterFound)
+			return false;
 
 		return true;
 	}
