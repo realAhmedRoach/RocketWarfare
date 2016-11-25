@@ -113,21 +113,18 @@ public class BuildingState extends State {
 		boolean thrusterFound = false;
 		for (RocketPart part : rocket.getParts()) {
 			if (part.getType().equalsIgnoreCase(Parts.NOSE.name()))
-				if (noseFound != true)
+				if (!noseFound)
 					noseFound = true;
 				else
 					return false;
 			if (part.getType().equalsIgnoreCase(Parts.THRUSTER.name()))
-				if (thrusterFound != true)
+				if (!thrusterFound)
 					thrusterFound = true;
 				else
 					return false;
 		}
 
-		if (!noseFound || !thrusterFound)
-			return false;
-
-		return true;
+		return (noseFound && thrusterFound);
 	}
 
 	private void saveRocket() {
