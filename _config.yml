@@ -30,7 +30,7 @@ yandex_site_verification :
 
 # Social Sharing
 twitter:
-  username               : theTechnoKid_
+  username               :
 facebook:
   username               :
   app_id                 :
@@ -72,10 +72,10 @@ author:
   linkedin         :
   pinterest        :
   soundcloud       :
-  stackoverflow    : https://stackoverflow.com/users/3508796/thetechnokid
+  stackoverflow    : 3508796/thetechnokid
   steam            : thetechnokid
   tumblr           :
-  twitter          : theTechnoKid_
+  twitter          : 
   vine             :
   weibo            :
   xing             :
