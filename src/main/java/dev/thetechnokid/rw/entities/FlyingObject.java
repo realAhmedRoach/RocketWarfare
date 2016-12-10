@@ -9,6 +9,7 @@ public abstract class FlyingObject {
 	protected transient Position pos;
 	protected transient VectorQuantity acceleration;
 	protected transient VectorQuantity velocity;
+	protected int time;
 
 	public FlyingObject() {
 		acceleration = new VectorQuantity();
@@ -51,6 +52,10 @@ public abstract class FlyingObject {
 		return size.getHeight();
 	}
 
+	public int getTime() {
+		return time;
+	}
+	
 	public abstract void tick();
 
 	public abstract void render(double x, double y);

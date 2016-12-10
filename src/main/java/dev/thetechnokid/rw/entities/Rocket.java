@@ -17,7 +17,6 @@ public class Rocket extends FlyingObject implements Serializable {
 	protected String name;
 
 	private boolean launched = false;
-	private int time;
 	private boolean accelerationLocked;
 
 	public static double MAX_ACCELERATION = 1;
@@ -81,10 +80,6 @@ public class Rocket extends FlyingObject implements Serializable {
 
 	public boolean isLaunched() {
 		return launched;
-	}
-
-	public int getTime() {
-		return time;
 	}
 
 	public void crash() {
