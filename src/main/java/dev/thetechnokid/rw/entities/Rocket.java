@@ -21,10 +21,8 @@ public class Rocket extends FlyingObject implements Serializable {
 
 	public static double MAX_ACCELERATION = 1;
 
-	private transient GraphicsContext g;
-
 	public Rocket(GraphicsContext g, String name) {
-		this.g = g;
+		super(g);
 		this.name = name;
 		size = new Dimension();
 		pos = new Position();

@@ -1,6 +1,7 @@
 package dev.thetechnokid.rw.entities;
 
 import dev.thetechnokid.rw.maths.*;
+import javafx.scene.canvas.GraphicsContext;
 
 public abstract class FlyingObject {
 
@@ -9,9 +10,11 @@ public abstract class FlyingObject {
 	protected transient Position pos;
 	protected transient VectorQuantity acceleration;
 	protected transient VectorQuantity velocity;
+	protected transient GraphicsContext g;
 	protected int time;
 
-	public FlyingObject() {
+	public FlyingObject(GraphicsContext g) {
+		this.g = g;
 		acceleration = new VectorQuantity();
 		velocity = new VectorQuantity();
 	}
