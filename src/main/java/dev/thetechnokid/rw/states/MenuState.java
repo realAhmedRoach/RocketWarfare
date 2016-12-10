@@ -85,6 +85,8 @@ public class MenuState extends State {
 	private void loadRemembered() {
 		File folder = new File(RocketWarfare.settingsFolder() + "/users/");
 		File rem = null;
+		if(folder.listFiles() == null) 
+			return;
 		for (File file : folder.listFiles()) {
 			if (file.getName().endsWith("-"))
 				rem = file;
