@@ -12,6 +12,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 
 public class BuildingState extends State {
 	private HashMap<Point2D, RocketPart> partLocs = new HashMap<>();
@@ -20,10 +21,11 @@ public class BuildingState extends State {
 	private Rocket rocket;
 	private TextField name;
 	private ImageView currPart;
+	
+	private HashMap<String, HBox> boxes;
 
 	public BuildingState(GraphicsContext g) {
 		super(g);
-
 	}
 
 	@Override
@@ -31,9 +33,15 @@ public class BuildingState extends State {
 		MainGameController.getRight().clear();
 		MainGameController.getLeft().clear();
 		
+		boxes = new HashMap<>();
+		
 		for (String part : RocketPart.allParts()) {
 			String type = part.split("_")[0];
 			String _class = part.split("_")[1];
+			
+			if(!boxes.containsKey(type))
+				boxes.put(type, new HBox(10));
+			
 			Button b = new Button();
 			b.setId("parts");
 			b.setGraphic(new ImageView(RocketPartData.image(type, _class, false)));
@@ -43,17 +51,19 @@ public class BuildingState extends State {
 				currPart.setImage(RocketPartData.image(currPartString[0], currPartString[1],
 						currPartString[2].equals("true") ? true : false));
 			});
+			boxes.get(type).getChildren().add(b);
 			if (Arrays.asList(RocketPart.FLIPPABLE_PARTS).contains(type)) {
 				Button flipped = new Button();
 				flipped.setId("parts");
 				flipped.setGraphic(new ImageView(RocketPartData.image(type, _class, true)));
 				flipped.setTooltip(new Tooltip(_class + " " + type));
 				flipped.setOnAction((event) -> currPartString = new String[] { type, _class, "true" });
-				MainGameController.getRight().add(flipped);
+				boxes.get(type).getChildren().add(flipped);
 			}
-			MainGameController.getRight().add(b);
 		}
 
+		MainGameController.getRight().addAll(boxes.values());
+		
 		currPart = new ImageView();
 
 		Button finish = new Button(Language.get("complete") + "!");
