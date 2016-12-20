@@ -78,7 +78,7 @@ public class MenuState extends State {
 		grid.add(rememberMe, 1, 3);
 		grid.add(register, 0, 3);
 
-		MainGameController.getRight().addAll(grid, start);
+		MainGameController.getLeft().addAll(grid, start);
 		loadRemembered();
 	}
 

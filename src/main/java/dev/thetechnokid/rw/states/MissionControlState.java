@@ -107,9 +107,9 @@ public class MissionControlState extends State {
 		xLabel = new Label();
 		degreesLabel = new Label();
 
-		MainGameController.getRight().addAll(scaleUp, scaleDown, expand, new Separator(), altitudeLabel, xLabel,
+		MainGameController.getLeft().addAll(scaleUp, scaleDown, expand, new Separator(), altitudeLabel, xLabel,
 				degreesLabel, new Separator(), build);
-		MainGameController.getLeft().addAll(velocity, acceleration, time);
+		MainGameController.getRight().addAll(velocity, acceleration, time);
 
 		MainGameController.getCanvas().requestFocus();
 	}

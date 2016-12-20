@@ -42,9 +42,9 @@ public class MainGameController implements Initializable {
 	@FXML
 	private Canvas theCanvas;
 	@FXML
-	private VBox right;
+	private FlowPane right;
 	@FXML
-	private FlowPane left;
+	private VBox left;
 	@FXML
 	private Label status;
 	@FXML

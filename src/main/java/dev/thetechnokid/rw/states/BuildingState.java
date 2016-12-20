@@ -30,7 +30,7 @@ public class BuildingState extends State {
 	protected void init() {
 		MainGameController.getRight().clear();
 		MainGameController.getLeft().clear();
-
+		
 		for (String part : RocketPart.allParts()) {
 			String type = part.split("_")[0];
 			String _class = part.split("_")[1];
@@ -49,9 +49,9 @@ public class BuildingState extends State {
 				flipped.setGraphic(new ImageView(RocketPartData.image(type, _class, true)));
 				flipped.setTooltip(new Tooltip(_class + " " + type));
 				flipped.setOnAction((event) -> currPartString = new String[] { type, _class, "true" });
-				MainGameController.getLeft().add(flipped);
+				MainGameController.getRight().add(flipped);
 			}
-			MainGameController.getLeft().add(b);
+			MainGameController.getRight().add(b);
 		}
 
 		currPart = new ImageView();
@@ -75,7 +75,7 @@ public class BuildingState extends State {
 		load.setOnAction(event -> loadRocket());
 		load.setFocusTraversable(false);
 
-		MainGameController.getRight().addAll(currPart, new Separator(), finish, new Separator(), name, save, load);
+		MainGameController.getLeft().addAll(currPart, new Separator(), finish, new Separator(), name, save, load);
 	}
 
 	private boolean createRocket() {
