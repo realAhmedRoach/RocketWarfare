@@ -8,7 +8,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class RocketWarfarePreloader extends Preloader {
-	
+
 	public static final String NEWS = "http://thetechnokid.github.io/RocketWarfare";
 	public static boolean DONE = false;
 
@@ -21,7 +21,7 @@ public class RocketWarfarePreloader extends Preloader {
 		stage.setResizable(false);
 		stage.sizeToScene();
 		stage.setTitle("Rocket Warfare Launcher");
-		stage.getIcons().add(new Image(RocketWarfare.class.getResourceAsStream("/images/logo.png")));
+		stage.getIcons().add(new Image(RocketWarfare.class.getResourceAsStream("/images/rw_logo.jpg")));
 		stage.show();
 	}
 }
