@@ -34,7 +34,7 @@ public class RocketWarfare extends Application {
 		stage.setResizable(false);
 		stage.sizeToScene();
 		stage.setTitle(Version.NAME + " | " + Version.FRIENDLY);
-		stage.getIcons().add(new Image(RocketWarfare.class.getResourceAsStream("/images/logo.png")));
+		stage.getIcons().add(new Image(RocketWarfare.class.getResourceAsStream("/images/rw_logo.jpg")));
 	}
 
 	@Override

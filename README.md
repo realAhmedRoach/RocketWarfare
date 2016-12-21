@@ -6,7 +6,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/theTechnoKid/RocketWarfare.svg?style=flat-square)](https://github.com/theTechnoKid/RocketWarfare/issues)
 <a href="https://zenhub.com"><img src="https://raw.githubusercontent.com/ZenHubIO/support/master/zenhub-badge.png"></a>
 
-![logo](res/images/logo.png) [![forthebadge](http://forthebadge.com/images/badges/built-with-swag.svg)](http://forthebadge.com) ![logo](res/images/logo.png)
+![logo](res/images/rw_logo.jpg) [![forthebadge](http://forthebadge.com/images/badges/built-with-swag.svg)](http://forthebadge.com) ![logo](res/images/rw_logo.jpg)
 
 You are in a large world. Using your custom-built rocket, the missiles that you have installed in it, and your base, you try to defend yourself and your team mates from attacks.
 From UFOs, enemy ships, and more... *This is Rocket Warfare*.
