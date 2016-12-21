@@ -3,16 +3,12 @@ package dev.thetechnokid.rw.states;
 import dev.thetechnokid.rw.RocketWarfare;
 import dev.thetechnokid.rw.controllers.MainGameController;
 import dev.thetechnokid.rw.entities.Rocket;
-import dev.thetechnokid.rw.utils.Animator;
-import dev.thetechnokid.rw.utils.Grid;
-import dev.thetechnokid.rw.utils.Language;
-import dev.thetechnokid.rw.utils.Utils;
+import dev.thetechnokid.rw.maths.Vector;
+import dev.thetechnokid.rw.utils.*;
 import eu.hansolo.medusa.Gauge;
 import eu.hansolo.medusa.GaugeBuilder;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Separator;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 
@@ -33,7 +29,7 @@ public class MissionControlState extends State {
 	private double ox, oy;
 	private double scale = 1;
 
-	public static final double DELTA = 0.025;
+	public static final Vector DELTA = new Vector(0.025, 0.025);
 
 	public MissionControlState(GraphicsContext g, Rocket toControl) {
 		super(g);
@@ -122,9 +118,9 @@ public class MissionControlState extends State {
 	@Override
 	public void tick() {
 		if (MainGameController.getKeyboard().get(KeyCode.RIGHT))
-			rocket.getAcceleration().getDirection().decreaseDegrees();
+			rocket.getAcceleration().rotate(1);
 		else if (MainGameController.getKeyboard().get(KeyCode.LEFT))
-			rocket.getAcceleration().getDirection().increaseDegrees();
+			rocket.getAcceleration().rotate(-1);
 
 		if (MainGameController.getKeyboard().releasedKey(KeyCode.ESCAPE))
 			MainGameController.getCanvas().setWidth(352);
@@ -133,18 +129,18 @@ public class MissionControlState extends State {
 
 		if (MainGameController.getKeyboard().get(KeyCode.UP)
 				&& rocket.getAcceleration().getMagnitude() < Rocket.MAX_ACCELERATION) {
-			rocket.getAcceleration().increaseMagnitude(DELTA);
+			rocket.getAcceleration().add(DELTA);
 		} else if (MainGameController.getKeyboard().get(KeyCode.DOWN) && rocket.getAcceleration().getMagnitude() > 0) {
-			rocket.getAcceleration().decreaseMagnitude(DELTA);
+			rocket.getAcceleration().sub(DELTA);
 		} else if (rocket.getAcceleration().getMagnitude() > 0 && !rocket.isAccelerationLocked())
-			rocket.getAcceleration().decreaseMagnitude(DELTA);
+			rocket.getAcceleration().sub(DELTA);
 
 		if (MainGameController.getKeyboard().releasedKey(KeyCode.SPACE)) {
 			rocket.toggleAccelerationLocked();
 		}
 
 		if (rocket.getAcceleration().getMagnitude() < 0)
-			rocket.getAcceleration().setMagnitude(0);
+			rocket.getAcceleration().set(0);
 
 		rocket.tick();
 		anim.tick();

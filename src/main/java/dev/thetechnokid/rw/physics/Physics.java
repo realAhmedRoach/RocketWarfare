@@ -15,25 +15,22 @@ public class Physics {
 	}
 
 	public static void position(int time, Rocket rocket, Position pos) {
-		VectorQuantity velocity = rocket.getVelocity();
-		VectorQuantity acceleration = rocket.getAcceleration();
+		Vector velocity = rocket.getVelocity();
+		Vector acceleration = rocket.getAcceleration();
 
 		velocity.getDirection().set(acceleration.getDirection());
-		velocity.increaseMagnitude(acceleration.getMagnitude());
+		velocity.add(acceleration);
 
-		VectorQuantity airResistance = airResistance(1.225, velocity.getMagnitude(), 0.25, rocket.getWidth(),
+		Vector airResistance = airResistance(1.225, velocity.getMagnitude(), 0.25, rocket.getWidth(),
 				velocity.getDirection());
 
-		if (acceleration.getDirection().getDegrees() > 180) {
-			velocity.increaseMagnitude(G / RocketWarfare.FPS);
-		} else {
-			velocity.decreaseMagnitude(G / RocketWarfare.FPS);
-		}
+		velocity.y -= (G / RocketWarfare.FPS);
 
-		velocity.decreaseMagnitude(airResistance.getMagnitude() / velocity.getMagnitude());
+		airResistance.div(velocity);
+		velocity.sub(airResistance);
 
-		pos.y += velocity.magnitudeActualY();
-		pos.x += velocity.magnitudeActualX();
+		pos.y += velocity.y;
+		pos.x += velocity.x;
 
 		if (pos.y < 0) {
 			rocket.crash();
@@ -55,9 +52,9 @@ public class Physics {
 	 *            Direction of object
 	 * @return The drag fallback as a vector
 	 */
-	public static VectorQuantity airResistance(double p, double u, double C, double A, Direction direction) {
+	public static Vector airResistance(double p, double u, double C, double A, Direction direction) {
 		double drag = (p * Math.pow(u, 2) * C * A) / 2;
-		VectorQuantity airResistance = new VectorQuantity(drag / RocketWarfare.FPS, direction.opposite());
+		Vector airResistance = new Vector(drag / RocketWarfare.FPS, direction.opposite());
 		return airResistance;
 	}
 

@@ -8,22 +8,22 @@ public abstract class FlyingObject {
 	protected int mass;
 	protected Dimension size;
 	protected transient Position pos;
-	protected transient VectorQuantity acceleration;
-	protected transient VectorQuantity velocity;
+	protected transient Vector acceleration;
+	protected transient Vector velocity;
 	protected transient GraphicsContext g;
 	protected int time;
 
 	public FlyingObject(GraphicsContext g) {
 		this.g = g;
-		acceleration = new VectorQuantity();
-		velocity = new VectorQuantity();
+		acceleration = new Vector();
+		velocity = new Vector();
 	}
 
-	public VectorQuantity getAcceleration() {
+	public Vector getAcceleration() {
 		return acceleration;
 	}
 
-	public VectorQuantity getVelocity() {
+	public Vector getVelocity() {
 		return velocity;
 	}
 
