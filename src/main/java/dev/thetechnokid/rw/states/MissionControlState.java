@@ -57,7 +57,8 @@ public class MissionControlState extends State {
 		acceleration = GaugeBuilder.create().skinType(Gauge.SkinType.INDICATOR).title(Language.get("acceleration"))
 				.unit("FPS/S").decimals(4).maxValue(Rocket.MAX_ACCELERATION).build();
 		time = GaugeBuilder.create().skinType(Gauge.SkinType.LCD).title(Language.get("time")).unit("Secs")
-				.maxValue(Double.MAX_VALUE).averageVisible(false).maxSize(200, 200).decimals(0).build();
+				.maxValue(Double.MAX_VALUE).averageVisible(false).averagingEnabled(false).maxSize(200, 200).decimals(0)
+				.build();
 		time.setMinMeasuredValueVisible(false);
 		time.setMaxMeasuredValueVisible(false);
 
@@ -117,10 +118,11 @@ public class MissionControlState extends State {
 
 	@Override
 	public void tick() {
-		if (MainGameController.getKeyboard().get(KeyCode.RIGHT))
-			rocket.getAcceleration().rotate(1);
-		else if (MainGameController.getKeyboard().get(KeyCode.LEFT))
-			rocket.getAcceleration().rotate(-1);
+		if (MainGameController.getKeyboard().get(KeyCode.RIGHT)) {
+			rocket.getDirection().decreaseDegrees();
+		} else if (MainGameController.getKeyboard().get(KeyCode.LEFT)) {
+			rocket.getDirection().increaseDegrees();
+		}
 
 		if (MainGameController.getKeyboard().releasedKey(KeyCode.ESCAPE))
 			MainGameController.getCanvas().setWidth(352);
@@ -129,7 +131,8 @@ public class MissionControlState extends State {
 
 		if (MainGameController.getKeyboard().get(KeyCode.UP)
 				&& rocket.getAcceleration().getMagnitude() < Rocket.MAX_ACCELERATION) {
-			rocket.getAcceleration().add(DELTA);
+			rocket.getAcceleration().x += rocket.getDirection().getXModifier();
+			rocket.getAcceleration().y += rocket.getDirection().getAltitudeModifier();
 		} else if (MainGameController.getKeyboard().get(KeyCode.DOWN) && rocket.getAcceleration().getMagnitude() > 0) {
 			rocket.getAcceleration().sub(DELTA);
 		} else if (rocket.getAcceleration().getMagnitude() > 0 && !rocket.isAccelerationLocked())

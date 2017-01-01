@@ -1,14 +1,18 @@
 package dev.thetechnokid.rw.entities;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-import dev.thetechnokid.rw.maths.*;
+import dev.thetechnokid.rw.maths.Dimension;
+import dev.thetechnokid.rw.maths.Position;
 import dev.thetechnokid.rw.physics.Physics;
-import dev.thetechnokid.rw.states.*;
+import dev.thetechnokid.rw.states.BuildingState;
+import dev.thetechnokid.rw.states.State;
 import dev.thetechnokid.rw.utils.Grid;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.transform.*;
+import javafx.scene.transform.Affine;
+import javafx.scene.transform.Rotate;
 
 public class Rocket extends FlyingObject implements Serializable {
 	private static final long serialVersionUID = 7546621883949959769L;
@@ -33,7 +37,7 @@ public class Rocket extends FlyingObject implements Serializable {
 	public void render(double x, double y) {
 		double scale = State.getCurrentState().scale();
 		g.save();
-		g.setTransform((new Affine(new Rotate(-(acceleration.getDirection().getDegrees() - 90),
+		g.setTransform((new Affine(new Rotate(-(this.getDirection().getDegrees()),
 				x + ((getWidth() * (Grid.SIZE * scale)) / 2), y + (getHeight() * (Grid.SIZE * scale))))));
 		for (RocketPart rocketPart : parts) {
 			Position partPos = rocketPart.getPosInRocket();

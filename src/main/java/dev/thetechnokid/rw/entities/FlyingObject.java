@@ -10,6 +10,7 @@ public abstract class FlyingObject {
 	protected transient Position pos;
 	protected transient Vector acceleration;
 	protected transient Vector velocity;
+	protected transient Direction direction;
 	protected transient GraphicsContext g;
 	protected int time;
 
@@ -17,6 +18,7 @@ public abstract class FlyingObject {
 		this.g = g;
 		acceleration = new Vector();
 		velocity = new Vector();
+		direction = new Direction(0);
 	}
 
 	public Vector getAcceleration() {
@@ -25,6 +27,10 @@ public abstract class FlyingObject {
 
 	public Vector getVelocity() {
 		return velocity;
+	}
+
+	public Direction getDirection() {
+		return direction;
 	}
 
 	public double getX() {
@@ -58,7 +64,7 @@ public abstract class FlyingObject {
 	public int getTime() {
 		return time;
 	}
-	
+
 	public abstract void tick();
 
 	public abstract void render(double x, double y);

@@ -18,7 +18,6 @@ public class Physics {
 		Vector velocity = rocket.getVelocity();
 		Vector acceleration = rocket.getAcceleration();
 
-		velocity.getDirection().set(acceleration.getDirection());
 		velocity.add(acceleration);
 
 		Vector airResistance = airResistance(1.225, velocity.getMagnitude(), 0.25, rocket.getWidth(),
@@ -32,9 +31,9 @@ public class Physics {
 		pos.y += velocity.y;
 		pos.x += velocity.x;
 
-		if (pos.y < 0) {
-			rocket.crash();
-		}
+		// if (pos.y < 0) {
+		// rocket.crash();
+		// }
 	}
 
 	/**
