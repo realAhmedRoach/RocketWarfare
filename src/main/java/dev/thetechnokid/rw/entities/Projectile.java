@@ -1,6 +1,5 @@
 package dev.thetechnokid.rw.entities;
 
-import dev.thetechnokid.rw.maths.Vector;
 import dev.thetechnokid.rw.physics.Physics;
 import dev.thetechnokid.rw.states.State;
 import dev.thetechnokid.rw.utils.Grid;
@@ -21,11 +20,6 @@ public class Projectile extends FlyingObject {
 	public void tick() {
 		pos.y = -Math.pow(Physics.G, 2) * time + velocity.y * time + 0;
 		pos.x += velocity.x;
-
-		Vector airResistance = Physics.airResistance(1.225, velocity.getMagnitude(), 0.25, getWidth(),
-				velocity.getDirection());
-		airResistance.div(velocity);
-		velocity.sub(airResistance);
 	}
 
 	@Override
