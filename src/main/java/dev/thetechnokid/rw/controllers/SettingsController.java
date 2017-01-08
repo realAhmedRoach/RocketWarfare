@@ -4,31 +4,35 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import dev.thetechnokid.rw.*;
+import com.jfoenix.controls.*;
+
+import dev.thetechnokid.rw.Main;
+import dev.thetechnokid.rw.RocketWarfare;
 import dev.thetechnokid.rw.net.Preferences;
 import dev.thetechnokid.rw.utils.Language;
 import javafx.event.ActionEvent;
-import javafx.fxml.*;
-import javafx.scene.control.*;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 
 public class SettingsController implements Initializable {
 
 	@FXML
-	private TextField displayName;
+	private JFXTextField displayName;
 	@FXML
-	private TextField status;
+	private JFXTextField status;
 	@FXML
-	private CheckBox rememberMe;
+	private JFXCheckBox rememberMe;
 	@FXML
-	private ComboBox<String> theme;
+	private JFXComboBox<String> theme;
 	@FXML
-	private ComboBox<String> language;
+	private JFXComboBox<String> language;
 	@FXML
-	private PasswordField password;
+	private JFXPasswordField password;
 	@FXML
-	private Button ok;
+	private JFXButton ok;
 	@FXML
-	private Button cancel;
+	private JFXButton cancel;
 	@FXML
 	private Label statusText;
 

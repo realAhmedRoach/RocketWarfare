@@ -1,12 +1,17 @@
 package dev.thetechnokid.rw.controllers;
 
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 import java.util.function.Function;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextArea;
+
 import dev.thetechnokid.rw.*;
-import javafx.fxml.*;
-import javafx.scene.control.*;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.web.WebView;
 
 public class PreloaderController implements Initializable {
@@ -14,9 +19,9 @@ public class PreloaderController implements Initializable {
 	@FXML
 	private WebView news;
 	@FXML
-	private TextArea status;
+	private JFXTextArea status;
 	@FXML
-	private Button go;
+	private JFXButton go;
 	@FXML
 	private ProgressBar progress;
 
