@@ -2,6 +2,8 @@ package dev.thetechnokid.rw.states;
 
 import java.util.*;
 
+import com.jfoenix.controls.JFXButton;
+
 import dev.thetechnokid.rw.controllers.MainGameController;
 import dev.thetechnokid.rw.entities.*;
 import dev.thetechnokid.rw.logic.Parts;
@@ -21,7 +23,7 @@ public class BuildingState extends State {
 	private Rocket rocket;
 	private TextField name;
 	private ImageView currPart;
-	
+
 	private HashMap<String, HBox> boxes;
 
 	public BuildingState(GraphicsContext g) {
@@ -32,17 +34,17 @@ public class BuildingState extends State {
 	protected void init() {
 		MainGameController.getRight().clear();
 		MainGameController.getLeft().clear();
-		
+
 		boxes = new HashMap<>();
-		
+
 		for (String part : RocketPart.allParts()) {
 			String type = part.split("_")[0];
 			String _class = part.split("_")[1];
-			
-			if(!boxes.containsKey(type))
+
+			if (!boxes.containsKey(type))
 				boxes.put(type, new HBox(10));
-			
-			Button b = new Button();
+
+			JFXButton b = new JFXButton();
 			b.setId("parts");
 			b.setGraphic(new ImageView(RocketPartData.image(type, _class, false)));
 			b.setTooltip(new Tooltip(_class + " " + type));
@@ -53,7 +55,7 @@ public class BuildingState extends State {
 			});
 			boxes.get(type).getChildren().add(b);
 			if (Arrays.asList(RocketPart.FLIPPABLE_PARTS).contains(type)) {
-				Button flipped = new Button();
+				JFXButton flipped = new JFXButton();
 				flipped.setId("parts");
 				flipped.setGraphic(new ImageView(RocketPartData.image(type, _class, true)));
 				flipped.setTooltip(new Tooltip(_class + " " + type));
@@ -63,10 +65,10 @@ public class BuildingState extends State {
 		}
 
 		MainGameController.getRight().addAll(boxes.values());
-		
+
 		currPart = new ImageView();
 
-		Button finish = new Button(Language.get("complete") + "!");
+		JFXButton finish = new JFXButton(Language.get("complete") + "!");
 		finish.setOnAction(event -> {
 			if (createRocket())
 				State.setCurrentState(new MissionControlState(g, rocket));
@@ -77,11 +79,11 @@ public class BuildingState extends State {
 		name.setPromptText(Language.get("rocket name"));
 		name.setFocusTraversable(false);
 
-		Button save = new Button(Language.get("save rocket"));
+		JFXButton save = new JFXButton(Language.get("save rocket"));
 		save.setOnAction(event -> saveRocket());
 		save.setFocusTraversable(false);
 
-		Button load = new Button(Language.get("load rocket"));
+		JFXButton load = new JFXButton(Language.get("load rocket"));
 		load.setOnAction(event -> loadRocket());
 		load.setFocusTraversable(false);
 

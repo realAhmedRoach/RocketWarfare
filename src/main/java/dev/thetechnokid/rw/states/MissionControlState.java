@@ -1,16 +1,14 @@
 package dev.thetechnokid.rw.states;
 
+import com.jfoenix.controls.JFXButton;
+
 import dev.thetechnokid.rw.RocketWarfare;
 import dev.thetechnokid.rw.controllers.MainGameController;
 import dev.thetechnokid.rw.entities.Rocket;
-import dev.thetechnokid.rw.utils.Animator;
-import dev.thetechnokid.rw.utils.Grid;
-import dev.thetechnokid.rw.utils.Language;
-import dev.thetechnokid.rw.utils.Utils;
+import dev.thetechnokid.rw.utils.*;
 import eu.hansolo.medusa.Gauge;
 import eu.hansolo.medusa.GaugeBuilder;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.input.KeyCode;
@@ -78,24 +76,24 @@ public class MissionControlState extends State {
 			time.setValue(timeSecs);
 		});
 
-		Button scaleUp = new Button("+");
+		JFXButton scaleUp = new JFXButton("+");
 		scaleUp.setOnAction((event) -> {
 			if (scale < 2)
 				scale += 0.5;
 		});
 
-		Button scaleDown = new Button("-");
+		JFXButton scaleDown = new JFXButton("-");
 		scaleDown.setOnAction((event) -> {
 			if (scale > 0.5)
 				scale -= 0.5;
 		});
 
-		Button expand = new Button(Language.get("expand"));
+		JFXButton expand = new JFXButton(Language.get("expand"));
 		expand.setOnAction((event) -> {
 			MainGameController.getCanvas().setWidth(1056);
 		});
 
-		Button build = new Button(Language.get("rebuild"));
+		JFXButton build = new JFXButton(Language.get("rebuild"));
 		build.setOnAction((event) -> State.setCurrentState(new BuildingState(g)));
 
 		scaleUp.setFocusTraversable(false);

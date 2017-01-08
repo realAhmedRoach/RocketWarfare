@@ -2,6 +2,8 @@ package dev.thetechnokid.rw.states;
 
 import java.io.*;
 
+import com.jfoenix.controls.JFXButton;
+
 import dev.thetechnokid.rw.RocketWarfare;
 import dev.thetechnokid.rw.controllers.MainGameController;
 import dev.thetechnokid.rw.net.User;
@@ -62,7 +64,7 @@ public class MenuState extends State {
 		CheckBox register = new CheckBox(Language.get("register"));
 		CheckBox rememberMe = new CheckBox(Language.get("remember me"));
 
-		Button start = new Button(Language.get("login"));
+		JFXButton start = new JFXButton(Language.get("login"));
 		start.setOnAction((event) -> {
 			name = nameField.getText();
 			if (login(name, pwField.getText(), register.isSelected(), rememberMe.isSelected())) {
@@ -85,7 +87,7 @@ public class MenuState extends State {
 	private void loadRemembered() {
 		File folder = new File(RocketWarfare.settingsFolder() + "/users/");
 		File rem = null;
-		if(folder.listFiles() == null) 
+		if (folder.listFiles() == null)
 			return;
 		for (File file : folder.listFiles()) {
 			if (file.getName().endsWith("-"))
