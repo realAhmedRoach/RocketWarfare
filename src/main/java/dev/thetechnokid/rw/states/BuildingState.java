@@ -75,6 +75,7 @@ public class BuildingState extends State {
 			if (createRocket())
 				State.setCurrentState(new MissionControlState(g, rocket));
 		});
+		finish.getStyleClass().add("button-raised1");
 		finish.setFocusTraversable(false);
 
 		name = new JFXTextField();

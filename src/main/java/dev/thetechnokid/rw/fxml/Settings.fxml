@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import com.jfoenix.controls.*?>
 
-<VBox prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.92" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.thetechnokid.rw.controllers.SettingsController">
+<VBox prefHeight="400.0" prefWidth="500.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.92" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.thetechnokid.rw.controllers.SettingsController">
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="578.0" spacing="50.0">
          <children>
