@@ -13,3 +13,7 @@
 .menu .label {
 	-fx-text-fill: #222222;
 }
+
+.button {
+	-fx-text-fill: WHITE;
+}

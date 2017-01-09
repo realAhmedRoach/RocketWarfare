@@ -81,17 +81,20 @@ public class MissionControlState extends State {
 			if (scale < 2)
 				scale += 0.5;
 		});
+		scaleUp.getStyleClass().add("button-raised0");
 
 		JFXButton scaleDown = new JFXButton("-");
 		scaleDown.setOnAction((event) -> {
 			if (scale > 0.5)
 				scale -= 0.5;
 		});
+		scaleDown.getStyleClass().add("button-raised0");
 
 		JFXButton expand = new JFXButton(Language.get("expand"));
 		expand.setOnAction((event) -> {
 			MainGameController.getCanvas().setWidth(1056);
 		});
+		expand.getStyleClass().add("button-raised0");
 
 		JFXButton build = new JFXButton(Language.get("rebuild"));
 		build.setOnAction((event) -> State.setCurrentState(new BuildingState(g)));

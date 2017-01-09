@@ -63,8 +63,9 @@ public class SettingsController implements Initializable {
 			if (theme.getValue() != null) {
 				prefs.setTheme(theme.getValue().toLowerCase());
 				MainGameController.getParent().getStylesheets().clear();
-				MainGameController.getParent().getStylesheets()
-						.add(Main.class.getResource("fxml/" + prefs.getTheme()).toExternalForm());
+				MainGameController.getParent().getStylesheets().addAll(
+						Main.class.getResource("fxml/" + prefs.getTheme()).toExternalForm(),
+						Main.class.getResource("fxml/style.css").toExternalForm());
 			}
 			if (language.getValue() != null)
 				prefs.setLanguage(Language.LOCALES.get(language.getValue()));
