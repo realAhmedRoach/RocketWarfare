@@ -3,6 +3,7 @@ package dev.thetechnokid.rw.states;
 import java.util.*;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 
 import dev.thetechnokid.rw.controllers.MainGameController;
 import dev.thetechnokid.rw.entities.*;
@@ -12,7 +13,8 @@ import dev.thetechnokid.rw.utils.Grid;
 import dev.thetechnokid.rw.utils.Language;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.*;
+import javafx.scene.control.Separator;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
@@ -21,7 +23,7 @@ public class BuildingState extends State {
 
 	private String[] currPartString;
 	private Rocket rocket;
-	private TextField name;
+	private JFXTextField name;
 	private ImageView currPart;
 
 	private HashMap<String, HBox> boxes;
@@ -75,7 +77,7 @@ public class BuildingState extends State {
 		});
 		finish.setFocusTraversable(false);
 
-		name = new TextField();
+		name = new JFXTextField();
 		name.setPromptText(Language.get("rocket name"));
 		name.setFocusTraversable(false);
 
