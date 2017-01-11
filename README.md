@@ -11,8 +11,6 @@
 You are in a large world. Using your custom-built rocket, the missiles that you have installed in it, and your base, you try to defend yourself and your team mates from attacks.
 From UFOs, enemy ships, and more... *This is Rocket Warfare*.
 
-Rocket Warfare is going to be an MMORTS made using JavaFX, with minimal use of external libraries. The first official release is set to go off June 2017.
-
 Here are the [graphics](res/images/spritesheet.png).
 
 ### Versioning
@@ -21,5 +19,10 @@ They use the lowercase Greek alphabet. From `v0.0.1` to `v0.9.9`, this will be v
 
 ### License
 This program is licensed under the [GPLv3](/LICENSE) license.
+
+### Credits
+1. [Medusa Gauges](https://github.com/HanSolo/Medusa)
+2. [JFoenix](http://jfoenix.com)
+
 
 <img src="http://www.eclipse.org/artwork/images/v2/eclipse-mp-built-800x274.png" width="132"></img>
