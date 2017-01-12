@@ -65,7 +65,7 @@ public class MissionControlState extends State {
 		anim = new Animator(1000 / RocketWarfare.FPS, () -> {
 			String altitudeText = Utils.format(rocket.getAltitude());
 			String xText = Utils.format(rocket.getX());
-			String degreesText = rocket.getVelocity().getDirection().getDegrees() + "\u00b0";
+			String degreesText = rocket.getDirection().getDegrees() + "\u00b0";
 			int timeSecs = rocket.getTime() / RocketWarfare.FPS;
 			altitudeLabel.setText(Language.get("altitude") + ": " + altitudeText);
 			xLabel.setText("X: " + xText);

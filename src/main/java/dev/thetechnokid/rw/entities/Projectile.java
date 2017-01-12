@@ -26,7 +26,7 @@ public class Projectile extends FlyingObject {
 	public void render(double x, double y) {
 		double scale = State.getCurrentState().scale();
 		g.save();
-		g.setTransform((new Affine(new Rotate(-(acceleration.getDirection().getDegrees() - 90),
+		g.setTransform((new Affine(new Rotate(-(getDirection().getDegrees() - 90),
 				x + ((getWidth() * (Grid.SIZE * scale)) / 2), y + (getHeight() * (Grid.SIZE * scale))))));
 		g.drawImage(image, x * scale, y * scale, Grid.SIZE * scale, Grid.SIZE * scale);
 		g.restore();

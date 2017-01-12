@@ -3,11 +3,11 @@ package dev.thetechnokid.rw.maths;
 public class Vector {
 	public double x, y;
 
-	public Vector()	{
+	public Vector() {
 		x = 0;
 		y = 0;
 	}
-	
+
 	public Vector(double x, double y) {
 		this.x = x;
 		this.y = y;
@@ -22,12 +22,12 @@ public class Vector {
 		this.x = x;
 		this.y = y;
 	}
-	
+
 	public void set(double n) {
 		this.x = n;
 		this.y = n;
 	}
-	
+
 	public void add(Vector other) {
 		x += other.x;
 		y += other.y;
@@ -37,29 +37,25 @@ public class Vector {
 		x -= other.x;
 		y -= other.y;
 	}
-	
+
 	public void mul(Vector other) {
 		x *= other.x;
 		y *= other.y;
 	}
-	
+
 	public void div(Vector other) {
 		x /= other.x;
 		y /= other.y;
 	}
 
 	public void rotate(int degrees) {
-	    double rx = (this.x * Math.cos(degrees)) - (this.y * Math.sin(degrees));
-	    double ry = (this.x * Math.sin(degrees)) + (this.y * Math.cos(degrees));
-	    x = rx;
-	    y = ry;
-	}
-	
-	public double getMagnitude() {
-		return Math.hypot(x, y);
+		double rx = (this.x * Math.cos(degrees)) - (this.y * Math.sin(degrees));
+		double ry = (this.x * Math.sin(degrees)) + (this.y * Math.cos(degrees));
+		x = rx;
+		y = ry;
 	}
 
-	public Direction getDirection() {
-		return new Direction((int) Math.toDegrees(Math.atan2(y, x)));
+	public double getMagnitude() {
+		return Math.hypot(x, y);
 	}
 }
