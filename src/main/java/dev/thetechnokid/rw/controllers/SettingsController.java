@@ -61,7 +61,7 @@ public class SettingsController implements Initializable {
 					remFile.delete();
 			}
 			if (theme.getValue() != null) {
-				prefs.setTheme(theme.getValue().toLowerCase());
+				prefs.setTheme(theme.getValue().toLowerCase() + ".css");
 				MainGameController.getParent().getStylesheets().clear();
 				MainGameController.getParent().getStylesheets().addAll(
 						Main.class.getResource("fxml/" + prefs.getTheme()).toExternalForm(),
