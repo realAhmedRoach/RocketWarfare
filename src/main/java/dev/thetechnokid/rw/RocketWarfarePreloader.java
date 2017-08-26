@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 public class RocketWarfarePreloader extends Preloader {
 
-	public static final String NEWS = "http://thetechnokid.github.io/RocketWarfare";
+	public static final String NEWS = "http://realahmedroach.github.io/RocketWarfare";
 	public static boolean DONE = false;
 
 	@Override
